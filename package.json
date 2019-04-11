@@ -1,0 +1,25 @@
+{
+  "name": "410final_backend",
+  "version": "0.0.1",
+  "description": "back end for 410's final project",
+  "scripts": {
+    "start": "nodemon --exec node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rickypeng99/410final_backend.git"
+  },
+  "author": "Ruiqi Peng (ruiqip2@illinois.edu)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rickypeng99/410final_backend/issues"
+  },
+  "homepage": "https://github.com/rickypeng99/410final_backend#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.0",
+    "nodemon": "^1.18.11",
+    "retrieval": "^1.7.2"
+  }
+}
