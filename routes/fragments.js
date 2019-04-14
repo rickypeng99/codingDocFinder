@@ -29,7 +29,7 @@ module.exports = function (router) {
             var language = req.query.language;
 
 
-            if(query == "all"){
+            if(query == "all") {
                 //returning all fragments
                 Fragment.find({"language" : language})
                 .exec()
@@ -40,7 +40,7 @@ module.exports = function (router) {
                 .catch((error) => {
                     res.status(500).send({message: "Error: getting fragments corresponding to language (all) " + error})
                 })
-            } else{
+            } else {
                 //returning a fragment array of which the texts are like the query
                 Fragment.find({"language" : language, "text" : new RegExp(query, "i")})
                 .exec()

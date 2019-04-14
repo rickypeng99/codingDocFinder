@@ -1,0 +1,90 @@
+
+15.1. Representation ErrorÂ¶
+This section explains the â0.1â example in detail, and shows how you can perform
+an exact analysis of cases like this yourself.  Basic familiarity with binary
+floating-point representation is assumed.
+Representation error refers to the fact that some (most, actually)
+decimal fractions cannot be represented exactly as binary (base 2) fractions.
+This is the chief reason why Python (or Perl, C, C++, Java, Fortran, and many
+others) often wonât display the exact decimal number you expect.
+Why is that?  1/10 is not exactly representable as a binary fraction. Almost all
+machines today (November 2000) use IEEE-754 floating point arithmetic, and
+almost all platforms map Python floats to IEEE-754 âdouble precisionâ.  754
+doubles contain 53 bits of precision, so on input the computer strives to
+convert 0.1 to the closest fraction it can of the form J/2**N where J is
+an integer containing exactly 53 bits.  Rewriting
+1 / 10 ~= J / (2**N)
+
+
+as
+J ~= 2**N / 10
+
+
+and recalling that J has exactly 53 bits (is >= 2**52 but < 2**53),
+the best value for N is 56:
+>>> 2**52 <=  2**56 // 10  < 2**53
+True
+
+
+That is, 56 is the only value for N that leaves J with exactly 53 bits.  The
+best possible value for J is then that quotient rounded:
+>>> q, r = divmod(2**56, 10)
+>>> r
+6
+
+
+Since the remainder is more than half of 10, the best approximation is obtained
+by rounding up:
+>>> q+1
+7205759403792794
+
+
+Therefore the best possible approximation to 1/10 in 754 double precision is:
+7205759403792794 / 2 ** 56
+
+
+Dividing both the numerator and denominator by two reduces the fraction to:
+3602879701896397 / 2 ** 55
+
+
+Note that since we rounded up, this is actually a little bit larger than 1/10;
+if we had not rounded up, the quotient would have been a little bit smaller than
+1/10.  But in no case can it be exactly 1/10!
+So the computer never âseesâ 1/10:  what it sees is the exact fraction given
+above, the best 754 double approximation it can get:
+>>> 0.1 * 2 ** 55
+3602879701896397.0
+
+
+If we multiply that fraction by 10**55, we can see the value out to
+55 decimal digits:
+>>> 3602879701896397 * 10 ** 55 // 2 ** 55
+1000000000000000055511151231257827021181583404541015625
+
+
+meaning that the exact number stored in the computer is equal to
+the decimal value 0.1000000000000000055511151231257827021181583404541015625.
+Instead of displaying the full decimal value, many languages (including
+older versions of Python), round the result to 17 significant digits:
+>>> format(0.1, '.17f')
+'0.10000000000000001'
+
+
+The fractions and decimal modules make these calculations
+easy:
+>>> from decimal import Decimal
+>>> from fractions import Fraction
+
+>>> Fraction.from_float(0.1)
+Fraction(3602879701896397, 36028797018963968)
+
+>>> (0.1).as_integer_ratio()
+(3602879701896397, 36028797018963968)
+
+>>> Decimal.from_float(0.1)
+Decimal('0.1000000000000000055511151231257827021181583404541015625')
+
+>>> format(Decimal.from_float(0.1), '.17')
+'0.10000000000000001'
+
+

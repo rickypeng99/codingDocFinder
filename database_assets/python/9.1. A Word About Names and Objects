@@ -1,0 +1,13 @@
+
+9.1. A Word About Names and ObjectsÂ¶
+Objects have individuality, and multiple names (in multiple scopes) can be bound
+to the same object.  This is known as aliasing in other languages.  This is
+usually not appreciated on a first glance at Python, and can be safely ignored
+when dealing with immutable basic types (numbers, strings, tuples).  However,
+aliasing has a possibly surprising effect on the semantics of Python code
+involving mutable objects such as lists, dictionaries, and most other types.
+This is usually used to the benefit of the program, since aliases behave like
+pointers in some respects.  For example, passing an object is cheap since only a
+pointer is passed by the implementation; and if a function modifies an object
+passed as an argument, the caller will see the change â this eliminates the
+need for two different argument passing mechanisms as in Pascal.

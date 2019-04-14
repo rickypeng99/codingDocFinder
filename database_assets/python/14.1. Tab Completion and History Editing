@@ -1,0 +1,14 @@
+
+14.1. Tab Completion and History EditingÂ¶
+Completion of variable and module names is
+automatically enabled at interpreter startup so
+that the Tab key invokes the completion function; it looks at
+Python statement names, the current local variables, and the available
+module names.  For dotted expressions such as string.a, it will evaluate
+the expression up to the final '.' and then suggest completions from
+the attributes of the resulting object.  Note that this may execute
+application-defined code if an object with a __getattr__() method
+is part of the expression.  The default configuration also saves your
+history into a file named .python_history in your user directory.
+The history will be available again during the next interactive interpreter
+session.

@@ -1,0 +1,35 @@
+
+9.3.4. Method ObjectsÂ¶
+Usually, a method is called right after it is bound:
+x.f()
+
+
+In the MyClass example, this will return the string 'hello world'.
+However, it is not necessary to call a method right away: x.f is a method
+object, and can be stored away and called at a later time.  For example:
+xf = x.f
+while True:
+    print(xf())
+
+
+will continue to print hello world until the end of time.
+What exactly happens when a method is called?  You may have noticed that
+x.f() was called without an argument above, even though the function
+definition for f() specified an argument.  What happened to the argument?
+Surely Python raises an exception when a function that requires an argument is
+called without any â even if the argument isnât actually usedâ¦
+Actually, you may have guessed the answer: the special thing about methods is
+that the instance object is passed as the first argument of the function.  In our
+example, the call x.f() is exactly equivalent to MyClass.f(x).  In
+general, calling a method with a list of n arguments is equivalent to calling
+the corresponding function with an argument list that is created by inserting
+the methodâs instance object before the first argument.
+If you still donât understand how methods work, a look at the implementation can
+perhaps clarify matters.  When a non-data attribute of an instance is
+referenced, the instanceâs class is searched.  If the name denotes a valid class
+attribute that is a function object, a method object is created by packing
+(pointers to) the instance object and the function object just found together in
+an abstract object: this is the method object.  When the method object is called
+with an argument list, a new argument list is constructed from the instance
+object and the argument list, and the function object is called with this new
+argument list.

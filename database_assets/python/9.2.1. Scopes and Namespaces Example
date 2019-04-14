@@ -1,0 +1,42 @@
+
+9.2.1. Scopes and Namespaces ExampleÂ¶
+This is an example demonstrating how to reference the different scopes and
+namespaces, and how global and nonlocal affect variable
+binding:
+def scope_test():
+    def do_local():
+        spam = "local spam"
+
+    def do_nonlocal():
+        nonlocal spam
+        spam = "nonlocal spam"
+
+    def do_global():
+        global spam
+        spam = "global spam"
+
+    spam = "test spam"
+    do_local()
+    print("After local assignment:", spam)
+    do_nonlocal()
+    print("After nonlocal assignment:", spam)
+    do_global()
+    print("After global assignment:", spam)
+
+scope_test()
+print("In global scope:", spam)
+
+
+The output of the example code is:
+After local assignment: test spam
+After nonlocal assignment: nonlocal spam
+After global assignment: nonlocal spam
+In global scope: global spam
+
+
+Note how the local assignment (which is default) didnât change scope_testâs
+binding of spam.  The nonlocal assignment changed scope_testâs
+binding of spam, and the global assignment changed the module-level
+binding.
+You can also see that there was no previous binding for spam before the
+global assignment.

@@ -1,0 +1,9 @@
+
+10.2. File WildcardsÂ¶
+The glob module provides a function for making file lists from directory
+wildcard searches:
+>>> import glob
+>>> glob.glob('*.py')
+['primes.py', 'random.py', 'quote.py']
+
+
