@@ -1,24 +1,13 @@
-#!/usr/bin/env python
-
 """
  * @file dbFill.py
- * Used in CS498RK MP4 to populate database with randomly generated users and tasks.
  *
- * @author Aswin Sivaraman
- * @date Created: Spring 2015
- * @date Modified: Spring 2015
- * @date Modified: Spring 2019
+ * @author Ruiqi Peng
 """
 
 import sys
-import getopt
 import http.client
 import urllib
 import json
-from random import randint
-from random import choice
-from datetime import date
-from time import mktime
 import os
 import re
 
