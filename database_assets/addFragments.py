@@ -1,9 +1,3 @@
-"""
- * @file dbFill.py
- *
- * @author Ruiqi Peng
-"""
-
 import sys
 import http.client
 import urllib
@@ -57,8 +51,8 @@ def main(argv):
           #print(text)
           
           language = "python"
-          #no code fragments for pytho tutorials
-          codeFragment = ""    
+          #no code fragments for python tutorials
+          codeFragment = "unidentified"    
           
           #adding params
           params = urllib.parse.urlencode({'title': title, 'text': text, 'language': language, 'codeFragment': codeFragment})
@@ -68,10 +62,14 @@ def main(argv):
           response = conn.getresponse()
           data = response.read()
           d = json.loads(data)
+          if(d['data'] != "error"):
+               print("Successfully uploaded " + title)
+          else:
+               print("Failed uploading " + title)
 
      # Exit gracefully
      conn.close()
-     print("successfully uploaded " + title)
+     print("Successfully uploaded all the fragments!")
 
 
 if __name__ == "__main__":

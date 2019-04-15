@@ -13,11 +13,11 @@ module.exports = function (router) {
             if(fragment != null){
                 res.status(200).send({data: fragment, message: "Fragment with specific id returned"})
             } else{
-                res.status(404).send({data: "404", message: "Couldn't find fragment with specific id"})
+                res.status(404).send({data: "error", message: "Couldn't find fragment with specific id"})
             }
         })
         .catch((error) => {
-            res.status(500).send({data: "500", message: "Error: findById: " + error})
+            res.status(500).send({data: "error", message: "Error: findById: " + error})
 
         })
     });
@@ -31,11 +31,11 @@ module.exports = function (router) {
             if(fragment != null){
                 res.status(200).send({data: fragment.title, message: "Fragment with specific id deleted"})
             } else{
-                res.status(404).send({data: "404", message: "Couldn't find fragment with specific id, thus can't be deleted"})
+                res.status(404).send({data: "error", message: "Couldn't find fragment with specific id, thus can't be deleted"})
             }
         })
         .catch((error) => {
-            res.status(500).send({data: "500", message: "Error: findByIdAndRemove: " + error})
+            res.status(500).send({data: "error", message: "Error: findByIdAndRemove: " + error})
 
         })
     });

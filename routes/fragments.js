@@ -21,7 +21,7 @@ module.exports = function (router) {
     fragmentsRoute.get((req, res) =>{
         //check able to GET request, requires query and choice of language
         if(checkInvalid(req.query.query) || checkInvalid(req.query.language)){
-            res.status(404).send({message: "Invalid search, please input a query"})
+            res.status(404).send({data: "error", message: "Invalid search, please input a query"})
 
         } else{
             
@@ -29,8 +29,20 @@ module.exports = function (router) {
             var language = req.query.language;
 
 
-            if(query == "all") {
+            if(query == "all" && language == "all") {
                 //returning all fragments
+                Fragment.find()
+                .exec()
+                .then((fragments) => {
+                    res.status(200).send({data: fragments, message: "Successfully returned all " + language + " fragments!"})
+
+                })
+                .catch((error) => {
+                    res.status(500).send({data: "error", message: "Error: getting fragments corresponding to language (all) " + error})
+                })
+                
+            } else if(query == "all" && language != "all"){
+                //returning all fragments of a specific programming language
                 Fragment.find({"language" : language})
                 .exec()
                 .then((fragments) => {
@@ -38,7 +50,7 @@ module.exports = function (router) {
 
                 })
                 .catch((error) => {
-                    res.status(500).send({message: "Error: getting fragments corresponding to language (all) " + error})
+                    res.status(500).send({data: "error", message: "Error: getting fragments corresponding to language (all) " + error})
                 })
             } else {
                 //returning a fragment array of which the texts are like the query
@@ -69,7 +81,7 @@ module.exports = function (router) {
                     res.status(200).send({data: results, message: "Successfully returned all " + language + " fragments with a query of " + query})
                 })
                 .catch((error) => {
-                    res.status(500).send({message: "Error: getting fragments corresponding to language and query " + error})
+                    res.status(500).send({data: "error", message: "Error: getting fragments corresponding to language and query " + error})
                 })
             }
 
@@ -97,7 +109,7 @@ module.exports = function (router) {
             res.status(200).send({data: fragment, message: "Successfully created a document fragment!"});
         })
         .catch((error) => {
-            res.status(500).send({message: "Error: creating a new doc fragment " + error});
+            res.status(500).send({data: "error", message: "Error: creating a new doc fragment " + error});
         })
 
     });
