@@ -1,0 +1,72 @@
+Java - Strings Class
+Strings, which are widely used in Java programming, are a sequence of characters. In Java programming language, strings are treated as objects.
+The Java platform provides the String class to create and manipulate strings.
+Creating Strings
+The most direct way to create a string is to write −
+Whenever it encounters a string literal in your code, the compiler creates a String object with its value in this case, "Hello world!'.
+As with any other object, you can create String objects by using the new keyword and a constructor. The String class has 11 constructors that allow you to provide the initial value of the string using different sources, such as an array of characters.
+This will produce the following result −
+Note − The String class is immutable, so that once it is created a String object cannot be changed. If there is a necessity to make a lot of modifications to Strings of characters, then you should use String Buffer & String Builder Classes.
+String Length
+Methods used to obtain information about an object are known as accessor methods. One accessor method that you can use with strings is the length() method, which returns the number of characters contained in the string object.
+The following program is an example of length(), method String class.
+This will produce the following result −
+Concatenating Strings
+The String class includes a method for concatenating two strings −
+This returns a new string that is string1 with string2 added to it at the end. You can also use the concat() method with string literals, as in −
+Strings are more commonly concatenated with the &plus; operator, as in −
+which results in −
+Let us look at the following example −
+This will produce the following result −
+Creating Format Strings
+You have printf() and format() methods to print output with formatted numbers. The String class has an equivalent class method, format(), that returns a String object rather than a PrintStream object.
+Using String's static format() method allows you to create a formatted string that you can reuse, as opposed to a one-time print statement. For example, instead of −
+You can write −
+String Methods
+Here is the list of methods supported by String class −
+Returns the character at the specified index.
+Compares this String to another Object.
+Compares two strings lexicographically.
+Compares two strings lexicographically, ignoring case differences.
+Concatenates the specified string to the end of this string.
+Returns true if and only if this String represents the same sequence of characters as the specified StringBuffer.
+Returns a String that represents the character sequence in the array specified.
+Returns a String that represents the character sequence in the array specified.
+Tests if this string ends with the specified suffix.
+Compares this string to the specified object.
+Compares this String to another String, ignoring case considerations.
+Encodes this String into a sequence of bytes using the platform's default charset, storing the result into a new byte array.
+Encodes this String into a sequence of bytes using the named charset, storing the result into a new byte array.
+Copies characters from this string into the destination character array.
+Returns a hash code for this string.
+Returns the index within this string of the first occurrence of the specified character.
+Returns the index within this string of the first occurrence of the specified character, starting the search at the specified index.
+Returns the index within this string of the first occurrence of the specified substring.
+Returns the index within this string of the first occurrence of the specified substring, starting at the specified index.
+Returns a canonical representation for the string object.
+Returns the index within this string of the last occurrence of the specified character.
+Returns the index within this string of the last occurrence of the specified character, searching backward starting at the specified index.
+Returns the index within this string of the rightmost occurrence of the specified substring.
+Returns the index within this string of the last occurrence of the specified substring, searching backward starting at the specified index.
+Returns the length of this string.
+Tells whether or not this string matches the given regular expression.
+Tests if two string regions are equal.
+Tests if two string regions are equal.
+Returns a new string resulting from replacing all occurrences of oldChar in this string with newChar.
+Replaces each substring of this string that matches the given regular expression with the given replacement.
+Replaces the first substring of this string that matches the given regular expression with the given replacement.
+Splits this string around matches of the given regular expression.
+Splits this string around matches of the given regular expression.
+Tests if this string starts with the specified prefix.
+Tests if this string starts with the specified prefix beginning a specified index.
+Returns a new character sequence that is a subsequence of this sequence.
+Returns a new string that is a substring of this string.
+Returns a new string that is a substring of this string.
+Converts this string to a new character array.
+Converts all of the characters in this String to lower case using the rules of the default locale.
+Converts all of the characters in this String to lower case using the rules of the given Locale.
+This object (which is already a string!) is itself returned.
+Converts all of the characters in this String to upper case using the rules of the default locale.
+Converts all of the characters in this String to upper case using the rules of the given Locale.
+Returns a copy of the string, with leading and trailing whitespace omitted.
+Returns the string representation of the passed data type argument.

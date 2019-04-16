@@ -1,0 +1,25 @@
+Java - Character Class
+Normally, when we work with characters, we use primitive data  types char.
+However in development, we come across situations where we need to use objects instead of primitive data types. In order to achieve this, Java provides wrapper class Character for primitive data type char.
+The Character class offers a number of useful class (i.e., static) methods for manipulating characters. You can create a Character object with the Character constructor −
+The Java compiler will also create a Character object for you under some circumstances. For example, if you pass a primitive char into a method that expects an object, the compiler automatically converts the char to a Character for you. This feature is called autoboxing or unboxing, if the conversion goes the other way.
+Escape Sequences
+A character preceded by a backslash (\) is an escape sequence and has a special meaning to the compiler.
+The newline character (\n) has been used frequently in this tutorial in System.out.println() statements to advance to the next line after the string is printed.
+Following table shows the Java escape sequences −
+When an escape sequence is encountered in a print statement, the compiler interprets it accordingly.
+If you want to put quotes within quotes, you must use the escape sequence, \", on the interior quotes −
+This will produce the following result −
+Character Methods
+Following is the list of the important instance methods that all the subclasses of the Character class implement −
+Determines whether the specified char value is a letter.
+Determines whether the specified char value is a digit.
+Determines whether the specified char value is white space.
+Determines whether the specified char value is uppercase.
+Determines whether the specified char value is lowercase.
+Returns the uppercase form of the specified char value.
+Returns the lowercase form of the specified char value.
+Returns a String object representing the specified character value that is, a one-character string.
+For a complete list of methods, please refer to the java.lang.Character API specification.
+What is Next?
+In the next section, we will be going through the String class in Java. You will be learning how to declare and use Strings efficiently as well as some of the important methods in the String class.

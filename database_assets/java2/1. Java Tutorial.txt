@@ -1,0 +1,6 @@
+Java Tutorial
+Java is a high-level programming language originally developed by Sun Microsystems and released in 1995. Java runs on a variety of platforms, such as Windows, Mac OS, and the various versions of UNIX. This tutorial gives a complete understanding of Java. This reference will take you through simple and practical approaches while learning Java Programming language.
+Audience
+This tutorial has been prepared for the beginners to help them understand the basic to advanced concepts related to Java Programming language.
+Prerequisites
+Before you start practicing various types of examples given in this reference, we assume that you are already aware about computer programs and computer programming languages.

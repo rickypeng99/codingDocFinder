@@ -1,0 +1,23 @@
+Java - Sending Email
+To send an e-mail using your Java Application is simple enough but to start with you should have JavaMail API and Java Activation Framework (JAF) installed on your machine.
+You can download  latest version of JavaMail (Version 1.2) from Java's standard website.
+You can download  latest version of JAF (Version 1.1.1) from Java's standard website.
+Download and unzip these files, in the newly created top level directories you will find a number of jar files for both the applications. You need to add mail.jar and activation.jar files in your CLASSPATH.
+Send a Simple E-mail
+Here is an example to send a simple e-mail from your machine. It is assumed that your localhost is connected to the Internet and capable enough to send an e-mail.
+Compile and run this program to send a simple e-mail −
+If you want to send an e-mail to multiple recipients then the following methods would be used to specify multiple e-mail IDs −
+Here is the description of the parameters −
+type − This would be set to TO, CC or BCC. Here CC represents Carbon Copy and BCC represents Black Carbon Copy. Example: Message.RecipientType.TO
+addresses − This is an array of e-mail ID. You would need to use InternetAddress() method while specifying email IDs.
+Send an HTML E-mail
+Here is an example to send an HTML e-mail from your machine. Here it is assumed that your localhost is connected to the Internet and capable enough to send an e-mail.
+This example is very similar to the previous one, except here we are using setContent() method to set content whose second argument is "text/html" to specify that the HTML content is included in the message.
+Using this example, you can send as big as HTML content you like.
+Compile and run this program to send an HTML e-mail −
+Send Attachment in E-mail
+Here is an example to send an e-mail with attachment from your machine. Here it is assumed that your localhost is connected to the internet and capable enough to send an e-mail.
+Compile and run this program to send an HTML e-mail −
+User Authentication Part
+If it is required to provide user ID and Password to the e-mail server for authentication purpose, then you can set these properties as follows −
+Rest of the e-mail sending mechanism would remain as explained above.

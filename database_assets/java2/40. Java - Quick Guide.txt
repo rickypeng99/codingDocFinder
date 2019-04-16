@@ -1,0 +1,849 @@
+Java - Quick Guide
+Java - Overview
+Java programming language was originally developed by Sun Microsystems which was initiated by James Gosling and released in 1995 as core component of Sun Microsystems' Java platform (Java 1.0 [J2SE]).
+The latest release of the Java Standard Edition is Java SE 8. With the advancement of Java and its widespread popularity, multiple configurations were built to suit various types of platforms. For example: J2EE for Enterprise Applications, J2ME for Mobile Applications.
+The new J2 versions were renamed as Java SE, Java EE, and Java ME respectively. Java is guaranteed to be Write Once, Run Anywhere.
+Java is −
+Object Oriented − In Java, everything is an Object. Java can be easily extended since it is based on the Object model.
+Platform Independent − Unlike many other programming languages including C and C&plus;&plus;, when Java is compiled, it is not compiled into platform specific machine, rather into platform independent byte code. This byte code is distributed over the web and interpreted by the Virtual Machine (JVM) on whichever platform it is being run on.
+Simple − Java is designed to be easy to learn. If you understand the basic concept of OOP Java, it would be easy to master.
+Secure − With Java's secure feature it enables to develop virus-free, tamper-free systems. Authentication techniques are based on public-key encryption.
+Architecture-neutral − Java compiler generates an architecture-neutral object file format, which makes the compiled code executable on many processors, with the presence of Java runtime system.
+Portable − Being architecture-neutral and having no implementation dependent aspects of the specification makes Java portable. Compiler in Java is written in ANSI C with a clean portability boundary, which is a POSIX subset.
+Robust − Java makes an effort to eliminate error prone situations by emphasizing mainly on compile time error checking and runtime checking.
+Multithreaded − With Java's multithreaded feature it is possible to write programs that can perform many tasks simultaneously. This design feature allows the developers to construct interactive applications that can run smoothly.
+Interpreted − Java byte code is translated on the fly to native machine instructions and is not stored anywhere. The development process is more rapid and analytical since the linking is an incremental and light-weight process.
+High Performance − With the use of Just-In-Time compilers, Java enables high performance.
+Distributed − Java is designed for the distributed environment of the internet.
+Dynamic − Java is considered to be more dynamic than C or C&plus;&plus; since it is designed to adapt to an evolving environment. Java programs can carry extensive amount of run-time information that can be used to verify and resolve accesses to objects on run-time.
+History of Java
+James Gosling initiated Java language project in June 1991 for use in one of his many set-top box projects. The language, initially called ‘Oak’ after an oak tree that stood outside Gosling's office, also went by the name ‘Green’ and ended up later being renamed as Java, from a list of random words.
+Sun released the first public implementation as Java 1.0 in 1995. It promised Write Once, Run Anywhere (WORA), providing no-cost run-times on popular platforms.
+On 13 November, 2006, Sun released much of Java as free and open source software under the terms of the GNU General Public License (GPL).
+On 8 May, 2007, Sun finished the process, making all of Java's core code free and open-source, aside from a small portion of code to which Sun did not hold the copyright.
+Tools You Will Need
+For performing the examples discussed in this tutorial, you will need a Pentium 200-MHz computer with a minimum of 64 MB of RAM (128 MB of RAM recommended).
+You will also need the following softwares −
+This tutorial will provide the necessary skills to create GUI, networking, and web applications using Java.
+What is Next?
+The next chapter will guide you to how you can obtain Java and its documentation. Finally, it instructs you on how to install Java and prepare an environment to develop Java applications.
+Java - Environment Setup
+In this chapter, we will discuss on the different aspects of setting up a congenial environment for Java.
+Local Environment Setup
+If you are still willing to set up your environment for Java programming language, then this section guides you on how to download and set up Java on your machine. Following are the steps to set up the environment.
+Java SE is freely available from the link Download Java. You can download a version based on your operating system.
+Follow the instructions to download Java and run the .exe to install Java on your machine. Once you installed Java on your machine, you will need to set environment variables to point to correct installation directories −
+Assuming you have installed Java in c:\Program Files\java\jdk directory −
+Right-click on 'My Computer' and select 'Properties'.
+Click the 'Environment variables' button under the 'Advanced' tab.
+Now, alter the 'Path' variable so that it also contains the path to the Java executable. Example, if the path is currently set to 'C:\WINDOWS\SYSTEM32', then change your path to read 'C:\WINDOWS\SYSTEM32;c:\Program Files\java\jdk\bin'.
+Environment variable PATH should be set to point to where the Java binaries have been installed. Refer to your shell documentation, if you have trouble doing this.
+Example, if you use bash as your shell, then you would add the following line to the end of your '.bashrc: export PATH = /path/to/java:$PATH'
+Popular Java Editors
+To write your Java programs, you will need a text editor. There are even more sophisticated IDEs available in the market. But for now, you can consider one of the following −
+Notepad − On Windows machine, you can use any simple text editor like Notepad (Recommended for this tutorial), TextPad.
+Netbeans − A Java IDE that is open-source and free which can be downloaded from https://www.netbeans.org/index.html.
+Eclipse − A Java IDE developed by the eclipse open-source community and can be downloaded from https://www.eclipse.org/.
+What is Next?
+Next chapter will teach you how to write and run your first Java program and some of the important basic syntaxes in Java needed for developing applications.
+Java - Basic Syntax
+When we consider a Java program, it can be defined as a collection of objects that communicate via invoking each other's methods. Let us now briefly look into what do class, object, methods, and instance variables mean.
+Object − Objects have states and behaviors. Example: A dog has states - color, name, breed as well as behavior such as wagging their tail, barking, eating. An object is an instance of a class.
+Class − A class can be defined as a template/blueprint that describes the behavior/state that the object of its type supports.
+Methods − A method is basically a behavior. A class can contain many methods. It is in methods where the logics are written, data is manipulated and all the actions are executed.
+Instance Variables − Each object has its unique set of instance variables. An object's state is created by the values assigned to these instance variables.
+First Java Program
+Let us look at a simple code that will print the words Hello World.
+Let's look at how to save the file, compile, and run the program. Please follow the subsequent steps −
+Open notepad and add the code as above.
+Save the file as: MyFirstJavaProgram.java.
+Open a command prompt window and go to the directory where you saved the 	class. Assume it's C:\.
+Type 'javac MyFirstJavaProgram.java' and press enter to compile your code. If there are no errors in your code, the command prompt will take you to the next line (Assumption : The path variable is set).
+Now, type ' java MyFirstJavaProgram ' to run your program.
+You will be able to see ' Hello World ' printed on the window.
+Basic Syntax
+About Java programs, it is very important to keep in mind the following points.
+Case Sensitivity − Java is case sensitive, which means identifier Hello and hello would have different meaning in Java.
+Class Names − For all class names the first letter should be in Upper Case. If several words are used to form a name of the class, each inner word's first letter should be in Upper Case.
+Example: class MyFirstJavaClass
+Method Names − All method names should start with a Lower Case letter. If several words are  used to form the name of the method, then each inner word's first letter should be in Upper Case.
+Example: public void myMethodName()
+Program File Name − Name of the program file should exactly match the class name.
+When saving the file, you should save it using the class name (Remember Java is case sensitive) and append '.java' to the end of the name (if the file name and the class name do not match, your program will not compile).
+Example: Assume 'MyFirstJavaProgram' is the class name. Then the file should be saved as 'MyFirstJavaProgram.java'
+public static void main(String args[]) − Java program processing starts from the main() method which is a mandatory part of every Java program.
+Java Identifiers
+All Java components require names. Names used for classes, variables, and methods are called identifiers.
+In Java, there are several points to remember about identifiers. They are as follows −
+All identifiers should begin with a letter (A to Z or a to z), currency character ($) or an underscore (_).
+After the first character, identifiers can have any combination of characters.
+A key word cannot be used as an identifier.
+Most importantly, identifiers are case sensitive.
+Examples of legal identifiers: age, $salary, _value, __1_value.
+Examples of illegal identifiers: 123abc, -salary.
+Java Modifiers
+Like other languages, it is possible to modify classes, methods, etc., by using modifiers. There are two categories of modifiers −
+Access Modifiers − default, public , protected, private
+Non-access Modifiers − final, abstract, strictfp
+We will be looking into more details about modifiers in the next section.
+Java Variables
+Following are the types of variables in Java −
+Java Arrays
+Arrays are objects that store multiple variables of the same type. However, an array itself is an object on the heap. We will look into how to declare, construct, and initialize in the upcoming chapters.
+Java Enums
+Enums were introduced in Java 5.0. Enums restrict a variable to have one of only a few predefined values. The values in this enumerated list are called enums.
+With the use of enums it is possible to reduce the number of bugs in your code.
+For example, if we consider an application for a fresh juice shop, it would be possible to restrict the glass size to small, medium, and large. This would make sure that it would not allow anyone to order any size other than small, medium, or large.
+The above example will produce the following result −
+Note − Enums can be declared as their own or inside a class. Methods, variables, constructors can be defined inside enums as well.
+Java Keywords
+The following list shows the reserved words in Java. These reserved words may not be used as constant or variable or any other identifier names.
+Comments in Java
+Java supports single-line and multi-line comments very similar to C and C&plus;&plus;. All characters available inside any comment are ignored by Java compiler.
+Using Blank Lines
+A line containing only white space, possibly with a comment, is known as a blank line, and Java totally ignores it.
+Inheritance
+In Java, classes can be derived from classes. Basically, if you need to create a new class and here is already a class that has some of the code you require, then it is possible to derive your new class from the already existing code.
+This concept allows you to reuse the fields and methods of the existing class without having to rewrite the code in a new class. In this scenario, the existing class is called the superclass and the derived class is called the subclass.
+Interfaces
+In Java language, an interface can be defined as a contract between objects on how to communicate with each other. Interfaces play a vital role when it comes to the concept of inheritance.
+An interface defines the methods, a deriving class (subclass) should use. But the implementation of the methods is totally up to the subclass.
+What is Next?
+The next section explains about Objects and classes in Java programming. At the end of the session, you will be able to get a clear picture as to what are objects and what are classes in Java.
+Java - Object and Classes
+Java is an Object-Oriented Language. As a language that has the Object-Oriented feature, Java supports the following fundamental concepts −
+In this chapter, we will look into the concepts - Classes and Objects.
+Object − Objects have states and behaviors. Example: A dog has states - color, name, breed as well as behaviors – wagging the tail, barking, eating. An object is an instance of a class.
+Class − A class can be defined as a template/blueprint that describes the behavior/state that the object of its type support.
+Objects in Java
+Let us now look deep into what are objects. If we consider the real-world, we can find many objects around us, cars, dogs, humans, etc. All these objects have a state and a behavior.
+If we consider a dog, then its state is - name, breed, color, and the behavior is - barking, wagging the tail, running.
+If you compare the software object with a real-world object, they have very similar characteristics.
+Software objects also have a state and a behavior. A software object's state is stored in fields and behavior is shown via methods.
+So in software development, methods operate on the internal state of an object and the object-to-object communication is done via methods.
+Classes in Java
+A class is a blueprint from which individual objects are created.
+Following is a sample of a class.
+A class can contain any of the following variable types.
+Local variables − Variables defined inside methods, constructors or blocks are called local variables. The variable will be declared and initialized within the method and the variable will be destroyed when the method has completed.
+Instance variables − Instance variables are variables within a class but outside any method. These variables are initialized when the class is instantiated. Instance variables can be accessed from inside any method, constructor or blocks of that particular class.
+Class variables − Class variables are variables declared within a class, outside any method, with the static keyword.
+A class can have any number of methods to access the value of various kinds of methods. In the above example, barking(), hungry() and sleeping() are methods.
+Following are some of the important topics that need to be discussed when looking into classes of the Java Language.
+Constructors
+When discussing about classes, one of the most important sub topic would be constructors. Every class has a constructor. If we do not explicitly write a constructor for a class, the Java compiler builds a default constructor for that class.
+Each time a new object is created, at least one constructor will be invoked. The main rule of constructors is that they should have the same name as the class. A class can have more than one constructor.
+Following is an example of a constructor −
+Java also supports Singleton Classes where you would be able to create only one instance of a class.
+Note − We have two different types of constructors. We are going to discuss constructors in detail in the subsequent chapters.
+Creating an Object
+As mentioned previously, a class provides the blueprints for objects. So basically, an object is created from a class. In Java, the new keyword is used to create new objects.
+There are three steps when creating an object from a class −
+Declaration − A variable declaration with a variable name with an object type.
+Instantiation − The 'new' keyword is used to create the object.
+Initialization − The 'new' keyword is followed by a call to a constructor. This call initializes the new object.
+Following is an example of creating an object −
+If we compile and run the above program, then it will produce the following result −
+Accessing Instance Variables and Methods
+Instance variables and methods are accessed via created objects. To access an instance variable, following is the fully qualified path −
+This example explains how to access instance variables and methods of a class.
+If we compile and run the above program, then it will produce the following result −
+Source File Declaration Rules
+As the last part of this section, let's now look into the source file declaration rules. These rules are essential when declaring classes, import statements and package statements in a source file.
+There can be only one public class per source file.
+A source file can have multiple non-public classes.
+The public class name should be the name of the source file as well which should be appended by .java at the end. For example: the class name is public class Employee{} then the source file should be as Employee.java.
+If the class is defined inside a package, then the package statement should be the first statement in the source file.
+If import statements are present, then they must be written between the package statement and the class declaration. If there are no package statements, then the import statement should be the first line in the source file.
+Import and package statements will imply to all the classes present in the source file. It is not possible to declare different import and/or package statements to different classes in the source file.
+Classes have several access levels and there are different types of classes; abstract classes, final classes, etc. We will be explaining about all these in the access modifiers chapter.
+Apart from the above mentioned types of classes, Java also has some special classes called Inner classes and Anonymous classes.
+Java Package
+In simple words, it is a way of categorizing the classes and interfaces. When developing applications in Java, hundreds of classes and interfaces will be written, therefore categorizing these classes is a must as well as makes life much easier.
+Import Statements
+In Java if a fully qualified name, which includes the package and the class name is given, then the compiler can easily locate the source code or classes. Import statement is a way of giving the proper location for the compiler to find that particular class.
+For example, the following line would ask the compiler to load all the classes available in directory java_installation/java/io −
+A Simple Case Study
+For our case study, we will be creating two classes. They are Employee and EmployeeTest.
+First open notepad and add the following code. Remember this is the Employee class and the class is a public class. Now, save this source file with the name Employee.java.
+The Employee class has four instance variables - name, age, designation and salary. The class has one explicitly defined constructor, which takes a parameter.
+As mentioned previously in this tutorial, processing starts from the main method. Therefore, in order for us to run this Employee class there should be a main method and objects should be created. We will be creating a separate class for these tasks.
+Following is the EmployeeTest class, which creates two instances of the class Employee and invokes the methods for each object to assign values for each variable.
+Save the following code in EmployeeTest.java file.
+Now, compile both the classes and then run EmployeeTest to see the result as follows −
+What is Next?
+In the next session, we will discuss the basic data types in Java and how they can be used when developing Java applications.
+Java - Constructors
+A constructor initializes an object when it is created. It has the same name as its class and is syntactically similar to a method. However, constructors have no explicit return type.
+Typically, you will use a constructor to give initial values to the instance variables defined by the class, or to perform any other start-up procedures required to create a fully formed object.
+All classes have constructors, whether you define one or not, because Java automatically provides a default constructor that initializes all member variables to zero. However, once you define your own constructor, the default constructor is no longer used.
+Syntax
+Following is the syntax of a constructor −
+Java allows two types of constructors namely −
+No argument Constructors
+As the name specifies the no argument constructors of Java does not accept any parameters instead, using these constructors the instance variables of a method will be initialized with fixed values for all objects.
+Example
+You would call constructor to initialize objects as follows
+This would produce the following result
+Parameterized Constructors
+Most often, you will need a constructor that accepts one or more parameters. Parameters are added to a constructor in the same way that they are added to a method, just declare them inside the parentheses after the constructor's name.
+Example
+Here is a simple example that uses a constructor −
+You would call constructor to initialize objects as follows −
+This would produce the following result −
+Java - Basic Datatypes
+Variables are nothing but reserved memory locations to store values. This means that when you create a variable you reserve some space in the memory.
+Based on the data type of a variable, the operating system allocates memory and decides what can be stored in the reserved memory. Therefore, by assigning different data types to variables, you can store integers, decimals, or characters in these variables.
+There are two data types available in Java −
+Primitive Data Types
+There are eight primitive datatypes supported by Java. Primitive datatypes are predefined by the language and named by a keyword. Let us now look into the eight primitive data types in detail.
+Byte data type is an 8-bit signed two's complement integer
+Minimum value is -128 (-2^7)
+Maximum value is 127 (inclusive)(2^7 -1)
+Default value is 0
+Byte data type is used to save space in large arrays, mainly in place of integers, since a byte is four times smaller than an integer.
+Example: byte a = 100, byte b = -50
+Short data type is a 16-bit signed two's complement integer
+Minimum value is -32,768 (-2^15)
+Maximum value is 32,767 (inclusive) (2^15 -1)
+Short data type can also be used to save memory as byte data type. A short is 2 times smaller than an integer
+Default value is 0.
+Example: short  s = 10000, short r = -20000
+Int data type is a 32-bit signed two's complement integer.
+Minimum value is - 2,147,483,648 (-2^31)
+Maximum value is 2,147,483,647(inclusive) (2^31 -1)
+Integer is generally used as the default data type for integral values unless there is a concern about memory.
+The default value is 0
+Example: int a = 100000, int b = -200000
+Float data type is a single-precision 32-bit IEEE 754 floating point
+Float is mainly used to save memory in large arrays of floating point numbers
+Default value is 0.0f
+Float data type is never used for precise values such as currency
+Example: float f1 = 234.5f
+double data type is a double-precision 64-bit IEEE 754 floating point
+This data type is generally used as the default data type for decimal values, generally the default choice
+Double data type should never be used for precise values such as currency
+Default value is 0.0d
+Example: double d1 = 123.4
+Reference Datatypes
+Reference variables are created using defined constructors of the classes. They are used to access objects. These variables are declared to be of a specific type that cannot be changed. For example, Employee, Puppy, etc.
+Class objects and various type of array variables come under reference datatype.
+Default value of any reference variable is null.
+A reference variable can be used to refer any object of the declared type or any compatible type.
+Example: Animal animal = new Animal("giraffe");
+Java Literals
+A literal is a source code representation of a fixed value. They are represented directly in the code without any computation.
+Literals can be assigned to any primitive type variable. For example −
+byte, int, long, and short can be expressed in decimal(base 10), hexadecimal(base 16) or octal(base 8) number systems as well.
+Prefix 0 is used to indicate octal, and prefix 0x indicates hexadecimal when using these number systems for literals. For example −
+String literals in Java are specified like they are in most other languages by enclosing a sequence of characters between a pair of double quotes. Examples of string literals are −
+String and char types of literals can contain any Unicode characters. For example −
+Java language supports few special escape sequences for String and char literals as well. They are −
+What is Next?
+This chapter explained the various data types. The next topic explains different variable types and their usage. This will give you a good understanding on how they can be used in the Java classes, interfaces, etc.
+Java - Variable Types
+A variable provides us with named storage that our programs can manipulate. Each variable in Java has a specific type, which determines the size and layout of the variable's memory; the range of values that can be stored within that memory; and the set of operations that can be applied to the variable.
+You must declare all variables before they can be used. Following is the basic form of a variable declaration −
+Here data type is one of Java's datatypes and variable is the name of the variable. To declare more than one variable of the specified type, you can use a comma-separated list.
+Following are valid examples of variable declaration and initialization in Java −
+Example
+This chapter will explain various variable types available in Java Language. There are three kinds of variables in Java −
+Local Variables
+Local variables are declared in methods, constructors, or blocks.
+Local variables are created when the method, constructor or block is entered and the variable will be destroyed once it exits the method, constructor, or block.
+Access modifiers cannot be used for local variables.
+Local variables are visible only within the declared method, constructor, or block.
+Local variables are implemented at stack level internally.
+There is no default value for local variables, so local variables should be declared and an initial value should be assigned before the first use.
+Here, age is a local variable. This is defined inside pupAge() method and its scope is limited to only this method.
+This will produce the following result −
+Following example uses age without initializing it, so it would give an error at the time of compilation.
+This will produce the following error while compiling it −
+Instance Variables
+Instance variables are declared in a class, but outside a method, constructor or any block.
+When a space is allocated for an object in the heap, a slot for each instance variable value is created.
+Instance variables are created when an object is created with the use of the keyword 'new' and destroyed when the object is destroyed.
+Instance variables hold values that must be referenced by more than one method, constructor or block, or essential parts of an object's state that must be present throughout the class.
+Instance variables can be declared in class level before or after use.
+Access modifiers can be given for instance variables.
+The instance variables are visible for all methods, constructors and block in the class. Normally, it is recommended to make these variables private (access level). However, visibility for subclasses can be given for these variables with the use of access modifiers.
+Instance variables have default values. For numbers, the default value is 0, for Booleans it is false, and for object references it is null. Values can be assigned during the declaration or within the constructor.
+Instance variables can be accessed directly by calling the variable name inside the class. However, within static methods (when instance variables are given accessibility), they should be called using the fully qualified name. ObjectReference.VariableName.
+This will produce the following result −
+Class/Static Variables
+Class variables also known as static variables are declared with the static keyword in a class, but outside a method, constructor or a block.
+There would only be one copy of each class variable per class, regardless of how many objects are created from it.
+Static variables are rarely used other than being declared as constants. Constants are variables that are declared as public/private, final, and static. Constant variables never change from their initial value.
+Static variables are stored in the static memory. It is rare to use static variables other than declared final and used as either public or private constants.
+Static variables are created when the program starts and destroyed when the program stops.
+Visibility is similar to instance variables. However, most static variables are declared public since they must be available for users of the class.
+Default values are same as instance variables. For numbers, the default value is 0; for Booleans, it is false; and for object references, it is null. Values can be assigned during the declaration or within the constructor. Additionally, values can be assigned in special static initializer blocks.
+Static variables can be accessed by calling with the class name ClassName.VariableName.
+When declaring class variables as public static final, then variable names (constants) are all in upper case. If the static variables are not public and final, the naming syntax is the same as instance and local variables.
+This will produce the following result −
+Note − If the variables are accessed from an outside class, the constant should be accessed as Employee.DEPARTMENT
+What is Next?
+You already have used access modifiers (public & private) in this chapter. The next chapter will explain Access Modifiers and Non-Access Modifiers in detail.
+Java - Modifier Types
+Modifiers are keywords that you add to those definitions to change their meanings. Java language has a wide variety of modifiers, including the following −
+ Java Access Modifiers
+Non Access Modifiers
+To use a modifier, you include its keyword in the definition of a class, method, or variable. The modifier precedes the rest of the statement, as in the following example.
+Access Control Modifiers
+Java provides a number of access modifiers to set access levels for classes, variables, methods and constructors. The four access levels are −
+Non-Access Modifiers
+Java provides a number of non-access modifiers to achieve many other functionality.
+The static modifier for creating class methods and variables.
+The final modifier for finalizing the implementations of classes, methods, and variables.
+The abstract modifier for creating abstract classes and methods.
+The synchronized and volatile modifiers, which are used for threads.
+What is Next?
+In the next section, we will be discussing about Basic Operators used in Java Language. The chapter will give you an overview of how these operators can be used during application development.
+Java - Basic Operators
+Java provides a rich set of operators to manipulate variables. We can divide all the Java operators into the following groups −
+The Arithmetic Operators
+Arithmetic operators are used in mathematical expressions in the same way that they are used in algebra. The following table lists the arithmetic operators −
+Assume integer variable A holds 10 and variable B holds 20, then −
+Show Examples
+The Relational Operators
+There are following relational operators supported by Java language.
+Assume variable A holds 10 and variable B holds 20, then −
+Show Examples
+The Bitwise Operators
+Java defines several bitwise operators, which can be applied to the integer types, long, int, short, char, and byte.
+Bitwise operator works on bits and performs bit-by-bit operation. Assume if a = 60 and b = 13; now in binary format they will be as follows −
+a = 0011 1100
+b = 0000 1101
+-----------------
+a&b = 0000 1100
+a|b = 0011 1101
+a^b = 0011 0001
+~a  = 1100 0011
+The following table lists the bitwise operators −
+Assume integer variable A holds 60 and variable B holds 13 then −
+Show Examples
+The Logical Operators
+The following table lists the logical operators −
+Assume Boolean variables A holds true and variable B holds false, then −
+Show Examples
+The Assignment Operators
+Following are the assignment operators supported by Java language −
+Show Examples
+Miscellaneous Operators
+There are few other operators supported by Java Language.
+Conditional operator is also known as the ternary operator. This operator consists of three operands and is used to evaluate Boolean expressions. The goal of the operator is to decide, which value should be assigned to the variable. The operator is written as −
+Following is an example −
+Example
+This will produce the following result −
+Output
+This operator is used only for object reference variables. The operator checks whether the object is of a particular type (class type or interface type). instanceof operator is written as −
+If the object referred by the variable on the left side of the operator passes the IS-A check for the class/interface type on the right side, then the result will be true. Following is an example −
+Example
+This will produce the following result −
+Output
+This operator will still return true, if the object being compared is the assignment compatible with the type on the right. Following is one more example −
+Example
+This will produce the following result −
+Output
+Precedence of Java Operators
+Operator precedence determines the grouping of terms in an expression. This affects how an expression is evaluated. Certain operators have higher precedence than others; for example, the multiplication operator has higher precedence than the addition operator −
+For example, x = 7 &plus; 3 &ast; 2; here x is assigned 13, not 20 because operator &ast; has higher precedence than &plus;, so it first gets multiplied with 3 &ast; 2 and then adds into 7.
+Here, operators with the highest precedence appear at the top of the table, those with the lowest appear at the bottom. Within an expression, higher precedence operators will be evaluated first.
+What is Next?
+The next chapter will explain about loop control in Java programming. The chapter will describe various types of loops and how these loops can be used in Java program development and for what purposes they are being used.
+Java - Loop Control
+There may be a situation when you need to execute a block of code several number of times. In general, statements are executed sequentially: The first statement in a function is executed first, followed by the second, and so on.
+Programming languages provide various control structures that allow for more complicated execution paths.
+A loop statement allows us to execute a statement or group of statements multiple times and following is the general form of a loop statement in most of the programming languages −
+Java programming language provides the following types of loop to handle looping requirements. Click the following links to check their detail.
+Repeats a statement or group of statements while a given condition is true. It tests the condition before executing the loop body.
+Execute a sequence of statements multiple times and abbreviates the code that manages the loop variable.
+Like a while statement, except that it tests the condition at the end of the loop body.
+Loop Control Statements
+Loop control statements change execution from its normal sequence. When execution leaves a scope, all automatic objects that were created in that scope are destroyed.
+Java supports the following control statements. Click the following links to check their detail.
+Terminates the loop or switch statement and transfers execution to the statement immediately following the loop or switch.
+Causes the loop to skip the remainder of its body and immediately retest its condition prior to reiterating.
+Enhanced for loop in Java
+As of Java 5, the enhanced for loop was introduced. This is mainly used to traverse collection of elements including arrays.
+Following is the syntax of enhanced for loop −
+Declaration − The newly declared block variable, is of a type compatible with the elements of the array you are accessing. The variable will be available within the for block and its value would be the same as the current array element.
+Expression − This evaluates to the array you need to loop through. The expression can be an array variable or method call that returns an array.
+This will produce the following result −
+What is Next?
+In the following chapter, we will be learning about decision making statements in Java programming.
+Java - Decision Making
+Decision making structures have one or more conditions to be evaluated or tested by the program, along with a statement or statements that are to be executed if the condition is determined to be true, and optionally, other statements to be executed if the condition is determined to be false.
+Following is the general form of a typical decision making structure found in most of the programming languages −
+Java programming language provides following types of decision making statements. Click the following links to check their detail.
+An if statement consists of a boolean expression followed by one or more statements.
+An if statement can be followed by an optional else statement, which executes when the boolean expression is false.
+You can use one if or else if statement inside another if or else if statement(s).
+A switch statement allows a variable to be tested for equality against a list of values.
+The ? : Operator
+We have covered conditional operator ? : in the previous chapter which can be used to replace if...else statements. It has the following general form −
+Where Exp1, Exp2, and Exp3 are expressions. Notice the use and placement of the colon.
+To determine the value of the whole expression, initially exp1 is evaluated.
+If the value of exp1 is true, then the value of Exp2 will be the value of the whole expression.
+If the value of exp1 is false, then Exp3 is evaluated and its value becomes the value of the entire expression.
+What is Next?
+In the next chapter, we will discuss about Number class (in the java.lang package) and its subclasses in Java Language.
+We will be looking into some of the situations where you will use instantiations of these classes rather than the primitive data types, as well as classes such as formatting, mathematical functions that you need to know about when working with Numbers.
+Java - Numbers Class
+Normally, when we work with Numbers, we use primitive data types such as byte, int, long, double, etc.
+However, in development, we come across situations where we need to use objects instead of primitive data types. In order to achieve this, Java provides wrapper classes.
+All the wrapper classes (Integer, Long, Byte, Double, Float, Short) are subclasses of the abstract class Number.
+The object of the wrapper class contains or wraps its respective primitive data type. Converting primitive data types into object is called boxing, and this is taken care by the compiler. Therefore, while using a wrapper class you just need to pass the value of the primitive data type to the constructor of the Wrapper class.
+And the Wrapper object will be converted back to a primitive data type, and this process is called unboxing. The Number class is part of the java.lang package.
+Following is an example of boxing and unboxing −
+This will produce the following result −
+When x is assigned an integer value, the compiler boxes the integer because x is integer object. Later, x is unboxed so that they can be added as an integer.
+Number Methods
+Following is the list of the instance methods that all the subclasses of the Number class implements −
+Converts the value of this Number object to the xxx data type and returns it.
+Compares this Number object to the argument.
+Determines whether this number object is equal to the argument.
+Returns an Integer object holding the value of the specified primitive.
+Returns a String object representing the value of a specified int or Integer.
+This method is used to get the primitive data type of a certain String.
+Returns the absolute value of the argument.
+Returns the smallest integer that is greater than or equal to the argument. Returned as a double.
+Returns the largest integer that is less than or equal to the argument. Returned as a double.
+Returns the integer that is closest in value to the argument. Returned as a double.
+Returns the closest long or int, as indicated by the method's return type to the argument.
+Returns the smaller of the two arguments.
+Returns the larger of the two arguments.
+Returns the base of the natural logarithms, e, to the power of the argument.
+Returns the natural logarithm of the argument.
+Returns the value of the first argument raised to the power of the second argument.
+Returns the square root of the argument.
+Returns the sine of the specified double value.
+Returns the cosine of the specified double value.
+Returns the tangent of the specified double value.
+Returns the arcsine of the specified double value.
+Returns the arccosine of the specified double value.
+Returns the arctangent of the specified double value.
+Converts rectangular coordinates (x, y) to polar coordinate (r, theta) and returns theta.
+Converts the argument to degrees.
+Converts the argument to radians.
+Returns a random number.
+What is Next?
+In the next section, we will be going through the Character class in Java. You will be learning how to use object Characters and primitive data type char in Java.
+Java - Character Class
+Normally, when we work with characters, we use primitive data  types char.
+However in development, we come across situations where we need to use objects instead of primitive data types. In order to achieve this, Java provides wrapper class Character for primitive data type char.
+The Character class offers a number of useful class (i.e., static) methods for manipulating characters. You can create a Character object with the Character constructor −
+The Java compiler will also create a Character object for you under some circumstances. For example, if you pass a primitive char into a method that expects an object, the compiler automatically converts the char to a Character for you. This feature is called autoboxing or unboxing, if the conversion goes the other way.
+Escape Sequences
+A character preceded by a backslash (\) is an escape sequence and has a special meaning to the compiler.
+The newline character (\n) has been used frequently in this tutorial in System.out.println() statements to advance to the next line after the string is printed.
+Following table shows the Java escape sequences −
+When an escape sequence is encountered in a print statement, the compiler interprets it accordingly.
+If you want to put quotes within quotes, you must use the escape sequence, \", on the interior quotes −
+This will produce the following result −
+Character Methods
+Following is the list of the important instance methods that all the subclasses of the Character class implement −
+Determines whether the specified char value is a letter.
+Determines whether the specified char value is a digit.
+Determines whether the specified char value is white space.
+Determines whether the specified char value is uppercase.
+Determines whether the specified char value is lowercase.
+Returns the uppercase form of the specified char value.
+Returns the lowercase form of the specified char value.
+Returns a String object representing the specified character value that is, a one-character string.
+For a complete list of methods, please refer to the java.lang.Character API specification.
+What is Next?
+In the next section, we will be going through the String class in Java. You will be learning how to declare and use Strings efficiently as well as some of the important methods in the String class.
+Java - Strings Class
+Strings, which are widely used in Java programming, are a sequence of characters. In Java programming language, strings are treated as objects.
+The Java platform provides the String class to create and manipulate strings.
+Creating Strings
+The most direct way to create a string is to write −
+Whenever it encounters a string literal in your code, the compiler creates a String object with its value in this case, "Hello world!'.
+As with any other object, you can create String objects by using the new keyword and a constructor. The String class has 11 constructors that allow you to provide the initial value of the string using different sources, such as an array of characters.
+This will produce the following result −
+Note − The String class is immutable, so that once it is created a String object cannot be changed. If there is a necessity to make a lot of modifications to Strings of characters, then you should use String Buffer & String Builder Classes.
+String Length
+Methods used to obtain information about an object are known as accessor methods. One accessor method that you can use with strings is the length() method, which returns the number of characters contained in the string object.
+The following program is an example of length(), method String class.
+This will produce the following result −
+Concatenating Strings
+The String class includes a method for concatenating two strings −
+This returns a new string that is string1 with string2 added to it at the end. You can also use the concat() method with string literals, as in −
+Strings are more commonly concatenated with the &plus; operator, as in −
+which results in −
+Let us look at the following example −
+This will produce the following result −
+Creating Format Strings
+You have printf() and format() methods to print output with formatted numbers. The String class has an equivalent class method, format(), that returns a String object rather than a PrintStream object.
+Using String's static format() method allows you to create a formatted string that you can reuse, as opposed to a one-time print statement. For example, instead of −
+You can write −
+String Methods
+Here is the list of methods supported by String class −
+Returns the character at the specified index.
+Compares this String to another Object.
+Compares two strings lexicographically.
+Compares two strings lexicographically, ignoring case differences.
+Concatenates the specified string to the end of this string.
+Returns true if and only if this String represents the same sequence of characters as the specified StringBuffer.
+Returns a String that represents the character sequence in the array specified.
+Returns a String that represents the character sequence in the array specified.
+Tests if this string ends with the specified suffix.
+Compares this string to the specified object.
+Compares this String to another String, ignoring case considerations.
+Encodes this String into a sequence of bytes using the platform's default charset, storing the result into a new byte array.
+Encodes this String into a sequence of bytes using the named charset, storing the result into a new byte array.
+Copies characters from this string into the destination character array.
+Returns a hash code for this string.
+Returns the index within this string of the first occurrence of the specified character.
+Returns the index within this string of the first occurrence of the specified character, starting the search at the specified index.
+Returns the index within this string of the first occurrence of the specified substring.
+Returns the index within this string of the first occurrence of the specified substring, starting at the specified index.
+Returns a canonical representation for the string object.
+Returns the index within this string of the last occurrence of the specified character.
+Returns the index within this string of the last occurrence of the specified character, searching backward starting at the specified index.
+Returns the index within this string of the rightmost occurrence of the specified substring.
+Returns the index within this string of the last occurrence of the specified substring, searching backward starting at the specified index.
+Returns the length of this string.
+Tells whether or not this string matches the given regular expression.
+Tests if two string regions are equal.
+Tests if two string regions are equal.
+Returns a new string resulting from replacing all occurrences of oldChar in this string with newChar.
+Replaces each substring of this string that matches the given regular expression with the given replacement.
+Replaces the first substring of this string that matches the given regular expression with the given replacement.
+Splits this string around matches of the given regular expression.
+Splits this string around matches of the given regular expression.
+Tests if this string starts with the specified prefix.
+Tests if this string starts with the specified prefix beginning a specified index.
+Returns a new character sequence that is a subsequence of this sequence.
+Returns a new string that is a substring of this string.
+Returns a new string that is a substring of this string.
+Converts this string to a new character array.
+Converts all of the characters in this String to lower case using the rules of the default locale.
+Converts all of the characters in this String to lower case using the rules of the given Locale.
+This object (which is already a string!) is itself returned.
+Converts all of the characters in this String to upper case using the rules of the default locale.
+Converts all of the characters in this String to upper case using the rules of the given Locale.
+Returns a copy of the string, with leading and trailing whitespace omitted.
+Returns the string representation of the passed data type argument.
+Java - Arrays
+Java provides a data structure, the array, which stores a fixed-size sequential collection of elements of the same type. An array is used to store a collection of data, but it is often more useful to think of an array as a collection of variables of the same type.
+Instead of declaring individual variables, such as number0, number1, ..., and number99, you declare one array variable such as numbers and use numbers[0], numbers[1], and ..., numbers[99] to represent individual variables.
+This tutorial introduces how to declare array variables, create arrays, and process arrays using indexed variables.
+Declaring Array Variables
+To use an array in a program, you must declare a variable to reference the array, and you must specify the type of array the variable can reference. Here is the syntax for declaring an array variable −
+Note − The style dataType[] arrayRefVar is preferred. The style dataType arrayRefVar[] comes from the C/C&plus;&plus; language and was adopted in Java to accommodate C/C&plus;&plus; programmers.
+The following code snippets are examples of this syntax −
+Creating Arrays
+You can create an array by using the new operator with the following syntax −
+The above statement does two things −
+It creates an array using new dataType[arraySize].
+It assigns the reference of the newly created array to the variable arrayRefVar.
+Declaring an array variable, creating an array, and assigning the reference of the array to the variable can be combined in one statement, as shown below −
+Alternatively you can create arrays as follows −
+The array elements are accessed through the index. Array indices are 0-based; that is, they start from 0 to arrayRefVar.length-1.
+Following statement declares an array variable, myList, creates an array of 10 elements of double type and assigns its reference to myList −
+Following picture represents array myList. Here, myList holds ten double values and the indices are from 0 to 9.
+Processing Arrays
+When processing array elements, we often use either for loop or foreach loop because all of the elements in an array are of the same type and the size of the array is known.
+Here is a complete example showing how to create, initialize, and process arrays −
+This will produce the following result −
+The foreach Loops
+JDK 1.5 introduced a new for loop known as foreach loop or enhanced for loop, which enables you to traverse the complete array sequentially without using an index variable.
+The following code displays all the elements in the array myList −
+This will produce the following result −
+Passing Arrays to Methods
+Just as you can pass primitive type values to methods, you can also pass arrays to methods. For example, the following method displays the elements in an int array −
+You can invoke it by passing an array. For example, the following statement invokes the printArray method to display 3, 1, 2, 6, 4, and 2 −
+Returning an Array from a Method
+A method may also return an array. For example, the following method returns an array that is the reversal of another array −
+The Arrays Class
+The java.util.Arrays class contains various static methods for sorting and searching arrays, comparing arrays, and filling array elements. These methods are overloaded for all primitive types.
+public static int binarySearch(Object[] a, Object key)
+Searches the specified array of Object ( Byte, Int , double, etc.) for the specified value using the binary search algorithm. The array must be sorted prior to making this call. This returns index of the search key, if it is contained in the list; otherwise, it returns ( – (insertion point &plus; 1)).
+public static boolean equals(long[] a, long[] a2)
+Returns true if the two specified arrays of longs are equal to one another. Two arrays are considered equal if both arrays contain the same number of elements, and all corresponding pairs of elements in the two arrays are equal. This returns true if the two arrays are equal. Same method could be used by all other primitive data types (Byte, short, Int, etc.)
+public static void fill(int[] a, int val)
+Assigns the specified int value to each element of the specified array of ints. The same method could be used by all other primitive data types (Byte, short, Int, etc.)
+public static void sort(Object[] a)
+Sorts the specified array of objects into an ascending order, according to the natural ordering of its elements. The same method could be used by all other primitive data types ( Byte, short, Int, etc.)
+Java - Date and Time
+Java provides the Date class available in java.util package, this class encapsulates the current date and time.
+The Date class supports two constructors as shown in the following table.
+Date( )
+This constructor initializes the object with the current date and time.
+Date(long millisec)
+This constructor accepts an argument that equals the number of milliseconds that have elapsed since midnight, January 1, 1970.
+Following are the methods of the date class.
+boolean after(Date date)
+Returns true if the invoking Date object contains a date that is later than the one specified by date, otherwise, it returns false.
+boolean before(Date date)
+Returns true if the invoking Date object contains a date that is earlier than the one specified by date, otherwise, it returns false.
+Object clone( )
+Duplicates the invoking Date object.
+int compareTo(Date date)
+Compares the value of the invoking object with that of date. Returns 0 if the values are equal. Returns a negative value if the invoking object is earlier than date. Returns a positive value if the invoking object is later than date.
+int compareTo(Object obj)
+Operates identically to compareTo(Date) if obj is of class Date. Otherwise, it throws a ClassCastException.
+boolean equals(Object date)
+Returns true if the invoking Date object contains the same time and date as the one specified by date, otherwise, it returns false.
+long getTime( )
+Returns the number of milliseconds that have elapsed since January 1, 1970.
+int hashCode( )
+Returns a hash code for the invoking object.
+void setTime(long time)
+Sets the time and date as specified by time, which represents an elapsed time in milliseconds from midnight, January 1, 1970.
+String toString( )
+Converts the invoking Date object into a string and returns the result.
+Getting Current Date and Time
+This is a very easy method to get current date and time in Java. You can use a simple Date object with toString() method to print the current date and time as follows −
+This will produce the following result −
+Date Comparison
+Following are the three ways to compare two dates −
+You can use getTime( ) to obtain the number of milliseconds that have elapsed since midnight, January 1, 1970, for both objects and then compare these two values.
+You can use the methods before( ), after( ), and equals( ). Because the 12th of the month comes before the 18th, for example, new Date(99, 2, 12).before(new Date (99, 2, 18)) returns true.
+You can use the compareTo( ) method, which is defined by the Comparable interface and implemented by Date.
+Date Formatting Using SimpleDateFormat
+SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner. SimpleDateFormat allows you to start by choosing any user-defined patterns for date-time formatting.
+This will produce the following result −
+Simple DateFormat Format Codes
+To specify the time format, use a time pattern string. In this pattern, all ASCII letters are reserved as pattern letters, which are defined as the following −
+Date Formatting Using printf
+Date and time formatting can be done very easily using printf method. You use a two-letter format, starting with t and ending in one of the letters of the table as shown in the following code.
+This will produce the following result −
+It would be a bit silly if you had to supply the date multiple times to format each part. For that reason, a format string can indicate the index of the argument to be formatted.
+The index must immediately follow the % and it must be terminated by a $.
+This will produce the following result −
+Alternatively, you can use the < flag. It indicates that the same argument as in the preceding format specification should be used again.
+This will produce the following result −
+Date and Time Conversion Characters
+There are other useful classes related to Date and time. For more details, you can refer to Java Standard documentation.
+Parsing Strings into Dates
+The SimpleDateFormat class has some additional methods, notably parse( ), which tries to parse a string according to the format stored in the given SimpleDateFormat object.
+A sample run of the above program would produce the following result −
+Sleeping for a While
+You can sleep for any period of time from one millisecond up to the lifetime of your computer. For example, the following program would sleep for 3 seconds −
+This will produce the following result −
+Measuring Elapsed Time
+Sometimes, you may need to measure point in time in milliseconds. So let's re-write the above example once again −
+This will produce the following result −
+GregorianCalendar Class
+GregorianCalendar is a concrete implementation of a Calendar class that implements the normal Gregorian calendar with which you are familiar. We did not discuss Calendar class in this tutorial, you can look up standard Java documentation for this.
+The getInstance( ) method of Calendar returns a GregorianCalendar initialized with the current date and time in the default locale and time zone. GregorianCalendar defines two fields: AD and BC. These represent the two eras defined by the Gregorian calendar.
+There are also several constructors for GregorianCalendar objects −
+GregorianCalendar()
+Constructs a default GregorianCalendar using the current time in the default time zone with the default locale.
+GregorianCalendar(int year, int month, int date)
+Constructs a GregorianCalendar with the given date set in the default time zone with the default locale.
+GregorianCalendar(int year, int month, int date, int hour, int minute)
+Constructs a GregorianCalendar with the given date and time set for the default time zone with the default locale.
+GregorianCalendar(int year, int month, int date, int hour, int minute, int second)
+Constructs a GregorianCalendar with the given date and time set for the default time zone with the default locale.
+GregorianCalendar(Locale aLocale)
+Constructs a GregorianCalendar based on the current time in the default time zone with the given locale.
+GregorianCalendar(TimeZone zone)
+Constructs a GregorianCalendar based on the current time in the given time zone with the default locale.
+GregorianCalendar(TimeZone zone, Locale aLocale)
+Constructs a GregorianCalendar based on the current time in the given time zone with the given locale.
+Here is the list of few useful support methods provided by GregorianCalendar class −
+void add(int field, int amount)
+Adds the specified (signed) amount of time to the given time field, based on the calendar's rules.
+protected  void computeFields()
+Converts UTC as milliseconds to time field values.
+protected  void computeTime()
+Overrides Calendar Converts time field values to UTC as milliseconds.
+boolean equals(Object obj)
+Compares this GregorianCalendar to an object reference.
+int get(int field)
+Gets the value for a given time field.
+int getActualMaximum(int field)
+Returns the maximum value that this field could have, given the current date.
+int getActualMinimum(int field)
+Returns the minimum value that this field could have, given the current date.
+int getGreatestMinimum(int field)
+Returns highest minimum value for the given field if varies.
+Date getGregorianChange()
+Gets the Gregorian Calendar change date.
+int getLeastMaximum(int field)
+Returns lowest maximum value for the given field if varies.
+int getMaximum(int field)
+Returns maximum value for the given field.
+Date getTime()
+Gets this Calendar's current time.
+long getTimeInMillis()
+Gets this Calendar's current time as a long.
+TimeZone getTimeZone()
+Gets the time zone.
+int getMinimum(int field)
+Returns minimum value for the given field.
+int hashCode()
+Overrides hashCode.
+boolean isLeapYear(int year)
+Determines if the given year is a leap year.
+void roll(int field, boolean up)
+Adds or subtracts (up/down) a single unit of time on the given time field without changing larger fields.
+void set(int field, int value)
+Sets the time field with the given value.
+void set(int year, int month, int date)
+Sets the values for the fields year, month, and date.
+void set(int year, int month, int date, int hour, int minute)
+Sets the values for the fields year, month, date, hour, and minute.
+void set(int year, int month, int date, int hour, int minute, int second)
+Sets the values for the fields year, month, date, hour, minute, and second.
+void setGregorianChange(Date date)
+Sets the GregorianCalendar change date.
+void setTime(Date date)
+Sets this Calendar's current time with the given Date.
+void setTimeInMillis(long millis)
+Sets this Calendar's current time from the given long value.
+void setTimeZone(TimeZone value)
+Sets the time zone with the given time zone value.
+String toString()
+Returns a string representation of this calendar.
+This will produce the following result −
+For a complete list of constant available in Calendar class, you can refer the standard Java documentation.
+Java - Regular Expressions
+Java provides the java.util.regex package for pattern matching with regular expressions. Java regular expressions are very similar to the Perl programming language and very easy to learn.
+A regular expression is a special sequence of characters that helps you match or find other strings or sets of strings, using a specialized syntax held in a pattern. They can be used to search, edit, or manipulate text and data.
+The java.util.regex package primarily consists of the following three classes −
+Pattern Class − A Pattern object is a compiled representation of a regular expression. The Pattern class provides no public constructors. To create a pattern, you must first invoke one of its public static compile() methods, which will then return a Pattern object. These methods accept a regular expression as the first argument.
+Matcher Class − A Matcher object is the engine that interprets the pattern and performs match operations against an input string. Like the Pattern class, Matcher defines no public constructors. You obtain a Matcher object by invoking the matcher() method on a Pattern object.
+PatternSyntaxException − A PatternSyntaxException object is an unchecked exception that indicates a syntax error in a regular expression pattern.
+Capturing Groups
+Capturing groups are a way to treat multiple characters as a single unit. They are created by placing the characters to be grouped inside a set of parentheses. For example, the regular expression (dog) creates a single group containing the letters "d", "o", and "g".
+Capturing groups are numbered by counting their opening parentheses from the left to the right. In the expression ((A)(B(C))), for example, there are four such groups −
+To find out how many groups are present in the expression, call the groupCount method on a matcher object. The groupCount method returns an int showing the number of capturing groups present in the matcher's pattern.
+There is also a special group, group 0, which always represents the entire expression. This group is not included in the total reported by groupCount.
+Example
+Following example illustrates how to find a digit string from the given alphanumeric string −
+This will produce the following result −
+Output
+Regular Expression Syntax
+Here is the table listing down all the regular expression metacharacter syntax available in Java −
+Methods of the Matcher Class
+Here is a list of useful instance methods −
+Index methods provide useful index values that show precisely where the match was found in the input string −
+public int start()
+Returns the start index of the previous match.
+public int start(int group)
+Returns the start index of the subsequence captured by the given group during the previous match operation.
+public int end()
+Returns the offset after the last character matched.
+public int end(int group)
+Returns the offset after the last character of the subsequence captured by the given group during the previous match operation.
+Study methods review the input string and return a Boolean indicating whether or not the pattern is found −
+public boolean lookingAt()
+Attempts to match the input sequence, starting at the beginning of the region, against the pattern.
+public boolean find()
+Attempts to find the next subsequence of the input sequence that matches the pattern.
+public boolean find(int start)
+Resets this matcher and then attempts to find the next subsequence of the input sequence that matches the pattern, starting at the specified index.
+public boolean matches()
+Attempts to match the entire region against the pattern.
+Replacement Methods
+Replacement methods are useful methods for replacing text in an input string −
+public Matcher appendReplacement(StringBuffer sb, String replacement)
+Implements a non-terminal append-and-replace step.
+public StringBuffer appendTail(StringBuffer sb)
+Implements a terminal append-and-replace step.
+public String replaceAll(String replacement)
+Replaces every subsequence of the input sequence that matches the pattern with the given replacement string.
+public String replaceFirst(String replacement)
+Replaces the first subsequence of the input sequence that matches the pattern with the given replacement string.
+public static String quoteReplacement(String s)
+Returns a literal replacement String for the specified String. This method produces a String that will work as a literal replacement s in the appendReplacement method of the Matcher class.
+Following is the example that counts the number of times the word "cat" appears in the input string −
+Example
+This will produce the following result −
+Output
+You can see that this example uses word boundaries to ensure that the letters "c" "a" "t" are not merely a substring in a longer word. It also gives some useful information about where in the input string the match has occurred.
+The start method returns the start index of the subsequence captured by the given group during the previous match operation, and the end returns the index of the last character matched, plus one.
+The matches and lookingAt methods both attempt to match an input sequence against a pattern. The difference, however, is that matches requires the entire input sequence to be matched, while lookingAt does not.
+Both methods always start at the beginning of the input string. Here is the example explaining the functionality −
+Example
+This will produce the following result −
+Output
+The replaceFirst and replaceAll methods replace the text that matches a given regular expression. As their names indicate, replaceFirst replaces the first occurrence, and replaceAll replaces all occurrences.
+Here is the example explaining the functionality −
+Example
+This will produce the following result −
+Output
+The Matcher class also provides appendReplacement and appendTail methods for text replacement.
+Here is the example explaining the functionality −
+Example
+This will produce the following result −
+Output
+A PatternSyntaxException is an unchecked exception that indicates a syntax error in a regular expression pattern. The PatternSyntaxException class provides the following methods to help you determine what went wrong −
+public String getDescription()
+Retrieves the description of the error.
+public int getIndex()
+Retrieves the error index.
+public String getPattern()
+Retrieves the erroneous regular expression pattern.
+public String getMessage()
+Returns a multi-line string containing the description of the syntax error and its index, the erroneous regular expression pattern, and a visual indication of the error index within the pattern.
+Java - Methods
+A Java method is a collection of statements that are grouped together to perform an operation. When you call the System.out.println() method, for example, the system actually executes several statements in order to display a message on the console.
+Now you will learn how to create your own methods with or without return values, invoke a method with or without parameters, and apply method abstraction in the program design.
+Creating Method
+Considering the following example to explain the syntax of a method −
+Syntax
+Here,
+public static − modifier
+int − return type
+methodName − name of the method
+a, b − formal parameters
+int a, int b − list of parameters
+Method definition consists of a method header and a method body. The same is shown in the following syntax −
+Syntax
+The syntax shown above includes −
+modifier − It defines the access type of the method and it is optional to use.
+returnType − Method may return a value.
+nameOfMethod − This is the method name. The method signature consists of the method name and the parameter list.
+Parameter List − The list of parameters, it is the type, order, and number of parameters of a method. These are optional, method may contain zero parameters.
+method body − The method body defines what the method does with the statements.
+Example
+Here is the source code of the above defined  method called min(). This method takes two parameters num1 and num2 and returns the maximum between the two −
+Method Calling
+For using a method, it should be called. There are two ways in which a method is called i.e., method returns a value or returning nothing (no return value).
+The process of method calling is simple. When a program invokes a method, the program control gets transferred to the called method. This called method then returns control to the caller in two conditions, when −
+The methods returning void is considered as call to a statement. Lets consider an example −
+The method returning value can be understood by the following example −
+Following is the example to demonstrate how to define a method and how to call it −
+Example
+This will produce the following result −
+Output
+The void Keyword
+The void keyword allows us to create methods which do not return a value. Here, in the following example we're considering a void method methodRankPoints. This method is a void method, which does not return any value. Call to a void method must be a statement i.e. methodRankPoints(255.7);. It is a Java statement which ends with a semicolon as shown in the following example.
+Example
+This will produce the following result −
+Output
+Passing Parameters by Value
+While working under calling process, arguments is to be passed. These should be in the same order as their respective parameters in the method specification. Parameters can be passed by value or by reference.
+Passing Parameters by Value means calling a method with a parameter. Through this, the argument value is passed to the parameter.
+Example
+The following program shows an example of passing parameter by value. The values of the arguments remains the same even after the method invocation.
+This will produce the following result −
+Output
+Method Overloading
+When a class has two or more methods by the same name but different parameters, it is known as method overloading. It is different from overriding. In overriding, a method has the same method name, type, number of parameters, etc.
+Let’s consider the example discussed earlier for finding minimum numbers of integer type. If, let’s say we want to find the minimum number of double type. Then the concept of overloading will be introduced to create two or more methods with the same name but different parameters.
+The following example explains the same −
+Example
+This will produce the following result −
+Output
+Overloading methods makes program readable. Here, two methods are given by the same name but with different parameters. The minimum number from integer and double types is the result.
+Using Command-Line Arguments
+Sometimes you will want to pass some information into a program when you run it. This is accomplished by passing command-line arguments to main( ).
+A command-line argument is the information that directly follows the program's name on the command line when it is executed. To access the command-line arguments inside a Java program is quite easy. They are stored as strings in the String array passed to main( ).
+Example
+The following program displays all of the command-line arguments that it is called with −
+Try executing this program as shown here −
+This will produce the following result −
+Output
+The this keyword
+this is a keyword in Java which is used as a reference to the object of the current class, with in an instance method or a constructor. Using this you can refer the members of a class such as constructors, variables and methods.
+Note − The keyword this is used only within instance methods or constructors
+In general, the keyword this is used to −
+Differentiate the instance variables from local variables if they have same names, within a constructor or a method.
+Call one type of constructor (Parameterized constructor or default) from other in a class. It is known as explicit constructor invocation.

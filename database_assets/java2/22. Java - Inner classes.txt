@@ -1,0 +1,52 @@
+Java - Inner classes
+In this chapter, we will discuss inner classes of Java.
+Nested Classes
+In Java, just like methods, variables of a class too can have another class as its member. Writing a class within another is allowed in Java. The class written within is called the nested class, and the class that holds the inner class is called the outer class.
+Syntax
+Following is the syntax to write a nested class. Here, the class Outer_Demo is the outer class and the class Inner_Demo is the nested class.
+Nested classes are divided into two types −
+Non-static nested classes − These are the non-static members of a class.
+Static nested classes − These are the static members of a class.
+Inner Classes (Non-static Nested Classes)
+Inner classes are a security mechanism in Java. We know a class cannot be associated with the access modifier private, but if we have the class as a member of other class, then the inner class can be made private. And this is also used to access the private members of a class.
+Inner classes are of three types depending on how and where you define them. They are −
+Creating an inner class is quite simple. You just need to write a class within a class. Unlike a class, an inner class can be private and once you declare an inner class private, it cannot be accessed from an object outside the class.
+Following is the program to create an inner class and access it. In the given example, we make the inner class private and access the class through a method.
+Example
+Here you can observe that Outer_Demo is the outer class, Inner_Demo is the inner class, display_Inner() is the method inside which we are instantiating the inner class, and this method is invoked from the main method.
+If you compile and execute the above program, you will get the following result −
+Output
+As mentioned earlier, inner classes are also used to access the private members of a class. Suppose, a class is having private members to access them. Write an inner class in it, return the private members from a method within the inner class, say, getValue(), and finally from another class (from which you want to access the private members) call the getValue() method of the inner class.
+To instantiate the inner class, initially you have to instantiate the outer class. Thereafter, using the object of the outer class, following is the way in which you can instantiate the inner class.
+The following program shows how to access the private members of a class using inner class.
+Example
+If you compile and execute the above program, you will get the following result −
+Output
+Method-local Inner Class
+In Java, we can write a class within a method and this will be a local type. Like local variables, the scope of the inner class is restricted within the method.
+A method-local inner class can be instantiated only within the method where the inner class is defined. The following program shows how to use a method-local inner class.
+Example
+If you compile and execute the above program, you will get the following result −
+Output
+Anonymous Inner Class
+An inner class declared without a class name is known as an anonymous inner class. In case of anonymous inner classes, we declare and instantiate them at the same time. Generally, they are used whenever you need to override the method of a class or an interface. The syntax of an anonymous inner class is as follows −
+Syntax
+The following program shows how to override the method of a class using anonymous inner class.
+Example
+If you compile and execute the above program, you will get the following result −
+Output
+In the same way, you can override the methods of the concrete class as well as the interface using an anonymous inner class.
+Anonymous Inner Class as Argument
+Generally, if a method accepts an object of an interface, an abstract class, or a concrete class, then we can implement the interface, extend the abstract class, and pass the object to the method. If it is a class, then we can directly pass it to the method.
+But in all the three cases, you can pass an anonymous inner class to the method. Here is the syntax of passing an anonymous inner class as a method argument −
+The following program shows how to pass an anonymous inner class as a method argument.
+Example
+If you compile and execute the above program, it gives you the following result −
+Output
+Static Nested Class
+A static inner class is a nested class which is a static member of the outer class. It can be accessed without instantiating the outer class, using other static members. Just like static members, a static nested class does not have access to the instance variables and methods of the outer class. The syntax of static nested class is as follows −
+Syntax
+Instantiating a static nested class is a bit different from instantiating an inner class. The following program shows how to use a static nested class.
+Example
+If you compile and execute the above program, you will get the following result −
+Output

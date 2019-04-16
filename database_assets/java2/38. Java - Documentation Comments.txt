@@ -1,0 +1,20 @@
+Java - Documentation Comments
+The Java language supports three types of comments −
+/* text */
+The compiler ignores everything from /* to */.
+//text
+The compiler ignores everything from // to the end of the line.
+/** documentation */ 
+This is a documentation comment and in general its called doc comment. The JDK javadoc tool uses doc comments when preparing automatically generated documentation.
+This chapter is all about explaining Javadoc. We will see how we can make use of Javadoc to generate useful documentation for Java code.
+What is Javadoc?
+Javadoc is a tool which comes with JDK and it is used for generating Java code documentation in HTML format from Java source code, which requires documentation in a predefined format.
+Following is a simple example where the lines inside /*….*/ are Java multi-line comments. Similarly, the line which preceeds // is Java single-line comment.
+You can include required HTML tags inside the description part. For instance, the following example makes use of <h1>....</h1> for heading and <p> has been used for creating paragraph break −
+The javadoc Tags
+The javadoc tool recognizes the following tags −
+Example
+Following program uses few of the important tags available for documentation comments. You can make use of other tags based on your requirements.
+The documentation about the AddNum class will be produced in HTML file AddNum.html but at the same time a master file with a name index.html will also be created.
+Now, process the above AddNum.java file using javadoc utility as follows −
+You can check all the generated documentation here − AddNum. If you are using JDK 1.7 then javadoc does not generate a great stylesheet.css, so we suggest to download and use standard stylesheet from https://docs.oracle.com/javase/7/docs/api/stylesheet.css

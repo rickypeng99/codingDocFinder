@@ -9,3 +9,4 @@ node_modules/*
 public/
 public/*
 package-lock.json
+scraper_scripts/__pycache__/

@@ -1,0 +1,50 @@
+Java - Basic Datatypes
+Variables are nothing but reserved memory locations to store values. This means that when you create a variable you reserve some space in the memory.
+Based on the data type of a variable, the operating system allocates memory and decides what can be stored in the reserved memory. Therefore, by assigning different data types to variables, you can store integers, decimals, or characters in these variables.
+There are two data types available in Java −
+Primitive Data Types
+There are eight primitive datatypes supported by Java. Primitive datatypes are predefined by the language and named by a keyword. Let us now look into the eight primitive data types in detail.
+Byte data type is an 8-bit signed two's complement integer
+Minimum value is -128 (-2^7)
+Maximum value is 127 (inclusive)(2^7 -1)
+Default value is 0
+Byte data type is used to save space in large arrays, mainly in place of integers, since a byte is four times smaller than an integer.
+Example: byte a = 100, byte b = -50
+Short data type is a 16-bit signed two's complement integer
+Minimum value is -32,768 (-2^15)
+Maximum value is 32,767 (inclusive) (2^15 -1)
+Short data type can also be used to save memory as byte data type. A short is 2 times smaller than an integer
+Default value is 0.
+Example: short  s = 10000, short r = -20000
+Int data type is a 32-bit signed two's complement integer.
+Minimum value is - 2,147,483,648 (-2^31)
+Maximum value is 2,147,483,647(inclusive) (2^31 -1)
+Integer is generally used as the default data type for integral values unless there is a concern about memory.
+The default value is 0
+Example: int a = 100000, int b = -200000
+Float data type is a single-precision 32-bit IEEE 754 floating point
+Float is mainly used to save memory in large arrays of floating point numbers
+Default value is 0.0f
+Float data type is never used for precise values such as currency
+Example: float f1 = 234.5f
+double data type is a double-precision 64-bit IEEE 754 floating point
+This data type is generally used as the default data type for decimal values, generally the default choice
+Double data type should never be used for precise values such as currency
+Default value is 0.0d
+Example: double d1 = 123.4
+Reference Datatypes
+Reference variables are created using defined constructors of the classes. They are used to access objects. These variables are declared to be of a specific type that cannot be changed. For example, Employee, Puppy, etc.
+Class objects and various type of array variables come under reference datatype.
+Default value of any reference variable is null.
+A reference variable can be used to refer any object of the declared type or any compatible type.
+Example: Animal animal = new Animal("giraffe");
+Java Literals
+A literal is a source code representation of a fixed value. They are represented directly in the code without any computation.
+Literals can be assigned to any primitive type variable. For example −
+byte, int, long, and short can be expressed in decimal(base 10), hexadecimal(base 16) or octal(base 8) number systems as well.
+Prefix 0 is used to indicate octal, and prefix 0x indicates hexadecimal when using these number systems for literals. For example −
+String literals in Java are specified like they are in most other languages by enclosing a sequence of characters between a pair of double quotes. Examples of string literals are −
+String and char types of literals can contain any Unicode characters. For example −
+Java language supports few special escape sequences for String and char literals as well. They are −
+What is Next?
+This chapter explained the various data types. The next topic explains different variable types and their usage. This will give you a good understanding on how they can be used in the Java classes, interfaces, etc.

@@ -1,0 +1,65 @@
+Java - Methods
+A Java method is a collection of statements that are grouped together to perform an operation. When you call the System.out.println() method, for example, the system actually executes several statements in order to display a message on the console.
+Now you will learn how to create your own methods with or without return values, invoke a method with or without parameters, and apply method abstraction in the program design.
+Creating Method
+Considering the following example to explain the syntax of a method −
+Syntax
+Here,
+public static − modifier
+int − return type
+methodName − name of the method
+a, b − formal parameters
+int a, int b − list of parameters
+Method definition consists of a method header and a method body. The same is shown in the following syntax −
+Syntax
+The syntax shown above includes −
+modifier − It defines the access type of the method and it is optional to use.
+returnType − Method may return a value.
+nameOfMethod − This is the method name. The method signature consists of the method name and the parameter list.
+Parameter List − The list of parameters, it is the type, order, and number of parameters of a method. These are optional, method may contain zero parameters.
+method body − The method body defines what the method does with the statements.
+Example
+Here is the source code of the above defined  method called min(). This method takes two parameters num1 and num2 and returns the maximum between the two −
+Method Calling
+For using a method, it should be called. There are two ways in which a method is called i.e., method returns a value or returning nothing (no return value).
+The process of method calling is simple. When a program invokes a method, the program control gets transferred to the called method. This called method then returns control to the caller in two conditions, when −
+The methods returning void is considered as call to a statement. Lets consider an example −
+The method returning value can be understood by the following example −
+Following is the example to demonstrate how to define a method and how to call it −
+Example
+This will produce the following result −
+Output
+The void Keyword
+The void keyword allows us to create methods which do not return a value. Here, in the following example we're considering a void method methodRankPoints. This method is a void method, which does not return any value. Call to a void method must be a statement i.e. methodRankPoints(255.7);. It is a Java statement which ends with a semicolon as shown in the following example.
+Example
+This will produce the following result −
+Output
+Passing Parameters by Value
+While working under calling process, arguments is to be passed. These should be in the same order as their respective parameters in the method specification. Parameters can be passed by value or by reference.
+Passing Parameters by Value means calling a method with a parameter. Through this, the argument value is passed to the parameter.
+Example
+The following program shows an example of passing parameter by value. The values of the arguments remains the same even after the method invocation.
+This will produce the following result −
+Output
+Method Overloading
+When a class has two or more methods by the same name but different parameters, it is known as method overloading. It is different from overriding. In overriding, a method has the same method name, type, number of parameters, etc.
+Let’s consider the example discussed earlier for finding minimum numbers of integer type. If, let’s say we want to find the minimum number of double type. Then the concept of overloading will be introduced to create two or more methods with the same name but different parameters.
+The following example explains the same −
+Example
+This will produce the following result −
+Output
+Overloading methods makes program readable. Here, two methods are given by the same name but with different parameters. The minimum number from integer and double types is the result.
+Using Command-Line Arguments
+Sometimes you will want to pass some information into a program when you run it. This is accomplished by passing command-line arguments to main( ).
+A command-line argument is the information that directly follows the program's name on the command line when it is executed. To access the command-line arguments inside a Java program is quite easy. They are stored as strings in the String array passed to main( ).
+Example
+The following program displays all of the command-line arguments that it is called with −
+Try executing this program as shown here −
+This will produce the following result −
+Output
+The this keyword
+this is a keyword in Java which is used as a reference to the object of the current class, with in an instance method or a constructor. Using this you can refer the members of a class such as constructors, variables and methods.
+Note − The keyword this is used only within instance methods or constructors
+In general, the keyword this is used to −
+Differentiate the instance variables from local variables if they have same names, within a constructor or a method.
+Call one type of constructor (parametrized constructor or default) from other in a class. It is known as explicit constructor invocation.
