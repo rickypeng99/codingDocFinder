@@ -115,32 +115,17 @@ module.exports = function (router) {
                     // Step IV: Consolidate
                     // Consolidate before searching
                     engine.consolidate();
-
-                    // `results` is an array of [ doc-id, score ], sorted by score
                     var resultIndex = engine.search( query );
-                    // Print number of results.
-                    console.log( '%d entries found.', resultIndex.length );
-                    // -> 1 entries found.
-                    // results[ 0 ][ 0 ] i.e. the top result is:
-                    console.log( docs[ resultIndex[ 0 ][ 0 ] ].text );
-                    // -> George Walker Bush (born July 6, 1946) is an...
-                    // -> ... He never studied Law...
-
-                    // Whereas if you search for `law` then multiple entries will be
-                    // found except the above entry!
+                    // console.log( '%d entries found.', resultIndex.length );
+                    // console.log( docs[ resultIndex[ 0 ][ 0 ] ].text );
 
 
-                    var results = [];
+                    results = [];
                     for(let i = 0; i < resultIndex.length; i++){
-                        for(element in fragments){
-                            if(fragments[element].text == docs[resultIndex[i][0]].text){
-                                results.push(fragments[element]);
-                                break;
-                            }
-                        }
+                        results.push(docs[resultIndex[i][0]]);
                     }
 
-                    res.status(200).send({data: results, message: "Successfully returned all " + language + " fragments with a query of " + query})
+                    res.status(200).send({data: results, message: "Successfully returned " + results.length + " entries of " + language + " fragments with a query of " + query})
                 })
                 .catch((error) => {
                     res.status(500).send({data: "error", message: "Error: getting fragments corresponding to language and query " + error})
