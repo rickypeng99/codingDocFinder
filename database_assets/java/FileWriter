@@ -1,0 +1,140 @@
+Java FileWriter Class
+Java FileWriter class is used to write character-oriented data to a 
+file
+. It is character-oriented class which is used for file handling in 
+java
+.
+Unlike FileOutputStream class, you don't need to convert string into byte 
+array
+ because it provides method to write string directly.
+Java FileWriter class declaration
+Let's see the declaration for Java.io.FileWriter class:
+
+public class FileWriter extends OutputStreamWriter
+
+Constructors of FileWriter class
+
+  
+
+     
+Constructor
+
+     
+Description
+
+  
+
+  
+
+     
+FileWriter(String file)
+
+     
+Creates a new file. It gets file name in 
+string
+.
+
+  
+
+  
+
+     
+FileWriter(File file)
+
+     
+Creates a new file. It gets file name in File 
+object
+.
+
+  
+
+
+Methods of FileWriter class
+
+  
+
+     
+Method
+
+     
+Description
+
+  
+
+  
+
+     
+void write(String text)
+
+     
+It is used to write the string into FileWriter.
+
+  
+
+  
+
+     
+void write(char c)
+
+     
+It is used to write the char into FileWriter.
+
+  
+
+  
+
+     
+void write(char[] c)
+
+     
+It is used to write char array into FileWriter.
+
+  
+
+  
+
+      
+void flush()
+
+      
+It is used to flushes the data of FileWriter.
+
+  
+
+  
+
+      
+void close()
+
+      
+It is used to close the FileWriter.
+
+  
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java FileWriter Example
+In this example, we are writing the data in the file testout.txt using Java FileWriter class.
+
+package com.javatpoint;
+import java.io.FileWriter;
+public class FileWriterExample {
+	public static void main(String args[]){  
+		 try{  
+		   FileWriter fw=new FileWriter("D:\\testout.txt");  
+		   fw.write("Welcome to javaTpoint.");  
+		   fw.close();  
+		  }catch(Exception e){System.out.println(e);}  
+		  System.out.println("Success...");  
+	 }  
+}
+
+Output:
+
+Success...
+
+testout.txt:
+
+Welcome to javaTpoint.

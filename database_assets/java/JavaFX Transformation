@@ -1,0 +1,115 @@
+JavaFX Transformation
+Transformation can be defined as the change in form, nature or appearance of the graphics. In JavaFX, the package named as 
+javafx.scene.transform
+ represents all the transformations. 
+It contains the classes for various types of transformations that are given in the table. The class named as 
+javafx.scene.transform.Transform
+ is the parent class for all the transformation classes. 
+
+
+
+	
+SN
+
+	
+Transformation
+
+	
+Description
+
+
+
+
+
+	
+1
+
+	
+Translation
+
+	
+Translation is used to change the position of the node. The class 
+javafx.scene.transform.Translate
+ represents the translation. 
+
+
+
+
+
+	
+2
+
+	
+Rotation
+
+	
+Rotation is used to rotate the object from its origin by a certain angle. The class 
+javafx.scene.transform.Rotate
+ represents the rotation. 
+
+
+
+
+
+	
+3
+
+	
+Scaling 
+
+	
+Scaling is used to alter the size of the node. The class 
+javafx.scene.transform.Scale
+ represents Scaling. 
+
+
+
+
+
+	
+4
+
+	
+Shearing 
+
+	
+Shearing is used to alter the slope of the object in a particular direction. The class 
+javafx.scene.transform.Shear
+ represents Shearing.
+
+
+
+
+Steps to apply transformation on the node
+In JavaFX, applying transformation to a node is pretty easy. We just need to follow the steps given below in order to apply the transformation.
+
+
+Instantiate the respective class. For example; to create the 2D scale, Use: 
+
+
+
+Scale scale = new Scale(); 
+
+
+
+where scale is the Scale class object. 
+
+
+Set the appropriate properties of the scale class object. For example, to set the scale object properties, Use the setter methods like following: 
+
+
+
+scale.setX(<double value);
+scale.setY(<double value);
+scale.setPivotX(<double value);
+scale.setPivotY(<double value);
+
+
+
+Apply the transformation to the respective  node. Use the following syntax for this purpose.  
+
+
+
+<node-object>.getTransforms().add(<Transform-object>)
+
+

@@ -1,0 +1,44 @@
+Creating your own appletviewer
+
+As you know well that appletviewer tool creates a frame and displays the output of applet in the frame.You can also create your frame and display the applet output.
+
+Example that works like appletviewer tool
+Let's see the simple example that works like appletviewer tool. This example displays applet on the frame.
+
+import java.applet.Applet;
+import java.awt.Frame;
+import java.awt.Graphics;
+
+public class MyViewer extends Frame{
+  public static void main(String[] args) throws Exception{
+	Class c=Class.forName(args[0]);
+		
+	MyViewer v=new MyViewer();
+	v.setSize(400,400);
+	v.setLayout(null);
+	v.setVisible(true);
+		
+	Applet a=(Applet)c.newInstance();
+	a.start();
+	Graphics g=v.getGraphics();
+	a.paint(g);
+	a.stop();
+		
+  }
+
+}
+
+
+
+//simple program of applet
+
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class First extends Applet{
+
+	public void paint(Graphics g){g.drawString("Welcome",50, 50);}
+}
+
+
+Output:

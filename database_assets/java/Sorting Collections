@@ -1,0 +1,157 @@
+Sorting in Collection
+
+We can sort the elements of:
+
+
+
+String objects
+
+
+Wrapper class objects
+
+
+User-defined class objects
+
+
+
+
+
+
+Collections
+ class provides static methods for sorting the elements of a collection. If collection elements are of a Set type, we can use TreeSet. However, we cannot sort the elements of List. Collections class provides methods for sorting the elements of List type elements.
+
+
+
+Method of Collections class for sorting List elements
+public void sort(List list):
+ is used to sort the elements of List. List elements must be of the Comparable type.
+Note: String class and Wrapper classes implement the Comparable interface. So if you store the objects of string or wrapper classes, it will be Comparable.
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Example to sort string objects
+
+import java.util.*;
+class TestSort1{
+public static void main(String args[]){
+
+ArrayList
+ al=new ArrayList
+();
+al.add("Viru");
+al.add("Saurav");
+al.add("Mukesh");
+al.add("Tahir");
+
+Collections.sort(al);
+Iterator itr=al.iterator();
+while(itr.hasNext()){
+System.out.println(itr.next());
+ }
+}
+}
+
+
+Test it Now
+
+Mukesh
+Saurav
+Tahir
+Viru
+       
+
+Example to sort string objects in reverse order
+
+import java.util.*;
+class TestSort2{
+public static void main(String args[]){
+
+ArrayList
+ al=new ArrayList
+();
+		al.add("Viru");  
+		al.add("Saurav");  
+		al.add("Mukesh");  
+		al.add("Tahir"); 
+		
+		Collections.sort(al,Collections.reverseOrder());
+	    Iterator i=al.iterator();
+	    while(i.hasNext())
+	    {
+	    	System.out.println(i.next());
+	    }
+}
+}
+
+
+
+Viru
+Tahir
+Saurav
+Mukesh
+       
+
+Example to sort Wrapper class objects
+
+import java.util.*;
+class TestSort3{
+public static void main(String args[]){
+
+ArrayList al=new ArrayList();
+al.add(Integer.valueOf(201));
+al.add(Integer.valueOf(101));
+al.add(230);//internally will be converted into objects as Integer.valueOf(230)
+
+Collections.sort(al);
+
+Iterator itr=al.iterator();
+while(itr.hasNext()){
+System.out.println(itr.next());
+ }
+}
+}
+
+
+101
+201
+230
+              
+
+Example to sort user-defined class objects
+
+import java.util.*;
+
+class Student implements Comparable
+ {
+	public String name;
+  public Student(String name) {
+    this.name = name;
+  }
+  public int compareTo(Student person) {
+    return name.compareTo(person.name);
+    
+  } 
+}
+public class TestSort4 {
+  public static void main(String[] args) {
+	  ArrayList
+ al=new ArrayList
+();
+	  al.add(new Student("Viru"));
+	  al.add(new Student("Saurav"));
+	  al.add(new Student("Mukesh"));
+	  al.add(new Student("Tahir"));
+	
+    Collections.sort(al);
+    for (Student s : al) {
+      System.out.println(s.name);
+    }
+  }
+}
+
+
+Mukesh
+Saurav
+Tahir
+Viru
+              

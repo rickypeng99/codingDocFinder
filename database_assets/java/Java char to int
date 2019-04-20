@@ -1,0 +1,58 @@
+Java Convert char to int
+We can convert 
+char to int in java
+ using various ways. If we direct assign char variable to int, it will return ASCII value of given character.
+If char variable contains int value, we can get the int value by calling 
+Character.getNumericValue(char)
+ method. Alternatively, we can use String.valueOf(char) method.
+1) Java char to int Example: Get ASCII value
+Let's see the simple code to convert char to int in java.
+
+public class CharToIntExample1{
+public static void main(String args[]){
+char c='a';
+char c2='1';
+int a=c;
+int b=c2;
+System.out.println(a);
+System.out.println(b);
+}}
+
+Test it Now
+Output:
+
+97
+49
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+2) Java char to int Example: Character.getNumericValue()
+Let's see the simple code to convert char to int in java using Character.getNumericValue(char) method which returns an integer value.
+
+public class CharToIntExample2{
+public static void main(String args[]){
+char c='1';
+int a=Character.getNumericValue(c);
+System.out.println(a);
+}}
+
+Test it Now
+Output:
+
+1
+
+3) Java char to int Example: String.valueOf()
+Let's see another example which returns integer value of specified char value using String.valueOf(char) method.
+
+public class CharToIntExample3{
+public static void main(String args[]){
+char c='1';
+int a=Integer.parseInt(String.valueOf(c));
+System.out.println(a);
+}}
+
+Test it Now
+Output:
+
+1

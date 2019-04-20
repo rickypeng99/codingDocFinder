@@ -1,0 +1,112 @@
+JavaFX ImageInput
+This effect is mainly used to pass the unmodified image as an input for the other effects. The class 
+javafx.scene.effect.ImageInput
+  represents ImageInput effect. This class contains various properties which can be set to a certain value in order to render an appropriate image. 
+Properties
+The properties of the class along with their setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+source
+
+	
+URL of the source image. 
+
+	
+setSource(Image image) 
+
+
+
+
+
+	
+X
+
+	
+The X coordinate of the image 
+
+	
+setX(Double value)
+
+
+
+
+
+	
+Y
+
+	
+The Y coordinate of the image 
+
+	
+setY(Double value)
+
+
+
+
+Constructors
+The class contains three constructors described below. 
+
+
+ImageInput() :
+ Instantiate 
+ImageInput
+ class with default parameters. 
+
+
+ImageInput(Image source) :
+ Instantiate ImageInput with the specified image source. 
+
+
+ImageInput(Image source, Double X, Double Y) :
+ Instantiate ImageInput with the default image source and specified coordinates
+
+
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.ImageInput;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+public class ImageInputExample extends Application {
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	Image img = new Image("https://www.javatpoint.com/jogl/images/jogl-3d-triangle.gif");
+	ImageInput imginput = new ImageInput();
+	Rectangle rect = new Rectangle();
+	imginput.setSource(img);
+	imginput.setX(20);
+	imginput.setY(100);
+	Group root = new Group();
+	rect.setEffect(imginput);
+	root.getChildren().add(rect);
+	Scene scene = new Scene(root,530,500,Color.BLACK);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("ImageInput Example");
+	primaryStage.show();
+	
+} 
+public static void main(String[] args) {
+	launch(args);
+} 
+} 

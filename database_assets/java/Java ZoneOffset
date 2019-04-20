@@ -1,0 +1,175 @@
+Java ZoneOffset class
+Java ZoneOffset class is used to represent the fixed zone offset from UTC time zone. It inherits the ZoneId class and implements the Comparable interface.
+The ZoneOffset class declares three constants:
+
+
+MAX:
+ It is the maximum supported zone offsets.
+
+
+MIN:
+ It is the minimum supported zone offsets.
+
+
+UTC:
+ It is the time zone offset constant for UTC.
+
+
+Java ZoneOffset class declaration
+Let's see the declaration of java.time.ZoneOffset class.
+
+public final class ZoneOffset extends ZoneId 
+implements TemporalAccessor, TemporalAdjuster, Comparable<ZoneOffset>, Serializable
+
+Methods of Java ZoneOffset
+
+    
+
+      
+Method
+
+      
+Description
+
+    
+
+    
+
+      
+Temporal adjustInto(Temporal temporal)
+
+      
+It is used to adjust the specified temporal object to have the same offset as this object.
+
+    
+
+    
+
+      
+int get(TemporalField field)
+
+      
+It is used to get the value of the specified field from this offset as an int.
+
+    
+
+    
+
+      
+boolean isSupported(TemporalField field)
+
+      
+It is used to check if the specified field is supported.
+
+    
+
+     
+
+      
+static ZoneOffset of(String offsetId)
+
+      
+It is used to obtain an instance of ZoneOffset using the ID.
+
+    
+
+     
+
+      
+static ZoneOffset ofHours(int hours)
+
+      
+It is used to obtain an instance of ZoneOffset using an offset in hours.
+
+    
+
+     
+
+      
+static ZoneOffset ofHoursMinutes(int hours, int minutes)
+
+      
+It is used to obtain an instance of ZoneOffset using an offset in hours and minutes.
+
+    
+
+	
+
+      
+ValueRange range(TemporalField field)
+
+      
+It is used to get the range of valid values 
+
+    
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java ZoneOffset Example
+
+import java.time.*;
+import java.time.temporal.Temporal;
+public class ZoneOffsetExample1 {
+  public static void main(String[] args) {
+    ZoneOffset zone = ZoneOffset.UTC;
+    Temporal temp = zone.adjustInto(ZonedDateTime.now());
+    System.out.println(temp);
+  }
+}
+
+Test it Now
+Output:
+
+2017-01-29T12:43:00.702+05:30[Asia/Calcutta]
+
+Java ZoneOffset Example: ofHours()
+
+import java.time.ZoneOffset;
+public class ZoneOffsetExample2 {
+  public static void main(String[] args) {
+    ZoneOffset zone = ZoneOffset.ofHours(5);
+    System.out.println(zone);
+  }
+}
+
+Test it Now
+Output:
+
++05:00
+
+Java ZoneOffset Example: ofHoursMinutes()
+
+import java.time.ZoneOffset;
+public class ZoneOffsetExample3 {
+  public static void main(String[] args) {
+    ZoneOffset zone = ZoneOffset.ofHoursMinutes(5,30);
+    System.out.println(zone);
+  }
+}
+
+Test it Now
+Output:
+
++05:30
+
+Java ZoneOffset Example: isSupported()
+
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoField;
+public class ZoneOffsetExample4 {
+  public static void main(String[] args) {
+    ZoneOffset zone = ZoneOffset.UTC;
+    boolean b1 = zone.isSupported(ChronoField.OFFSET_SECONDS);
+    System.out.println(b1);
+    boolean b2 = zone.isSupported(ChronoField.SECOND_OF_MINUTE);
+    System.out.println(b2);
+  }
+}
+
+Test it Now
+Output:
+
+true
+false

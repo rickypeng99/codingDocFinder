@@ -1,0 +1,494 @@
+Java List Interface
+List Interface is the subinterface of Collection. It contains index-based methods to insert and delete elements. It is a factory of ListIterator interface.
+
+List Interface declaration
+
+public interface List
+ extends Collection
+
+
+Methods of Java List Interface
+
+     
+
+         
+Method
+
+		 
+Description
+
+     
+
+     
+
+         
+void add(int index, E element)
+
+         
+It is used to insert the specified element at the specified position in a list.
+
+     
+
+	   
+
+         
+boolean add(E e)
+
+         
+It is used to append the specified element at the end of a list.
+
+     
+
+     
+
+         
+boolean addAll(Collection<? extends E> c)
+
+         
+ It is used to append all of the elements in the specified collection to the end of a list.
+
+     
+
+	 
+
+         
+boolean addAll(int index, Collection<? extends E> c)
+
+         
+It is used to append all the elements in the specified collection, starting at the specified position of the list.
+
+     
+
+     
+
+         
+void clear()
+
+         
+It is used to remove all of the elements from this list.
+
+     
+
+	 
+
+	 
+
+         
+boolean equals(Object o)
+
+         
+It is used to compare the specified object with the elements of a list.
+
+     
+
+	  
+
+         
+int hashcode()
+
+         
+It is used to return the hash code value for a list.
+
+     
+
+         
+E get(int index)
+
+         
+It is used to fetch the element from the particular position of the list.
+
+     
+	 
+
+         
+boolean isEmpty()
+
+         
+It returns true if the list is empty, otherwise false.
+
+     
+
+      
+
+	          
+int lastIndexOf(Object o)
+
+	          
+It is used to return the index in this list of the last occurrence of the specified element, or -1 if the list does not contain this element.
+
+     
+
+      
+
+	          
+Object[] toArray()
+
+	          
+It is used to return an array containing all of the elements in this list in the correct order.
+
+     
+
+     
+
+	 	          
+ T[]	toArray(T[] a)
+
+	 	          
+It is used to return an array containing all of the elements in this list in the correct order.
+
+     
+
+	 
+
+	 	 	          
+boolean contains(Object o)
+
+	 	 	          
+It returns true if the list contains the specified element
+
+     
+
+	 
+
+	 	 	          
+boolean containsAll(Collection<?> c)
+
+	 	 	          
+It returns true if the list contains all the specified element
+
+     
+
+     
+
+	 	 	 	          
+int indexOf(Object o)
+
+	 	 	 	          
+It is used to return the index in this list of the first occurrence of the specified element, or -1 if the List does not contain this element.
+
+     
+
+	 
+
+	 	 	 	 	          
+E remove(int index)
+
+	 	 	 	 	          
+It is used to remove the element present at the specified position in the list.
+
+     
+
+	  
+
+	 	 	 	 	          
+boolean remove(Object o)
+
+	 	 	 	 	          
+It is used to remove the first occurrence of the specified element.
+
+     
+
+	  
+
+	 	 	 	 	          
+boolean removeAll(Collection<?> c)
+
+	 	 	 	 	          
+It is used to remove all the elements from the list.
+
+     
+
+	 
+	 
+
+	 	 	 	 	          
+void replaceAll(UnaryOperator
+ operator)
+
+	 	 	 	 	          
+It is used to replace all the elements from the list with the specified element.
+
+     
+
+	  
+
+	 	 	 	 	          
+void retainAll(Collection<?> c)
+
+	 	 	 	 	          
+It is used to retain all the elements in the list that are present in the specified collection.
+
+     
+
+	 
+
+	 	 	 	 	          
+E	set(int index, E element)
+
+	 	 	 	 	          
+It is used to replace the specified element in the list, present at the specified position.
+
+     
+
+	 
+
+	 	 	 	 	          
+void sort(Comparator<? super E> c)
+
+	 	 	 	 	          
+It is used to sort the elements of the list on the basis of specified comparator.
+
+     
+
+	  
+
+	 	 	 	 	          
+Spliterator
+ spliterator()
+
+	 	 	 	 	          
+It is used to create spliterator over the elements in a list.
+
+     
+
+	 	 
+
+	 	 	 	 	          
+List<E>	subList(int fromIndex, int toIndex)
+
+	 	 	 	 	          
+It is used to fetch all the elements lies within the given range.
+
+     
+
+	 
+
+	 	 	 	 	          
+int size()
+
+	 	 	 	 	          
+It is used to return the number of elements present in the list.
+
+     
+
+
+Java List Example
+
+import java.util.*;
+public class ListExample{
+public static void main(String args[]){
+List
+ al=new ArrayList
+();
+al.add("Amit");
+al.add("Vijay");
+al.add("Kumar");
+al.add(1,"Sachin");
+System.out.println("An element at 2nd position: "+al.get(2));
+for(String s:al){
+ System.out.println(s);
+}
+}
+}
+
+Output:
+
+An element at 2nd position: Vijay
+Amit
+Sachin
+Vijay
+Kumar
+
+Java ListIterator Interface
+ListIterator Interface is used to traverse the element in a backward and forward direction. 
+ListIterator Interface declaration
+
+public interface ListIterator
+ extends Iterator
+
+
+Methods of Java ListIterator Interface:
+
+     
+
+         
+Method
+
+		 
+Description
+
+     
+
+	 
+
+         
+void add(E e)
+
+         
+This method inserts the specified element into the list.
+
+     
+
+     
+
+         
+boolean hasNext()
+
+         
+This method returns true if the list iterator has more elements while traversing the list in the forward direction.
+
+     
+
+     
+
+	          
+E next()
+
+	          
+This method returns the next element in the list and advances the cursor position.
+
+     
+
+	  
+
+	          
+int nextIndex()
+
+	          
+This method returns the index of the element that would be returned by a subsequent call to next()
+
+     
+
+     
+
+	          
+boolean hasPrevious()
+
+	          
+This method returns true if this list iterator has more elements while traversing the list in the reverse direction.
+
+     
+
+     
+
+	          
+E previous()
+
+	          
+This method returns the previous element in the list and moves the cursor position backward.
+
+     
+
+	 
+
+	          
+E previousIndex()
+
+	          
+This method returns the index of the element that would be returned by a subsequent call to previous().
+
+     
+
+	 
+
+	          
+void remove()
+
+	          
+This method removes the last element from the list that was returned by next() or previous() methods
+
+     
+
+	 
+
+	          
+void set(E e)
+
+	          
+This method replaces the last element returned by next() or previous() methods with the specified element.
+
+     
+
+     
+Example of ListIterator Interface
+
+import java.util.*;
+public class ListIteratorExample1{
+public static void main(String args[]){
+List
+ al=new ArrayList
+();  
+		al.add("Amit");  
+		al.add("Vijay");  
+		al.add("Kumar");  
+		al.add(1,"Sachin");  
+		ListIterator
+ itr=al.listIterator();  
+		System.out.println("Traversing elements in forward direction");  
+		while(itr.hasNext()){  
+			
+		System.out.println("index:"+itr.nextIndex()+" value:"+itr.next());  
+		}  
+		System.out.println("Traversing elements in backward direction");  
+		while(itr.hasPrevious()){  
+		
+		System.out.println("index:"+itr.previousIndex()+" value:"+itr.previous());  
+		}  
+}
+}
+
+Output:
+
+Traversing elements in forward direction
+index:0 value:Amit
+index:1 value:Sachin
+index:2 value:Vijay
+index:3 value:Kumar
+Traversing elements in backward direction
+index:3 value:Kumar
+index:2 value:Vijay
+index:1 value:Sachin
+index:0 value:Amit
+
+
+Example of ListIterator Interface: Book
+
+import java.util.*;
+class Book {
+int id;
+String name,author,publisher;
+int quantity;
+public Book(int id, String name, String author, String publisher, int quantity) {
+	this.id = id;
+	this.name = name;
+	this.author = author;
+	this.publisher = publisher;
+	this.quantity = quantity;
+}
+}
+public class ListIteratorExample2 {
+public static void main(String[] args) {
+	//Creating list of Books
+	List
+ list=new ArrayList
+();
+	//Creating Books
+	Book b1=new Book(101,"Let us C","Yashwant Kanetkar","BPB",8);
+	Book b2=new Book(102,"Data Communications & Networking","Forouzan","Mc Graw Hill",4);
+	Book b3=new Book(103,"Operating System","Galvin","Wiley",6);
+	//Adding Books to list
+	list.add(b1);
+	list.add(b2);
+	list.add(b3);
+	//Traversing list
+	for(Book b:list){
+	System.out.println(b.id+" "+b.name+" "+b.author+" "+b.publisher+" "+b.quantity);
+	}
+}
+}
+
+Output:
+
+101 Let us C Yashwant Kanetkar BPB 8
+102 Data Communications & Networking Forouzan Mc Graw Hill 4
+103 Operating System Galvin Wiley 6

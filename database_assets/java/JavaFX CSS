@@ -1,0 +1,326 @@
+JavaFX CSS
+What is CSS?
+CSS (Cascading Style Sheets) is a design language which is used to enhance the appearance of the web pages without changing its functionality. It only deals with the way, a web page is presented on the web browser.
+Using CSS, we can define the color, size, font styles, spacing between the paragraph, alignment and many more thing for a web page so that it can look more precise and better. We can also configure the background of the application, layout, design and variety of display for the different size devises. 
+CSS in JavaFX
+JavaFX, being the new generation UI library, provides the facility to configure the theme of the application. JavaFX provides the package 
+javafx.css
+ which contains all the classes to apply the CSS to the JavaFX application. 
+Applying CSS to the JavaFX application is similar to applying CSS to the HTML page. In this part of the tutorial, we will discuss styling rules and the steps to invoke them in JavaFX.
+Default Style Sheet
+JavaFX uses 
+caspian.css
+ as the default CSS file. It is found in JavaFX Run time JAR file, 
+ jfxrt.jar
+. This style sheet defines the default style rules for the root node and UI controls. This file is located at the path 
+/jre/lib
+ under the JDK installation directory. The following command can be used to extract the style sheet from the JAR file.
+
+# jar xf jfxrt.jar  
+# com/sun/javafx/scene/control/skin/caspian/caspian.css
+
+Adding Style-sheets to scene 
+However, JavaFX provides us the facility to override the default style sheet and define our own styles for every node of the application. The Style-sheet we create, must have the extension 
+.css
+ and it must be located in the directory where the main class of the application resides. 
+In JavaFX,there is a specific syntax of applying CSS to the scene. The syntax is given as follows;
+
+Scene scene = new Scene(root,500,400);
+scene.getStylesheet().add("path/Stylesheet.css");
+
+Defining Styles in StyleSheet
+A style definition can be given by using the name of the style which is also known as selecter and series of the rules that set the properties for the styles. Styling rules are given within the braces. Consider the following example named as 
+mystyle.css
+. It defines the style definition for the each button node used in its container application.
+Example
+
+.button {
+	-fx-font : 14px "serief";
+	-fx-padding : 10;
+	-fx-background-color : #CCFF99;
+} 
+
+Selectors
+There are various types of styles used in JavaFX. However, each type considers its own conventions regarding selectors. Style class selectors naming conventions are, 
+
+
+If the style class selector consists of more than one word, use the hyphen between them.
+ 
+
+Style class selector names are preceded by a dot(.)
+
+
+Examples of the selectors are: 
+
+.button  
+.check-box
+.label 
+
+the style for a particular node can be defined by using the node's ID. This ID can be set using 
+setId()
+ method. Use the # symbol before the Node_ID to make a style name for that node. For example, the node having id 
+my_label
+ can have the following type of selector name. 
+
+#my_label 
+
+Defining Rules in Style-sheets
+The rules for a style definition assigns values to the properties. There are some conventions for the property names that are given as follows. 
+
+
+If the property name consists of more than one word then use hyphen (-) to seperate them.
+ 
+
+Property name for the styles are preceded by -fx-.
+ 
+
+Property name and the value are seperated by colon (:).
+   
+
+Rules are seperated by the semicolon (;).
+
+
+the example of defining rules for the properties is as follows. 
+
+-fx-background-color : #333356;
+-fx-font : 16px "serief"; 
+
+There is a special style class named as 
+.root
+ defined in javafx. It is applied to the root node of the scene object. Since all the nodes of the application are the children of the root node therefore the style rules applied to this class can be applied to the whole scene graph of the application.
+
+.root 
+{
+-fx-font-family : "serief";
+-fx-background1 : rgb(225,227,2255);
+}
+
+Class Styles 
+The class styles can be created by adding its definition to our style sheet. For example; 
+
+.label1{
+	-fx-background-color : rgb(123,126,227);
+	-fx-padding : 5;
+	-fx-text-fill : rgb(245,123,201);
+}
+
+to add the above mentioned style class to the appropriate node, use the 
+method getStyleClass().add()
+ sequence of methods.
+
+Button button = new Button("SUBMIT");
+button.getStyleClass().add(button1);
+
+Example:
+
+package application;  
+import javafx.application.Application;  
+import javafx.scene.Scene;  
+import javafx.scene.control.Button;  
+import javafx.scene.control.Label;  
+import javafx.scene.control.TextField;  
+import javafx.scene.layout.GridPane;  
+import javafx.stage.Stage;  
+public class JavaFX_CSSExample extends Application { 
+
+@Override
+public void start(Stage primaryStage) throws Exception {  
+Label first_name=new Label("First Name");  
+Label last_name=new Label("Last Name");  
+TextField tf1=new TextField();  
+TextField tf2=new TextField();  
+Button Submit=new Button ("Submit");   
+GridPane root=new GridPane();  
+root.setHgap(10);
+root.setVgap(15);
+Scene scene = new Scene(root,400,200);  
+root.addRow(0, first_name,tf1);  
+root.addRow(1, last_name,tf2);  
+root.addRow(2, Submit);  
+//Adding CSS file to the root 
+root.getStylesheets().add("Style.css");
+primaryStage.setScene(scene);  
+primaryStage.show();  
+}  
+public static void main(String[] args) {  
+launch(args);  
+}  
+
+} 
+
+// style.css 
+.label
+{
+	-fx-background-color:Black; 
+	-fx-text-fill:white; 
+	-fx-font-size:16;
+	-fx-border-color: Wheat;
+-fx-border-radius: 5;
+}
+.button
+{
+	-fx-background-color:Black; 
+	-fx-font-family:courier_new; 
+	-fx-text-fill:White;
+	-fx-border-color: Wheat;
+-fx-border-radius: 5;
+	-fx-font-size:16;
+
+ID Styles
+JavaFX provides us the facility to create the style for the individual node. The style name can be given as the ID name preceded by the hash(#) symbol. 
+
+#submit-button{
+	-fx-font : bold 18pt "serief";
+	-fx-background-color : rgb(120,190,201);
+} 
+
+Example
+
+package application;  
+import javafx.application.Application;  
+import javafx.scene.Scene;  
+import javafx.scene.control.Button;  
+import javafx.scene.control.Label;  
+import javafx.scene.control.TextField;  
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;  
+public class SignUP extends Application {  
+
+@Override
+public void start(Stage primaryStage) throws Exception {  
+	
+	//Adding Labels to the form 
+	Label first_name = new Label("First Name");  
+Label last_name = new Label("Last Name");
+Label Email = new Label("Email ID");
+Label Password = new Label("Password");
+
+//Adding text-field to the form 
+TextField tf1=new TextField();  
+TextField tf2=new TextField();  
+TextField tf3=new TextField();  
+TextField tf4=new TextField(); 
+
+//creating submit button 
+Button Submit=new Button ("Submit");
+
+//setting ID for the submit button so that the particular style rules can be applied to it. 
+Submit.setId("submit");
+
+//Creating reset button 
+Button Reset=new Button ("Reset");
+
+//Creating title 
+Text title = new Text();
+title.setText("Sign Up");
+title.setX(120);
+title.setY(120);
+title.setUnderline(true);
+title.setId("title");
+//creating grid-pane
+GridPane root=new GridPane();  
+
+//creating Scene object 
+Scene scene = new Scene(root,400,400);
+
+//adding the the nodes to the GridPane's rows 
+root.addRow(0, title);
+root.addRow(2, first_name,tf1);  
+root.addRow(3, last_name,tf2); 
+root.addRow(4, Email,tf3);  
+root.addRow(5, Password,tf4); 
+root.addRow(7, Submit,Reset);  
+
+//setting horizontal and vertical gaps between the rows 
+root.setHgap(10);
+root.setVgap(10);
+
+//adding style-sheet to the Scene 
+root.getStylesheets().add("form.css");
+
+primaryStage.setScene(scene);  
+primaryStage.show();  
+}  
+public static void main(String[] args) {  
+launch(args);  
+}  
+
+}
+
+//form.css
+.root{
+	-fx-background-color:Wheat;
+	-fx-alignment:center;
+	-fx-background-radius: 100;
+}
+.label{
+	-fx-font-size:18pt;
+	-fx-font:bold 10pt"Arial";
+	-fx-padding:10
+}
+.button
+{
+	-fx-effect:dropshadow(one-pass-box,black,8,0.0,2,0);
+	-fx-border-radius:20;
+	-fx-font:bold10pt"Arial";
+}
+#title
+{
+	-fx-font:bold20pt"Arial"; 
+	-fx-effect:dropshadow(one-pass-box,GREEN,8,0.0,2,0);
+	
+}
+
+Setting Inline styles
+JavaFX facilitates us to define the CSS rules in the JavaFX application code itself. However, the rules defined in the JavaFX application code is given precedence over styles from the style sheet. 
+In the following example, we have defined the CSS rules in the code file itself which shows the way by which the color and the font of a label can be changed using CSS rules.
+
+Label label1 = new Label("Name: ");
+label1.setStyle("-fx-background-color : blue, -fx-text-fill : white");
+
+Example
+
+package application;  
+import javafx.application.Application;  
+import javafx.scene.Scene;  
+import javafx.scene.control.Button;  
+import javafx.scene.control.Label;  
+import javafx.scene.control.TextField;  
+import javafx.scene.layout.GridPane;  
+import javafx.stage.Stage;  
+public class JavaFX_CSSExample extends Application { 
+
+@Override
+public void start(Stage primaryStage) throws Exception {  
+Label first_name=new Label("First Name");  
+	// setting style for the label first_name 
+	first_name.setStyle("-fx-background-color:Black; -fx-text-fill:white; -fx-font-size:16");
+Label last_name=new Label("Last Name");  
+//setting style for the label last name 
+	last_name.setStyle("-fx-background-color:Black; -fx-text-fill:white;-fx-font-size:16");
+TextField tf1=new TextField(); 
+	//setting style for the first text field
+tf1.setStyle("-fx-background-color:Wheat; -fx-text-fill:Black; -fx-font-size:16");
+TextField tf2=new TextField();  
+	//setting style for the second TextField 
+tf2.setStyle("-fx-background-color:Wheat; -fx-text-fill:Black; -fx-font-size:16");
+	
+Button Submit=new Button ("Submit");
+	//setting styles for the button 
+Submit.setStyle("-fx-background-color:Black; -fx-font-family:courier_new; -fx-text-fill:white;-fx-font-size:16");
+GridPane root=new GridPane();  
+root.setHgap(10);
+root.setVgap(15);
+Scene scene = new Scene(root,400,200);  
+root.addRow(0, first_name,tf1);  
+root.addRow(1, last_name,tf2);  
+root.addRow(2, Submit);  
+primaryStage.setScene(scene);  
+primaryStage.show();  
+}  
+public static void main(String[] args) {  
+launch(args);  
+}  
+
+}  

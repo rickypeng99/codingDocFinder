@@ -1,0 +1,273 @@
+Java JCheckBoxMenuItem 
+JCheckBoxMenuItem class represents 
+checkbox
+ which can be included on a 
+menu
+ . A CheckBoxMenuItem can have text or a graphic icon or both, associated with it. 
+MenuItem
+ can be selected or deselected. MenuItems can be configured and controlled by actions.
+Nested class
+
+    
+
+        
+Modifier and Type
+
+        
+Class
+
+        
+Description
+
+    
+
+    
+
+        
+protected class
+
+        
+JCheckBoxMenuItem.AccessibleJCheckBoxMenuItem 
+
+        
+This 
+class
+ implements accessibility support for the JcheckBoxMenuItem class.
+
+    
+
+
+Constructor
+
+    
+
+        
+Constructor
+
+        
+Description
+
+    
+
+    
+
+        
+JCheckBoxMenuItem()
+
+        
+It creates an initially unselected check box menu item with no set text or icon.
+
+    
+
+    
+
+        
+JCheckBoxMenuItem(Action a)
+
+        
+It creates a menu item whose properties are taken from the Action supplied.
+
+    
+
+    
+
+        
+JCheckBoxMenuItem(Icon icon)
+
+        
+It creates an initially unselected check box menu item with an icon.
+
+    
+
+    
+
+        
+JCheckBoxMenuItem(String text)
+
+        
+It creates an initially unselected check box menu item with text.
+
+    
+
+    
+
+        
+JCheckBoxMenuItem(String text, boolean b)
+
+        
+It creates a check box menu item with the specified text and selection state.
+
+    
+
+    
+
+        
+JCheckBoxMenuItem(String text, Icon icon)
+
+        
+It creates an initially unselected check box menu item with the specified text and icon.
+
+    
+
+    
+
+        
+JCheckBoxMenuItem(String text, Icon icon, boolean b)
+
+        
+It creates a check box menu item with the specified text, icon, and selection state.
+
+    
+
+
+Methods
+
+    
+
+        
+Modifier
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+AccessibleContext
+
+        
+getAccessibleContext()
+
+        
+It gets the AccessibleContext associated with this JCheckBoxMenuItem.
+
+    
+
+    
+
+        
+Object[]
+
+        
+getSelectedObjects()
+
+        
+It returns an 
+array
+ (length 1) containing the check box menu item 
+label
+ or null if the check box is not selected.
+
+    
+
+    
+
+        
+boolean
+
+        
+getState()
+
+        
+It returns the selected-state of the item.
+
+    
+
+    
+
+        
+String
+
+        
+getUIClassID()
+
+        
+It returns the name of the L&F class that renders this component.
+
+    
+
+    
+
+        
+protected String
+
+        
+paramString()
+
+        
+It returns a string representation of this JCheckBoxMenuItem.
+
+    
+
+    
+
+        
+void
+
+        
+setState(boolean b) 
+
+        
+It sets the selected-state of the item.
+
+    
+
+
+Java JCheckBoxMenuItem Example
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractButton;
+import javax.swing.Icon;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+public class JavaCheckBoxMenuItem {
+	public static void main(final String args[]) {
+		JFrame frame = new JFrame("Jmenu Example");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JMenuBar menuBar = new JMenuBar();
+		// File Menu, F - Mnemonic
+		JMenu fileMenu = new JMenu("File");
+		fileMenu.setMnemonic(KeyEvent.VK_F);
+		menuBar.add(fileMenu);
+		// File->New, N - Mnemonic
+		JMenuItem menuItem1 = new JMenuItem("Open", KeyEvent.VK_N);
+		fileMenu.add(menuItem1);
+
+		JCheckBoxMenuItem caseMenuItem = new JCheckBoxMenuItem("Option_1");
+		caseMenuItem.setMnemonic(KeyEvent.VK_C);
+		fileMenu.add(caseMenuItem);
+
+		ActionListener aListener = new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				AbstractButton aButton = (AbstractButton) event.getSource();
+				boolean selected = aButton.getModel().isSelected();
+				String newLabel;
+				Icon newIcon;
+				if (selected) {
+					newLabel = "Value-1";
+				} else {
+					newLabel = "Value-2";
+				}
+				aButton.setText(newLabel);
+			}
+		};
+
+		caseMenuItem.addActionListener(aListener);
+		frame.setJMenuBar(menuBar);
+		frame.setSize(350, 250);
+		frame.setVisible(true);
+	}
+}
+
+Output: 

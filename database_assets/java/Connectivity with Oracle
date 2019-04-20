@@ -1,0 +1,156 @@
+Java Database Connectivity with Oracle
+
+
+To connect java application with the oracle database, we need to follow 5 following steps.
+ In this example, we are using Oracle 10g as the database. So we need to know following information for the oracle database:
+
+
+
+Driver class: 
+ The driver  class for the oracle database is 
+oracle.jdbc.driver.OracleDriver
+.
+
+
+Connection  URL: 
+ The connection URL for the oracle10G database is 
+jdbc:oracle:thin:@localhost:1521:xe
+ where  jdbc is the API, oracle is the database, thin is the driver, localhost is the server name on which oracle is running, we may also use IP address, 1521 is the port number and XE is the Oracle service name. You may get  all these information from the tnsnames.ora file. 
+
+
+Username: 
+ The default username for the oracle database is 
+system
+.
+
+
+Password: 
+ It is the password given by the user at the time of installing the oracle database.
+
+
+
+
+
+
+
+
+
+
+Create a Table
+
+Before establishing connection, let's first create a table in oracle database. Following is the SQL query to create a table.
+
+
+
+
+
+create table emp(id number(10),name varchar2(40),age number(3));
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Example to Connect Java Application with Oracle database
+In this example, we are connecting to an Oracle database and getting data from 
+emp
+ table. Here, 
+system
+ and 
+oracle
+ are the username and password of the Oracle database.
+
+
+import java.sql.*;
+class OracleCon{
+public static void main(String args[]){
+try{
+//step1 load the driver class
+Class.forName("oracle.jdbc.driver.OracleDriver");
+
+//step2 create  the connection object
+Connection con=DriverManager.getConnection(
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+
+//step3 create the statement object
+Statement stmt=con.createStatement();
+
+//step4 execute query
+ResultSet rs=stmt.executeQuery("select * from emp");
+while(rs.next())
+System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+
+//step5 close the connection object
+con.close();
+
+}catch(Exception e){ System.out.println(e);}
+
+}
+}
+
+
+
+download this example
+
+
+
+The above example will fetch all the records of emp table.
+
+
+To connect java application with the Oracle database ojdbc14.jar file is required to be loaded.
+
+
+
+download the jar file ojdbc14.jar
+
+
+Two ways to load the jar file:
+
+
+paste the ojdbc14.jar file in jre/lib/ext folder
+
+
+set classpath
+
+
+1) paste the ojdbc14.jar file in JRE/lib/ext folder:
+
+
+Firstly, search the ojdbc14.jar file then go to JRE/lib/ext folder and paste the jar file here. 
+
+
+
+2) set classpath:
+
+
+There are two ways to set the classpath:
+
+
+
+temporary
+
+
+permanent
+
+
+
+
+
+
+How to set the temporary classpath:
+
+
+Firstly, search the ojdbc14.jar file then open command prompt and write:
+
+
+
+
+
+C:>set classpath=c:\folder\ojdbc14.jar;.;
+
+
+How to set the permanent classpath:
+Go to environment variable then click on new tab. In variable name write 
+classpath
+ and in variable value paste the path to ojdbc14.jar by appending ojdbc14.jar;.; as C:\oraclexe\app\oracle\product\10.2.0\server\jdbc\lib\ojdbc14.jar;.;
+To see the slides of seting parmanent path 
+click here

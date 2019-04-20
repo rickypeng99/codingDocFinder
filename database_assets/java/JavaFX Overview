@@ -1,0 +1,157 @@
+JavaFX Overview
+What is JavaFX?
+JavaFX is a Java library used to develop Desktop applications as well as Rich Internet Applications (RIA). The applications built in JavaFX, can run on multiple platforms including Web, Mobile and Desktops.
+JavaFX is intended to replace swing in Java applications as a GUI framework. However, It provides more functionalities than swing. Like Swing, JavaFX also provides its own components and doesn't depend upon the operating system. It is lightweight and hardware accelerated. It supports various operating systems including Windows, Linux and Mac OS.
+History of JavaFX
+JavaFX was developed by Chris Oliver. Initially the project was named as 
+Form Follows Functions (F3) 
+. It is intended to provide the richer functionalities for the GUI application development. Later, Sun Micro-systems acquired F3 project as 
+JavaFX
+ in June, 2005.
+Sun Micro-systems announces it officially in 
+2007
+ at 
+W3 Conference
+. In October 2008, JavaFX 1.0 was released. In 2009, ORACLE corporation acquires Sun Micro-Systems and released JavaFX 1.2. the latest version of JavaFX is JavaFX 1.8 which was released on 18th March 2014.
+Features of JavaFX
+
+
+
+	
+Feature
+
+	
+Description
+
+
+
+
+
+	
+Java Library
+
+	
+It is a Java library which consists of many classes and interfaces that are written in Java. 
+
+
+
+
+
+	
+FXML
+
+	
+FXML is the XML based Declarative mark up language. The coding can be done in FXML to provide the more enhanced GUI to the user.
+
+
+
+
+
+	
+Scene Builder
+
+	
+Scene Builder generates FXML mark-up which can be ported to an IDE.
+
+
+
+
+
+	
+Web view
+
+	
+Web pages can be embedded with JavaFX applications. Web View uses WebKitHTML technology to embed web pages.
+
+
+
+
+
+	
+Built in UI controls
+
+	
+JavaFX contains Built-in components which are not dependent on operating system. The UI component are just enough to develop a full featured application. 
+
+
+
+
+
+	
+CSS like styling 
+
+	
+JavaFX code can be embedded with the CSS to improve the style of the application. We can enhance the view of our application with the simple knowledge of CSS. 
+
+
+
+
+
+	
+Swing interoperability
+
+	
+The JavaFX applications can be embedded with swing code using the Swing Node class. We can update the existing swing application with the powerful features of JavaFX. 
+
+
+
+
+
+	
+Canvas API
+
+	
+Canvas API provides the methods for drawing directly in an area of a JavaFX scene. 
+
+
+
+
+
+	
+Rich Set of APIs
+
+	
+JavaFX provides a rich set of API's to develop GUI applications. 
+
+
+
+
+
+	
+Integrated Graphics Library 
+
+	
+An integrated set of classes are provided to deal with 2D and 3D graphics.  
+
+
+
+
+
+	
+Graphics Pipeline 
+
+	
+JavaFX graphics are based on Graphics rendered pipeline(prism). It offers smooth graphics which are hardware accelerated.
+
+
+
+
+
+	
+High Performance Media Engine 
+
+	
+The media pipeline supports the playback of web multimedia on a low latency. It is based on a Gstreamer Multimedia framework. 
+
+
+
+
+
+	
+Self-contained application deployment model
+
+	
+Self Contained application packages have all of the application resources and a private copy of Java and JavaFX Runtime. 
+
+
+

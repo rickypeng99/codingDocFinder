@@ -1,0 +1,451 @@
+JavaFX Gradient Color
+In Computer Graphics, Gradient Colors (sometimes called 
+Color Progression )
+ are used to specify the position dependent colors to fill a particular region. The value of the gradient color varies with the position. Gradient colors produces the smooth color transitions on the region by varying the color value continuously with the position.
+JavaFX enables us to implement two types of Gradient color transitions:
+
+
+Linear Gradient
+
+
+Radial Gradient
+
+
+Linear Gradient
+To apply linear gradient patterns to the shapes, we need to instantiate the LinearGradient class. This class contains several instance methods described below in the table.
+Instance Methods
+
+
+
+    
+Type
+
+    
+Method
+
+	
+Description
+
+
+
+
+
+    
+Boolean
+
+    
+equals(Object o)
+
+	
+Compares two objects
+
+
+
+
+
+    
+CycleMethod
+
+    
+getCycleMethod()
+
+	
+Defines which cycle method has been applied to LinearGradient.
+
+
+
+
+
+    
+Double
+
+    
+getEndX()
+
+	
+X coordinate of gradient axis end point
+
+
+
+
+
+    
+Double
+
+    
+getEndY()
+
+	
+Y coordinate of gradient axis end point
+
+
+
+
+
+    
+Double
+
+    
+getStartX()
+
+	
+X coordinate of gradient axis start point
+
+
+
+
+
+    
+Double
+
+    
+getStartY()
+
+	
+Y coordinate of gradient axis start point
+
+
+
+
+
+    
+List<Stop>
+
+    
+getStops()
+
+	
+Defines the way of distributions of colors along the gradient
+
+
+
+
+
+    
+Int
+
+    
+hashCode()
+
+	
+Returns hash code for the linear gradient object
+
+
+
+
+
+    
+Boolean
+
+    
+isOpaque()
+
+	
+Check whether the paint is completely opaque or not.
+
+
+
+
+
+    
+Boolean
+
+    
+isProprtional()
+
+	
+Checks whether the start and end locations are proportional or not.
+
+
+
+
+
+    
+String
+
+    
+toString()
+
+	
+Convert Gradient object to string.
+
+
+
+
+Constructors
+The Constructor of this class accepts five parameters:
+new LinearGradient(startX, startY, endX, endY, Proportional, CycleMethod, stops)
+(startX,startY):
+ represents  x and y coordinates of the starting point of the gradient color.
+(endX,endY):
+ represents x and y coordinates of the ending point of the gradient color.
+Proportional:
+ This is a boolean type property. If this is true then the starting and ending point of the gradient color will become proportional.
+CycleMethod:
+ This defines the cycle method applied to the gradient.
+Stops:
+ this defines the color distribution along the gradient.
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+public class Shape_Example extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        VBox root = new VBox();
+        final Scene scene = new Scene(root,300, 250);
+        Stop[] stops = new Stop[] { new Stop(0, Color.GREEN), new Stop(1, Color.BLUE)};
+        LinearGradient linear = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
+        
+        Rectangle rect = new Rectangle(0, 0, 100, 100);
+        rect.setFill(linear);
+        
+        root.getChildren().add(rect);
+        
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Animation Example");
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+	}
+
+Radial Gradient
+To apply Radial gradient to the shapes , we need to instantiate 
+javafx.scene.paint.RadialGradient
+ class. This class contains various instance methods described in the table below.
+
+
+
+    
+Type
+
+    
+Method
+
+	
+Description
+
+
+
+
+
+    
+Boolean
+
+    
+equals(Object o)
+
+	
+Compares two objects
+
+
+
+
+
+    
+Double
+
+    
+getCenterX()
+
+	
+X coordinate of the circle which is defining the gradient
+
+
+
+
+
+    
+Double
+
+    
+getCenterY()
+
+	
+Y coordinate of the circle which is defining the gradient
+
+
+
+
+
+    
+CycleMethod
+
+    
+getCycleMethod()
+
+	
+Defines which cycle method has been applied to LinearGradient.
+
+
+
+
+
+    
+Double
+
+    
+getFocusAngle()
+
+	
+Angle in degrees between the centre of the gradient and the focus of the position where first color is mapped
+
+
+
+
+
+    
+Double
+
+    
+getFocusDistance()
+
+	
+Distance between the Centre of the gradient and the focus point of the first color.
+
+
+
+
+
+    
+Double
+
+    
+getRadius
+
+	
+Radius of the gradient
+
+
+
+
+
+    
+List<Stop>
+
+    
+getStops()
+
+	
+Defines the way of distributions of colors along the gradient
+
+
+
+
+
+    
+Int
+
+    
+hashCode()
+
+	
+Returns hash code for the linear gradient object
+
+
+
+
+
+    
+Boolean
+
+    
+isOpaque()
+
+	
+Check whether the paint is completely opaque or not.
+
+
+
+
+
+    
+Boolean
+
+    
+isProprtional()
+
+	
+Checks whether the start and end locations are proportional or not.
+
+
+
+
+
+    
+String
+
+    
+toString()
+
+	
+Convert Gradient object to string.
+
+
+
+
+Constructor
+The constructor of the class accepts a few parameters. The Syntax of the constructor is given below.
+
+public RadialGradient(double focusAngle, double focusDistance, double centerX, double centerY, double radius, boolean proportional, CycleMethod cycleMethod, Stops? stops)
+
+Example
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
+public class RadialGradientClass extends Application {
+  
+    public static void main(String[] args) {
+        Application.launch(args);
+    }
+
+    @Override
+    public void start(final Stage primaryStage) {
+        primaryStage.setTitle("Radial Gradient Example");
+        Group root = new Group();
+        Scene scene = new Scene(root, 400, 300, Color.WHITE);
+
+        primaryStage.setScene(scene);
+        addRectangle(scene); 
+        primaryStage.show();
+    }
+    private void addRectangle(final Scene scene) {
+        Circle C = new Circle(200,150,100);
+        RadialGradient gradient1 = new RadialGradient(0,
+            .1,
+            100,
+            100,
+            200,
+            false,
+            CycleMethod.NO_CYCLE,
+            new Stop(0, Color.YELLOW),
+            new Stop(1, Color.RED));
+        C.setFill(gradient1);
+
+    
+        final Group root = (Group) scene.getRoot();
+        root.getChildren().add(C);
+
+    }
+}

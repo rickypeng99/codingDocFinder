@@ -1,0 +1,76 @@
+Java Convert Hexadecimal to Decimal
+We can convert 
+hexadecimal to decimal in java
+ using 
+Integer.parseInt()
+ method or custom logic.
+Java Hexadecimal to Decimal conversion: Integer.parseInt()
+The Integer.parseInt() method converts string to int with given redix. The 
+signature
+ of parseInt() method is given below:
+
+public static int parseInt(String s,int redix)
+
+Let's see the simple example of converting hexadecimal to decimal in java.
+
+public class HexToDecimalExample1{
+public static void main(String args[]){
+String hex="a";
+int decimal=Integer.parseInt(hex,16);
+System.out.println(decimal);
+}}
+
+Test it Now
+Output:
+
+10
+
+Let's see another example of Integer.parseInt() method.
+
+public class HexToDecimalExample2{
+public static void main(String args[]){
+System.out.println(Integer.parseInt("a",16));
+System.out.println(Integer.parseInt("f",16));
+System.out.println(Integer.parseInt("121",16));
+}}
+
+Test it Now
+Output:
+
+10
+15
+289
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Hexadecimal to Decimal conversion: Custom Logic
+We can convert 
+hexadecimal to decimal in java
+ using custom logic.
+
+public class HexToDecimalExample3{  
+public static int getDecimal(String hex){
+    String digits = "0123456789ABCDEF";
+             hex = hex.toUpperCase();
+             int val = 0;
+             for (int i = 0; i < hex.length(); i++)
+             {
+                 char c = hex.charAt(i);
+                 int d = digits.indexOf(c);
+                 val = 16*val + d;
+             }
+             return val;
+}
+public static void main(String args[]){  
+System.out.println("Decimal of a is: "+getDecimal("a"));
+System.out.println("Decimal of f is: "+getDecimal("f"));
+System.out.println("Decimal of 121 is: "+getDecimal("121"));
+}}  
+
+Test it Now
+Output:
+
+Decimal of a is: 10
+Decimal of f is: 15
+Decimal of 121 is: 289

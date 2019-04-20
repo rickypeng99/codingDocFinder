@@ -1,0 +1,172 @@
+JavaFX Color
+In JavaFX, we can fill the shapes with the colors. We have the flexibility to create our own color using the several methods and pass that as a Paint object into the 
+setFill()
+ method. Lets discuss the several methods of creating color in JavaFX.
+RGB Color
+RGB color system is the most popular method to create a color in graphics. It consists of three components named as RED → R, GREEN → G and BLUE → B. Each component uses 8 Bits that means every component can have the integer value from 0 to 22^8 - 1=255.
+The computer screen can be seen as the collection of pixels. The set (R,G,B) actually represents the emission of their respective LEDs on the screen.
+If the value of  
+RED
+ is set to 0 then it means that the Red LED is turned off while the value 255 indicates that the full emission of LED is being there. The combination of (0,0,0) represents the black color while (255,255,255) represents the white color. The middle values in that range can represent different colors.
+Using the superimposition of RGB, we can represent 255*255*255 different colors. In JavaFX, the class 
+javafx.scene.paint.Color
+ class represents colors.
+There is a static method named as 
+rgb()
+ of Color class. It accepts three integer arguments as Red, Green, Blue and one optional double argument called alpha. The value of alpha is proportional to the opacity of the color.  The alpha value 0 means that the color is completely transparent while the value 1 means that the color is completely opaque.
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Shadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+public class Shape_Example extends Application {
+
+  @Override
+  public void start(Stage primarystage) {
+    Group root = new Group();
+    primarystage.setTitle("Color Example");
+    Rectangle rect = new Rectangle();
+    rect.setX(50);
+    rect.setY(20);
+    rect.setWidth(100);
+    rect.setHeight(150);
+    int red=20;
+    int green=125;
+    int blue=10;
+    rect.setFill(Color.rgb(red, green, blue,0.63));
+    root.getChildren().add(rect);
+    Scene scene = new Scene(root,200,200);
+    primarystage.setScene(scene);
+    primarystage.show();
+  }
+
+  public static void main(String[] args) {
+    launch(args);
+  }
+}
+
+Color Name
+In JavaFX, we can also create the color by the color name. The class 
+javafx.scene.paint.Color
+ contains all the colors as the class properties. The Color property needs to be passed, as the 
+Paint
+ class object, in the setFill() method.
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Shadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+public class Shape_Example extends Application {
+
+  @Override
+  public void start(Stage primarystage) {
+    Group root = new Group();
+    primarystage.setTitle("Color Example");
+    Rectangle rect = new Rectangle();
+    rect.setX(50);
+    rect.setY(20);
+    rect.setWidth(100);
+    rect.setHeight(150);
+    rect.setFill(Color.RED); //passing color name 
+    rect.setEffect(new DropShadow());
+    root.getChildren().add(rect);
+    Scene scene = new Scene(root,200,200);
+    primarystage.setScene(scene);
+    primarystage.show();
+  }
+
+  public static void main(String[] args) {
+    launch(args);
+  }
+}
+
+HSB Color
+Along with the various methods that we have seen till now, JavaFX also enables us to create the color using HSB that is the combination of Hue, Saturation and Brightness. 
+javafx.scene.paint.Color
+ contains a static method 
+Color.hsb()
+ which accepts three integers h, s and b.
+Example:
+The following example implements Color.hsb() method to fill the stage.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+public class Shape_Example extends Application {
+
+  @Override
+  public void start(Stage primarystage) {
+    Group root = new Group();
+    primarystage.setTitle("Color Example");
+    Rectangle rect = new Rectangle();
+    rect.setX(50);
+    rect.setY(20);
+    rect.setWidth(200);
+    rect.setHeight(250);
+    rect.setEffect(new DropShadow());
+    root.getChildren().add(rect);
+    Scene scene = new Scene(root,300,400,Color.hsb(180, 1, 1));
+    primarystage.setScene(scene);
+    primarystage.show();
+  }
+
+  public static void main(String[] args) {
+    launch(args);
+  }
+}
+
+Web Color
+javafx.scene.paint.color class enables us to create the web colors using Color.web() method. This can take upto two parameters out of which one is the hex value of the color and the other is an optional argument called alpha-channel that represents opacity of the color.
+Color.web("#0000FF") //Blue color with implicit alpha
+Color.web("#0000FF",1) //Blue color with explicit alpha
+Alpha is a double type value which can hold the values in the range 0.0 to 1.0.
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+public class Shape_Example extends Application {
+
+  @Override
+  public void start(Stage primarystage) {
+    Group root = new Group();
+    primarystage.setTitle("Color Example");
+    Rectangle rect = new Rectangle();
+    rect.setX(50);
+    rect.setY(20);
+    rect.setWidth(200);
+    rect.setHeight(250);
+    rect.setEffect(new DropShadow());
+    rect.setFill(Color.web("#0000FF",1));
+    root.getChildren().add(rect);
+    Scene scene = new Scene(root,300,400);
+    primarystage.setScene(scene);
+    primarystage.show();
+  }
+
+  public static void main(String[] args) {
+    launch(args);
+  }
+}

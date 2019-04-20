@@ -1,0 +1,85 @@
+Wrapper class in Java
+Wrapper class in java
+ provides the mechanism 
+to convert primitive into object and object into primitive
+.
+Since J2SE 5.0, 
+autoboxing
+ and 
+unboxing
+ feature converts primitive into object and object into primitive automatically. The automatic conversion of primitive into object is known as autoboxing and vice-versa unboxing.
+The eight classes of 
+java.lang
+ package are known as wrapper classes in java. The list of eight wrapper classes are given below:
+
+
+Primitive Type
+Wrapper class
+
+
+boolean
+Boolean
+
+
+char
+Character
+
+
+byte
+Byte
+
+
+short
+Short
+
+
+int
+Integer
+
+
+long
+Long
+
+
+float
+Float
+
+
+double
+Double
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Wrapper class Example: Primitive to Wrapper
+
+public class WrapperExample1{
+public static void main(String args[]){
+//Converting int into Integer
+int a=20;
+Integer i=Integer.valueOf(a);//converting int into Integer
+Integer j=a;//autoboxing, now compiler will write Integer.valueOf(a) internally
+
+System.out.println(a+" "+i+" "+j);
+}}
+
+Output:
+
+20 20 20
+
+Wrapper class Example: Wrapper to Primitive
+
+public class WrapperExample2{  
+public static void main(String args[]){  
+//Converting Integer to int  
+Integer a=new Integer(3);  
+int i=a.intValue();//converting Integer to int
+int j=a;//unboxing, now compiler will write a.intValue() internally  
+  
+System.out.println(a+" "+i+" "+j);  
+}}  
+
+Output:
+
+3 3 3

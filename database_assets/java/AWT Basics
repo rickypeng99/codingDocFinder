@@ -1,0 +1,116 @@
+Java AWT Tutorial
+Java AWT
+ (Abstract Window Toolkit) is 
+an API to develop GUI or window-based applications
+ in java.
+Java AWT components are platform-dependent i.e. components are displayed according to the view of operating system. AWT is heavyweight i.e. its components are using the resources of OS.
+The java.awt 
+package
+ provides 
+classes
+ for AWT api such as 
+TextField
+, 
+Label
+, 
+TextArea
+, RadioButton, 
+CheckBox
+, 
+Choice
+, 
+List
+ etc.
+Java AWT Hierarchy
+The hierarchy of Java AWT classes are given below.
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Container
+The Container is a component in AWT that can contain another components like 
+buttons
+, textfields, labels etc. The classes that extends Container class are known as container such as Frame, Dialog and Panel.
+Window
+The window is the container that have no borders and menu bars. You must use frame, dialog or another window for creating a window.
+Panel
+The Panel is the container that doesn't contain title bar and menu bars. It can have other components like button, textfield etc.
+Frame
+The Frame is the container that  contain title bar and can have menu bars. It can have other components like button, textfield etc.
+Useful Methods of Component class
+
+
+Method
+Description
+
+
+public void add(Component c)
+inserts a component on this component.
+
+
+public void setSize(int width,int height)
+sets the size (width and height) of the component.
+
+
+public void setLayout(LayoutManager m)
+defines the layout manager for the component.
+
+
+public void setVisible(boolean status)
+changes the visibility of the component, by default false.
+
+
+Java AWT Example
+To create simple awt example, you need a frame. There are two ways to create a frame in AWT.
+
+
+By extending Frame class (inheritance)
+
+
+By creating the object of Frame class (association)
+
+
+AWT Example by Inheritance
+Let's see a simple example of AWT where we are inheriting Frame class. Here, we are showing Button component on the Frame.
+
+import java.awt.*;
+class First extends Frame{
+First(){
+Button b=new Button("click me");
+b.setBounds(30,100,80,30);// setting button position
+add(b);//adding button into frame
+setSize(300,300);//frame size 300 width and 300 height
+setLayout(null);//no layout manager
+setVisible(true);//now frame will be visible, by default not visible
+}
+public static void main(String args[]){
+First f=new First();
+}}
+
+
+
+download this example
+
+
+The setBounds(int xaxis, int yaxis, int width, int height) method is used in the above example that sets the position of the awt button.
+AWT Example by Association
+Let's see a simple example of AWT where we are creating instance of Frame class. Here, we are showing Button component on the Frame.
+
+import java.awt.*;
+class First2{
+First2(){
+Frame f=new Frame();
+Button b=new Button("click me");
+b.setBounds(30,50,80,30);
+f.add(b);
+f.setSize(300,300);
+f.setLayout(null);
+f.setVisible(true);
+}
+public static void main(String args[]){
+First2 f=new First2();
+}}
+
+
+
+download this example
+

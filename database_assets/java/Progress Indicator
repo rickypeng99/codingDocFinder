@@ -1,0 +1,41 @@
+JavaFX Progress Indicator
+Progress Indicator is similar to Progress Bar to some extent. Instead of showing the analogue progress to the user, it shows the digital progress so that the user may know the amount of work done in percentage. 
+It is represented by 
+javafx.scene.control.ProgressIndicator
+ class. This class needs to be instantiated in order to create Progress Indicator. The following code implements Progress Indicator into our application.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+public class Progress_Indicator extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		ProgressIndicator PI=new ProgressIndicator();
+		
+		StackPane root = new StackPane();
+		root.getChildren().add(PI);
+		Scene scene = new Scene(root,300,200);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Progress Indicator Example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}
+
+Output:
+Using setProgress() Method
+Add the following lines to the code shown above in order to set the 75 % progress value.
+
+ProgressIndicator PI=new ProgressIndicator();
+PI.setProgress(0.75f);
+
+Output:

@@ -1,0 +1,83 @@
+Java FilterInputStream Class
+Java FilterInputStream class implements the InputStream. It contains different sub classes as 
+BufferedInputStream
+, 
+DataInputStream
+ for providing additional functionality.  So it is less used individually.
+Java FilterInputStream class declaration
+Let's see the declaration for java.io.FilterInputStream class
+
+public class FilterInputStream extends InputStream
+
+Java FilterInputStream class Methods
+
+
+
+
+Method
+Description 
+
+
+
+
+int available()
+It is used to return an estimate number of bytes that can be read from the input stream.
+
+
+int read()
+It is used to read the next byte of data from the input stream.
+
+
+int read(byte[] b)
+It is used to read up to byte.length bytes of data from the input stream.
+
+
+long skip(long n)
+It is used to skip over and discards n bytes of data from the input stream.
+
+
+boolean markSupported()
+It is used to test if the input stream support mark and reset method.
+
+
+void mark(int readlimit)
+It is used to mark the current position in the input stream.
+
+
+void reset()
+It is used to reset the input stream.
+
+
+void close()
+It is used to close the input stream.
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Example of FilterInputStream class
+
+import java.io.*;
+public class FilterExample {
+	public static void main(String[] args) throws IOException {
+		File data = new File("D:\\testout.txt");
+		FileInputStream  file = new FileInputStream(data);
+		FilterInputStream filter = new BufferedInputStream(file);
+		int k =0;
+		while((k=filter.read())!=-1){
+			System.out.print((char)k);
+		}
+		file.close();
+		filter.close();
+	}
+}
+
+Here, we are assuming that you have following data in 
+"testout.txt"
+ file:
+
+Welcome to javatpoint
+
+Output:
+
+Welcome to javatpoint

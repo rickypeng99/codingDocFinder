@@ -1,0 +1,31 @@
+JavaFX Environment
+We have to set the JavaFX environment on the system in order to run JavaFX Applications. All the versions of Java after JDK 1.8, supports JavaFX therefore we must have JDK 1.8 or later installed on our system. There are various IDE such as Net-beans or Eclipse also supports JavaFX Library. In this chapter, we will discuss the various ways of executing JavaFX applications.
+Install Java
+Step 1: Verify that it is already installed or not
+Check whether Java is already installed on the system or not. In my case, it is not installed therefore I need to install JDK 1.8 on my computer.
+Step 2: Download JDK
+Click the below link to download jdk 1.8 for you windows 64 bit system.
+Download JDK For Windows
+There are available releases for Linux and mac operating systems. You can visit the official link for JDK distributions i.e.
+JDK Downloads
+Step 3: Install JDK
+Open the executable file which you have just downloaded and follow the steps.
+Click 
+Next
+ to continue
+Just Choose Development Tools and click Next.
+Set up is being ready.
+Choose the Destination folder in which you want to install JDK. Click Next to continue with the installation.
+Set up is installing Java to the computer.
+We have successfully installed Java SE development kit 8. Close the installation set up.
+Step 4 : Set the Permanent Path
+To execute Java applications from command line, we need to set Java Path. To set the path, follow the following steps.
+Right click on "this PC". It can be named as "My Computer" in some systems. Choose "properties" from the options.
+The screen look alike the above image will open. Click on "Advanced system settings" to continue.
+Above window will open. Click on "Environment Variables" to continue.
+Enter "path" in variable name and enter the path to the bin folder inside your JDK in the variable value. Click OK.
+Now Java Path has been set up. Open the Command prompt and type 
+"javac"
+ In case you have already open up the command prompt, I suggest you to close the existing window and reopen it again.
+We will get javac executed as shown in the image below. 
+The Java has been installed on our system. Now, we need to configure IDEs like NetBeans or Eclipse in order to execute JavaFX applications. 

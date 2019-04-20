@@ -1,0 +1,146 @@
+JavaFX Cylinder
+In general, a cylinder can be defined as a three dimensional solid object having two parallel circular basis connected by a curved surface. There are the two main parameters that describe a cylinder, namely height of the curved surface and the radius of the circular base.
+The radius and the height of a cylinder are shown in the following image.
+In JavaFX, the class 
+javafx.scene.shape.Cylinder
+ represents a cylinder. We just need to instantiate this class in order to create a cylinder.
+Properties
+The properties of the class along with the setter methods are described in the following table.
+
+
+
+	
+Property
+
+	
+Property
+
+	
+Setter Methods
+
+
+
+
+
+	
+height
+
+	
+It is a double type property. It represents the Z dimension of the Cylinder. 
+
+	
+setHeight(double value)
+
+
+
+
+
+	
+radius
+
+	
+It is a double type property. It represents the radius of the Cylinder. 
+
+	
+setRadius(double value)
+
+
+
+
+Constructors
+There are the three constructors in the class. 
+
+
+public Cylinder() :
+ Creates the new instance with default parameters. 
+
+
+public Cylinder(double radius, double height) :
+ Creates the new instance with the specified radius and height. 
+
+
+public Cylinder(double radius, double height, int divisions) :
+ creates the new instance with the specified radius, height and divisions. 
+
+
+
+Example
+
+
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Cylinder;
+import javafx.stage.Stage;
+public class CylinderExample extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		//creating cylinder 
+		Cylinder cyn = new Cylinder();
+		
+		//setting the radius and height for the cylinder 
+		cyn.setRadius(80);
+		cyn.setHeight(200);
+		cyn.setTranslateX(300);
+		cyn.setTranslateY(250);
+		
+		//setting camera 
+		PerspectiveCamera camera = new PerspectiveCamera();
+		camera.setTranslateX(100);
+		camera.setTranslateY(100);
+		camera.setTranslateZ(0);
+		
+		//setting group and stage 
+		Group root = new Group();
+		root.getChildren().addAll(cyn);
+		Scene scene = new Scene(root,450,300,Color.LIMEGREEN);
+		scene.setCamera(camera);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Cylinder Example");
+		primaryStage.show();
+	}
+public static void main(String[] args) {
+	launch(args);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+Next Topic
+JavaFX Sphere
+
+
+
+
+
+
+
+
+
+
+
+← prev
+
+
+next →
+
+
+
+
+
+

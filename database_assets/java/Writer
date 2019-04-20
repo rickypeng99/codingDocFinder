@@ -1,0 +1,250 @@
+Java Writer
+It is an 
+abstract
+ class for writing to character streams. The methods that a subclass must implement are write(char[], int, int), flush(), and close(). Most subclasses will override some of the methods defined here to provide higher efficiency, functionality or both.
+Fields
+
+   
+
+     
+Modifier and Type
+
+     
+Field
+
+	 
+Description
+
+   
+
+   
+
+      
+protected Object
+
+      
+lock
+
+	  
+The object used to synchronize operations on this stream.
+
+  
+
+
+Constructor
+
+    
+
+        
+Modifier
+
+		
+Constructor
+
+		
+Description
+
+    
+
+    
+
+        
+protected
+
+		
+Writer()
+
+		
+It creates a new character-stream writer whose critical sections will synchronize on the writer itself.
+
+    
+
+	 
+
+        
+protected
+
+		
+Writer(Object lock)
+
+		
+It creates a new character-stream writer whose critical sections will synchronize on the given 
+object
+.
+
+    
+
+
+Methods
+
+    
+
+        
+Modifier and Type
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+	    
+Writer
+
+		
+append(char c)
+
+		
+It appends the specified character to this writer.
+
+    
+
+	
+
+	    
+Writer
+
+		
+append(CharSequence csq)
+
+		
+It appends the specified character sequence to this writer
+
+    
+
+	
+
+	    
+Writer
+
+		
+append(CharSequence csq, int start, int end)
+
+		
+It appends a subsequence of the specified character sequence to this writer.
+
+    
+
+	
+
+	    
+abstract void
+
+		
+close()
+
+		
+It closes the stream, flushing it first.
+
+    
+
+	
+
+	    
+abstract void
+
+		
+flush()
+
+		
+It flushes the stream.
+
+    
+
+	
+
+	    
+void
+
+		
+write(char[] cbuf)
+
+		
+It writes an 
+array
+ of characters.
+
+    
+
+	
+
+	    
+abstract void
+
+		
+write(char[] cbuf, int off, int len)
+
+		
+It writes a portion of an array of characters.
+
+    
+
+	
+
+	    
+void
+
+		
+write(int c)
+
+		
+It writes a single character.
+
+    
+
+	
+
+	    
+void
+
+		
+write(String str)
+
+		
+It writes a 
+string
+.
+
+    
+
+	
+
+	    
+void
+
+		
+write(String str, int off, int len)
+
+		
+It writes a portion of a string.
+
+    
+
+
+Java Writer Example
+
+import java.io.*;
+public class WriterExample {
+	public static void main(String[] args) {
+		try {
+			Writer w = new FileWriter("output.txt");
+			String content = "I love my country";
+			w.write(content);
+			w.close();
+			System.out.println("Done");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+Output:
+
+Done
+
+output.txt:
+
+I love my country

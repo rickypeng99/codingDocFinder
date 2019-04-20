@@ -1,0 +1,57 @@
+Internal Details of Hello Java Program
+
+
+
+
+Internal Details of Hello Java
+
+
+
+
+In the previous page, we have learnt about the first program, how to compile and run the first java program. Here, we are going to learn, what happens while compiling and running the java program. Moreover, we will see some question based on the first program.
+What happens at compile time?
+At compile time, java file is compiled by Java Compiler (It does not interact with OS) and converts the java code into bytecode.
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+What happens at runtime?
+At runtime, following steps are performed:
+
+
+Classloader: 
+is the subsystem of JVM that is used to load class files.
+
+
+Bytecode Verifier: 
+ checks the code fragments for illegal code that can violate access right to objects.
+
+
+Interpreter: 
+read bytecode stream then execute the instructions.
+
+
+Q) Can you save a java source file by other name than the class name?
+
+
+Yes, if the class is not public. It is explained in the figure given below:
+
+
+
+
+
+
+To compile:
+javac Hard.java
+
+
+To execute:
+java Simple
+
+
+Q) Can you have multiple classes in a java source file?
+
+
+Yes, like the figure given below illustrates:
+
+
+

@@ -1,0 +1,91 @@
+Calculator in Java with Source Code
+Calculator in Java with Source Code:
+ We can develop calculator in java with the help of AWT/Swing with event handling. Let's see the code of creating calculator in java.
+
+/*********************************************
+Save this file as MyCalculator.java
+to compile it use
+	javac MyCalculator.java
+to use the calcuator do this
+	java MyCalculator
+
+**********************************************/
+import java.awt.*;
+import java.awt.event.*;
+/*********************************************/
+
+public class MyCalculator extends Frame
+{
+
+public boolean setClear=true;
+double number, memValue;
+char op;
+
+String digitButtonText[] = {"7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "+/-", "." };
+String operatorButtonText[] = {"/", "sqrt", "*", "%", "-", "1/X", "+", "=" };
+String memoryButtonText[] = {"MC", "MR", "MS", "M+" };
+String specialButtonText[] = {"Backspc", "C", "CE" };
+
+MyDigitButton digitButton[]=new MyDigitButton[digitButtonText.length];
+MyOperatorButton operatorButton[]=new MyOperatorButton[operatorButtonText.length];
+MyMemoryButton memoryButton[]=new MyMemoryButton[memoryButtonText.length];
+MySpecialButton specialButton[]=new MySpecialButton[specialButtonText.length];
+
+Label displayLabel=new Label("0",Label.RIGHT);
+Label memLabel=new Label(" ",Label.RIGHT);
+
+final int FRAME_WIDTH=325,FRAME_HEIGHT=325;
+final int HEIGHT=30, WIDTH=30, H_SPACE=10,V_SPACE=10;
+final int TOPX=30, TOPY=50;
+///////////////////////////
+MyCalculator(String frameText)//constructor
+{
+super(frameText);
+
+int tempX=TOPX, y=TOPY;
+displayLabel.setBounds(tempX,y,240,HEIGHT);
+displayLabel.setBackground(Color.BLUE);
+displayLabel.setForeground(Color.WHITE);
+add(displayLabel);
+
+memLabel.setBounds(TOPX,  TOPY+HEIGHT+ V_SPACE,WIDTH, HEIGHT);
+add(memLabel);
+
+// set Co-ordinates for Memory Buttons
+tempX=TOPX;	
+y=TOPY+2*(HEIGHT+V_SPACE);
+for(int i=0; i
+0)
+	resText=resText.substring(0,resText.length()-2);
+return resText;
+}
+////////////////////////////////////////
+public static void main(String []args)
+{
+new MyCalculator("Calculator - JavaTpoint");
+}
+}
+
+/*******************************************/
+
+class MyDigitButton extends Button implements ActionListener
+{
+MyCalculator cl;
+
+//////////////////////////////////////////
+MyDigitButton(int x,int y, int width,int height,String cap, MyCalculator clc)
+{
+super(cap);
+setBounds(x,y,width,height);
+this.cl=clc;
+this.cl.add(this);
+addActionListener(this);
+}
+////////////////////////////////////////////////
+static boolean isInString(String s, char ch)
+{
+for(int i=0; i
+
+
+download this example
+

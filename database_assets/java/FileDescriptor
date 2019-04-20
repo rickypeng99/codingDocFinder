@@ -1,0 +1,179 @@
+Java FileDescriptor
+FileDescriptor class serves as an handle to the underlying machine-specific structure representing an open file, an open 
+socket
+, or another source or sink of bytes. The handle can be err, in or out. 
+The FileDescriptor class is used to create a 
+FileInputStream
+ or 
+FileOutputStream
+ to contain it.
+Field
+
+    
+
+	    
+Modifier
+
+        
+Type
+
+        
+Field
+           
+        
+Description
+
+    
+
+    
+
+	    
+static
+
+		
+FileDescriptor
+
+        
+err
+
+		
+A handle to the standard error stream.
+
+    
+
+    
+
+	    
+static
+
+		
+FileDescriptor
+
+        
+in
+
+		
+A handle to the standard input stream.
+
+    
+
+    
+
+        
+static
+
+        
+FileDescriptor
+
+        
+out
+
+		
+A handle to the standard output stream.
+
+    
+
+
+Constructors
+
+    
+
+        
+Constructor
+
+		
+Description
+
+    
+
+    
+
+        
+FileDescriptor()
+
+		
+Constructs an (invalid) FileDescriptor 
+object
+. 
+
+    
+
+
+Method
+
+    
+
+	    
+Modifier and Type
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+	    
+void
+
+        
+sync()
+
+        
+It force all system buffers to synchronize with the underlying device.
+
+    
+
+    
+
+        
+boolean
+
+        
+valid()
+
+        
+It tests if this file descriptor object is valid.
+
+    
+
+
+Java FileDescriptor Example
+
+import java.io.*;
+public class FileDescriptorExample {
+	public static void main(String[] args) {
+		FileDescriptor fd = null;
+		byte[] b = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58 };
+		try  {
+			FileOutputStream fos = new FileOutputStream("Record.txt");
+			FileInputStream fis = new FileInputStream("Record.txt");
+			fd = fos.getFD();
+			fos.write(b);
+			fos.flush();
+			fd.sync();// confirms data to be written to the disk
+			int value = 0;
+			// for every available bytes
+			while ((value = fis.read()) != -1) {
+				char c = (char) value;// converts bytes to char
+				System.out.print(c);
+			}
+			System.out.println("\nSync() successfully executed!!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+Output:
+
+0123456789:
+Sync() successfully executed!!
+
+Record.txt:
+
+0123456789:

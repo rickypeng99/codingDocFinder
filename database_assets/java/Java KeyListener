@@ -1,0 +1,82 @@
+Java KeyListener Interface
+The Java KeyListener is notified whenever you change the state of key. It is notified against KeyEvent. The KeyListener interface is found in java.awt.event package. It has three methods.
+Methods of KeyListener interface
+The signature of 3 methods found in KeyListener interface are given below:
+
+public abstract void keyPressed(KeyEvent e);
+public abstract void keyReleased(KeyEvent e);
+public abstract void keyTyped(KeyEvent e);
+
+Java KeyListener Example
+
+import java.awt.*;
+import java.awt.event.*;
+public class KeyListenerExample extends Frame implements KeyListener{
+	Label l;
+	TextArea area;
+	KeyListenerExample(){
+		
+		l=new Label();
+		l.setBounds(20,50,100,20);
+		area=new TextArea();
+		area.setBounds(20,80,300, 300);
+		area.addKeyListener(this);
+		
+		add(l);add(area);
+		setSize(400,400);
+		setLayout(null);
+		setVisible(true);
+	}
+	public void keyPressed(KeyEvent e) {
+		l.setText("Key Pressed");
+	}
+	public void keyReleased(KeyEvent e) {
+		l.setText("Key Released");
+	}
+	public void keyTyped(KeyEvent e) {
+		l.setText("Key Typed");
+	}
+
+	public static void main(String[] args) {
+		new KeyListenerExample();
+	}
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java KeyListener Example 2: Count Words & Characters
+
+import java.awt.*;
+import java.awt.event.*;
+public class KeyListenerExample extends Frame implements KeyListener{
+	Label l;
+	TextArea area;
+	KeyListenerExample(){
+		
+		l=new Label();
+		l.setBounds(20,50,200,20);
+		area=new TextArea();
+		area.setBounds(20,80,300, 300);
+		area.addKeyListener(this);
+		
+		add(l);add(area);
+		setSize(400,400);
+		setLayout(null);
+		setVisible(true);
+	}
+	public void keyPressed(KeyEvent e) {}
+	public void keyReleased(KeyEvent e) {
+		String text=area.getText();
+		String words[]=text.split("\\s");
+		l.setText("Words: "+words.length+" Characters:"+text.length());
+	}
+	public void keyTyped(KeyEvent e) {}
+
+	public static void main(String[] args) {
+		new KeyListenerExample();
+	}
+}
+
+Output:

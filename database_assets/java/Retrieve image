@@ -1,0 +1,61 @@
+Example to retrieve image from Oracle database
+By the help of 
+PreparedStatement
+ we can retrieve and store the image in the database.
+The 
+getBlob()
+ method of PreparedStatement is used to get Binary information, it returns the instance of Blob. After calling the 
+getBytes()
+ method on the blob object, we can get the array of binary information that can be written into the image file.
+Signature of getBlob() method of PreparedStatement
+
+public Blob getBlob()throws SQLException
+
+Signature of getBytes() method of Blob interface
+
+public  byte[] getBytes(long pos, int length)throws SQLException
+
+We are assuming that image is stored in the imgtable.
+
+CREATE TABLE  "IMGTABLE" 
+   (	"NAME" VARCHAR2(4000), 
+	"PHOTO" BLOB
+   )
+/
+
+Now let's write the code to retrieve the image from the database and write it into the directory so that it can be displayed.
+In AWT, it can be displayed by the Toolkit class. In servlet, jsp, or html it can be displayed by the img tag.
+
+import java.sql.*;
+import java.io.*;
+public class RetrieveImage {
+public static void main(String[] args) {
+try{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Connection con=DriverManager.getConnection(
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+	
+PreparedStatement ps=con.prepareStatement("select * from imgtable");
+ResultSet rs=ps.executeQuery();
+if(rs.next()){//now on 1st row
+			
+Blob b=rs.getBlob(2);//2 means 2nd column data
+byte barr[]=b.getBytes(1,(int)b.length());//1 means first image
+			
+FileOutputStream fout=new FileOutputStream("d:\\sonoo.jpg");
+fout.write(barr);
+		    
+fout.close();
+}//end of if
+System.out.println("ok");
+			
+con.close();
+}catch (Exception e) {e.printStackTrace();	}
+}
+}
+
+Now if you see the d drive, sonoo.jpg image is created.
+
+
+download this example
+

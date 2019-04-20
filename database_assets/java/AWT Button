@@ -1,0 +1,50 @@
+Java AWT Button 
+The button class is used to create a labeled button that has platform independent implementation. The application result in some action when the button is pushed.
+AWT Button Class declaration
+
+public class Button extends Component implements Accessible
+
+Java AWT Button Example
+
+import java.awt.*;
+public class ButtonExample {
+public static void main(String[] args) {
+	Frame f=new Frame("Button Example");
+	Button b=new Button("Click Here");
+	b.setBounds(50,100,80,30);
+	f.add(b);
+	f.setSize(400,400);
+	f.setLayout(null);
+	f.setVisible(true);	
+}
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java AWT Button Example with ActionListener
+
+import java.awt.*;
+import java.awt.event.*;
+public class ButtonExample {
+public static void main(String[] args) {
+	Frame f=new Frame("Button Example");
+	final TextField tf=new TextField();
+	tf.setBounds(50,50, 150,20);
+	Button b=new Button("Click Here");
+	b.setBounds(50,100,60,30);
+	b.addActionListener(new ActionListener(){
+	public void actionPerformed(ActionEvent e){
+            tf.setText("Welcome to Javatpoint.");
+		}
+	});
+	f.add(b);f.add(tf);
+	f.setSize(400,400);
+	f.setLayout(null);
+	f.setVisible(true);	
+}
+}
+
+
+Output:

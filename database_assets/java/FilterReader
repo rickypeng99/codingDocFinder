@@ -1,0 +1,227 @@
+Java FilterReader
+Java FilterReader is used to perform filtering operation on 
+reader
+ stream. It is an abstract class for reading filtered character streams.
+The FilterReader provides default methods that passes all requests to the contained stream. Subclasses of FilterReader should override some of its methods and may also provide additional methods and fields.
+Field
+
+    
+
+        
+Modifier
+
+		
+Type
+
+        
+Field
+
+        
+Description
+
+    
+
+    
+
+        
+protected
+
+		
+Reader
+
+        
+in
+
+        
+The underlying character-input stream.
+
+    
+
+
+Constructors
+
+    
+
+        
+Modifier
+
+		
+Constructor
+
+		
+Description
+
+    
+
+    
+
+        
+protected
+
+        
+FilterReader(Reader in)
+
+        
+It creates a new filtered reader.
+
+    
+
+
+Method
+
+    
+
+	    
+Modifier and Type
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+	    
+void
+
+        
+close()
+
+        
+It closes the stream and releases any system resources associated with it.
+
+    
+
+	  
+
+	    
+void
+
+        
+mark(int readAheadLimit)
+
+        
+It marks the present position in the stream.
+
+    
+
+	  
+
+        
+boolean
+
+        
+markSupported()
+
+        
+It tells whether this stream supports the mark() operation.
+
+    
+
+	  
+
+        
+boolean
+
+        
+ready()
+
+        
+It tells whether this stream is ready to be read.
+
+    
+
+	
+
+        
+int
+
+		
+read()
+
+        
+It reads a single character.
+
+    
+
+	
+
+        
+int
+
+        
+read(char[] cbuf, int off, int len)
+
+        
+It reads characters into a portion of an 
+array
+.
+
+    
+
+	
+
+        
+void
+
+        
+reset()
+
+        
+It resets the stream.
+
+    
+
+	
+
+        
+long
+
+        
+skip(long n)
+
+        
+It skips characters.
+
+    
+
+
+Example
+In this example, we are using "javaFile123.txt" file which contains "India is my country" text in it. Here, we are converting whitespace  with question mark '?'.
+
+import java.io.*;
+class CustomFilterReader extends FilterReader {
+	CustomFilterReader(Reader in) {
+		super(in);
+	}
+	public int read() throws IOException {
+		int x = super.read();
+		if ((char) x == ' ')
+			return ((int) '?');
+		else
+			return x;
+	}
+}
+public class FilterReaderExample {
+	public static void main(String[] args) {
+		try  {
+			Reader reader = new FileReader("javaFile123.txt");
+			CustomFilterReader fr = new CustomFilterReader(reader);
+			int i;
+			while ((i = fr.read()) != -1) {
+				System.out.print((char) i);
+			}
+            fr.close();
+            reader.close();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+}
+
+Output:
+
+India?is?my?country

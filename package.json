@@ -20,6 +20,9 @@
     "express": "^4.16.4",
     "mongoose": "^5.5.0",
     "nodemon": "^1.18.11",
-    "retrieval": "^1.7.2"
+    "retrieval": "^1.7.2",
+    "save": "^2.3.3",
+    "wink-bm25-text-search": "^3.0.1",
+    "wink-nlp-utils": "^2.0.5"
   }
 }

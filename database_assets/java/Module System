@@ -1,0 +1,128 @@
+Java 9 Module System
+Java Module System is a major change in Java 9 version. Java added this feature to collect Java packages and code into a single unit called 
+module
+.
+In earlier versions of Java, there was no concept of module to create modular Java applications, that why size of application increased and difficult to move around. Even JDK itself was too heavy in size, in Java 8, 
+rt.jar
+ file size is around 64MB.
+To deal with situation, 
+Java 9 restructured JDK into set of modules
+ so that we can use only required module for our project.
+Apart from JDK, Java also allows us to create our own modules so that we can develop module based application.
+The module system includes various tools and options that are given below.
+
+
+Includes various options to the Java tools 
+javac, jlink and java
+ where we can specify module paths that locates to the location of module.
+
+
+Modular JAR file is introduced. This JAR contains module-info.class file in its root folder.
+
+
+JMOD format is introduced, which is a packaging format similar to JAR except it can include native code and configuration files.
+
+
+The JDK and JRE both are reconstructed to accommodate modules. It improves performance, security and maintainability.
+
+
+Java defines a new URI scheme for naming modules, classes and resources.
+
+
+Java 9 Modularized JDK
+Java 9 Module
+Module is a collection of Java programs or softwares. To describe a module, a Java file 
+module-info.java
+ is required. This file also known as module descriptor and defines the following
+
+
+Module name
+
+
+What does it export
+
+
+What does it require
+
+
+Module Name
+It is a name of module and should follow the reverse-domain-pattern. Like we name packages, e.g. com.javatpoint.
+How to create Java module
+Creating Java module required the following steps.
+
+
+Create a directory structure
+
+
+Create a module declarator
+
+
+Java source code
+
+
+Create a Directory Structure
+To create module, it is recommended to follow given directory structure, it is same as reverse-domain-pattern, we do to create packages / project-structure in Java.
+Note: The name of the directory containing a module's sources should be equal to the name of the module, e.g. com.javatpoint.
+Create a file 
+module-info.java
+, inside this file, declare a module by using 
+module
+ identifier and provide module name same as the directory name that contains it. In our case, our directory name is com.javatpoint.
+
+module com.javatpoint{
+
+}
+
+Leave module body empty, if it does not has any module dependency. Save this file inside 
+src/com.javatpoint
+ with 
+module-info.java
+ name.
+Java Source Code
+Now, create a Java file to compile and execute module. In our example, we have a 
+Hello.java
+ file that contains the following code.
+
+class Hello{
+	public static void main(String[] args){
+		System.out.println("Hello from the Java module");
+	}
+}
+
+Save this file inside 
+src/com.javatpoint/com/javatpoint/
+ with 
+Hello.java
+ name.
+Compile Java Module
+To compile the module use the following command.
+
+javac -d mods --module-source-path src/ --module com.javatpoint
+
+After compiling, it will create a new directory that contains the following structure.
+Now, we have a compiled module that can be just run.
+Run Module
+To run the compiled module, use the following command.
+
+java --module-path mods/ --module com.javatpoint/com.javatpoint.Hello
+
+Output:
+
+Hello from the Java module
+
+Well, we have successfully created, compiled and executed Java module. 
+Look inside compiled Module Descriptor
+To see the compiled module descriptor use the following command.
+
+javap mods/com.javatpoint/module-info.class
+
+This command will show the following code to the console.
+
+Compiled from "module-info.java"
+module com.javatpoint {
+  requires java.base;
+}
+
+See, we created an empty module but it contains a 
+java.base
+ module. Why? Because all Java modules are linked to java.base module and it is default module.

@@ -1,0 +1,168 @@
+JDBC RowSet
+The instance of 
+RowSet
+ is the java bean component because it has properties and java bean notification mechanism. It is introduced since JDK 5.
+It is the wrapper of ResultSet. It holds tabular data like ResultSet but it is easy and flexible to use.
+The implementation classes of RowSet interface are as follows:
+
+
+JdbcRowSet
+
+
+CachedRowSet
+
+
+WebRowSet
+
+
+JoinRowSet
+
+
+FilteredRowSet
+
+
+Let's see how to create and execute RowSet.
+
+        JdbcRowSet rowSet = RowSetProvider.newFactory().createJdbcRowSet();
+        rowSet.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+        rowSet.setUsername("system");
+        rowSet.setPassword("oracle");
+                 
+        rowSet.setCommand("select * from emp400");
+        rowSet.execute();
+
+It is the new way to get the instance of JdbcRowSet since JDK 7.
+Advantage of RowSet
+The advantages of using RowSet are given below:
+
+
+It is easy and flexible to use
+
+
+It is Scrollable and Updatable bydefault
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Simple example of JdbcRowSet
+Let's see the simple example of JdbcRowSet without event handling code.
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.sql.RowSetEvent;
+import javax.sql.RowSetListener;
+import javax.sql.rowset.JdbcRowSet;
+import javax.sql.rowset.RowSetProvider;
+
+public class RowSetExample {
+        public static void main(String[] args) throws Exception {
+                 Class.forName("oracle.jdbc.driver.OracleDriver");
+	
+	//Creating and Executing RowSet
+        JdbcRowSet rowSet = RowSetProvider.newFactory().createJdbcRowSet();
+        rowSet.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+        rowSet.setUsername("system");
+        rowSet.setPassword("oracle");
+                 
+        rowSet.setCommand("select * from emp400");
+        rowSet.execute();
+                 
+	while (rowSet.next()) {
+                        // Generating cursor Moved event
+                        System.out.println("Id: " + rowSet.getString(1));
+                        System.out.println("Name: " + rowSet.getString(2));
+                        System.out.println("Salary: " + rowSet.getString(3));
+                }
+               
+        }
+}
+
+The output is given below:
+
+Id: 55
+Name: Om Bhim
+Salary: 70000
+Id: 190
+Name: abhi
+Salary: 40000
+Id: 191
+Name: umesh
+Salary: 50000
+
+Full example of Jdbc RowSet with event handling
+To perform event handling with JdbcRowSet, you need to add the instance of 
+RowSetListener
+ in the addRowSetListener method of JdbcRowSet. 
+The RowSetListener interface provides 3 method that must be implemented. They are as follows:
+
+1) public void cursorMoved(RowSetEvent event);
+2) public void rowChanged(RowSetEvent event);
+3) public void rowSetChanged(RowSetEvent event);
+
+Let's write the code to retrieve the data and perform some additional tasks while cursor is moved, cursor is changed or rowset is changed. The event handling operation can't be performed using ResultSet so it is preferred now.
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.sql.RowSetEvent;
+import javax.sql.RowSetListener;
+import javax.sql.rowset.JdbcRowSet;
+import javax.sql.rowset.RowSetProvider;
+
+public class RowSetExample {
+        public static void main(String[] args) throws Exception {
+                 Class.forName("oracle.jdbc.driver.OracleDriver");
+	
+	//Creating and Executing RowSet
+	JdbcRowSet rowSet = RowSetProvider.newFactory().createJdbcRowSet();
+	rowSet.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+	rowSet.setUsername("system");
+	rowSet.setPassword("oracle");
+                 
+        rowSet.setCommand("select * from emp400");
+        rowSet.execute();
+                 
+	//Adding Listener and moving RowSet
+	rowSet.addRowSetListener(new MyListener());
+
+                 while (rowSet.next()) {
+                        // Generating cursor Moved event
+                        System.out.println("Id: " + rowSet.getString(1));
+                        System.out.println("Name: " + rowSet.getString(2));
+                        System.out.println("Salary: " + rowSet.getString(3));
+                }
+               
+        }
+}
+
+class MyListener implements RowSetListener {
+      public void cursorMoved(RowSetEvent event) {
+                System.out.println("Cursor Moved...");
+      }
+     public void rowChanged(RowSetEvent event) {
+                System.out.println("Cursor Changed...");
+     }
+     public void rowSetChanged(RowSetEvent event) {
+                System.out.println("RowSet changed...");
+     }
+}
+
+The output is as follows:
+
+Cursor Moved...
+Id: 55
+Name: Om Bhim
+Salary: 70000
+Cursor Moved...
+Id: 190
+Name: abhi
+Salary: 40000
+Cursor Moved...
+Id: 191
+Name: umesh
+Salary: 50000
+Cursor Moved...

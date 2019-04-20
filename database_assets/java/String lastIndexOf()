@@ -1,0 +1,116 @@
+Java String lastIndexOf()
+The 
+java string lastIndexOf()
+ method returns last index of the given character value or substring. If it is not found, it returns -1. The index counter starts from zero.
+Internal Implementation
+
+ public int lastIndexOf(int ch) {
+        return lastIndexOf(ch, value.length - 1);
+    }
+
+Signature
+There are 4 types of lastIndexOf method in java. The signature of lastIndexOf methods are given below:
+
+
+No.
+Method
+Description
+
+
+1
+int lastIndexOf(int ch)
+returns last index position for the given char value
+
+
+2
+int lastIndexOf(int ch, int fromIndex)
+returns last index position for the given char value and from index
+
+
+3
+int lastIndexOf(String substring)
+returns last index position for the given substring
+
+
+4
+int lastIndexOf(String substring, int fromIndex)
+returns last index position for the given substring and from index
+
+
+Parameters
+ch
+: char value i.e. a single character e.g. 'a'
+fromIndex
+: index position from where index of the char value or substring is retured
+substring
+: substring to be searched in this string
+Returns
+last index of the string
+Java String lastIndexOf() method example
+
+public class LastIndexOfExample{
+public static void main(String args[]){
+String s1="this is index of example";//there are 2 's' characters in this sentence
+int index1=s1.lastIndexOf('s');//returns last index of 's' char value
+System.out.println(index1);//6
+}}
+
+Test it Now
+Output:
+
+6
+
+Java String lastIndexOf(int ch, int fromIndex) Method Example
+Here, we are finding last index from the string by specifying 
+fromIndex
+ 
+
+public class LastIndexOfExample2 {
+	public static void main(String[] args) {
+		String str = "This is index of example";
+		int index = str.lastIndexOf('s',5);
+		System.out.println(index);		
+	}
+}
+
+Test it Now
+Output:
+
+3
+
+Java String lastIndexOf(String substring) Method Example
+It returns the last index of the substring. 
+
+public class LastIndexOfExample3 {
+	public static void main(String[] args) {		 
+		String str = "This is last index of example";
+		int index = str.lastIndexOf("of");
+		System.out.println(index);		
+	}
+}
+
+Test it Now
+Output:
+
+19
+
+Java String lastIndexOf(String substring, int fromIndex) Method Example
+It returns the last index of the substring from the 
+fromIndex
+. 
+
+public class LastIndexOfExample4 {
+	public static void main(String[] args) {		 
+		String str = "This is last index of example";
+		int index = str.lastIndexOf("of", 25);
+		System.out.println(index);
+		index = str.lastIndexOf("of", 10);
+		System.out.println(index); // -1, if not found		
+	}
+}
+
+Test it Now
+Output:
+
+19
+-1

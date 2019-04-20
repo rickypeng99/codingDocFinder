@@ -1,0 +1,56 @@
+How to change TitleBar icon in Java AWT and Swing
+The setIconImage() method of Frame class is used to change the icon of Frame or Window. It changes the icon which is displayed at the left side of Frame or Window.
+The 
+Toolkit
+ class is used to get instance of Image class in 
+AWT
+ and 
+Swing
+.
+Toolkit class is the 
+abstract
+ 
+super
+ class of every implementation in the Abstract Window Toolkit(AWT). Subclasses of Toolkit are used to bind various components. It inherits 
+Object class
+.
+Example to change TitleBar icon in Java AWT
+
+import java.awt.*;   
+class IconExample {   
+IconExample(){   
+Frame f=new Frame();   
+Image icon = Toolkit.getDefaultToolkit().getImage("D:\\icon.png");  
+f.setIconImage(icon);  
+f.setLayout(null);   
+f.setSize(400,400);   
+f.setVisible(true);   
+}   
+public static void main(String args[]){   
+new IconExample();   
+}   
+}  
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Example to change TitleBar icon in Java Swing
+
+import javax.swing.*;
+import java.awt.*;
+class IconExample { 
+IconExample(){ 
+JFrame f=new JFrame(); 
+Image icon = Toolkit.getDefaultToolkit().getImage("D:\\icon.png");
+f.setIconImage(icon);
+f.setLayout(null); 
+f.setSize(200,200); 
+f.setVisible(true); 
+} 
+public static void main(String args[]){ 
+new ToolkitExample(); 
+} 
+}
+
+Output:

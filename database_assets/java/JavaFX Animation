@@ -1,0 +1,197 @@
+JavaFX Animation
+In general, the animation can be defined as the transition which creates the myth of motion for an object. It is the set of transformations applied on an object over the specified duration sequentially so that the object can be shown as it is in motion. 
+This can be done by the rapid display of frames. In JavaFX, the package 
+javafx.animation
+ contains all the classes to apply the animations onto the nodes. All the classes of this package extend the class 
+javafx.animation.Animation.
+JavaFX provides the classes for the transitions like RotateTransition, ScaleTransition, TranslateTransition, FadeTransition, FillTransition, StrokeTransition, etc.
+Basic Transitions 
+The package 
+javafx.animation
+ provides the classes for performing the following transitions. 
+
+
+
+    
+SN
+
+    
+Transition
+
+    
+Description
+
+
+
+
+
+    
+1
+
+    
+Rotate Transition 
+
+    
+Rotate the Node along one of the axes over the specified duration.
+
+
+
+
+
+    
+2
+
+    
+Scale Transition
+
+    
+Animate the scaling of the node over the specified duration.
+
+
+
+
+
+    
+3
+
+    
+Translate Transition 
+
+    
+Translate the node from one position to another over the specified duration. 
+
+
+
+
+
+    
+4
+
+    
+Fade Transition 
+
+    
+Animate the opacity of the node. It keeps updating the opacity of the node over a specified duration in order to reach a target opacity value 
+
+
+
+
+
+    
+5
+
+    
+Fill Transition
+
+    
+Animate the node's fill color so that the fill color of the node fluctuates between the two color values over the specified duration. 
+
+
+
+
+
+    
+6
+
+    
+Stroke Transition 
+
+    
+Animate the node's stroke color so that the stroke color of the node fluctuates between the two color values over the specified duration. 
+
+
+
+
+
+    
+7
+
+    
+Perform the list of transitions on a node in the sequential order.  
+
+    
+
+
+
+
+
+    
+8
+
+    
+Parallel Transition 
+
+    
+Perform the list of transitions on a node in parallel.  
+
+
+
+
+
+    
+9
+
+    
+Path Transition
+
+    
+Move the node along the specified path over the specified duration. 
+
+
+
+
+Steps for applying Animations 
+
+
+Create the target node and configure its properties.
+
+    
+
+    Rectangle rect = new Rectangle(120,100,100,100); 
+    rect.setFill(Color.RED);
+    
+
+    
+
+
+Instantiate the respective transition class
+
+
+
+  RotateTransition rotate = new RotateTransition();
+    
+
+    
+
+
+Set the desired properties like duration, cycle-count, etc. for the transition.
+
+   
+
+    rotate.setDuration(Duration.millis(1000)); 
+    rotate.setAxis(Rotate.Y_Axis);
+    rotate.setCycleCount(500); 
+    
+
+    
+
+
+Set the target node on which the transition will be applied. Use the following method for this purpose. 
+
+
+
+   rotate.setNode(rect);
+    
+
+    
+
+
+Finally, play the transition using the play() method. 
+
+
+
+  rotate.play();
+    
+
+    
+

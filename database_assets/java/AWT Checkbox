@@ -1,0 +1,72 @@
+Java AWT Checkbox
+The Checkbox class is used to create a checkbox. It is used to turn an option on (true) or off (false). Clicking on a Checkbox changes its state from "on" to "off" or from "off" to "on".
+AWT Checkbox Class Declaration
+
+public class Checkbox extends Component implements ItemSelectable, Accessible
+
+Java AWT Checkbox Example
+
+import java.awt.*;
+public class CheckboxExample
+{
+	 CheckboxExample(){
+	   Frame f= new Frame("Checkbox Example");
+	    Checkbox checkbox1 = new Checkbox("C++");
+	    checkbox1.setBounds(100,100, 50,50);
+	    Checkbox checkbox2 = new Checkbox("Java", true);
+	    checkbox2.setBounds(100,150, 50,50);
+	    f.add(checkbox1);
+	    f.add(checkbox2);
+	    f.setSize(400,400);
+	    f.setLayout(null);
+	    f.setVisible(true);
+	 }
+public static void main(String args[])
+{
+    new CheckboxExample();
+}
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java AWT Checkbox Example with ItemListener
+
+import java.awt.*;
+import java.awt.event.*;
+public class CheckboxExample
+{
+	 CheckboxExample(){
+	    Frame f= new Frame("CheckBox Example");
+	    final Label label = new Label();        
+	    label.setAlignment(Label.CENTER);
+	    label.setSize(400,100);
+	    Checkbox checkbox1 = new Checkbox("C++");
+	    checkbox1.setBounds(100,100, 50,50);
+	    Checkbox checkbox2 = new Checkbox("Java");
+	    checkbox2.setBounds(100,150, 50,50);
+	    f.add(checkbox1); f.add(checkbox2); f.add(label);
+	    checkbox1.addItemListener(new ItemListener() {
+	         public void itemStateChanged(ItemEvent e) {             
+	            label.setText("C++ Checkbox: " 
+	            + (e.getStateChange()==1?"checked":"unchecked"));
+	         }
+	      });
+	    checkbox2.addItemListener(new ItemListener() {
+	         public void itemStateChanged(ItemEvent e) {             
+	            label.setText("Java Checkbox: " 
+	            + (e.getStateChange()==1?"checked":"unchecked"));
+	         }
+	      });
+	    f.setSize(400,400);
+	    f.setLayout(null);
+	    f.setVisible(true);
+	 }
+public static void main(String args[])
+{
+    new CheckboxExample();
+}
+}
+
+Output:

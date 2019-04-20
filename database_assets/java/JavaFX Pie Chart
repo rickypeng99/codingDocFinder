@@ -1,0 +1,214 @@
+JavaFX PieChart
+In general, Pie chart is a type of the graph or diagram in which the sectors of a circle are used to represent different proportions of the whole information. The angle of the arc of a sector varies according to the percentage of information represented by that sector.
+In the following image,A pie-chart is shown whose sectors represents the amount of fruits a person is having in its basket.
+In JavaFX, Pie Chart is represented by the class 
+javafx.scene.chart.PieChrt.
+ We need to instantiate this class in order to create pi-chart.
+Properties
+The properties of the class 
+javafx.scene.chart.PieChart
+ are described along with the setter methods in the following table.
+
+
+
+    
+Property
+
+    
+Description
+
+	
+Setter Methods
+
+
+
+
+
+    
+clockwise
+
+    
+It is a boolean type property. Its true value means that the slices get placed clockwise from the start angle.
+
+	
+setClockWise(Boolean value)
+
+
+
+
+
+    
+data
+
+    
+It is an observable List type property. It represents the data which is to be set in the pie chart. The class 
+PieChart.Data
+ is used to deal with the assignment of data to the slices of pie chart.
+
+	
+setData(PieChart.Data value)
+
+
+
+
+
+    
+labelLineLength
+
+    
+It is a double type property. It represents the length of the line from the outside of the pie to the slice labels.
+
+	
+setLabelLineLength(double value)
+
+
+
+
+
+    
+labelsVisible
+
+    
+It is a boolean type property. Its true value means that pie slice labels will be drawn.
+
+	
+setLabelsVisible(boolean value)
+
+
+
+
+
+    
+startAngle
+
+    
+It is a double type property. It represents the angle of the first pie slice.
+
+	
+setStartAngle(double value)
+
+
+
+
+Constructors
+There are the two constructors in the class.
+
+
+public PieChart() :
+ creates the new instance of an empty PieChart.
+
+
+public PieChart(ObservableList 
+ data) :
+ creates the new instance of a pie-chart with the specified data slices.
+
+
+Example 1:
+
+package application;
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Side;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.PieChart.Data;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+public class ChartTest extends Application{
+public static void main(String[] args) {
+	launch(args);
+}
+
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	//Instantiating the pie-chart class 
+	PieChart piechart = new PieChart();
+
+//setting the data of the pie chart.
+	piechart.setData(getChartData());
+	
+	//Creating Layout 
+	StackPane root = new StackPane();
+
+	//Adding pie-chart to the layout 
+	root.getChildren().add(piechart);
+
+	//configuring scene 
+	Scene scene = new Scene(root,400,400);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("PieChart Example");
+	primaryStage.show();
+	
+}
+//creating getChartData method to set the chart data 
+private ObservableList<Data> getChartData() {
+    ObservableList<Data> list = FXCollections.observableArrayList();
+    list.addAll(new PieChart.Data("Javatpoint", 90),
+            new PieChart.Data("Others", 10));
+    return list;
+}
+}
+
+Example 2:
+In the following Example, we have created a piechart which shows the popularities of all the computer programming languages.
+
+package application;
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Side;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.PieChart.Data;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+public class ChartTest extends Application{
+public static void main(String[] args) {
+	launch(args);
+}
+
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	//Instantiating PieChart class 
+	PieChart piechart = new PieChart();
+
+	//Setting pieChart data  
+	piechart.setData(getChartData());
+	piechart.setLegendSide(Side.LEFT);
+	piechart.setTitle("Computer Language Popularities");
+	piechart.setClockwise(false);
+	
+	//Creating layout 
+	StackPane root = new StackPane();
+	
+	//Adding piechart to the layout 
+	root.getChildren().add(piechart);
+	
+	//Configuring Scene and stage object 
+	Scene scene = new Scene(root,800,600);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("PieChart Example");
+	primaryStage.show();
+	
+}
+
+//The method sets the data to the pie-chart.  
+private ObservableList<Data> getChartData() {
+    ObservableList<Data> list = FXCollections.observableArrayList();
+    list.addAll(new PieChart.Data("JavaScript", 30.8),
+    		new PieChart.Data("Ruby", 11.8),
+    		new PieChart.Data("Java", 10.8),
+    		new PieChart.Data("Python", 11.6),
+    		new PieChart.Data("PHP", 7.2),
+    		new PieChart.Data("Objective-C", 10.7),
+    		new PieChart.Data("C", 5.2),
+         	   	new PieChart.Data("C++", 4.3),
+            		new PieChart.Data("Go",3.8),
+            		new PieChart.Data("CSS", 3.8)
+);
+    return list;
+}
+}

@@ -1,0 +1,56 @@
+Example to store image in Oracle database
+You can store images in the database in java by the help of 
+PreparedStatement
+ interface.
+The 
+setBinaryStream()
+ method of PreparedStatement is used to set Binary information into the parameterIndex.
+
+Signature of setBinaryStream method
+The syntax of setBinaryStream() method is given below:
+
+1) public void setBinaryStream(int paramIndex,InputStream stream)
+throws SQLException
+2) public void setBinaryStream(int paramIndex,InputStream stream,long length)
+throws SQLException
+
+For storing image into the database, BLOB (Binary Large Object) datatype is used in the table. For example:
+
+CREATE TABLE  "IMGTABLE" 
+   (	"NAME" VARCHAR2(4000), 
+	"PHOTO" BLOB
+   )
+/
+
+Let's write the jdbc code to store the image in the database. Here we are using d:\\d.jpg for the location of image. You can change it according to the image location.
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Example to store image in the database
+
+import java.sql.*;
+import java.io.*;
+public class InsertImage {
+public static void main(String[] args) {
+try{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Connection con=DriverManager.getConnection(
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			
+PreparedStatement ps=con.prepareStatement("insert into imgtable values(?,?)");
+ps.setString(1,"sonoo");
+
+FileInputStream fin=new FileInputStream("d:\\g.jpg");
+ps.setBinaryStream(2,fin,fin.available());
+int i=ps.executeUpdate();
+System.out.println(i+" records affected");
+		
+con.close();
+}catch (Exception e) {e.printStackTrace();}
+}
+}
+If you see the table, record is stored in the database but image will not be shown. To do so, you need to retrieve the image from the database which we are covering in the next page.
+
+
+download this example
+

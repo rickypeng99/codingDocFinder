@@ -1,0 +1,342 @@
+JavaFX Blend Effect
+In general, blend effect produces the output that is generated as a result of the mixture of two or more different input  nodes. It takes the pixels of two or more nodes, mix them according to the applied blend mode and produces the output node at the same location. 
+If the two images are overlapping each other then the blend mode is applied on the overlapped area of both the images.
+Properties
+The class contains four properties which are described along with their setter methods in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+bottomInput
+
+	
+The bottom input for the blend operation. This is a object type property. 
+
+	
+setBottomInput(Effect value)
+
+
+
+
+
+	
+mode
+
+	
+The mode according to which, the inputs are blend together.  
+
+	
+setMode(BlendMode value)
+
+
+
+
+
+	
+opacity
+
+	
+This is the opacity value of double type. 
+
+	
+setOpacity(double value)
+
+
+
+
+
+	
+topInput
+
+	
+The top input for the blend operation. 
+
+	
+setTopInput(Effect Value)
+
+
+
+
+Constructors
+There are three constructors in this class. 
+
+
+Blend() :
+ Instantiate Blend class with the default values. 
+
+
+Blend(BlendMode mode):
+ Instantiate Blend class with the specified mode
+ 
+
+Blend(BlendMode mode, Effect BottomInput, Effect TopInput):
+ Instantiate Blend class with the specified blend mode, Bottom Input effect and Top Input effect
+ 
+
+Example:
+
+package application;
+import javafx.application.Application; 
+import javafx.scene.Group; 
+import javafx.scene.Scene; 
+import javafx.stage.Stage;
+import javafx.scene.shape.Circle; 
+import javafx.scene.effect.Blend; 
+import javafx.scene.effect.BlendMode; 
+import javafx.scene.effect.ColorInput; 
+import javafx.scene.paint.Color; 
+
+public class BlendExample extends Application { 
+@Override
+public void start(Stage primaryStage) { 
+Circle circle = new Circle(150,200,120);       
+circle.setFill(Color.RED); 
+Blend blend = new Blend();  
+ColorInput color = new ColorInput(70, 20, 160, 150, Color.LIMEGREEN);
+blend.setTopInput(color);
+blend.setMode(BlendMode.ADD);   
+circle.setEffect(blend);       
+Group root = new Group(circle); 
+Scene scene = new Scene(root, 300,350);  
+primaryStage.setTitle("Blend Example"); 
+primaryStage.setScene(scene); 
+primaryStage.show(); 
+}      
+publicstaticvoid main(String args[]){ 
+launch(args); 
+} 
+} 
+
+Blend Mode
+JavaFX provides various blendmodes which can be applied in order to modify the Blend Effect. 
+
+
+
+	
+Blend Mode
+
+	
+Description
+
+	
+Output
+
+
+
+
+
+	
+Add
+
+	
+The color components of the top input are added to that from the bottom input. 
+
+	
+
+
+
+
+
+	
+Blue
+
+	
+Only Blue components of the bottom input gets replaced by the blue component of top input. 
+
+	
+
+
+
+
+
+	
+COLOR_BURN
+
+	
+The bottom input color gets inverted and divided by the top input color components. The result is again inverted to get the output color. 
+
+	
+
+
+
+
+
+	
+COLOR_DODGE
+
+	
+The top color components gets inverted and divide the bottom color components to produce the output color. 
+
+	
+
+
+
+
+
+	
+DARKEN
+
+	
+The color which is darker of the two input component colors is selected to produce the resulting color.  
+
+	
+
+
+
+
+
+	
+DIFFERENCE
+
+	
+The darker of the two input color is subtracted from the lighter color to produce the resulting color. 
+
+	
+
+
+
+
+
+	
+EXCLUSION
+
+	
+The two input color components are multiplied and doubled and then subtracted from the sum of bottom color components to produce the desired color. 
+
+	
+
+
+
+
+
+	
+GREEN
+
+	
+The green component from the bottom input is replaced by the green input of top component. 
+
+	
+
+
+
+
+
+	
+HARD_LIGHT
+
+	
+The input color components are either multiplied or screened depending upon the bottom color. 
+
+	
+
+
+
+
+
+	
+LIGHTEN
+
+	
+The lighter color of the two color components is produced as output. 
+
+	
+
+
+
+
+
+	
+MULTIPLY
+
+	
+Both the color components get multiplied to produce the output color. 
+
+	
+
+
+
+
+
+	
+OVERLAY
+
+	
+The input color components gets either screened or multiplied depending upon the bottom color. 
+
+	
+
+
+
+
+
+	
+RED
+
+	
+The red components of bottom input gets replaced with the red components of top input.  
+
+	
+
+
+
+
+
+	
+SCREEN
+
+	
+Both color components are inverted, multiplied and again inverted to produce the desired result. 
+
+	
+
+
+
+
+
+	
+SOFT_LIGHT
+
+	
+The input color components become lighten or darken. 
+
+	
+
+
+
+
+
+	
+SRC_ATOP
+
+	
+The part of the top input that is lying over the bottom input gets blended. 
+
+	
+
+
+
+
+
+	
+SRC_OVER 
+
+	
+Top input gets blended over bottom input. 
+
+	
+
+
+

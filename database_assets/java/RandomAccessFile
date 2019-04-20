@@ -1,0 +1,242 @@
+Java - RandomAccessFile
+This 
+class
+ is used for reading and writing to random access file. A random access file behaves like a large 
+array
+ of bytes. There is a cursor implied to the array called file  
+pointer
+, by moving the cursor we do the read write operations. If end-of-file is reached before the desired number of byte has been read than EOFException is 
+thrown
+. It is a type of IOException.
+Constructor
+
+    
+
+        
+Constructor
+
+        
+Description
+
+    
+
+    
+
+        
+RandomAccessFile(File file, 
+String
+ mode)
+
+        
+Creates a random access file stream to read from, and optionally to write to, the file specified by the File argument.
+
+    
+
+    
+
+        
+RandomAccessFile(String name, String mode)
+
+        
+Creates a random access file stream to read from, and optionally to write to, a file with the specified name.
+
+    
+
+
+Method
+
+    
+
+        
+Modifier and Type
+
+        
+Method
+
+        
+Method
+
+    
+
+    
+
+        
+void
+
+        
+close()
+
+        
+It closes this random access file stream and releases any system resources associated with the stream.
+
+    
+
+    
+
+        
+FileChannel
+
+        
+getChannel()
+
+        
+It returns the unique  
+FileChannel
+ object associated with this file.
+
+    
+
+    
+
+        
+int
+
+        
+readInt()
+
+        
+It reads a signed 32-bit integer from this file.
+
+    
+
+    
+
+        
+String
+
+        
+readUTF()
+
+        
+It reads in a string from this file.
+
+    
+
+    
+
+        
+void
+
+        
+seek(long pos)
+
+        
+It sets the file-pointer offset, measured from the beginning of this file, at which the next read or write occurs.
+
+    
+
+    
+
+        
+void
+
+        
+writeDouble(double v)
+
+        
+It converts the double argument to a long using the doubleToLongBits method in class Double, and then writes that long value to the file as an eight-byte quantity, high byte first.
+
+    
+
+    
+
+        
+void
+
+        
+writeFloat(float v)
+
+        
+It converts the float argument to an int using the floatToIntBits method in class Float, and then writes that int value to the file as a four-byte quantity, high byte first.
+
+    
+
+    
+
+        
+void
+
+        
+write(int b)
+
+        
+It writes the specified byte to this file.
+
+    
+
+    
+
+        
+int
+
+        
+read()
+
+        
+It reads a byte of data from this file.
+
+    
+
+    
+
+        
+long
+
+        
+length()
+
+        
+It returns the length of this file.
+
+    
+
+    
+
+        
+void
+
+        
+seek(long pos)
+
+        
+It sets the file-pointer offset, measured from the beginning of this file, at which the next read or write occurs.
+
+    
+
+
+Example
+
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
+public class RandomAccessFileExample {
+	static final String FILEPATH ="myFile.TXT";
+	public static void main(String[] args) {
+		try {
+			System.out.println(new String(readFromFile(FILEPATH, 0, 18)));
+			writeToFile(FILEPATH, "I love my country and my people", 31);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private static byte[] readFromFile(String filePath, int position, int size)
+			throws IOException {
+		RandomAccessFile file = new RandomAccessFile(filePath, "r");
+		file.seek(position);
+		byte[] bytes = new byte[size];
+		file.read(bytes);
+		file.close();
+		return bytes;
+	}
+	private static void writeToFile(String filePath, String data, int position)
+			throws IOException {
+		RandomAccessFile file = new RandomAccessFile(filePath, "rw");
+		file.seek(position);
+		file.write(data.getBytes());
+		file.close();
+	}
+}
+
+The myFile.TXT contains  text "This class is used for reading and writing to random access file."
+after running the program it will contains
+This class is used for reading I love my country and my peoplele.

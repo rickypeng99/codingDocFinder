@@ -1,0 +1,124 @@
+Java JSeparator
+The object of JSeparator class is used to provide a general purpose component for implementing divider lines. It is used to draw a line to separate widgets in a Layout. It inherits JComponent class.
+JSeparator class declaration
+
+public class JSeparator extends JComponent implements SwingConstants, Accessible
+
+Commonly used Constructors of JSeparator
+
+     
+
+	     
+Constructor
+
+		 
+Description
+
+	 
+
+	 
+
+         
+JSeparator()
+
+		 
+Creates a new horizontal separator.
+
+     
+
+	 
+
+         
+JSeparator(int orientation)
+
+		 
+Creates a new separator with the specified horizontal or vertical orientation.
+
+     
+
+
+Commonly used Methods of JSeparator
+
+     
+
+	     
+Method
+
+		 
+Description
+
+	 
+
+	 
+
+         
+void setOrientation(int orientation)
+
+		 
+It is used to set the orientation of the separator.
+
+     
+
+	 
+
+         
+int getOrientation()
+
+		 
+It is used to return the orientation of the separator.
+
+     
+
+
+Java JSeparator Example 1
+
+import javax.swing.*;  
+class SeparatorExample  
+{  
+          JMenu menu, submenu;  
+          JMenuItem i1, i2, i3, i4, i5;  
+          SeparatorExample()  {  
+          JFrame f= new JFrame("Separator Example");  
+          JMenuBar mb=new JMenuBar();  
+          menu=new JMenu("Menu");  
+          i1=new JMenuItem("Item 1");  
+          i2=new JMenuItem("Item 2");     
+          menu.add(i1);
+          menu.addSeparator();
+          menu.add(i2);
+          mb.add(menu);  
+          f.setJMenuBar(mb);  
+          f.setSize(400,400);  
+          f.setLayout(null);  
+          f.setVisible(true);  
+}  
+public static void main(String args[])  
+{  
+new SeparatorExample();  
+}}  
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java JSeparator Example 2
+
+import javax.swing.*;  
+import java.awt.*;
+public class SeparatorExample  
+{  
+	public static void main(String args[]) {
+	    JFrame f = new JFrame("Separator Example");	   
+	    f.setLayout(new GridLayout(0, 1));
+	    JLabel l1 = new JLabel("Above Separator");
+	    f.add(l1);
+	    JSeparator sep = new JSeparator();
+	    f.add(sep);
+	    JLabel l2 = new JLabel("Below Separator");
+	    f.add(l2);
+	    f.setSize(400, 100);
+	    f.setVisible(true);
+	  }
+	}  
+
+Output:

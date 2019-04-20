@@ -1,0 +1,179 @@
+Java Duration class
+Java Duration class is used to measures time in seconds and nanoseconds. It inherits the Object class and implements the Comparable interface.
+Java Duration class declaration
+Let's see the declaration of java.time.Duration class.
+
+public final class Duration extends Object 
+implements TemporalAmount, Comparable<Duration>, Serializable
+
+Methods of Java Duration
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+Temporal addTo(Temporal temporal)
+
+        
+It is used to add this duration to the specified temporal object.
+
+    
+
+    
+
+        
+static Duration between(Temporal startInclusive, Temporal endExclusive)
+
+        
+It is used to obtain a Duration representing the duration between two temporal objects.
+
+    
+
+    
+
+        
+long get(TemporalUnit unit)
+
+        
+It is used to get the value of the requested unit.
+
+    
+
+    
+
+        
+boolean isNegative()
+
+        
+It is used to check if this duration is negative, excluding zero.
+
+    
+
+    
+
+        
+boolean isZero()
+
+        
+It is used to check if this duration is zero length.
+
+    
+
+    
+
+        
+Duration minus(Duration duration)
+
+        
+It is used to return a copy of this duration with the specified duration subtracted.
+
+    
+
+    
+
+        
+Duration plus(Duration duration)
+
+        
+It is used to return a copy of this duration with the specified duration added.
+
+    
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Duration Example: get()
+
+import java.time.*;
+import java.time.temporal.ChronoUnit;
+public class DurationExample1 {
+  public static void main(String[] args) {
+    Duration d = Duration.between(LocalTime.NOON,LocalTime.MAX);
+    System.out.println(d.get(ChronoUnit.SECONDS));  
+  }
+}
+
+Test it Now
+Output:
+
+43199
+
+Java Duration Example: isNegative()
+
+import java.time.*;
+public class DurationExample2 {
+  public static void main(String[] args) {
+	  Duration d1 = Duration.between(LocalTime.MAX,LocalTime.NOON);
+	  System.out.println(d1.isNegative());
+	  Duration d2 = Duration.between(LocalTime.NOON,LocalTime.MAX);
+              System.out.println(d2.isNegative());    
+  }
+}
+
+Test it Now
+Output:
+
+true
+false
+
+Java Duration Example: between()
+
+import java.time.*;
+import java.time.temporal.ChronoUnit;
+public class DurationExample3 {
+  public static void main(String[] args) {
+    Duration d = Duration.between(LocalTime.NOON,LocalTime.MAX);
+    System.out.println(d.get(ChronoUnit.SECONDS));  
+  }
+}
+
+Test it Now
+Output:
+
+43199
+
+Java Duration Example: minus()
+
+import java.time.*;
+public class DurationExample4 {
+  public static void main(String[] args) {
+    Duration d1 = Duration.between(LocalTime.NOON,LocalTime.MAX);
+    System.out.println(d1.getSeconds());
+    Duration d2 = d1.minus(d1);
+    System.out.println(d2.getSeconds());
+  }
+}
+
+Test it Now
+Output:
+
+43199
+0
+
+Java Duration Example: plus()
+
+import java.time.*;
+public class DurationExample5 {
+  public static void main(String[] args) {
+    Duration d1 = Duration.between(LocalTime.NOON,LocalTime.MAX);
+    System.out.println(d1.getSeconds());
+    Duration d2 = d1.plus(d1);
+    System.out.println(d2.getSeconds());
+  }
+}
+
+Test it Now
+Output:
+
+43199
+86399

@@ -1,0 +1,183 @@
+Java Instant class
+Java Instant class is used to represent the specific moment on the time line. It inherits the Object class and implements the Comparable interface.
+Java Instant class declaration
+Let's see the declaration of java.time.Instant class.
+
+public final class Instant extends Object 
+implements Temporal, TemporalAdjuster, Comparable<Instant>, Serializable
+
+Methods of Java Instant
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+Temporal adjustInto(Temporal temporal).
+
+        
+It is used to adjust the specified temporal object to have this instant.
+
+    
+
+    
+
+        
+int get(TemporalField field)
+
+        
+It is used to get the value of the specified field from this instant as an int.
+
+    
+
+    
+
+        
+boolean isSupported(TemporalField field)
+
+        
+It is used to check if the specified field is supported.
+
+    
+
+    
+
+        
+Instant minus(TemporalAmount amountToSubtract)
+
+        
+It is used to return a copy of this instant with the specified amount subtracted.
+
+    
+
+    
+
+        
+static Instant now()
+
+        
+It is used to obtain the current instant from the system clock.
+
+    
+
+    
+
+        
+static Instant parse(CharSequence text)
+
+        
+It is used to obtain an instance of Instant from a text string such as 2007-12-03T10:15:30.00Z.
+
+    
+
+    
+
+        
+Instant plus(TemporalAmount amountToAdd)
+
+        
+It is used to return a copy of this instant with the specified amount added.
+
+    
+
+    
+
+        
+Instant with(TemporalAdjuster adjuster)
+
+        
+It is used to return an adjusted copy of this instant.
+
+    
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Instant Example: parse()
+
+import java.time.Instant;
+public class InstantExample1 {
+  public static void main(String[] args) {
+    Instant inst = Instant.parse("2017-02-03T10:37:30.00Z");
+    System.out.println(inst);
+  }
+}
+
+Test it Now
+Output:
+
+2017-02-03T10:37:30Z
+
+Java Instant Example: now()
+
+import java.time.Instant;
+public class InstantExample2 {
+  public static void main(String[] args) {
+    Instant instant = Instant.now();
+    System.out.println(instant);  
+  }
+}
+
+Test it Now
+Output:
+
+2017-02-03T06:11:01.194Z
+
+Java Instant Example: minus()
+
+import java.time.*;
+public class InstantExample3 {
+  public static void main(String[] args) {
+    Instant instant = Instant.parse("2017-02-03T11:25:30.00Z");
+    instant = instant.minus(Duration.ofDays(125));
+    System.out.println(instant); 
+  }
+}
+
+Test it Now
+Output:
+
+2016-10-01T11:25:30Z
+
+Java Instant Example: plus()
+
+import java.time.*;
+public class InstantExample4 {
+  public static void main(String[] args) {
+    Instant inst1 = Instant.parse("2017-02-03T11:25:30.00Z");
+    Instant inst2 = inst1.plus(Duration.ofDays(125));
+    System.out.println(inst2); 
+  }
+}
+
+Test it Now
+Output:
+
+2017-06-08T11:25:30Z
+
+Java Instant Example: isSupported()
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+public class InstantExample5 {
+  public static void main(String[] args) {
+    Instant inst = Instant.parse("2017-02-03T11:35:30.00Z");
+    System.out.println(inst.isSupported(ChronoUnit.DAYS));
+    System.out.println(inst.isSupported(ChronoUnit.YEARS));    
+  }
+}
+
+Test it Now
+Output:
+
+true
+false

@@ -1,0 +1,67 @@
+Java 7 Catch Multiple Exceptions
+Java allows you to catch multiple type exceptions in a single catch block. It was introduced in Java 7 and helps to optimize code.
+You can use vertical bar (|) to separate multiple exceptions in catch block.
+An old, prior to Java 7 approach to handle multiple exceptions.
+Catching Multiple Exception Types Example 1
+
+public class MultipleExceptionExample{  
+	public static void main(String args[]){  
+		try{  
+			int array[] = newint[10];  
+			array[10] = 30/0;  
+		}  
+		catch(ArithmeticException e){
+			System.out.println(e.getMessage());
+		}  
+		catch(ArrayIndexOutOfBoundsException e){
+			System.out.println(e.getMessage());
+		}  
+		catch(Exception e){
+			System.out.println(e.getMessage());
+		}  
+	 }  
+}
+
+Output:
+
+/ by zero
+
+Catching Multiple Exception Types Example 2
+What Java 7 provides us:
+
+public class MultipleExceptionExample{  
+	public static void main(String args[]){  
+		try{  
+			int array[] = newint[10];  
+			array[10] = 30/0;  
+		}  
+		catch(ArithmeticException | ArrayIndexOutOfBoundsException e){
+			System.out.println(e.getMessage());
+		}  
+	 }  
+}
+
+Output:
+
+/ by zero
+
+Catching Multiple Exception Types Example 3
+
+public class MultipleExceptionExample{  
+	public static void main(String args[]){  
+		try{  
+			int array[] = newint[10];  
+			array[10] = 30/0;  
+		}  
+		catch(Exception | ArithmeticException | ArrayIndexOutOfBoundsException e){
+			System.out.println(e.getMessage());
+		}  
+	 }  
+}
+
+Output:
+
+Compile-time error: The exception ArithmeticException is already caught by the alternative Exception
+
+So here, in case when your are catching multiple exceptions, follow the rule of generalized to more specialized. It means that, if you are using super (general) class, don't use child (specialized) class.
+Note - Catch block which handles more than one exception type makes the catch parameter implicitly final. In the above example, the catch parameter "e" is final and therefore you cannot assign any value to it.

@@ -1,0 +1,165 @@
+JavaFX Lighting Effect
+This effect is used to lighten a node from a light source. There are various kinds of light sources i.e. Point, Distant and Spot. The class 
+javafx.scene.effect.Lighting
+ represents the lighting effect. We need to instantiate this class in order to generate an appropriate effect on the node. 
+Properties
+The properties of the class along with the setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+bumpInput
+
+	
+It is a Effect object type property. It represents the Bump map input for the effect.  
+
+	
+setBumpInput(Effect value)
+
+
+
+
+
+	
+contentInput
+
+	
+It is a Effect object type property. It represents the content input for the Effect. 
+
+	
+setContentInput(Effect value)
+
+
+
+
+
+	
+diffuseConstant
+
+	
+It is a Double type property. It represents the diffuse constant. 
+
+	
+setDiffuseConstant(Double value)
+
+
+
+
+
+	
+light
+
+	
+It is a Light object type property. It represents the light source for the effect.  
+
+	
+setLight(Light value)
+
+
+
+
+
+	
+specularConstant
+
+	
+It is a double type property. It represents specular constant. 
+
+	
+setSpecularConstant(double value)
+
+
+
+
+
+	
+specularExponent
+
+	
+It is a double type property. It represents Specular Exponent. 
+
+	
+setSpecularExponent(double value)
+
+
+
+
+
+	
+surfaceScale
+
+	
+It is double type property. It represents Surface scale of the light. 
+
+	
+setSurfaceScale(double value)
+
+
+
+
+Constructors 
+The class contains two constructors. 
+
+
+public  Lighting() :
+ creates a new instance of Lighting with the default value of light source. 
+
+
+public Lighting(Light light) :
+ creates a new instance of Lighting with the specified value of light source. 
+ 
+
+Example:
+
+package application;
+import javafx.application.Application; 
+import javafx.scene.Group; 
+import javafx.scene.Scene; 
+import javafx.scene.effect.Lighting;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color; 
+import javafx.stage.Stage; 
+import javafx.scene.text.Font; 
+import javafx.scene.text.FontWeight; 
+import javafx.scene.text.Text; 
+
+public class LightingExample1 extends Application { 
+@Override
+public void start(Stage stage) {  
+Text text = new Text();       
+text.setFont(Font.font(null, FontWeight.BOLD, 35));        
+text.setX(60); 
+text.setY(100); 
+text.setText("Welcome to JavaTpoint");        
+text.setFill(Color.GREEN);   
+Image img = new Image("https://www.javatpoint.com/operating-system/images/operating-system-tutorial.png");
+ImageView imgview = new ImageView(img);
+imgview.setX(150);
+imgview.setY(200);
+Lighting lighting = new Lighting(); 
+text.setEffect(lighting);       
+imgview.setEffect(lighting); 
+Group root = new Group(text,imgview);   
+Scene scene = new Scene(root, 580, 420);  
+stage.setTitle("lighting effect example");  
+stage.setScene(scene);
+stage.show();         
+} 
+public static void main(String args[]){ 
+launch(args); 
+} 
+}

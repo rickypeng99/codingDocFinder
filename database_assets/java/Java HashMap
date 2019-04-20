@@ -1,0 +1,380 @@
+Java HashMap class
+Java HashMap class implements the map interface by using a hash table. It inherits AbstractMap class and implements Map interface.
+Points to remember
+
+
+Java HashMap class contains values based on the key.
+
+
+Java HashMap class contains only unique keys.
+
+
+Java HashMap class may have one null key and multiple null values.
+
+
+Java HashMap class is non synchronized.
+
+
+Java HashMap class maintains no order.
+
+
+The initial default capacity of Java HashMap class is 16 with a load factor of 0.75.
+
+
+Hierarchy of HashMap class
+As shown in the above figure, HashMap class extends AbstractMap class and implements Map interface.
+HashMap class declaration
+Let's see the declaration for java.util.HashMap class.
+
+public class HashMap
+ extends AbstractMap
+ implements Map
+, Cloneable, Serializable
+
+HashMap class Parameters
+Let's see the Parameters for java.util.HashMap class.
+
+
+K
+: It is the type of keys maintained by this map.
+
+
+V
+: It is the type of mapped values.
+
+
+Constructors of Java HashMap class
+
+
+Constructor
+Description
+
+
+HashMap()
+It is used to construct a default HashMap.
+
+
+HashMap(Map<? extends K,? extends V> m)
+It is used to initialize the hash map by using the elements of the given Map object m.
+
+
+HashMap(int capacity)
+It is used to initializes the capacity of the hash map to the given integer value, capacity.
+
+
+HashMap(int capacity, float loadFactor)
+It is used to initialize both the capacity and load factor of the hash map by using its arguments.
+
+
+Methods of Java HashMap class
+
+
+Method
+Description
+
+
+void clear()
+It is used to remove all of the mappings from this map.
+
+
+boolean isEmpty()
+It is used to return true if this map contains no key-value mappings.
+
+
+Object clone()
+It is used to return a shallow copy of this HashMap instance: the keys and values themselves are not cloned.
+
+
+Set entrySet()
+It is used to return a collection view of the mappings contained in this map.
+
+
+Set keySet()
+It is used to return a set view of the keys contained in this map.
+
+
+ V put(Object key, Object value)
+It is used to insert an entry in the map.
+
+
+void putAll(Map map)
+It is used to insert the specified map in the map.
+
+
+V putIfAbsent(K key, V value)
+It inserts the specified value with the specified key in the map only if it is not already specified. 
+
+
+V remove(Object key)
+It is used to delete an entry for the specified key.
+
+
+boolean remove(Object key, Object value)
+It removes the specified values with the associated specified keys from the map.
+
+
+V compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)
+It is used to compute a mapping for the specified key and its current mapped value (or null if there is no current mapping).
+
+
+V computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction)
+It is used to compute its value using the given mapping function, if the specified key is not already associated with a value (or is mapped to null), and enters it into this map unless null.
+
+
+V computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)
+It is used to compute a new mapping given the key and its current mapped value if the value for the specified key is present and non-null.
+
+
+boolean containsValue(Object value)
+This method returns true if some value equal to the value exists within the map, else return false.
+
+
+boolean containsKey(Object key)
+This method returns true if some key equal to the key exists within the map, else return false.
+
+
+boolean equals(Object o)
+It is used to compare the specified Object with the Map.
+
+
+void forEach(BiConsumer<? super K,? super V> action)
+It performs the given action for each entry in the map until all entries have been processed or the action throws an exception.
+
+
+V get(Object key)
+This method returns the object that contains the value associated with the key.
+
+
+V getOrDefault(Object key, V defaultValue)
+
+It returns the value to which the specified key is mapped, or defaultValue if the map contains no mapping for the key.
+
+
+boolean isEmpty()
+This method returns true if the map is empty; returns false if it contains at least one key.
+
+
+V merge(K key, V value, BiFunction<? super V,? super V,? extends V> remappingFunction)
+If the specified key is not already associated with a value or is associated with null, associates it with the given non-null value.
+
+
+V replace(K key, V value)
+It replaces the specified value for a specified key.
+
+
+boolean replace(K key, V oldValue, V newValue)
+It replaces the old value with the new value for a specified key.
+
+
+void replaceAll(BiFunction<? super K,? super V,? extends V> function)
+It replaces each entry's value with the result of invoking the given function on that entry until all entries have been processed or the function throws an exception.
+
+
+Collection
+ values()
+It returns a collection view of the values contained in the map.
+
+
+int size()
+This method returns the number of entries in the map.
+
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java HashMap example to add() elements
+Here, we see different ways to insert elements.
+
+import java.util.*;
+class HashMap1{
+ public static void main(String args[]){
+   HashMap
+ hm=new HashMap
+();  
+	System.out.println("Initial list of elements: "+hm);
+	  hm.put(100,"Amit");  
+	  hm.put(101,"Vijay");  
+	  hm.put(102,"Rahul"); 
+	 
+	  System.out.println("After invoking put() method ");
+	  for(Map.Entry m:hm.entrySet()){  
+	   System.out.println(m.getKey()+" "+m.getValue());  
+	  }
+	  
+	  hm.putIfAbsent(103, "Gaurav");
+	  System.out.println("After invoking putIfAbsent() method ");
+	  for(Map.Entry m:hm.entrySet()){  
+		   System.out.println(m.getKey()+" "+m.getValue());  
+		  }
+	  HashMap
+ map=new HashMap
+();
+	  map.put(104,"Ravi");
+	  map.putAll(hm);
+	  System.out.println("After invoking putAll() method ");
+	  for(Map.Entry m:map.entrySet()){  
+		   System.out.println(m.getKey()+" "+m.getValue());  
+		  }
+ }
+}
+
+
+Initial list of elements: {}
+After invoking put() method 
+100 Amit
+101 Vijay
+102 Rahul
+After invoking putIfAbsent() method 
+100 Amit
+101 Vijay
+102 Rahul
+103 Gaurav
+After invoking putAll() method 
+100 Amit
+101 Vijay
+102 Rahul
+103 Gaurav
+104 Ravi
+
+
+Java HashMap example to remove() elements
+Here, we see different ways to remove elements.
+
+import java.util.*;
+public class HashMap2 {
+   public static void main(String args[]) {
+  	HashMap
+ map=new HashMap
+();  	  
+	  map.put(100,"Amit");  
+	  map.put(101,"Vijay");  
+	  map.put(102,"Rahul");
+	  map.put(103, "Gaurav");
+	System.out.println("Initial list of elements: "+map);
+	//key-based removal
+	map.remove(100);
+	System.out.println("Updated list of elements: "+map);
+	//value-based removal
+	map.remove(101);
+	System.out.println("Updated list of elements: "+map);
+	//key-value pair based removal
+	map.remove(102, "Rahul");
+	System.out.println("Updated list of elements: "+map);
+   }    
+}
+
+Output:
+
+Initial list of elements: {100=Amit, 101=Vijay, 102=Rahul, 103=Gaurav}
+Updated list of elements: {101=Vijay, 102=Rahul, 103=Gaurav}
+Updated list of elements: {102=Rahul, 103=Gaurav}
+Updated list of elements: {103=Gaurav}
+
+Java HashMap example to replace() elements
+Here, we see different ways to replace elements.
+
+import java.util.*;
+class HashMap3{
+ public static void main(String args[]){
+   HashMap
+ hm=new HashMap
+();  
+	  hm.put(100,"Amit");  
+	  hm.put(101,"Vijay");  
+	  hm.put(102,"Rahul"); 
+	  System.out.println("Initial list of elements:");
+	 for(Map.Entry m:hm.entrySet())
+	 {
+		System.out.println(m.getKey()+" "+m.getValue()); 
+	 }
+	 System.out.println("Updated list of elements:");
+	 hm.replace(102, "Gaurav");
+	 for(Map.Entry m:hm.entrySet())
+	 {
+		System.out.println(m.getKey()+" "+m.getValue()); 
+	 }
+	 System.out.println("Updated list of elements:");
+	 hm.replace(101, "Vijay", "Ravi");
+	 for(Map.Entry m:hm.entrySet())
+	 {
+		System.out.println(m.getKey()+" "+m.getValue()); 
+	 } 
+	 System.out.println("Updated list of elements:");
+	 hm.replaceAll((k,v) -> "Ajay");
+	 for(Map.Entry m:hm.entrySet())
+	 {
+		System.out.println(m.getKey()+" "+m.getValue()); 
+	 }
+ }
+}
+
+
+Initial list of elements:
+100 Amit
+101 Vijay
+102 Rahul
+Updated list of elements:
+100 Amit
+101 Vijay
+102 Gaurav
+Updated list of elements:
+100 Amit
+101 Ravi
+102 Gaurav
+Updated list of elements:
+100 Ajay
+101 Ajay
+102 Ajay
+
+Difference between HashSet and HashMap
+HashSet contains only values whereas HashMap contains an entry(key and value).
+Java HashMap Example: Book
+
+import java.util.*;  
+class Book {  
+int id;  
+String name,author,publisher;  
+int quantity;  
+public Book(int id, String name, String author, String publisher, int quantity) {  
+    this.id = id;  
+    this.name = name;  
+    this.author = author;  
+    this.publisher = publisher;  
+    this.quantity = quantity;  
+}  
+}  
+public class MapExample {  
+public static void main(String[] args) {  
+    //Creating map of Books  
+    Map
+ map=new HashMap
+();  
+    //Creating Books  
+    Book b1=new Book(101,"Let us C","Yashwant Kanetkar","BPB",8);  
+    Book b2=new Book(102,"Data Communications & Networking","Forouzan","Mc Graw Hill",4);  
+    Book b3=new Book(103,"Operating System","Galvin","Wiley",6);  
+    //Adding Books to map 
+    map.put(1,b1);
+    map.put(2,b2);
+    map.put(3,b3);
+    
+    //Traversing map
+    for(Map.Entry
+ entry:map.entrySet()){  
+    	int key=entry.getKey();
+    	Book b=entry.getValue();
+        System.out.println(key+" Details:");
+        System.out.println(b.id+" "+b.name+" "+b.author+" "+b.publisher+" "+b.quantity); 
+    }  
+}  
+}  
+
+Output:
+
+1 Details:
+101 Let us C Yashwant Kanetkar BPB 8
+2 Details:
+102 Data Communications & Networking Forouzan Mc Graw Hill 4
+3 Details:
+103 Operating System Galvin Wiley 6

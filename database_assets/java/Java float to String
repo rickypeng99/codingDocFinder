@@ -1,0 +1,66 @@
+Java Convert float to String
+We can convert 
+float to String in java
+ using 
+String.valueOf()
+ and 
+Float.toString()
+ methods.
+Scenario
+It is generally used if we have to display float value in textfield because everything is displayed as a string in form.
+1) String.valueOf()
+The String.valueOf() is an overloaded method. It can be used to convert float to String. The valueOf() is the static method of String class. The 
+signature
+ of valueOf() method for the float conversion is given below:
+
+public static String valueOf(float f)
+
+Java float to String Example: String.valueOf()
+Let's see the simple code to convert float to String in java.
+
+float f=12.3F;//F is the suffix for float
+String s=String.valueOf(f);
+
+Example:
+
+public class FloatToStringExample1{
+public static void main(String args[]){
+float f=12.3F;//F is the suffix for float
+String s=String.valueOf(f);
+System.out.println(s);
+}}
+
+Test it Now
+Output:
+
+12.3
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+2) Float.toString()
+The Float.toString() method also converts float to String. The toString() is the static method of Float class. The 
+signature
+ of toString() method is given below:
+
+public static String toString(float f)
+
+Java float to String Example: Float.toString()
+Let's see the simple code to convert float to String in java using Float.toString() method.
+
+float f=89.7F;
+String s=Float.toString(f);
+
+Example:
+
+public class FloatToStringExample2{
+public static void main(String args[]){
+float f=89.7F;
+String s=Float.toString(f);
+System.out.println(s);
+}}
+
+Test it Now
+Output:
+
+89.7

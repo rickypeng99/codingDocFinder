@@ -1,0 +1,188 @@
+Java ZonedDateTime class
+Java ZonedDateTime class is an immutable representation of a date-time with a time-zone. It inherits Object class and implements the ChronoZonedDateTime interface.
+ZonedDateTime class is used to store all date and time fields, to a precision of nanoseconds, and a time-zone with a zone offset used to handle ambiguous local date-times.
+Java ZonedDateTime class declaration
+Let's see the declaration of java.time.ZonedDateTime class.
+
+public final class ZonedDateTime extends Object 
+implements Temporal, ChronoZonedDateTime<LocalDate>, Serializable
+
+Methods of Java ZonedDateTime
+
+     
+
+         
+Method
+
+		 
+Description
+
+     
+
+     
+
+         
+String format(DateTimeFormatter formatter)
+
+         
+It is used to format this date-time using the specified formatter.
+
+     
+
+     
+
+         
+int get(TemporalField field)
+
+         
+It is used to get the value of the specified field from this date-time as an int.
+
+     
+
+     
+
+         
+ZoneId getZone()
+
+         
+It is used to get the time-zone, such as 'Asia/Kolkata'.
+
+     
+
+	 
+
+         
+ZonedDateTime withZoneSameInstant(ZoneId zone)
+
+         
+It is used to return a copy of this date-time with a different time-zone, retaining the instant.
+
+     
+
+	 
+
+         
+static ZonedDateTime	now()
+
+         
+It is used to obtain the current date-time from the system clock in the default time-zone.
+
+     
+
+	 
+
+         
+static ZonedDateTime	of(LocalDate date, LocalTime time, ZoneId zone)
+
+         
+It is used to obtain an instance of ZonedDateTime from a local date and time.
+
+     
+
+	 
+
+         
+ZonedDateTime minus(long amountToSubtract, TemporalUnit unit)
+
+         
+It is used to return a copy of this date-time with the specified amount subtracted.
+
+     
+
+	 
+
+         
+ZonedDateTime plus(long amountToAdd, TemporalUnit unit)
+
+         
+It is used to return a copy of this date-time with the specified amount added.
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java ZonedDateTime class Example
+
+import java.time.ZonedDateTime;
+public class ZonedDateTimeExample1{
+  public static void main(String[] args) {
+    ZonedDateTime zone = ZonedDateTime.parse("2016-10-05T08:20:10+05:30[Asia/Kolkata]");
+    System.out.println(zone);
+  }
+}
+
+Test it Now
+Output:
+
+2016-10-05T08:20:10+05:30[Asia/Kolkata]
+
+Java ZonedDateTime class Example: of() and withZoneSameInstant()
+
+import java.time.*;
+public class ZonedDateTimeExample2{
+  public static void main(String[] args) {
+    LocalDateTime  ldt = LocalDateTime.of(2017, Month.JANUARY,  19,   15,   26);
+    ZoneId  india = ZoneId.of("Asia/Kolkata"); 
+    ZonedDateTime zone1  = ZonedDateTime.of(ldt, india); 
+    System.out.println("In India Central Time Zone: " + zone1);
+    ZoneId  tokyo = ZoneId.of("Asia/Tokyo"); 
+    ZonedDateTime zone2   = zone1.withZoneSameInstant(tokyo); 
+    System.out.println("In Tokyo Central Time Zone:"  + zone2);
+  }
+}
+
+Test it Now
+Output:
+
+In India Central Time Zone: 2017-01-19T15:26+05:30[Asia/Kolkata]
+In Tokyo Central Time Zone:2017-01-19T18:56+09:00[Asia/Tokyo]
+
+Java ZonedDateTime class Example: getZone()
+
+import java.time.ZonedDateTime;
+public class ZonedDateTimeExample3{
+  public static void main(String[] args) {
+    ZonedDateTime zone =ZonedDateTime.now();
+    System.out.println(zone.getZone());
+  } 
+}
+
+Test it Now
+Output:
+
+Asia/Kolkata
+
+Java ZonedDateTime class Example: minus()
+
+import java.time.Period;
+import java.time.ZonedDateTime;
+public class ZonedDateTimeExample4 {
+  public static void main(String[] args) {
+    ZonedDateTime zone= ZonedDateTime.now();
+    ZonedDateTime m = zone.minus(Period.ofDays(126));
+    System.out.println(m);
+  } 
+}
+
+Test it Now
+Output:
+
+2016-09-15T12:54:01.354+05:30[Asia/Kolkata]
+
+Java ZonedDateTime class Example: plus()
+
+import java.time.*;
+public class ZonedDateTimeExample5{
+  public static void main(String[] args) {
+    ZonedDateTime zone= ZonedDateTime.now();
+    ZonedDateTime p = zone.plus(Period.ofDays(126));
+    System.out.println(p);
+  } 
+}
+
+Test it Now
+Output:
+
+2017-05-25T12:56:12.417+05:30[Asia/Kolkata]

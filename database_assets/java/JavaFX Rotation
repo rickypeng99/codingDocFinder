@@ -1,0 +1,162 @@
+JavaFX Rotation
+Rotation can be defined as the process of rotating an object by a certain angle θ (theta). In JavaFX, the class 
+javafx.scene.transform.Rotate
+ represents the Rotation transform. 
+The image illustrates the rotation transform. the rectangle shown in the image is rotated along the Y-axis by the angle θ. The coordinates of the rectangle gets changed due to the rotation while the edges remains of the same length. 
+Properties
+The properties of the class along with the setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+angle
+
+	
+It is a double type property. It represents the angle of rotation in degrees. 
+
+	
+setAngle(double value)
+
+
+
+
+
+	
+axis
+
+	
+It is a object type property. It represents the axis of rotation. 
+
+	
+setAxis(Point3D value)
+
+
+
+
+
+	
+pivotX
+
+	
+It is a double type property. It represents the X coordinate of rotation pivot point. 
+
+	
+setPivotX(double value)
+
+
+
+
+
+	
+pivotY
+
+	
+It is a double type property. It represents the Y coordinate of rotation pivot point. 
+
+	
+setPivotY(double value)
+
+
+
+
+
+	
+pivotZ
+
+	
+It is a double type property. It represents the Z coordinate of rotation pivot point. 
+
+	
+setPivotZ(double value)
+
+
+
+
+Constructors
+The class contains six constructors. 
+
+
+public Rotate() :
+ creates the rotate transform with the default parameters. 
+
+
+public Rotate(double angle) :
+ creates the rotate transform with the specified angle measured in degrees. Pivot points are set to (0,0). 
+
+
+public Rotate(double angle, Point3D axis) :
+ creates the 3D rotate transform with the specified transform. Pivot points are set to (0,0,0).
+ 
+
+public Rotate(double angle, double pivotX, double pivotY) :
+ creates the Rotate transform with the specified angle and pivot coordinate (x,y).
+ 
+
+public Rotate(double angle, double pivotX, double pivotY, double pivotZ) :
+ creates the Rotate transform with the specified angle and 3D pivot coordinate (x,y,z). 
+
+
+public Rotate(double angle, double pivotX, double pivotY, double pivotZ,Point3D Axis) :
+ creates a 3D Rotate transform with the specified angle and pivot coordinate (x,y,z).
+
+
+Example:
+The following example illustrates the implementation of Rotation transform. Here, we have created two rectangles. One is filled with the lime-green color while the other is filled with the dark-grey color. The dark-grey rectangle is rotated with the angle 30 degree along the pivot point coordinates (100,300). 
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
+public class RotateExample extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	// creating the rectangles 
+	Rectangle rect1 = new Rectangle(100,100,200,200);
+	Rectangle rect2 = new Rectangle(100,100,200,200);
+	
+	// setting the color and stroke for the Rectangles 	
+	rect1.setFill(Color.LIMEGREEN);
+	rect2.setFill(Color.DARKGREY);
+	rect1.setStroke(Color.BLACK);
+	rect2.setStroke(Color.BLACK);
+	
+	// instantiating the Rotate class. 
+	Rotate rotate = new Rotate();
+	
+	//setting properties for the rotate object. 
+	rotate.setAngle(30);
+	rotate.setPivotX(100);
+	rotate.setPivotY(300);
+	
+	//rotating the 2nd rectangle. 
+	rect2.getTransforms().add(rotate);
+	
+	Group root = new Group();
+	root.getChildren().addAll(rect1,rect2);
+	Scene scene = new Scene(root,500,420);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Rotation Example");
+	primaryStage.show();
+}
+public static void main(String[] args) {
+	launch(args);
+}
+}

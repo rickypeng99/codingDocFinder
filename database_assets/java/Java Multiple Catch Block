@@ -1,0 +1,167 @@
+Java catch multiple exceptions
+Java Multi-catch block
+A try block can be followed by one or more catch blocks. Each catch block must contain a different exception handler. So, if you have to perform different tasks at the occurrence of different exceptions, use java multi-catch block.
+Points to remember
+
+
+At a time only one exception occurs and at a time only one catch block is executed.
+
+
+All catch blocks must be ordered from most specific to most general, i.e. catch for ArithmeticException must come before catch for Exception.
+
+
+Example 1
+Let's see a simple example of java multi-catch block.
+
+public class MultipleCatchBlock1 {
+
+	public static void main(String[] args) {
+		
+		   try{  
+			    int a[]=new int[5];  
+			    a[5]=30/0;  
+			   }  
+			   catch(ArithmeticException e)
+		          {
+				   System.out.println("Arithmetic Exception occurs");
+				  }  
+			   catch(ArrayIndexOutOfBoundsException e)
+		          {
+				   System.out.println("ArrayIndexOutOfBounds Exception occurs");
+				  }  
+			   catch(Exception e)
+		          {
+				   System.out.println("Parent Exception occurs");
+				  }  		  
+			   System.out.println("rest of the code");  
+	}
+}
+
+Test it Now
+Output:
+
+Arithmetic Exception occurs
+rest of the code
+
+Example 2
+
+public class MultipleCatchBlock2 {
+
+	public static void main(String[] args) {
+		
+		   try{  
+			    int a[]=new int[5];  
+			  
+			    System.out.println(a[10]);
+			   }  
+			   catch(ArithmeticException e)
+		          {
+				   System.out.println("Arithmetic Exception occurs");
+				  }  
+			   catch(ArrayIndexOutOfBoundsException e)
+		          {
+				   System.out.println("ArrayIndexOutOfBounds Exception occurs");
+				  }  
+			   catch(Exception e)
+		          {
+				   System.out.println("Parent Exception occurs");
+				  }  		  
+			   System.out.println("rest of the code");  
+	}
+}
+
+Test it Now
+Output:
+
+ArrayIndexOutOfBounds Exception occurs
+rest of the code
+
+Example 3
+In this example, try block contains two exceptions. But at a time only one exception occurs and its corresponding catch block is invoked.
+
+public class MultipleCatchBlock3 {
+
+	public static void main(String[] args) {
+		
+		   try{  
+			    int a[]=new int[5];  
+			    a[5]=30/0;  
+			    System.out.println(a[10]);
+			   }  
+			   catch(ArithmeticException e)
+		          {
+				   System.out.println("Arithmetic Exception occurs");
+				  }  
+			   catch(ArrayIndexOutOfBoundsException e)
+		          {
+				   System.out.println("ArrayIndexOutOfBounds Exception occurs");
+				  }  
+			   catch(Exception e)
+		          {
+				   System.out.println("Parent Exception occurs");
+				  }  		  
+			   System.out.println("rest of the code");  
+	}
+}
+
+Test it Now
+Output:
+
+Arithmetic Exception occurs
+rest of the code
+
+Example 4
+In this example, we generate NullPointerException, but didn't provide the corresponding exception type. In such  case, the catch block containing the parent exception class 
+Exception
+ will invoked.
+
+public class MultipleCatchBlock4 {
+
+	public static void main(String[] args) {
+		
+		   try{  
+			    String s=null;
+			    System.out.println(s.length());
+			   }  
+			   catch(ArithmeticException e)
+		          {
+				   System.out.println("Arithmetic Exception occurs");
+				  }  
+			   catch(ArrayIndexOutOfBoundsException e)
+		          {
+				   System.out.println("ArrayIndexOutOfBounds Exception occurs");
+				  }  
+			   catch(Exception e)
+		          {
+				   System.out.println("Parent Exception occurs");
+				  }  		  
+			   System.out.println("rest of the code");  
+	}
+}
+
+Test it Now
+Output:
+
+Parent Exception occurs
+rest of the code
+
+Example 5
+Let's see an example, to handle the exception without maintaining the order of exceptions (i.e. from most specific to most general).
+
+class MultipleCatchBlock5{  
+  public static void main(String args[]){  
+   try{  
+    int a[]=new int[5];  
+    a[5]=30/0;  
+   }  
+   catch(Exception e){System.out.println("common task completed");}  
+   catch(ArithmeticException e){System.out.println("task1 is completed");}  
+   catch(ArrayIndexOutOfBoundsException e){System.out.println("task 2 completed");}  
+   System.out.println("rest of the code...");  
+ }  
+} 
+
+Test it Now
+Output:
+
+Compile-time error

@@ -1,0 +1,68 @@
+Java Convert String to char
+We can convert 
+String to char in java
+ using 
+charAt()
+ method of String class.
+The charAt() method returns a single character only. To get all characters, you can use loop.
+Signature
+The charAt() method returns a single character of specified index. The 
+signature
+ of charAt() method is given below:
+
+public char charAt(int index)
+
+Java String to char Example: charAt() method
+Let's see the simple code to convert String to char in java using charAt() method.
+
+String s="hello";
+char c=s.charAt(0);//returns h
+
+Let's see the simple example of converting String to char in java.
+
+public class StringToCharExample1{
+public static void main(String args[]){
+String s="hello";
+char c=s.charAt(0);//returns h
+System.out.println("1st character is: "+c);
+}}
+
+Test it Now
+Output:
+
+1st character is: h
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Let's see another example to convert all characters of a string into character.
+
+public class StringToCharExample2{
+public static void main(String args[]){
+String s="hello";  
+for(int i=0; i
+Test it Now
+Output:
+
+char at 0 index is: h
+char at 1 index is: e
+char at 2 index is: l
+char at 3 index is: l
+char at 4 index is: o
+
+Java String to char Example: toCharArray() method
+Let's see the simple code to convert String to char in java using toCharArray() method. The toCharArray() method of String class converts this string into character array.
+
+public class StringToCharExample3{
+public static void main(String args[]){
+String s1="hello";  
+char[] ch=s1.toCharArray();  
+for(int i=0;i
+Test it Now
+Output:
+
+char at 0 index is: h
+char at 1 index is: e
+char at 2 index is: l
+char at 3 index is: l
+char at 4 index is: o

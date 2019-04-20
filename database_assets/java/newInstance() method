@@ -1,0 +1,36 @@
+newInstance() method
+
+The 
+newInstance()
+ method of 
+Class
+ class and 
+Constructor
+ class is used to create a new instance of the class.
+
+The newInstance() method of Class class can invoke zero-argument constructor whereas newInstance() method of Constructor class can invoke any number of arguments. So Constructor class is preferred over Class class.
+Syntax of newInstance() method of Class class
+public T newInstance()throws InstantiationException,IllegalAccessException
+Here T is the generic version. You can think it like Object class. You will learn about generics later.
+Example of newInstance() method
+Let's see the simple example to use newInstance() method.
+
+class Simple{
+ void message(){System.out.println("Hello Java");}
+}
+
+class Test{
+ public static void main(String args[]){
+  try{
+  Class c=Class.forName("Simple");
+  Simple s=(Simple)c.newInstance();
+  s.message();
+
+  }catch(Exception e){System.out.println(e);}
+
+ }
+}
+
+
+
+Output:Hello java

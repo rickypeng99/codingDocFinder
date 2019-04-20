@@ -1,0 +1,62 @@
+Java AWT Label
+The 
+object
+ of Label class is a component for placing text in a container. It is used to display a single line of read only text. The text can be changed by an application but a user cannot edit it directly.
+AWT Label Class Declaration
+
+public class Label extends Component implements Accessible
+
+Java Label Example
+
+import java.awt.*;
+class LabelExample{
+public static void main(String args[]){
+    Frame f= new Frame("Label Example");
+    Label l1,l2;
+    l1=new Label("First Label.");
+    l1.setBounds(50,100, 100,30);
+    l2=new Label("Second Label.");
+    l2.setBounds(50,150, 100,30);
+    f.add(l1); f.add(l2);
+    f.setSize(400,400);
+    f.setLayout(null);
+    f.setVisible(true);
+}
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java AWT Label Example with ActionListener
+
+import java.awt.*;
+import java.awt.event.*;
+public class LabelExample extends Frame implements ActionListener{
+	TextField tf; Label l; Button b;
+	LabelExample(){
+		tf=new TextField();
+		tf.setBounds(50,50, 150,20);
+		l=new Label();
+		l.setBounds(50,100, 250,20);	
+		b=new Button("Find IP");
+		b.setBounds(50,150,60,30);
+		b.addActionListener(this);	
+		add(b);add(tf);add(l);	
+		setSize(400,400);
+		setLayout(null);
+		setVisible(true);
+	}
+	public void actionPerformed(ActionEvent e) {
+		try{
+		String host=tf.getText();
+		String ip=java.net.InetAddress.getByName(host).getHostAddress();
+		l.setText("IP of "+host+" is: "+ip);
+		}catch(Exception ex){System.out.println(ex);}
+	}
+	public static void main(String[] args) {
+		new LabelExample();
+	}
+}
+
+Output:

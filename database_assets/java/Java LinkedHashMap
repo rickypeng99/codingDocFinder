@@ -1,0 +1,243 @@
+Java LinkedHashMap class
+Java LinkedHashMap class is Hashtable and Linked list implementation of the Map interface, with predictable iteration order. It inherits HashMap class and implements the Map interface.
+Points to remember
+
+
+Java LinkedHashMap contains values based on the key.
+
+
+Java LinkedHashMap contains unique elements.
+
+
+Java LinkedHashMap may have one null key and multiple null values.
+
+
+Java LinkedHashMap is non synchronized.
+
+
+Java LinkedHashMap maintains insertion order. 
+
+
+The initial default capacity of Java HashMap class is 16 with a load factor of 0.75.
+
+
+LinkedHashMap class declaration
+Let's see the declaration for java.util.LinkedHashMap class.
+
+public class LinkedHashMap
+ extends HashMap
+ implements Map
+
+
+LinkedHashMap class Parameters
+Let's see the Parameters for java.util.LinkedHashMap class.
+
+
+K
+: It is the type of keys maintained by this map.
+
+
+V
+: It is the type of mapped values.
+
+
+Constructors of Java LinkedHashMap class
+
+
+Constructor
+Description
+
+
+LinkedHashMap()
+It is used to construct a default LinkedHashMap.
+
+
+LinkedHashMap(int capacity)
+It is used to initialize a LinkedHashMap with the given capacity.
+
+
+LinkedHashMap(int capacity, float loadFactor)
+It is used to initialize both the capacity and the load factor.
+
+
+LinkedHashMap(int capacity, float loadFactor, boolean accessOrder)
+It is used to initialize both the capacity and the load factor with specified ordering mode.
+
+
+LinkedHashMap(Map<? extends K,? extends V> m)
+It is used to initialize the LinkedHashMap with the elements from the given Map class m.
+
+
+Methods of Java LinkedHashMap class
+
+
+Method
+Description
+
+
+V get(Object key)
+It returns the value to which the specified key is mapped.
+
+
+void clear()
+It removes all the key-value pairs from a map.
+
+
+boolean containsValue(Object value)
+It returns true if the map maps one or more keys to the specified value.
+
+
+Set<Map.Entry<K,V>> entrySet()
+It returns a Set view of the mappings contained in the map.
+
+
+void forEach(BiConsumer<? super K,? super V> action)
+It performs the given action for each entry in the map until all entries have been processed or the action throws an exception.
+
+
+V getOrDefault(Object key, V defaultValue)
+It returns the value to which the specified key is mapped or defaultValue if this map contains no mapping for the key.
+
+
+Set<K> keySet()
+It returns a Set view of the keys contained in the map
+
+
+protected boolean removeEldestEntry(Map.Entry<K,V> eldest)
+It returns true on removing its eldest entry.
+
+
+void replaceAll(BiFunction<? super K,? super V,? extends V> function)
+It replaces each entry's value with the result of invoking the given function on that entry until all entries have been processed or the function throws an exception.
+
+
+Collection<V> values()
+It returns a Collection view of the values contained in this map.
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java LinkedHashMap Example
+
+
+import java.util.*;
+class LinkedHashMap1{
+ public static void main(String args[]){
+ 
+  LinkedHashMap
+ hm=new LinkedHashMap
+();
+
+  hm.put(100,"Amit");
+  hm.put(101,"Vijay");
+  hm.put(102,"Rahul");
+
+for(Map.Entry m:hm.entrySet()){
+   System.out.println(m.getKey()+" "+m.getValue());
+  }
+ }
+}
+
+
+Output:100 Amit
+       101 Vijay
+       102 Rahul
+
+Java LinkedHashMap Example: Key-Value pair
+
+
+import java.util.*;
+class LinkedHashMap2{
+ public static void main(String args[]){
+   LinkedHashMap
+ map = new LinkedHashMap
+();         
+	  map.put(100,"Amit");  
+	 map.put(101,"Vijay");  
+	 map.put(102,"Rahul");  
+	   //Fetching key
+	   System.out.println("Keys: "+map.keySet());
+	   //Fetching value
+	   System.out.println("Values: "+map.values());
+	   //Fetching key-value pair
+	   System.out.println("Key-Value pairs: "+map.entrySet());
+ }
+}
+
+
+Keys: [100, 101, 102]
+Values: [Amit, Vijay, Rahul]
+Key-Value pairs: [100=Amit, 101=Vijay, 102=Rahul]
+
+Java LinkedHashMap Example:remove()
+
+import java.util.*;
+public class LinkedHashMap3 {
+   public static void main(String args[]) {
+   	Map
+ map=new LinkedHashMap
+();  	  
+	 map.put(101,"Amit");  
+	 map.put(102,"Vijay");  
+	 map.put(103,"Rahul");  
+	 System.out.println("Before invoking remove() method: "+map);   
+	map.remove(102);
+	System.out.println("After invoking remove() method: "+map);  
+   }    
+}
+
+Output:
+
+Before invoking remove() method: {101=Amit, 102=Vijay, 103=Rahul}
+After invoking remove() method: {101=Amit, 103=Rahul}
+
+Java LinkedHashMap Example: Book
+
+import java.util.*;  
+class Book {  
+int id;  
+String name,author,publisher;  
+int quantity;  
+public Book(int id, String name, String author, String publisher, int quantity) {  
+    this.id = id;  
+    this.name = name;  
+    this.author = author;  
+    this.publisher = publisher;  
+    this.quantity = quantity;  
+}  
+}  
+public class MapExample {  
+public static void main(String[] args) {  
+    //Creating map of Books  
+    Map
+ map=new LinkedHashMap
+();  
+    //Creating Books  
+    Book b1=new Book(101,"Let us C","Yashwant Kanetkar","BPB",8);  
+    Book b2=new Book(102,"Data Communications & Networking","Forouzan","Mc Graw Hill",4);  
+    Book b3=new Book(103,"Operating System","Galvin","Wiley",6);  
+    //Adding Books to map 
+    map.put(2,b2);
+    map.put(1,b1);
+    map.put(3,b3);
+    
+    //Traversing map
+    for(Map.Entry
+ entry:map.entrySet()){  
+    	int key=entry.getKey();
+    	Book b=entry.getValue();
+        System.out.println(key+" Details:");
+        System.out.println(b.id+" "+b.name+" "+b.author+" "+b.publisher+" "+b.quantity); 
+    }  
+}  
+}  
+
+Output:
+
+2 Details:
+102 Data Communications & Networking Forouzan Mc Graw Hill 4
+1 Details:
+101 Let us C Yashwant Kanetkar BPB 8
+3 Details:
+103 Operating System Galvin Wiley 6

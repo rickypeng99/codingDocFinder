@@ -1,0 +1,83 @@
+Difference between StringBuffer and StringBuilder
+Java provides three classes to represent a sequence of characters: String, StringBuffer, and StringBuilder. The String class is an immutable class whereas StringBuffer and StringBuilder classes are mutable. There are many differences between StringBuffer and StringBuilder. The StringBuilder class is introduced since JDK 1.5. 
+A list of differences between StringBuffer and StringBuilder are given below:
+
+
+No.
+StringBuffer
+StringBuilder
+
+
+1)
+StringBuffer is 
+synchronized
+ i.e. thread safe. It means two threads can't call the methods of StringBuffer simultaneously.
+StringBuilder is 
+non-synchronized
+ i.e. not thread safe.  It means two threads can call the methods of StringBuilder simultaneously.
+
+
+2)
+StringBuffer is 
+less efficient
+ than StringBuilder.
+StringBuilder is 
+more efficient
+ than StringBuffer.
+
+
+StringBuffer Example
+
+//Java Program to demonstrate the use of StringBuffer class.
+public class BufferTest{
+    public static void main(String[] args){
+        StringBuffer buffer=new StringBuffer("hello");
+        buffer.append("java");
+        System.out.println(buffer);
+    }
+}
+
+
+hellojava
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+StringBuilder Example
+
+//Java Program to demonstrate the use of StringBuilder class.
+public class BuilderTest{
+    public static void main(String[] args){
+        StringBuilder builder=new StringBuilder("hello");
+        builder.append("java");
+        System.out.println(builder);
+    }
+}
+
+
+hellojava
+
+Performance Test of StringBuffer and StringBuilder
+Let's see the code to check the performance of StringBuffer and StringBuilder classes.
+
+//Java Program to demonstrate the performance of StringBuffer and StringBuilder classes.
+public class ConcatTest{
+    public static void main(String[] args){
+        long startTime = System.currentTimeMillis();
+        StringBuffer sb = new StringBuffer("Java");
+        for (int i=0; i<10000; i++){
+            sb.append("Tpoint");
+        }
+        System.out.println("Time taken by StringBuffer: " + (System.currentTimeMillis() - startTime) + "ms");
+        startTime = System.currentTimeMillis();
+        StringBuilder sb2 = new StringBuilder("Java");
+        for (int i=0; i<10000; i++){
+            sb2.append("Tpoint");
+        }
+        System.out.println("Time taken by StringBuilder: " + (System.currentTimeMillis() - startTime) + "ms");
+    }
+}
+
+
+Time taken by StringBuffer: 16ms
+Time taken by StringBuilder: 0ms

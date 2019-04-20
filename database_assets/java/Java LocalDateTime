@@ -1,0 +1,197 @@
+Java LocalDateTime class
+Java LocalDateTime class is an immutable date-time object that represents a date-time, with the default format as yyyy-MM-dd-HH-mm-ss.zzz. It inherits object class and implements the ChronoLocalDateTime interface.
+Java LocalDateTime class declaration
+Let's see the declaration of java.time.LocalDateTime class.
+
+public final class LocalDateTime extends Object 
+implements Temporal, TemporalAdjuster, ChronoLocalDateTime<LocalDate>, Serializable
+
+Methods of Java LocalDateTime
+
+    
+
+      
+Method
+
+      
+Description
+
+    
+
+    
+
+      
+String format(DateTimeFormatter formatter)
+
+      
+It is used to format this date-time using the specified formatter.
+
+    
+
+    
+
+      
+int get(TemporalField field)
+
+      
+It is used to get the value of the specified field from this date-time as an int.
+
+    
+
+    
+
+      
+LocalDateTime minusDays(long days)
+
+      
+It is used to return a copy of this LocalDateTime with the specified number of days subtracted.
+
+    
+
+     
+
+      
+static LocalDateTime now()
+
+      
+It is used to obtain the current date-time from the system clock in the default time-zone.
+
+    
+
+     
+
+      
+static LocalDateTime of(LocalDate date, LocalTime time)
+
+      
+It is used to obtain an instance of LocalDateTime from a date and time.
+
+    
+
+     
+
+      
+LocalDateTime plusDays(long days)
+
+      
+It is used to return a copy of this LocalDateTime with the specified number of days added.
+
+    
+
+     
+
+      
+boolean equals(Object obj)
+
+      
+It is used to check if this date-time is equal to another date-time.
+
+    
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java LocalDateTime Example
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+public class LocalDateTimeExample1 {
+    public static void main(String[] args) {
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println("Before Formatting: " + now);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formatDateTime = now.format(format);
+        System.out.println("After Formatting: " + formatDateTime);
+    }
+}
+
+Test it Now
+Output:
+
+Before Formatting: 2017-01-13T17:09:42.411
+After Formatting: 13-01-2017 17:09:42
+
+Java LocalDateTime Example: now()
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+public class LocalDateTimeExample2 {
+  public static void main(String[] args) {
+    LocalDateTime datetime1 = LocalDateTime.now();
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    String formatDateTime = datetime1.format(format); 
+    System.out.println(formatDateTime);  
+  }
+}
+
+Test it Now
+Output:
+
+14-01-2017 11:42:32
+
+Java LocalDateTime Example: get()
+
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoField;
+public class LocalDateTimeExample3 {
+  public static void main(String[] args) {
+    LocalDateTime a = LocalDateTime.of(2017, 2, 13, 15, 56);  
+    System.out.println(a.get(ChronoField.DAY_OF_WEEK));
+    System.out.println(a.get(ChronoField.DAY_OF_YEAR));
+    System.out.println(a.get(ChronoField.DAY_OF_MONTH));
+    System.out.println(a.get(ChronoField.HOUR_OF_DAY));
+    System.out.println(a.get(ChronoField.MINUTE_OF_DAY)); 
+  }
+}
+
+Test it Now
+Output:
+
+1
+44
+13
+15
+956
+
+Java LocalDateTime Example: minusDays()
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+public class LocalDateTimeExample4 {
+public static void main(String[] args) {
+  LocalDateTime datetime1 = LocalDateTime.of(2017, 1, 14, 10, 34);
+  LocalDateTime datetime2 = datetime1.minusDays(100);
+  System.out.println("Before Formatting: " + datetime2);
+  DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+  String formatDateTime = datetime2.format(format); 
+  System.out.println("After Formatting: " + formatDateTime );
+}
+}
+
+Test it Now
+Output:
+
+Before Formatting: 2016-10-06T10:34
+After Formatting: 06-10-2016 10:34
+
+Java LocalDateTime Example: plusDays()
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+public class LocalDateTimeExample5 {
+public static void main(String[] args) {
+  LocalDateTime datetime1 = LocalDateTime.of(2017, 1, 14, 10, 34);
+  LocalDateTime datetime2 = datetime1.plusDays(120);
+  System.out.println("Before Formatting: " + datetime2);
+  DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+  String formatDateTime = datetime2.format(format); 
+  System.out.println("After Formatting: " + formatDateTime );
+}
+}
+
+Test it Now
+Output:
+
+Before Formatting: 2017-05-14T10:34
+After Formatting: 14-05-2017 10:34

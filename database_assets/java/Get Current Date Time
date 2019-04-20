@@ -1,0 +1,145 @@
+Get Current Date and Time in Java
+There are many ways to get current date and time in java. There are many classes that can be used to get current date and time in java.
+
+
+java.time.format.DateTimeFormatter class
+
+
+java.text.SimpleDateFormat class
+
+
+java.time.LocalDate class
+
+
+java.time.LocalTime class
+
+
+java.time.LocalDateTime class
+
+
+java.time.Clock class
+
+
+java.util.Date class
+
+
+java.sql.Date class
+
+
+java.util.Calendar class
+
+
+Get Current Date and Time: java.time.format.DateTimeFormatter
+The LocalDateTime.now() method returns the instance of LocalDateTime class. If we print the instance of LocalDateTime class, it prints current date and time. To format the current date, you can use DateTimeFormatter class which is included in JDK 1.8.
+
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;  
+public class CurrentDateTimeExample1 {  
+  public static void main(String[] args) {  
+   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+   LocalDateTime now = LocalDateTime.now();
+   System.out.println(dtf.format(now));
+  }  
+}  
+
+Test it Now
+Output:
+
+2017/11/06 12:11:58
+
+Get Current Date and Time: java.text.SimpleDateFormat
+The SimpleDateFormat class is also used for formatting date and time. But it is old approach.
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class CurrentDateTimeExample2 {
+public static void main(String[] args) {
+	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	Date date = new Date();
+	System.out.println(formatter.format(date));
+}
+}
+
+Test it Now
+Output:
+
+06/11/2017 12:26:18
+
+Get Current Date: java.time.LocalDate
+The LocalDate.now() method returns the instance of LocalDate class. If we print the instance of LocalDate class, it prints current date.
+
+System.out.println(java.time.LocalDate.now());
+
+Output:
+
+2017-01-23
+
+Get Current Time: java.time.LocalTime
+The LocalTime.now() method returns the instance of LocalTime class. If we print the instance of LocalTime class, it prints current time.
+
+System.out.println(java.time.LocalTime.now());
+
+Output:
+
+00:01:14.341
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Get Current Date & Time: java.time.LocalDateTime
+The LocalDateTime.now() method returns the instance of LocalDateTime class. If we print the instance of LocalDateTime class, it prints current date and time both.
+
+System.out.println(java.time.LocalDateTime.now());
+
+Output:
+
+2017-01-24T00:03:31.593
+
+Get Current Date & Time: java.time.Clock
+The Clock.systemUTC().instant() method returns current date and time both.
+
+System.out.println(java.time.Clock.systemUTC().instant());
+
+Output:
+
+2017-01-23T18:35:23.669Z
+
+Get Current Date & Time: java.util.Date
+By printing the instance of java.util.Date class, you can print current date and time in java. There are two ways to do so.
+1st way:
+
+java.util.Date date=new java.util.Date();
+System.out.println(date);
+
+2nd way:
+
+long millis=System.currentTimeMillis();
+java.util.Date date=new java.util.Date(millis);
+System.out.println(date);
+
+Output:
+
+Thu Mar 26 08:22:02 IST 2015
+
+Get Current Date: java.sql.Date
+By printing the instance of java.sql.Date class, you can print current date in java. It doesn't print time. This date instance is generally used to save current date in database.
+
+long millis=System.currentTimeMillis();
+java.sql.Date date=new java.sql.Date(millis);
+System.out.println(date);
+
+Output:
+
+2015-03-26
+
+Get Current Date & Time: java.util.Calendar
+Calendar class can be used to get the instance of Date class. The getTime() method of Calendar class returns the instance of java.util.Date. The Calendar.getInstance() method returns the instance of Calendar class.
+
+Date date=java.util.Calendar.getInstance().getTime();
+System.out.println(date);
+
+Output:
+
+Thu Mar 26 08:22:02 IST 2015
+
+Note: It is recommended to use Calendar class for getting current date and time in classical Date API. Since Java 8, you can use LocalDate, LocalTime or LocalDateTime classes.

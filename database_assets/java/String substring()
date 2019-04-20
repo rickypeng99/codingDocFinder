@@ -1,0 +1,67 @@
+Java String substring()
+The 
+java string substring()
+ method returns a part of the string. 
+We pass begin index and end index number position in the java substring method where start index is inclusive and end index is exclusive. In other words, start index starts from 0 whereas end index starts from 1.
+There are two types of substring methods in java string.
+Internal implementation
+
+ public String substring(int beginIndex) {
+        if (beginIndex < 0) {
+            throw new StringIndexOutOfBoundsException(beginIndex);
+        }
+        int subLen = value.length - beginIndex;
+        if (subLen < 0) {
+            throw new StringIndexOutOfBoundsException(subLen);
+        }
+        return (beginIndex == 0) ? this : new String(value, beginIndex, subLen);
+    }
+
+Signature
+
+public String substring(int startIndex)
+and
+public String substring(int startIndex, int endIndex)
+
+If you don't specify endIndex, java substring() method will return all the characters from startIndex.
+Parameters
+startIndex
+ : starting index is inclusive
+endIndex
+ : ending index is exclusive
+Returns
+specified string
+Throws
+StringIndexOutOfBoundsException
+ if start index is negative value or end index is lower than starting index.
+Java String substring() method example
+
+public class SubstringExample{
+public static void main(String args[]){
+String s1="javatpoint";
+System.out.println(s1.substring(2,4));//returns va
+System.out.println(s1.substring(2));//returns vatpoint
+}}
+
+Test it Now
+
+va
+vatpoint
+
+Java String substring() Method Example 2
+
+public class SubstringExample2 {
+	public static void main(String[] args) {
+		String s1="Javatpoint";  
+		String substr = s1.substring(0); // Starts with 0 and goes to end
+		System.out.println(substr);
+		String substr2 = s1.substring(5,10); // Starts from 5 and goes to 10
+		System.out.println(substr2);  
+		String substr3 = s1.substring(5,15); // Returns Exception
+	}
+}
+
+
+Javatpoint
+point
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: begin 5, end 15, length 10

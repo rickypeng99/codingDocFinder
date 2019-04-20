@@ -1,0 +1,198 @@
+Java JButton
+The JButton class is used to create a labeled button that has platform independent implementation. The application result in some action when the button is pushed. It inherits AbstractButton class.
+JButton class declaration
+Let's see the declaration for javax.swing.JButton class.
+
+public class JButton extends AbstractButton implements Accessible
+
+Commonly used Constructors:
+
+     
+
+         
+Constructor
+
+		 
+Description
+
+     
+
+     
+
+         
+JButton()
+
+         
+It creates a button with no text and icon.
+
+     
+
+     
+
+         
+JButton(String s)
+
+         
+It creates a button with the specified text.
+
+     
+
+     
+
+         
+JButton(Icon i)
+
+         
+It creates a button with the specified icon object.
+
+     
+
+
+Commonly used Methods of AbstractButton class:
+
+     
+
+         
+Methods
+
+		 
+Description
+
+     
+
+     
+
+         
+void setText(String s)
+
+         
+It is used to set specified text on button
+
+     
+
+     
+
+         
+String getText()
+
+         
+It is used to return the text of the button.
+
+     
+
+     
+
+         
+void setEnabled(boolean b)
+
+         
+It is used to enable or disable the button.
+
+     
+
+	 
+
+         
+void setIcon(Icon b)
+
+         
+It is used to set the specified Icon on the button.
+
+     
+
+	 
+
+         
+Icon getIcon()
+
+         
+It is used to get the Icon of the button.
+
+     
+
+	 
+
+         
+void setMnemonic(int a)
+
+         
+It is used to set the mnemonic on the button.
+
+     
+
+	 
+
+         
+void addActionListener(ActionListener a)
+
+         
+It is used to add the 
+action listener
+ to this object.
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java JButton Example
+
+import javax.swing.*;  
+public class ButtonExample {
+public static void main(String[] args) {
+	JFrame f=new JFrame("Button Example");
+	JButton b=new JButton("Click Here");
+	b.setBounds(50,100,95,30);
+	f.add(b);
+	f.setSize(400,400);
+	f.setLayout(null);
+	f.setVisible(true);	
+}
+}
+
+Output:
+Java JButton Example with ActionListener
+
+import java.awt.event.*;
+import javax.swing.*;  
+public class ButtonExample {
+public static void main(String[] args) {
+	JFrame f=new JFrame("Button Example");
+	final JTextField tf=new JTextField();
+	tf.setBounds(50,50, 150,20);
+	JButton b=new JButton("Click Here");
+	b.setBounds(50,100,95,30);
+	b.addActionListener(new ActionListener(){
+public void actionPerformed(ActionEvent e){
+            tf.setText("Welcome to Javatpoint.");
+		}
+	});
+	f.add(b);f.add(tf);
+	f.setSize(400,400);
+	f.setLayout(null);
+	f.setVisible(true);	
+}
+}
+
+Output:
+Example of displaying image on the button:
+
+import javax.swing.*;    
+public class ButtonExample{  
+ButtonExample(){  
+JFrame f=new JFrame("Button Example");          
+JButton b=new JButton(new ImageIcon("D:\\icon.png"));  
+b.setBounds(100,100,100, 40);  
+f.add(b);  
+f.setSize(300,400);  
+f.setLayout(null);  
+f.setVisible(true);  
+f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+    }       
+public static void main(String[] args) {  
+    new ButtonExample();  
+}  
+}  
+
+Output:

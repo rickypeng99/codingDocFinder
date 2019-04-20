@@ -1,0 +1,43 @@
+Java Convert String to Object
+We can convert 
+String to Object in java
+ with assignment operator. Each class is internally a child class of Object class. So you can assign string to Object directly.
+You can also convert String to Class type object using Class.forName() method.
+Java String to Object Example
+Let's see the simple code to convert String to Object in java.
+
+String s="hello";
+Object obj=s;
+
+Let's see the simple code to convert String to Object in java.
+
+public class StringToObjectExample{
+public static void main(String args[]){
+String s="hello";
+Object obj=s;
+System.out.println(obj);
+}}
+
+Test it Now
+Output:
+
+hello
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java String to Class object Example
+Let's see the simple code to convert String to Class object in java using Class.forName() method. The Class.forName() method returns the instance of Class class which can be used to get the metadata of any class.
+
+public class StringToObjectExample2{
+public static void main(String args[])throws Exception{
+Class c=Class.forName("java.lang.String");
+System.out.println("class name: "+c.getName());
+System.out.println("super class name: "+c.getSuperclass().getName());
+}}
+
+Test it Now
+Output:
+
+Class name: java.lang.String
+Super class name: java.lang.Object

@@ -1,0 +1,35 @@
+How to use ToolTip in Java Swing
+You can create a tool tip for any 
+JComponent
+ with 
+setToolTipText()
+ method. This method is used to set up a tool tip for the component.
+For example, to add tool tip to 
+PasswordField
+, you need to add only one line of code:
+
+field.setToolTipText("Enter your Password");
+
+Simple ToolTip Example
+
+import javax.swing.*;  
+public class ToolTipExample {
+	public static void main(String[] args) {  
+	 JFrame f=new JFrame("Password Field Example");  
+	 //Creating PasswordField and label
+	 JPasswordField value = new JPasswordField(); 
+	 value.setBounds(100,100,100,30);  
+	 value.setToolTipText("Enter your Password");
+	 JLabel l1=new JLabel("Password:");  
+	 l1.setBounds(20,100, 80,30);  
+	 //Adding components to frame
+	 f.add(value);  f.add(l1);
+	 f.setSize(300,300);  
+	 f.setLayout(null);  
+	 f.setVisible(true);   	
+}
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});

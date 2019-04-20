@@ -1,0 +1,323 @@
+Java ObjectStreamField class
+A description of a Serializable field from a 
+Serializable
+ class. An 
+array
+ of ObjectStreamFields is used to declare the Serializable fields of a class.
+The java.io.ObjectStreamClass.getField(String name) method gets the field of this class by name.
+Constructor
+
+    
+
+        
+Constructor
+
+        
+Description
+
+    
+
+    
+
+        
+ObjectStreamField(String name, Class<?> type)
+
+        
+It creates a Serializable field with the specified type.
+
+    
+
+    
+
+        
+ObjectStreamField(String name, Class<?> type, boolean unshared)
+
+        
+It creates an ObjectStreamField representing a serializable field with the given name and type.
+
+    
+
+
+Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+int
+
+        
+compareTo(Object obj)
+
+        
+It compares this field with another ObjectStreamField.
+
+    
+
+    
+
+        
+String
+
+        
+getName()
+
+        
+It gets the name of this field.
+
+    
+
+    
+
+        
+int
+
+        
+GetOffset()
+
+        
+Offset of field within instance data.
+
+    
+
+    
+
+        
+Class<?>
+
+        
+getType()
+
+        
+It get the type of the field.
+
+    
+
+    
+
+        
+char
+
+        
+getTypeCode()
+
+        
+It returns character encoding of field type.
+
+    
+
+    
+
+        
+String
+
+        
+getTypeString()
+
+        
+It return the 
+JVM
+ type signature.
+
+    
+
+    
+
+        
+boolean
+
+        
+isPrimitive()
+
+        
+It return true if this field has a primitive type.
+
+    
+
+    
+
+        
+boolean
+
+        
+isUnshared()
+
+        
+It returns boolean value indicating whether or not the serializable field represented by this ObjectStreamField instance is unshared.
+
+    
+
+    
+
+        
+protected void
+
+        
+setOffset(int offset)
+
+        
+Offset within instance data.
+
+    
+
+    
+
+        
+String
+
+        
+toString()
+
+        
+It return a 
+string
+ that describes this field.
+
+    
+
+
+public char getTypeCode()
+Returns character encoding of field type. The encoding is as follows:
+
+    
+
+        
+B
+
+        
+byte
+
+    
+
+    
+
+        
+C
+
+        
+char
+
+    
+
+    
+
+        
+D
+
+        
+double
+
+    
+
+    
+
+        
+F
+
+        
+float
+
+    
+
+    
+
+        
+I
+
+        
+int
+
+    
+
+    
+
+        
+J
+
+        
+long
+
+    
+
+    
+
+        
+L
+
+        
+class or interface
+
+    
+
+    
+
+        
+S
+
+        
+short
+
+    
+
+    
+
+        
+Z
+
+        
+boolean
+
+    
+
+    
+
+        
+[
+
+        
+array
+
+    
+
+
+Returns:
+the typecode of the serializable field
+Example:
+
+import java.io.ObjectStreamClass;
+import java.util.Calendar;
+
+public class ObjectStreamClassExample {
+	 public static void main(String[] args) {
+		   
+	      // create a new object stream class for Integers
+	      ObjectStreamClass osc = ObjectStreamClass.lookup(String.class);
+
+	      // get the value field from ObjectStreamClass for integers
+	      System.out.println("" + osc.getField("value"));
+
+	      // create a new object stream class for Calendar
+	      ObjectStreamClass osc2 = ObjectStreamClass.lookup(Calendar.class);
+
+	      // get the Class instance for osc2
+	      System.out.println("" + osc2.getField("isTimeSet"));
+
+	   }
+}
+
+Output:
+
+I value
+Z isTimeSet

@@ -1,0 +1,70 @@
+For-each loop (Advanced or Enhanced For loop):
+The for-each loop introduced in Java5. It is mainly used to traverse array or collection elements. The advantage of for-each loop is that it eliminates the possibility of bugs and makes the code more readable.
+Advantage of for-each loop:
+
+
+It makes the code more readable.
+
+
+It elimnates the possibility of programming errors.
+
+
+Syntax of for-each loop:
+
+
+for(data_type variable : array | collection){}
+
+
+Simple Example of for-each loop for traversing the array elements:
+
+  
+class ForEachExample1{
+  public static void main(String args[]){
+   int arr[]={12,13,14,44};
+
+   for(int i:arr){
+     System.out.println(i);
+   }
+
+ } 
+}
+    
+
+Test it Now
+
+Output:12
+       13
+       14
+       44
+
+Simple Example of for-each loop for traversing the collection elements:
+
+
+import java.util.*;
+class ForEachExample2{
+  public static void main(String args[]){
+   ArrayList
+ list=new ArrayList
+();
+   list.add("vimal");
+   list.add("sonoo");
+   list.add("ratan");
+
+   for(String s:list){
+     System.out.println(s);
+   }
+
+ } 
+}
+    
+
+Test it Now
+
+Output:vimal
+       sonoo
+       ratan
+
+
+
+download this example
+

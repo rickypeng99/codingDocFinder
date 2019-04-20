@@ -1,0 +1,54 @@
+Java InetAddress class
+Java InetAddress
+ class represents an IP address. The java.net.InetAddress class provides methods to get the IP of any host name 
+for example
+ www.javatpoint.com, www.google.com, www.facebook.com etc.
+Commonly used methods of InetAddress class
+
+
+Method
+Description
+
+
+public static InetAddress getByName(String host) throws UnknownHostException
+it returns the instance of InetAddress containing LocalHost IP and name.
+
+
+public static InetAddress getLocalHost() throws UnknownHostException
+it returns the instance of InetAdddress containing local host name and address.
+
+
+public String getHostName()
+it returns the host name of the IP address.
+
+
+public String getHostAddress()
+it returns the IP address in string format.
+
+
+Example of Java InetAddress class
+Let's see a simple example of InetAddress class to get ip address of www.javatpoint.com website.
+
+import java.io.*;
+import java.net.*;
+public class InetDemo{
+public static void main(String[] args){
+try{
+InetAddress ip=InetAddress.getByName("www.javatpoint.com");
+
+System.out.println("Host Name: "+ip.getHostName());
+System.out.println("IP Address: "+ip.getHostAddress());
+}catch(Exception e){System.out.println(e);}
+}
+}
+
+Test it Now
+Output:
+
+Host Name: www.javatpoint.com
+IP Address: 206.51.231.148
+
+
+
+download this example
+

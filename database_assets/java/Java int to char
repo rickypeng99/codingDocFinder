@@ -1,0 +1,99 @@
+Java Convert int to char
+We can convert 
+int to char in java
+ using typecasting. To convert higher data type into lower, we need to perform typecasting. Here, the ASCII character of integer value will be stored in the char variable.
+To get the actual value in char variable, you can add '0' with int variable. Alternatively, you can use Character.forDigit() method.
+Java int to char Example: Typecasting
+Let's see the simple code to convert long to int in java.
+
+public class IntToCharExample1{
+public static void main(String args[]){
+int a=65;
+char c=(char)a;
+System.out.println(a);
+}}
+
+Test it Now
+Output:
+
+A
+
+But if you store 1, it will store ASCII character of given number which is 
+start of heading
+ which is not printable. So it will not print anything on the console.
+
+public class IntToCharExample2{
+public static void main(String args[]){
+int a=1;  
+char c=(char)a;  
+System.out.println(c);
+}}
+
+Test it Now
+Output:
+
+
+
+If you add '0' with int variable, it will return actual value in the char variable. The ASCII value of '0' is 48. So, if you add 1 with 48, it becomes 49 which is equal to 1. The ASCII character of 49 is 1.
+
+public class IntToCharExample3{
+public static void main(String args[]){
+int a=1;  
+char c=(char)(a+'0');  
+System.out.println(c); 
+}}
+
+Test it Now
+Output:
+
+1
+
+If you store integer value in a single quote, it will store actual character in char variable.
+
+public class IntToCharExample4{
+public static void main(String args[]){
+int a='1';  
+char c=(char)a;  
+System.out.println(c);
+}}
+
+Test it Now
+Output:
+
+1
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java int to char Example: Character.forDigit()
+To get the actual value, you can also use Character.forDigit() method.
+
+public class IntToCharExample5{
+public static void main(String args[]){
+int REDIX=10;//redix 10 is for decimal number, for hexa use redix 16
+int a=1;  
+char c=Character.forDigit(a,REDIX);  
+System.out.println(c); 
+}}
+
+Test it Now
+Output:
+
+1
+
+To get the hexa value, use redix 16 in Character.forDigit() method.
+
+public class IntToCharExample6{
+public static void main(String args[]){
+int REDIX=16;//redix 16 is for Hexadecimal value
+int a=10;  
+char c=Character.forDigit(a,REDIX);  
+System.out.println(c); 
+}}
+
+Test it Now
+Output:
+
+a
+
+As you can see in the output, the hexadecimal code of 10 is a.

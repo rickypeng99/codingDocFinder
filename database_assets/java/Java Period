@@ -1,0 +1,156 @@
+Java Period class
+Java Period class is used to measures time in years, months and days. It inherits the Object class and implements the ChronoPeriod interface.
+Java Period class declaration
+Let's see the declaration of java.time.Period class.
+
+public final class Period extends Object implements ChronoPeriod, Serializable
+
+Methods of Java Period
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+Temporal addTo(Temporal temporal)
+
+        
+It is used to add this period to the specified temporal object.
+
+    
+
+    
+
+        
+long get(TemporalUnit unit)
+
+        
+It is used to get the value of the requested unit.
+
+    
+
+    
+
+        
+int getYears()
+
+        
+It is used to get the amount of years of this period.
+
+    
+
+    
+
+        
+boolean isZero()
+
+        
+It is used to check if all three units of this period are zero.
+
+    
+
+    
+
+        
+Period minus(TemporalAmount amountToSubtract)
+
+        
+It is used to return a copy of this period with the specified period subtracted.
+
+    
+
+    
+
+        
+static Period of(int years, int months, int days)
+
+        
+It is used to obtain a Period representing a number of years, months and days.
+
+    
+
+    
+
+        
+Period plus(TemporalAmount amountToAdd)
+
+        
+It is used to return a copy of this period with the specified period added.
+
+    
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Period Example: addTo()
+
+import java.time.*;
+import java.time.temporal.Temporal;
+public class PeriodExample1 {
+  public static void main(String[] args) {
+    Period period = Period.ofDays(24);
+    Temporal temp = period.addTo(LocalDate.now());
+    System.out.println(temp);
+  }
+}
+
+Test it Now
+Output:
+
+2017-02-24
+
+Java Period Example: of()
+
+import java.time.Period;
+public class PeriodExample2 {
+public static void main(String[] args) {
+  Period period = Period.of(2017,02,16);
+  System.out.println(period.toString());
+}
+}
+
+Test it Now
+Output:
+
+P2017Y2M16D
+
+Java Period Example: minus()
+
+import java.time.Period;
+public class PeriodExample3 {
+  public static void main(String[] args) {
+    Period period1 = Period.ofMonths(4); 
+    Period period2 = period1.minus(Period.ofMonths(2));
+    System.out.println(period2);
+  }
+}
+
+Test it Now
+Output:
+
+P2M
+
+Java Period Example: plus()
+
+import java.time.Period;
+public class PeriodExample4 {
+  public static void main(String[] args) {
+    Period period1 = Period.ofMonths(4); 
+    Period period2 = period1.plus(Period.ofMonths(2));
+    System.out.println(period2);
+  }
+}
+
+Test it Now
+Output:
+
+P6M

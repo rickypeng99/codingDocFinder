@@ -1,0 +1,113 @@
+Folder Explorer in Java with Source Code
+Folder Explorer in Java with Source Code:
+ We can develop Folder Explorer in java with the help of IO Stream, AWT/Swing with event handling. Let's see the code of creating Folder Explorer in java.
+
+import java.io.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.tree.*;
+/***********************************/
+class Explorer extends JPanel implements ActionListener
+{
+JTextField jtf;
+JTextArea jta;
+JTree tree;
+JButton refresh;
+JTable jtb;
+JScrollPane jsp;
+JScrollPane jspTable;
+
+String currDirectory=null;
+
+final String[] colHeads={"File Name","SIZE(in Bytes)","Read Only","Hidden"};
+String[][]data={{"","","","",""}};
+
+/////////////////////////////////
+Explorer(String path)
+{
+
+jtf=new JTextField();
+jta=new JTextArea(5,30);
+refresh=new JButton("Refresh");
+
+File temp=new File(path);
+DefaultMutableTreeNode top=createTree(temp);
+
+//if(top!=null)
+
+tree=new JTree(top);
+
+jsp=new JScrollPane(tree);
+
+final String[] colHeads={"File Name","SIZE(in Bytes)","Read Only","Hidden"};
+String[][]data={{"","","","",""}};
+jtb=new JTable(data, colHeads);
+jspTable=new JScrollPane(jtb);
+
+setLayout(new BorderLayout());
+add(jtf,BorderLayout.NORTH);
+add(jsp,BorderLayout.WEST);
+add(jspTable,BorderLayout.CENTER);
+add(refresh,BorderLayout.SOUTH);
+
+tree.addMouseListener(
+new MouseAdapter()
+{
+public void mouseClicked(MouseEvent me)
+{
+doMouseClicked(me);
+}
+});
+jtf.addActionListener(this);
+refresh.addActionListener(this);
+}
+///////////////////////////////
+public void actionPerformed(ActionEvent ev)
+{
+File temp=new File(jtf.getText());
+DefaultMutableTreeNode newtop=createTree(temp);
+if(newtop!=null)
+	tree=new JTree(newtop);
+remove(jsp);
+jsp=new JScrollPane(tree);
+setVisible(false);
+add(jsp,BorderLayout.WEST);
+tree.addMouseListener(
+new MouseAdapter()
+{
+public void mouseClicked(MouseEvent me)
+{
+doMouseClicked(me);
+}
+});
+
+setVisible(true);
+}
+//////////////////////////////
+
+DefaultMutableTreeNode createTree(File temp)
+{
+DefaultMutableTreeNode top=new DefaultMutableTreeNode(temp.getPath());
+if(!(temp.exists() && temp.isDirectory()))
+	return top;
+
+fillTree(top,temp.getPath());
+
+return top;
+}
+//////////////////////////////
+void fillTree(DefaultMutableTreeNode root, String filename)
+{
+File temp=new File(filename);
+
+if(!(temp.exists() && temp.isDirectory()))
+	return;
+//System.out.println(filename);
+File[] filelist=temp.listFiles();
+
+for(int i=0; i
+
+
+download this example
+

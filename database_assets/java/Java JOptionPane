@@ -1,0 +1,196 @@
+Java JOptionPane
+The JOptionPane class is used to provide standard dialog boxes such as message dialog box, confirm dialog box and input dialog box. These dialog boxes are used to display information or get input from the user. The JOptionPane class inherits JComponent class.
+JOptionPane class declaration
+
+public class JOptionPane extends JComponent implements Accessible
+
+Common Constructors of JOptionPane class
+
+     
+
+         
+Constructor
+
+		 
+Description
+
+     
+
+     
+
+         
+JOptionPane()
+
+         
+It is used to create a JOptionPane with a test message.
+
+     
+
+     
+
+         
+JOptionPane(Object message)
+
+         
+It is used to create an instance of JOptionPane to display a message.
+
+     
+
+     
+
+         
+JOptionPane(Object message, int messageType
+
+         
+It is used to create an instance of JOptionPane to display a message with specified message type and default options.
+
+     
+
+
+Common Methods of JOptionPane class
+
+     
+
+         
+Methods
+
+		 
+Description
+
+     
+
+     
+
+         
+JDialog createDialog(String title)
+
+         
+It is used to create and return a new parentless JDialog with the specified title.
+
+     
+
+     
+
+         
+static void showMessageDialog(Component parentComponent, Object message)
+
+         
+It is used to create an information-message dialog titled "Message".
+
+     
+
+     
+
+         
+static void showMessageDialog(Component parentComponent, Object message, String title, int messageType)
+
+         
+It is used to create a message dialog with given title and messageType.
+
+     
+
+     
+
+         
+static int showConfirmDialog(Component parentComponent, Object message)
+
+         
+It is used to create a dialog with the options Yes, No and Cancel; with the title, Select an Option.
+
+     
+
+     
+
+         
+static String showInputDialog(Component parentComponent, Object message)
+
+         
+It is used to show a question-message dialog requesting input from the user parented to parentComponent.
+
+     
+
+	 
+
+         
+void setInputValue(Object newValue)
+
+         
+It is used to set the input value that was selected or input by the user.
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java JOptionPane Example: showMessageDialog()
+
+import javax.swing.*;
+public class OptionPaneExample {
+JFrame f;
+OptionPaneExample(){
+	f=new JFrame();
+	JOptionPane.showMessageDialog(f,"Hello, Welcome to Javatpoint.");
+}
+public static void main(String[] args) {
+	new OptionPaneExample();
+}
+}
+
+Output:
+Java JOptionPane Example: showMessageDialog()
+
+import javax.swing.*;
+public class OptionPaneExample {
+JFrame f;
+OptionPaneExample(){
+	f=new JFrame();
+	JOptionPane.showMessageDialog(f,"Successfully Updated.","Alert",JOptionPane.WARNING_MESSAGE);	
+}
+public static void main(String[] args) {
+	new OptionPaneExample();
+}
+}
+
+Output:
+Java JOptionPane Example: showInputDialog()
+
+import javax.swing.*;
+public class OptionPaneExample {
+JFrame f;
+OptionPaneExample(){
+	f=new JFrame();	
+	String name=JOptionPane.showInputDialog(f,"Enter Name");	
+}
+public static void main(String[] args) {
+	new OptionPaneExample();
+}
+}
+
+Output:
+Java JOptionPane Example: showConfirmDialog()
+
+import javax.swing.*;
+import java.awt.event.*;
+public class OptionPaneExample extends WindowAdapter{
+JFrame f;
+OptionPaneExample(){
+	f=new JFrame();	
+	f.addWindowListener(this);
+	f.setSize(300, 300);
+	f.setLayout(null);
+	f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+	f.setVisible(true);
+}
+public void windowClosing(WindowEvent e) {
+	int a=JOptionPane.showConfirmDialog(f,"Are you sure?");
+if(a==JOptionPane.YES_OPTION){
+	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+}
+}
+public static void main(String[] args) {
+	new  OptionPaneExample();
+}	
+}
+
+Output:

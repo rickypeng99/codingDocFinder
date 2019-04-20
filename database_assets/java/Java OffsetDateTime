@@ -1,0 +1,196 @@
+Java OffsetDateTime class
+Java OffsetDateTime class is an immutable representation of a date-time with an offset. It inherits Object class and implements the Comparable interface.
+OffsetDateTime class is used to store the date and time fields, to a precision of nanoseconds.
+Java OffsetDateTime class declaration
+Let's see the declaration of java.time.OffsetDateTime class.
+
+public final class OffsetDateTime extends Object 
+implements Temporal, TemporalAdjuster, Comparable<OffsetDateTime>, Serializable
+
+Methods of Java OffsetDateTime
+
+     
+
+         
+Method
+
+		 
+Description
+
+     
+
+     
+
+         
+int get(TemporalField field)
+
+         
+It is used to get the value of the specified field from this date-time as an int.
+
+     
+
+     
+
+         
+int getDayOfMonth()
+
+         
+It is used to get the day-of-month field.
+
+     
+
+     
+
+         
+iint getDayOfYear()
+
+         
+It is used to get the day-of-year field.
+
+     
+
+	 
+
+         
+DayOfWeek getDayOfWeek()
+
+         
+It is used to get the day-of-week field, which is an enum DayOfWeek.
+
+     
+
+	 
+
+         
+OffsetDateTime minusDays(long days)
+
+         
+It is used to return a copy of this OffsetDateTime with the specified number of days subtracted.
+
+     
+
+	 
+
+         
+static OffsetDateTime	now()
+
+         
+It is used to obtain the current date-time from the system clock in the default time-zone.
+
+     
+
+	 
+
+         
+OffsetDateTime plusDays(long days)
+
+         
+It is used to return a copy of this OffsetDateTime with the specified number of days added.
+
+     
+
+	 
+
+         
+LocalDate toLocalDate()
+
+         
+It is used to get the LocalDate part of this date-time.
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java OffsetDateTime class Example: getDayOfMonth()
+
+import java.time.OffsetDateTime;
+public class OffsetDateTimeExample1 {
+	public static void main(String[] args) {
+		OffsetDateTime offsetDT = OffsetDateTime.now();
+		System.out.println(offsetDT.getDayOfMonth());
+	}
+}
+
+Test it Now
+Output:
+
+18
+
+Java OffsetDateTime class Example: getDayOfYear()
+
+import java.time.OffsetDateTime;
+public class OffsetDateTimeExample2 {
+	public static void main(String[] args) {
+		OffsetDateTime offsetDT = OffsetDateTime.now();
+		System.out.println(offsetDT.getDayOfYear());
+	}
+}
+
+Test it Now
+Output:
+
+18
+
+Java OffsetDateTime class Example: getDayOfWeek()
+
+import java.time.OffsetDateTime;
+public class OffsetDateTimeExample3 {
+	public static void main(String[] args) {
+		OffsetDateTime offsetDT = OffsetDateTime.now();
+		System.out.println(offsetDT.getDayOfWeek());
+	}
+}
+
+Test it Now
+Output:
+
+WEDNESDAY
+
+Java OffsetDateTime class Example: toLocalDate()
+
+import java.time.OffsetDateTime;
+public class OffsetDateTimeExample4 {
+	public static void main(String[] args) {
+		OffsetDateTime offsetDT = OffsetDateTime.now();
+		System.out.println(offsetDT.toLocalDate());
+	}
+}
+
+Test it Now
+Output:
+
+2017-01-18
+
+Java OffsetDateTime class Example: minusDays()
+
+import java.time.OffsetDateTime;
+public class OffsetDateTimeExample5 {
+  public static void main(String[] args) {
+    OffsetDateTime offset = OffsetDateTime.now();
+    OffsetDateTime value =  offset.minusDays(240);
+    System.out.println(value);
+  }	
+}
+
+Test it Now
+Output:
+
+2016-05-23T12:12:31.642+05:30	
+
+Java OffsetDateTime class Example: plusDays()
+
+import java.time.OffsetDateTime;
+public class OffsetDateTimeExample6 {
+  public static void main(String[] args) {
+    OffsetDateTime offset = OffsetDateTime.now();
+    OffsetDateTime value =  offset.plusDays(240);
+    System.out.println(value);
+  }
+}
+
+Test it Now
+Output:
+
+2017-09-15T13:50:30.526+05:30

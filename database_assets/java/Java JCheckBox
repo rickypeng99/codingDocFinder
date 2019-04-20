@@ -1,0 +1,212 @@
+Java JCheckBox
+The JCheckBox class is used to create a checkbox. It is used to turn an option on (true) or off (false). Clicking on a CheckBox changes its state from "on" to "off" or from "off" to "on ".It inherits 
+JToggleButton
+ class.
+JCheckBox class declaration
+Let's see the declaration for javax.swing.JCheckBox class.
+
+public class JCheckBox extends JToggleButton implements Accessible
+
+Commonly used Constructors:
+
+     
+
+         
+Constructor
+
+		 
+Description
+
+     
+
+     
+
+         
+JJCheckBox()
+
+         
+Creates an initially unselected check box button with no text, no icon.
+
+     
+
+     
+
+         
+JChechBox(String s)
+
+         
+Creates an initially unselected check box with text.
+
+     
+
+     
+
+         
+JCheckBox(String text, boolean selected)
+
+         
+Creates a check box with text and specifies whether or not it is initially selected.
+
+     
+
+	 
+
+         
+JCheckBox(Action a)
+
+         
+Creates a check box where properties are taken from the Action supplied.
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Commonly used Methods:
+
+     
+
+         
+Methods
+
+		 
+Description
+
+     
+
+     
+
+         
+AccessibleContext getAccessibleContext()
+
+         
+It is used to get the AccessibleContext associated with this JCheckBox.
+
+     
+
+     
+
+         
+protected String paramString()
+
+         
+It returns a 
+string
+ representation of this JCheckBox.
+
+     
+
+
+Java JCheckBox Example
+
+import javax.swing.*;
+public class CheckBoxExample
+{
+	 CheckBoxExample(){
+	    JFrame f= new JFrame("CheckBox Example");
+	    JCheckBox checkBox1 = new JCheckBox("C++");
+	    checkBox1.setBounds(100,100, 50,50);
+	    JCheckBox checkBox2 = new JCheckBox("Java", true);
+	    checkBox2.setBounds(100,150, 50,50);
+	    f.add(checkBox1);
+	    f.add(checkBox2);
+	    f.setSize(400,400);
+	    f.setLayout(null);
+	    f.setVisible(true);
+	 }
+public static void main(String args[])
+    {
+    new CheckBoxExample();
+    }}
+
+Output:
+Java JCheckBox Example with ItemListener
+
+import javax.swing.*;
+import java.awt.event.*;  
+public class CheckBoxExample  
+{  
+     CheckBoxExample(){  
+        JFrame f= new JFrame("CheckBox Example");  
+        final JLabel label = new JLabel();          
+        label.setHorizontalAlignment(JLabel.CENTER);  
+        label.setSize(400,100);  
+        JCheckBox checkbox1 = new JCheckBox("C++");  
+        checkbox1.setBounds(150,100, 50,50);  
+        JCheckBox checkbox2 = new JCheckBox("Java");  
+        checkbox2.setBounds(150,150, 50,50);  
+        f.add(checkbox1); f.add(checkbox2); f.add(label);  
+        checkbox1.addItemListener(new ItemListener() {  
+             public void itemStateChanged(ItemEvent e) {               
+                label.setText("C++ Checkbox: "   
+                + (e.getStateChange()==1?"checked":"unchecked"));  
+             }  
+          });  
+        checkbox2.addItemListener(new ItemListener() {  
+             public void itemStateChanged(ItemEvent e) {               
+                label.setText("Java Checkbox: "   
+                + (e.getStateChange()==1?"checked":"unchecked"));  
+             }  
+          });  
+        f.setSize(400,400);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+     }  
+public static void main(String args[])  
+{  
+    new CheckBoxExample();  
+}  
+}  
+
+Output:
+Java JCheckBox Example: Food Order
+
+import javax.swing.*;
+import java.awt.event.*;
+public class CheckBoxExample extends JFrame implements ActionListener{
+	JLabel l;
+	JCheckBox cb1,cb2,cb3;
+	JButton b;
+	CheckBoxExample(){
+		l=new JLabel("Food Ordering System");
+		l.setBounds(50,50,300,20);
+		cb1=new JCheckBox("Pizza @ 100");
+		cb1.setBounds(100,100,150,20);
+		cb2=new JCheckBox("Burger @ 30");
+		cb2.setBounds(100,150,150,20);
+		cb3=new JCheckBox("Tea @ 10");
+		cb3.setBounds(100,200,150,20);
+		b=new JButton("Order");
+		b.setBounds(100,250,80,30);
+		b.addActionListener(this);
+		add(l);add(cb1);add(cb2);add(cb3);add(b);
+		setSize(400,400);
+		setLayout(null);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	public void actionPerformed(ActionEvent e){
+		float amount=0;
+		String msg="";
+		if(cb1.isSelected()){
+			amount+=100;
+			msg="Pizza: 100\n";
+		}
+		if(cb2.isSelected()){
+			amount+=30;
+			msg+="Burger: 30\n";
+		}
+		if(cb3.isSelected()){
+			amount+=10;
+			msg+="Tea: 10\n";
+		}
+		msg+="-----------------\n";
+		JOptionPane.showMessageDialog(this,msg+"Total: "+amount);
+	}
+	public static void main(String[] args) {
+		new CheckBoxExample();
+	}
+}
+
+Output:

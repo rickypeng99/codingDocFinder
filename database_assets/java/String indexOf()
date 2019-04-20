@@ -1,0 +1,128 @@
+Java String indexOf()
+The 
+java string indexOf()
+ method returns index of given character value or substring. If it is not found, it returns -1. The index counter starts from zero.
+Internal implementation
+
+public int indexOf(int ch) {
+        return indexOf(ch, 0);
+    }
+
+Signature
+There are 4 types of indexOf method in java. The signature of indexOf methods are given below:
+
+
+No.
+Method
+Description
+
+
+1
+int indexOf(int ch)
+returns index position for the given char value
+
+
+2
+int indexOf(int ch, int fromIndex)
+returns index position for the given char value and from index
+
+
+3
+int indexOf(String substring)
+returns index position for the given substring
+
+
+4
+int indexOf(String substring, int fromIndex)
+returns index position for the given substring and from index
+
+
+Parameters
+ch
+: char value i.e. a single character e.g. 'a'
+fromIndex
+: index position from where index of the char value or substring is retured
+substring
+: substring to be searched in this string
+Returns
+index of the string
+Java String indexOf() method example
+
+public class IndexOfExample{
+public static void main(String args[]){
+String s1="this is index of example";
+//passing substring
+int index1=s1.indexOf("is");//returns the index of is substring
+int index2=s1.indexOf("index");//returns the index of index substring
+System.out.println(index1+"  "+index2);//2 8
+
+//passing substring with from index
+int index3=s1.indexOf("is",4);//returns the index of is substring after 4th index
+System.out.println(index3);//5 i.e. the index of another is
+
+//passing char value
+int index4=s1.indexOf('s');//returns the index of s char value
+System.out.println(index4);//3
+}}
+
+Test it Now
+
+2  8
+5
+3
+
+Java String indexOf(String substring) Method Example
+This method takes substring as an argument and returns index of first character of the substring.
+
+public class IndexOfExample2 {
+	public static void main(String[] args) {
+		String s1 = "This is indexOf method";  		
+		// Passing Substring  
+		int index = s1.indexOf("method"); //Returns the index of this substring
+		System.out.println("index of substring "+index);		
+	}
+
+}
+
+Test it Now
+
+index of substring 16
+
+Java String indexOf(String substring, int fromIndex) Method Example
+This method takes substring and index as arguments and returns index of first character occured after the given 
+fromIndex
+.
+
+public class IndexOfExample3 {
+	public static void main(String[] args) {	
+		String s1 = "This is indexOf method";  		
+		// Passing substring and index
+		int index = s1.indexOf("method", 10); //Returns the index of this substring
+		System.out.println("index of substring "+index);
+		index = s1.indexOf("method", 20); // It returns -1 if substring does not found
+		System.out.println("index of substring "+index);		
+	}
+}
+
+Test it Now
+
+index of substring 16
+index of substring -1
+
+Java String indexOf(int char, int fromIndex) Method Example
+This method takes char and index as arguments and returns index of first character occured after the given 
+fromIndex
+.
+
+public class IndexOfExample4 {
+	public static void main(String[] args) {		
+		String s1 = "This is indexOf method";  		
+		// Passing char and index from
+		int index = s1.indexOf('e', 12); //Returns the index of this char
+		System.out.println("index of char "+index);		
+	}
+}
+
+Test it Now
+
+index of char 17

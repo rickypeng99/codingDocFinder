@@ -1,0 +1,79 @@
+Java Convert Binary to Decimal
+We can convert 
+binary to decimal in java
+ using 
+Integer.parseInt()
+ method or custom logic.
+Java Binary to Decimal conversion: Integer.parseInt()
+The Integer.parseInt() method converts string to int with given redix. The 
+signature
+ of parseInt() method is given below:
+
+public static int parseInt(String s,int redix)
+
+Let's see the simple example of converting binary to decimal in java.
+
+public class BinaryToDecimalExample1{
+public static void main(String args[]){
+String binaryString="1010";
+int decimal=Integer.parseInt(binaryString,2);
+System.out.println(decimal);
+}}
+
+Test it Now
+Output:
+
+10
+
+Let's see another example of Integer.parseInt() method.
+
+public class BinaryToDecimalExample2{
+public static void main(String args[]){
+System.out.println(Integer.parseInt("1010",2));
+System.out.println(Integer.parseInt("10101",2));
+System.out.println(Integer.parseInt("11111",2));
+}}
+
+Test it Now
+Output:
+
+10
+21
+31
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Binary to Decimal conversion: Custom Logic
+We can convert 
+binary to decimal in java
+ using custom logic.
+
+public class BinaryToDecimalExample3{  
+public static int getDecimal(int binary){
+    int decimal = 0;
+    int n = 0;
+    while(true){
+      if(binary == 0){
+        break;
+      } else {
+          int temp = binary%10;
+          decimal += temp*Math.pow(2, n);
+          binary = binary/10;
+          n++;
+       }
+    }
+    return decimal;
+}
+public static void main(String args[]){  
+System.out.println("Decimal of 1010 is: "+getDecimal(1010));
+System.out.println("Decimal of 10101 is: "+getDecimal(10101));
+System.out.println("Decimal of 11111 is: "+getDecimal(11111));
+}}  
+
+Test it Now
+Output:
+
+Decimal of 1010 is: 10
+Decimal of 10101 is: 21
+Decimal of 11111 is: 31

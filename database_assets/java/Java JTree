@@ -1,0 +1,80 @@
+Java JTree
+The JTree class is used to display the tree structured data or hierarchical data. JTree is a complex component. It has a 'root node' at the top most which is a parent for all nodes in the tree. It inherits JComponent class.
+JTree class declaration
+Let's see the declaration for javax.swing.JTree class.
+
+public class JTree extends JComponent implements Scrollable, Accessible
+
+Commonly used Constructors:
+
+     
+
+         
+Constructor
+
+		 
+Description
+
+     
+
+     
+
+         
+JTree()
+
+         
+Creates a JTree with a sample model.
+
+     
+
+     
+
+         
+JTree(Object[] value)
+
+         
+Creates a JTree with every element of the specified array as the child of a new root node.
+
+     
+
+     
+
+         
+JTree(TreeNode root)
+
+         
+Creates a JTree with the specified TreeNode as its root, which displays the root node.
+
+     
+
+
+Java JTree Example
+
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+public class TreeExample {
+JFrame f;
+TreeExample(){
+	f=new JFrame();	
+	DefaultMutableTreeNode style=new DefaultMutableTreeNode("Style");
+	DefaultMutableTreeNode color=new DefaultMutableTreeNode("color");
+	DefaultMutableTreeNode font=new DefaultMutableTreeNode("font");
+	style.add(color);
+	style.add(font);
+	DefaultMutableTreeNode red=new DefaultMutableTreeNode("red");
+	DefaultMutableTreeNode blue=new DefaultMutableTreeNode("blue");
+	DefaultMutableTreeNode black=new DefaultMutableTreeNode("black");
+	DefaultMutableTreeNode green=new DefaultMutableTreeNode("green");
+	color.add(red); color.add(blue); color.add(black); color.add(green);	
+	JTree jt=new JTree(style);
+	f.add(jt);
+	f.setSize(200,200);
+	f.setVisible(true);
+}
+public static void main(String[] args) {
+	new TreeExample();
+}}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});

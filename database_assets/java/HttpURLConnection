@@ -1,0 +1,49 @@
+Java HttpURLConnection class
+The 
+Java HttpURLConnection
+ class is http specific URLConnection. It works for HTTP protocol only.
+By the help of HttpURLConnection class, you can information of any HTTP URL such as header information, status code, response code etc.
+The java.net.HttpURLConnection is subclass of URLConnection class.
+How to get the object of HttpURLConnection class
+The openConnection()  method of URL class returns the object of URLConnection class. Syntax:
+
+public URLConnection openConnection()throws IOException{}
+
+You can typecast it to HttpURLConnection type as given below.
+
+URL url=new URL("http://www.javatpoint.com/java-tutorial");  
+HttpURLConnection huc=(HttpURLConnection)url.openConnection();
+
+Java HttpURLConnecton Example
+
+
+import java.io.*;  
+import java.net.*;  
+public class HttpURLConnectionDemo{  
+public static void main(String[] args){  
+try{  
+URL url=new URL("http://www.javatpoint.com/java-tutorial");  
+HttpURLConnection huc=(HttpURLConnection)url.openConnection();
+for(int i=1;i<=8;i++){
+System.out.println(huc.getHeaderFieldKey(i)+" = "+huc.getHeaderField(i));
+}
+huc.disconnect(); 
+}catch(Exception e){System.out.println(e);}  
+}  
+}  
+
+
+
+Test it Now
+
+
+Output:
+
+Date = Wed, 10 Dec 2014 19:31:14 GMT
+Set-Cookie = JSESSIONID=D70B87DBB832820CACA5998C90939D48; Path=/
+Content-Type = text/html
+Cache-Control = max-age=2592000
+Expires = Fri, 09 Jan 2015 19:31:14 GMT
+Vary = Accept-Encoding,User-Agent
+Connection = close
+Transfer-Encoding = chunked

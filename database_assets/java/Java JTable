@@ -1,0 +1,104 @@
+Java JTable
+The JTable class is used to display data in tabular form. It is composed of rows and columns.
+JTable class declaration 
+Let's see the declaration for javax.swing.JTable class.
+Commonly used Constructors:
+
+     
+
+         
+Constructor
+
+		 
+Description
+
+     
+
+     
+
+         
+JTable()
+
+         
+Creates a table with empty cells.
+
+     
+
+     
+
+         
+JTable(Object[][] rows, Object[] columns)
+
+         
+Creates a table with the specified data.
+
+     
+
+
+Java JTable Example
+
+import javax.swing.*;  
+public class TableExample {  
+    JFrame f;  
+    TableExample(){  
+    f=new JFrame();  
+    String data[][]={ {"101","Amit","670000"},  
+                          {"102","Jai","780000"},  
+                          {"101","Sachin","700000"}};  
+    String column[]={"ID","NAME","SALARY"};       
+    JTable jt=new JTable(data,column);  
+    jt.setBounds(30,40,200,300);        
+    JScrollPane sp=new JScrollPane(jt);  
+    f.add(sp);        
+    f.setSize(300,400);  
+    f.setVisible(true);  
+}  	
+public static void main(String[] args) {  
+    new TableExample();  
+}  
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java JTable Example with ListSelectionListener
+
+import javax.swing.*;  
+import javax.swing.event.*;
+public class TableExample {  
+	  public static void main(String[] a) {
+		    JFrame f = new JFrame("Table Example");
+		    String data[][]={ {"101","Amit","670000"},  
+                                                                       {"102","Jai","780000"},  
+                                                                       {"101","Sachin","700000"}};  
+                            String column[]={"ID","NAME","SALARY"};       
+                            final JTable jt=new JTable(data,column);  
+		    jt.setCellSelectionEnabled(true);
+		    ListSelectionModel select= jt.getSelectionModel();
+		    select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		    select.addListSelectionListener(new ListSelectionListener() {
+		      public void valueChanged(ListSelectionEvent e) {
+		        String Data = null;
+		        int[] row = jt.getSelectedRows();
+		        int[] columns = jt.getSelectedColumns();
+		        for (int i = 0; i < row.length; i++) {
+		          for (int j = 0; j < columns.length; j++) {
+		            Data = (String) jt.getValueAt(row[i], columns[j]);
+		          } }
+		        System.out.println("Table element selected is: " + Data);  
+		      }     
+		    });
+		    JScrollPane sp=new JScrollPane(jt);  
+		    f.add(sp);
+		    f.setSize(300, 200);
+		    f.setVisible(true);
+		  }
+		}
+
+Output:
+If you select an element in column 
+NAME
+, name of the element will be displayed on the console:
+
+Table element selected is: Sachin

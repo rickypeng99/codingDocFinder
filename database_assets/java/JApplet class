@@ -1,0 +1,57 @@
+JApplet class in Applet
+
+
+As we prefer Swing to AWT. Now we can use JApplet that can have all the controls of swing. The JApplet class extends the Applet class.
+
+
+Example of EventHandling in JApplet:
+
+
+
+
+import java.applet.*;
+import javax.swing.*;
+import java.awt.event.*;
+public class EventJApplet extends JApplet implements ActionListener{
+JButton b;
+JTextField tf;
+public void init(){
+
+tf=new JTextField();
+tf.setBounds(30,40,150,20);
+
+b=new JButton("Click");
+b.setBounds(80,150,70,40);
+
+add(b);add(tf);
+b.addActionListener(this);
+
+setLayout(null);
+}
+
+public void actionPerformed(ActionEvent e){
+tf.setText("Welcome");
+}
+}
+
+
+
+
+In the above example, we have created all the controls in init() method because it is invoked only once.
+
+
+myapplet.html
+
+
+<html>
+<body>
+<applet code="EventJApplet.class" width="300" height="300">
+</applet>
+</body>
+</html>
+
+
+
+
+download this example.
+

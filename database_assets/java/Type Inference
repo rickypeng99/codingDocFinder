@@ -1,0 +1,53 @@
+Type Inference for Generic Instance Creation
+In Java 7, Java provides improved compiler which is enough smart to infer the type of generic instance. Now, you can replace the type arguments with an empty set of type parameters (<>). This pair of angle brackets is informally called the diamond.
+The following approach is used in Java 6 and prior version.
+
+Ex. List<Integer> list  = new List<Integer>();
+
+Now, you can use the following new approach introduced in Java 7.
+
+Ex. List<Integer> list = new List<>(); // Here, we just used diamond
+
+Type Inference for Generic Instance Creation Example
+
+import java.util.List;
+import java.util.ArrayList;
+public class TypeInference {
+	public static void main(String[] args) {
+		// In Java 6 and earlier  
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(12);
+		for (Integer element : list) {
+			System.out.println(element);
+		}
+		// In Java 7
+		List<Integer> list2 = new ArrayList<>(); // Here, diamond is used 
+		list2.add(12);
+		for (Integer element : list2) {
+			System.out.println(element);
+		}
+	}
+}
+
+Output:
+
+12
+12
+
+Type Inference and Generic Constructors
+You can create generic constructor in both generic and non-generic classes. In the following example, we have created a generic type constructor.
+
+class GenericClass<X> {
+<T> GenericClass(T t) {
+System.out.println(t);
+}
+}
+public class TypeInference {
+	public static void main(String[] args) {
+		GenericClass<String>gc2 = new GenericClass<>("Hello");
+	}
+}
+
+Output:
+
+Hello

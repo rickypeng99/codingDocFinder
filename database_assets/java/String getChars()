@@ -1,0 +1,55 @@
+Java String getChars()
+The 
+java string getChars()
+ method copies the content of this string into specified char array. There are 4 arguments passed in getChars() method. The signature of getChars() method is given below:
+Internal implementation
+
+void getChars(char dst[], int dstBegin) {
+        System.arraycopy(value, 0, dst, dstBegin, value.length);
+    }
+
+Signature
+The signature or syntax of string getChars() method is given below:
+
+public void getChars(int srcBeginIndex, int srcEndIndex, char[] destination, int dstBeginIndex)
+
+Returns
+It doesn't return any value.
+Throws
+It throws StringIndexOutOfBoundsException if beginIndex is greater than endIndex.
+Java String getChars() method example
+
+public class StringGetCharsExample{
+public static void main(String args[]){
+ String str = new String("hello javatpoint how r u");
+      char[] ch = new char[10];
+      try{
+         str.getChars(6, 16, ch, 0);
+         System.out.println(ch);
+      }catch(Exception ex){System.out.println(ex);}
+}}
+
+Test it Now
+Output:
+
+javatpoint
+
+Java String getChars() Method Example 2
+It throws an exception if index value exceeds array range. Let's see an example.
+
+public class StringGetCharsExample2 {
+	public static void main(String[] args) {
+		String str = new String("Welcome to Javatpoint");
+		char[] ch  = new char[20];
+		try {
+			str.getChars(1, 26, ch, 0);
+			System.out.println(ch);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+}
+
+Output:
+
+java.lang.StringIndexOutOfBoundsException: offset 10, count 14, length 20

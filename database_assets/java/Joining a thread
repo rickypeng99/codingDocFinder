@@ -1,0 +1,189 @@
+The join() method
+The join()  method waits for a thread to die. In other words, it causes the currently running threads to stop executing until the thread it joins with completes its task.
+Syntax:
+
+
+public void join()throws InterruptedException
+
+
+public void join(long milliseconds)throws InterruptedException
+
+
+Example of join() method
+
+
+class TestJoinMethod1 extends Thread{
+ public void run(){
+  for(int i=1;i<=5;i++){
+   try{
+    Thread.sleep(500);
+   }catch(Exception e){System.out.println(e);}
+  System.out.println(i);
+  }
+ }
+public static void main(String args[]){
+ TestJoinMethod1 t1=new TestJoinMethod1();
+ TestJoinMethod1 t2=new TestJoinMethod1();
+ TestJoinMethod1 t3=new TestJoinMethod1();
+ t1.start();
+ try{
+  t1.join();
+ }catch(Exception e){System.out.println(e);}
+
+ t2.start();
+ t3.start();
+ }
+}
+
+Test it Now
+
+Output:1
+       2
+       3
+       4
+       5
+       1
+       1
+       2
+       2
+       3
+       3
+       4
+       4
+       5
+       5
+
+ 
+
+
+As you can see in the above example,when t1 completes its task then t2 and t3 starts executing.
+
+
+Example of join(long miliseconds) method
+
+
+class TestJoinMethod2 extends Thread{
+ public void run(){
+  for(int i=1;i<=5;i++){
+   try{
+    Thread.sleep(500);
+   }catch(Exception e){System.out.println(e);}
+  System.out.println(i);
+  }
+ }
+public static void main(String args[]){
+ TestJoinMethod2 t1=new TestJoinMethod2();
+ TestJoinMethod2 t2=new TestJoinMethod2();
+ TestJoinMethod2 t3=new TestJoinMethod2();
+ t1.start();
+ try{
+  t1.join(1500);
+ }catch(Exception e){System.out.println(e);}
+
+ t2.start();
+ t3.start();
+ }
+}
+
+Test it Now
+
+Output:1
+       2
+       3
+       1
+       4
+       1
+       2
+       5
+       2
+       3
+       3
+       4
+       4
+       5
+       5
+
+ 
+
+
+In the above example,when t1 is completes its task for 1500 miliseconds(3 times) then t2 and t3 starts executing.
+
+
+getName(),setName(String) and getId() method:
+
+
+public String getName()
+
+
+public void  setName(String name)
+
+
+public long getId()
+
+
+
+
+
+class TestJoinMethod3 extends Thread{
+  public void run(){
+   System.out.println("running...");
+  }
+ public static void main(String args[]){
+  TestJoinMethod3 t1=new TestJoinMethod3();
+  TestJoinMethod3 t2=new TestJoinMethod3();
+  System.out.println("Name of t1:"+t1.getName());
+  System.out.println("Name of t2:"+t2.getName());
+  System.out.println("id of t1:"+t1.getId());
+
+  t1.start();
+  t2.start();
+
+  t1.setName("Sonoo Jaiswal");
+  System.out.println("After changing name of t1:"+t1.getName());
+ }
+}
+
+Test it Now
+
+Output:Name of t1:Thread-0
+       Name of t2:Thread-1
+       id of t1:8
+       running...
+       After changling name of t1:Sonoo Jaiswal
+       running...
+     
+ 
+The currentThread() method:
+
+
+The currentThread() method returns a reference to the currently executing thread object.
+
+
+Syntax:
+
+
+public static Thread currentThread()
+
+
+Example of currentThread() method
+
+
+class TestJoinMethod4 extends Thread{
+ public void run(){
+  System.out.println(Thread.currentThread().getName());
+ }
+ }
+ public static void main(String args[]){
+  TestJoinMethod4 t1=new TestJoinMethod4();
+  TestJoinMethod4 t2=new TestJoinMethod4();
+
+  t1.start();
+  t2.start();
+ }
+}
+
+Test it Now
+
+Output:Thread-0
+       Thread-1
+ 

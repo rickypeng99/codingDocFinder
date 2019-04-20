@@ -1,0 +1,70 @@
+Java String replaceAll()
+The 
+java string replaceAll()
+ method returns a string replacing all the sequence of characters matching regex and replacement string. 
+Internal implementation
+
+public String replaceAll(String regex, String replacement) {
+        return Pattern.compile(regex).matcher(this).replaceAll(replacement);
+}
+
+Signature
+
+public String replaceAll(String regex, String replacement)
+
+Parameters
+regex
+ : regular expression
+replacement
+ : replacement sequence of characters
+Returns
+replaced string
+Java String replaceAll() example: replace character
+Let's see an example to replace all the occurrences of 
+a single character
+.
+
+public class ReplaceAllExample1{
+public static void main(String args[]){
+String s1="javatpoint is a very good website";
+String replaceString=s1.replaceAll("a","e");//replaces all occurrences of "a" to "e"
+System.out.println(replaceString);
+}}
+
+Test it Now
+
+jevetpoint is e very good website
+
+Java String replaceAll() example: replace word
+Let's see an example to replace all the occurrences of 
+single word or set of words
+.
+
+public class ReplaceAllExample2{
+public static void main(String args[]){
+String s1="My name is Khan. My name is Bob. My name is Sonoo.";
+String replaceString=s1.replaceAll("is","was");//replaces all occurrences of "is" to "was"
+System.out.println(replaceString);
+}}
+
+Test it Now
+
+My name was Khan. My name was Bob. My name was Sonoo.
+
+Java String replaceAll() example: remove white spaces
+Let's see an example to remove all the occurrences of 
+white spaces
+.
+
+public class ReplaceAllExample3{
+public static void main(String args[]){
+String s1="My name is Khan. My name is Bob. My name is Sonoo.";
+String replaceString=s1.replaceAll("\\s","");
+System.out.println(replaceString);
+}}
+
+Test it Now
+
+MynameisKhan.MynameisBob.MynameisSonoo.
+
+Click me to know about regex

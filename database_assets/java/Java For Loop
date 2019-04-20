@@ -1,0 +1,358 @@
+Loops in Java
+In programming languages, loops are used to execute a set of instructions/functions repeatedly when some conditions become true. There are three types of loops in java.
+
+
+for loop
+
+
+while loop
+
+
+do-while loop
+
+
+Java For Loop vs While Loop vs Do While Loop
+
+
+
+	
+Comparison
+
+	
+for loop
+
+	
+while loop
+
+	
+do while loop
+
+
+
+
+
+	
+Introduction
+
+	
+The Java for loop is a control flow statement that iterates a part of the programs multiple times. 
+
+	
+The Java while loop is a control flow statement that executes a part of the programs repeatedly on the basis of given boolean condition.
+
+	
+The Java do while loop is a control flow statement that executes a part of the programs at least once and the further execution depends upon the given boolean condition.
+
+
+
+
+
+	
+When to use
+
+	
+If the number of iteration is fixed, it is recommended to use for loop.
+
+	
+If the number of iteration is not fixed, it is recommended to use while loop.
+
+	
+If the number of iteration is not fixed and you must have to execute the loop at least once, it is recommended to use the do-while loop.
+
+
+
+
+
+	
+Syntax
+
+	
+
+for(init;condition;incr/decr){  
+// code to be executed 
+}
+
+
+	
+
+while(condition){  
+//code to be executed 
+}
+
+
+	
+
+do{  
+//code to be executed  
+}while(condition); 
+
+
+
+
+
+
+	
+Example
+
+	
+
+//for loop  
+for(int i=1;i<=10;i++){  
+System.out.println(i);  
+}  
+
+
+	
+
+//while loop  
+int i=1;  
+while(i<=10){  
+System.out.println(i);  
+i++;  
+}  
+
+
+	
+
+//do-while loop  
+int i=1;  
+do{  
+System.out.println(i);  
+i++;  
+}while(i<=10); 
+
+
+
+
+
+
+
+	
+Syntax for infinitive loop
+
+	
+
+for(;;){  
+//code to be executed  
+}
+
+
+	
+
+while(true){  
+//code to be executed  
+}
+
+
+	
+
+do{  
+//code to be executed  
+}while(true);  
+
+
+
+
+
+Java For Loop
+The Java 
+for loop
+ is used to iterate a part of the program several times. If the number of iteration is fixed, it is recommended to use for loop.
+There are three types of for loops in java.
+
+
+Simple For Loop
+
+
+For-each or Enhanced For Loop
+
+
+Labeled For Loop
+
+
+Java Simple For Loop
+A simple for loop is the same as C/C++. We can initialize the variable, check condition and increment/decrement value. It consists of four parts:
+
+    
+Initialization
+: It is the initial condition which is executed once when the loop starts. Here, we can initialize the variable, or we can use an already initialized variable. It is an optional condition.
+
+    
+Condition
+: It is the second condition which is executed each time to test the condition of the loop. It continues execution until the condition is false. It must return boolean value either true or false. It is an optional condition.
+
+    
+Statement
+: The statement of the loop is executed each time until the second condition is false.
+
+    
+Increment/Decrement
+: It increments or decrements the variable value. It is an optional condition.
+
+
+Syntax:
+
+for(initialization;condition;incr/decr){
+//statement or code to be executed
+}
+
+Flowchart:
+Example:
+
+//Java Program to demonstrate the example of for loop
+//which prints table of 1
+public class ForExample {
+public static void main(String[] args) {
+    //Code of Java for loop
+	for(int i=1;i<=10;i++){
+		System.out.println(i);
+	}
+}
+}
+
+Test it Now
+Output:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java for-each Loop
+The for-each loop is used to traverse array or collection in java. It is easier to use than simple for loop because we don't need to increment value and use subscript notation.
+It works on elements basis not index. It returns element one by one in the defined variable.
+Syntax:
+
+for(Type var:array){
+//code to be executed
+}
+
+Example:
+
+//Java For-each loop example which prints the
+//elements of the array
+public class ForEachExample {
+public static void main(String[] args) {
+    //Declaring an array
+	int arr[]={12,23,44,56,78};
+	//Printing array using for-each loop
+	for(int i:arr){
+		System.out.println(i);
+	}
+}
+}
+
+Test it Now
+Output:
+
+12
+23
+44
+56
+78
+
+Java Labeled For Loop
+We can have a name of each Java for loop. To do so, we use label before the for loop. It is useful if we have nested for loop so that we can break/continue specific for loop.
+Usually, break and continue keywords breaks/continues the innermost for loop only.
+Syntax:
+
+labelname:
+for(initialization;condition;incr/decr){
+//code to be executed
+}
+
+Example:
+
+//A Java program to demonstrate the use of labeled for loop
+public class LabeledForExample {
+public static void main(String[] args) {
+    //Using Label for outer and for loop
+	aa:
+		for(int i=1;i<=3;i++){
+			bb:
+				for(int j=1;j<=3;j++){
+					if(i==2&&j==2){
+						break aa;
+					}
+					System.out.println(i+" "+j);
+				}
+		}
+}
+}
+
+Output:
+
+1 1
+1 2
+1 3
+2 1
+
+If you use 
+break bb;
+, it will break inner loop only which is the default behavior of any loop.
+
+public class LabeledForExample2 {
+public static void main(String[] args) {
+	aa:
+		for(int i=1;i<=3;i++){
+			bb:
+				for(int j=1;j<=3;j++){
+					if(i==2&&j==2){
+						break bb;
+					}
+					System.out.println(i+" "+j);
+				}
+		}
+}
+}
+
+Output:
+
+1 1
+1 2
+1 3
+2 1
+3 1
+3 2
+3 3
+
+Java Infinitive For Loop
+If you use two semicolons ;; in the for loop, it will be infinitive for loop.
+Syntax:
+
+for(;;){
+//code to be executed
+}
+
+Example:
+
+//Java program to demonstrate the use of infinite for loop
+//which prints an statement
+public class ForExample {
+public static void main(String[] args) {
+    //Using no condition in for loop
+	for(;;){
+		System.out.println("infinitive loop");
+	}
+}
+}
+
+Output:
+
+infinitive loop
+infinitive loop
+infinitive loop
+infinitive loop
+infinitive loop
+ctrl+c
+
+Now, you need to press ctrl+c to exit from the program.

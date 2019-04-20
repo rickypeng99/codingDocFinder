@@ -1,0 +1,60 @@
+JavaFX Application Structure
+JavaFX application is divided hierarchically into three main components known as Stage, Scene and nodes. We need to import 
+javafx.application.Application
+ class in every JavaFX application. This provides the following life cycle methods for JavaFX application.
+
+
+public void init()
+
+
+public abstract void start(Stage primaryStage)
+
+
+public void stop()
+
+
+in order to create a basic JavaFX application, we need to:
+
+
+Import 
+javafx.application.Application
+ into our code. 
+
+
+Inherit 
+Application
+ into our class. 
+
+
+Override 
+start()
+ method of Application class.
+ 
+
+Stage
+Stage
+ in a JavaFX application is similar to the 
+Frame
+ in a Swing Application. It acts like a container for all the JavaFX objects. Primary Stage is created internally by the platform. Other stages can further be created by the application. The object of primary stage is passed to 
+start
+ method. We need to call 
+show
+ method on the 
+primary stage object
+ in order to show our primary stage. Initially, the primary Stage looks like following.
+However, we can add various objects to this primary stage. The objects can only be added in a hierarchical way i.e. first, scene graph will be added to this primaryStage and then that scene graph may contain the nodes. A node may be any object of the user's interface like text area, buttons, shapes, media, etc.
+Scene
+Scene actually holds all the physical contents (nodes) of a JavaFX application. 
+Javafx.scene.Scene
+ class provides all the methods to deal with a scene object. Creating scene is necessary in order to visualize the contents on the stage.
+At one instance, the scene object can only be added to one stage. In order to implement Scene in our JavaFX application, we must import 
+javafx.scene
+ package in our code. The Scene can be created by creating the 
+Scene
+ class object and passing the layout object into the Scene class constructor. We will discuss Scene class and its method later in detail.
+Scene Graph
+Scene Graph exists at the lowest level of the hierarchy. It can be seen as the collection of various nodes. A node is the element which is visualized on the stage. It can be any button, text box, layout, image, radio button, check box, etc.
+The nodes are implemented in a tree kind of structure. There is always one root in the scene graph. This will act as a parent node for all the other nodes present in the scene graph. However, this node may be any of the layouts available in the JavaFX system.
+The leaf nodes exist at the lowest level in the tree hierarchy. Each of the node present in the scene graphs represents classes of 
+javafx.scene
+ package therefore we need to import the package into our application in order to create a full featured javafx application.

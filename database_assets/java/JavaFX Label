@@ -1,0 +1,80 @@
+JavaFX Label
+javafx.scene.control.Label
+ class represents label control. As the name suggests, the label is the component that is used to place any text information on the screen. It is mainly used to describe the purpose of the other components to the user. You can not set a focus on the label using the Tab key.
+Package: javafx.scene.control
+Constructors:
+
+Label(): creates an empty Label 
+Label(String text): creates Label with the supplied text 
+Label(String text, Node graphics): creates Label with the supplied text and graphics
+
+Adding a Node to the scene graph
+The following code implements Label into our Application. 
+
+package application;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class LabelTest extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		Label my_label=new Label("This is an example of Label");
+		StackPane root = new StackPane(); 
+		Scene scene=new Scene(root,300,300);
+		root.getChildren().add(my_label);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Label Class Example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+
+Output:
+Displaying image in a Label
+JavaFX allows us to display some graphics next to the label text. There is a constructor in the Label class in which, we can pass any image along with the label text. The example given below is displaying the image in a Label.
+
+package application;
+
+import java.io.FileInputStream;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class LabelTest extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		
+		StackPane root = new StackPane(); 
+		FileInputStream input= new FileInputStream("/home/javatpoint/Desktop/JavaFX/Images/colored_label.png");
+		Image image = new Image(input);
+		ImageView imageview=new ImageView(image);
+		Label my_label=new Label("Home",imageview);
+		Scene scene=new Scene(root,300,300);
+		root.getChildren().add(my_label);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Label Class Example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+
+Output:

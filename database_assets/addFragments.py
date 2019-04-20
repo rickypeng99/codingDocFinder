@@ -23,13 +23,16 @@ def main(argv):
      headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
 
      
-     
+
+
+
      #uploading python tutorials 
-     dirname = "python/"
+     language = sys.argv[1]
+     dirname = sys.argv[1] + "/"
      files = []
      wait = []
      #preventing 10.1 to be sorted before 2.1
-     for root, dirs, filenames, in os.walk("python"):
+     for root, dirs, filenames, in os.walk(dirname):
           for filename in sorted(filenames):
                if(filename[1] == "."):
                     files.append(filename)
@@ -43,17 +46,19 @@ def main(argv):
      for filename in files:
           title = filename
 
-          f = open(dirname + filename, 'r')
-          text = f.read()
-
+          if(language == "python"):
+               f = open(dirname + filename, 'r', encoding='gbk')
+               text = f.read()
+          else:
+               f = open(dirname + filename, 'r', encoding='utf-8')
+               text = f.read()
           #filtering out all chinese characters
           text = re.sub(u'[\u4e00-\u9fff]+','', text)
-          #print(text)
           
-          language = "python"
           #no code fragments for python tutorials
           codeFragment = "unidentified"    
           
+          #print(title)
           #adding params
           params = urllib.parse.urlencode({'title': title, 'text': text, 'language': language, 'codeFragment': codeFragment})
 
@@ -65,7 +70,8 @@ def main(argv):
           if(d['data'] != "error"):
                print("Successfully uploaded " + title)
           else:
-               print("Failed uploading " + title)
+               #Some files from the java folder are empty, but that is fine.
+               print("FAILED uploading " + title + d['message'])
 
      # Exit gracefully
      conn.close()

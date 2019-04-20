@@ -1,0 +1,75 @@
+JavaFX HyperLink
+In JavaFx, we can use hyper-links to refer the web pages. It is similar to anchor links in HTML. 
+javafx.scene.control.HyperLink
+ class provides all the necessary methods to deal with JavaFX hyper-links.
+The following code implements HyperLink into our application.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+public class HyperLinkTest extends Application {
+
+	
+public static void main(String[] args) {
+launch(args);	
+}
+
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	Hyperlink hp = new Hyperlink("http://www.javatpoint.com");
+	StackPane root = new StackPane();
+	hp.setOnAction(e -> System.out.println("Link Clicked"));
+	root.getChildren().add(hp);
+	Scene scene=new Scene(root,400,300);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Hyperlink Example");
+	primaryStage.show();
+}
+}
+
+Output:
+Attaching the image with the link
+we can attach the image with the hyperlink by calling an instance method 
+setGraphic()
+. It accepts the object of ImageView class. The following code attaches the image with the hyperlink.
+
+package application;
+import java.io.FileInputStream;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+public class HyperLinkTest extends Application {
+
+	
+publicstaticvoid main(String[] args) {
+launch(args);	
+}
+
+@Override
+publicvoid start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	Hyperlink hp = new Hyperlink();
+	hp.setOnAction(e -> System.out.println("link clicked"));
+	FileInputStream input = new FileInputStream("/home/javatpoint/Desktop/JavaFX/Images/hyperlink.png");
+	Image img = new Image(input);
+	ImageView imgview=new ImageView(img);
+	hp.setGraphic(imgview);
+	StackPane root = newStackPane();
+	root.getChildren().add(hp);
+	Scene scene = new Scene(root,300,400);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Hyperlink Example");
+	primaryStage.show();
+}
+}
+
+Output:

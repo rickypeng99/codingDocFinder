@@ -1,0 +1,160 @@
+Java FileOutputStream Class
+Java FileOutputStream is an output stream used for writing data to a 
+file
+.
+If you have to write primitive values into a file, use FileOutputStream class. You can write byte-oriented as well as character-oriented data through FileOutputStream class. But, for character-oriented data, it is preferred to use 
+FileWriter
+ than FileOutputStream. 
+FileOutputStream class declaration
+Let's see the declaration for Java.io.FileOutputStream class:
+
+public class FileOutputStream extends OutputStream
+
+FileOutputStream class methods
+
+  
+
+     
+Method
+
+     
+Description
+
+  
+
+  
+
+     
+protected void finalize()
+
+     
+It is used to clean up the connection with the file output stream.
+
+  
+
+  
+  
+     
+void write(byte[] ary)
+
+     
+It is used to write 
+ary.length
+ bytes from the byte 
+array
+ to the file output stream.
+
+  
+
+  
+
+     
+void write(byte[] ary, int off, int len)
+
+     
+It is used to write 
+len
+ bytes from the byte array starting at offset 
+off
+ to the file output stream.
+
+  
+
+  
+
+     
+void write(int b)
+
+     
+It is used to write the specified byte to the file output stream.
+
+  
+
+  
+
+     
+FileChannel getChannel()
+
+     
+It is used to return the file channel object associated with the file output stream.
+
+  
+
+  
+
+     
+FileDescriptor getFD()
+
+     
+It is used to return the file descriptor associated with the stream.
+
+  
+
+  
+
+     
+void close()
+
+     
+It is used to closes the file output stream.
+
+  
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java FileOutputStream Example 1: write byte
+
+import java.io.FileOutputStream;
+public class FileOutputStreamExample {
+	public static void main(String args[]){  
+		   try{  
+		     FileOutputStream fout=new FileOutputStream("D:\\testout.txt");  
+		     fout.write(65);  
+		     fout.close();  
+		     System.out.println("success...");  
+		    }catch(Exception e){System.out.println(e);}  
+	  }  
+}
+
+Output:
+
+Success...
+
+The content of a text file 
+testout.txt
+ is set with the data 
+A
+.
+testout.txt
+
+A
+
+Java FileOutputStream example 2: write string 
+
+import java.io.FileOutputStream;
+public class FileOutputStreamExample {
+	public static void main(String args[]){  
+		   try{  
+		     FileOutputStream fout=new FileOutputStream("D:\\testout.txt");  
+		     String s="Welcome to javaTpoint.";  
+		     byte b[]=s.getBytes();//converting string into byte array  
+		     fout.write(b);  
+		     fout.close();  
+		     System.out.println("success...");  
+		    }catch(Exception e){System.out.println(e);}  
+	  }  
+}
+
+Output:
+
+Success...
+
+The content of a text file 
+testout.txt
+ is set with the data 
+Welcome to javaTpoint.
+testout.txt
+
+Welcome to javaTpoint.

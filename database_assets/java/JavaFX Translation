@@ -1,0 +1,126 @@
+JavaFX Translation
+Translation can be defined as change in the position of an object on the screen. The position of an object gets changed by moving it along the X-Y direction. In JavaFX, the class 
+javafx.scene.transform.Translate
+ represents the Translate transform. We need to instantiate this class in order to translate the object. 
+The following image translates the circle from one position to the another position. The centre coordinate of the circle P(x,y) gets converted to P(x1,y1). The X coordinate is changed by the factor Tx while the Y coordinate is changed by the factor Ty.
+Properties
+The properties of the class along with the setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+X
+
+	
+It is a double type property. It represents the distance by which the object is translated in X Direction. 
+
+	
+setX(double value)
+
+
+
+
+
+	
+Y
+
+	
+It is a double type property. It represents the distance by which the object is translated in Y direction. 
+
+	
+setY(double value)
+
+
+
+
+
+	
+Z
+
+	
+It is a double type property. It represents the distance by which the object is translated in Z direction. 
+
+	
+setZ(double value)
+
+
+
+
+Constructors
+The class contains three constructors 
+
+
+public Translate() :
+ creates the new instance of the Translate class with the default parameters.
+ 
+
+public Translate(double X, double Y) :
+ creates the new instance with the specified (X, Y) coordinate.
+ 
+
+public Translate(double X, double Y, double Z) :
+ creates the new instance with the specified (x,y,z) coordinate. 
+
+
+Example:
+The following example illustrates the Translation transform on the rectangle. Here, we have created two rectangles with the same coordinates. The first rectangle is filled with the Red color while the second rectangle is filled with the green color. The green rectangle is moved to the different place by setting the properties of the translate object to the appropriate values.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Translate;
+import javafx.stage.Stage;
+public class TranslateExample extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	//creating the Rectangles with the same coordinates
+	Rectangle rect1 = new Rectangle(20,20,200,150);
+	Rectangle rect2 = new Rectangle(20,20,200,150);
+	
+	//setting rectangle properties
+	rect1.setFill(Color.RED);
+	rect1.setStroke(Color.BLACK);
+	rect1.setStrokeWidth(5);
+	rect2.setFill(Color.GREEN);
+	rect2.setStroke(Color.BLACK);
+	rect2.setStrokeWidth(5);
+	
+	//Instantiating the Translate class 	
+	Translate translate = new Translate();
+	
+	//setting the properties of the translate object	
+	translate.setX(200);
+	translate.setY(200);
+	translate.setZ(200);
+	
+	//applying transformation to the second rectangle 
+	rect2.getTransforms().addAll(translate);
+	
+	Group root = new Group();
+	root.getChildren().addAll(rect1,rect2);
+	Scene scene = new Scene(root,500,400);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Translation Example");
+	primaryStage.show();
+}
+public static void main(String[] args) {
+	launch(args);
+}
+}

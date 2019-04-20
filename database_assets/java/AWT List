@@ -1,0 +1,82 @@
+Java AWT List
+The object of List class represents a list of text items. By the help of list, user can choose either one item or multiple items. It inherits Component class.
+AWT List class Declaration
+
+public class List extends Component implements ItemSelectable, Accessible
+
+Java AWT List Example
+
+import java.awt.*;
+public class ListExample
+{
+	 ListExample(){
+	    Frame f= new Frame();
+	    List l1=new List(5);
+	    l1.setBounds(100,100, 75,75);
+	    l1.add("Item 1");
+	    l1.add("Item 2");
+	    l1.add("Item 3");
+	    l1.add("Item 4");
+	    l1.add("Item 5");
+	    f.add(l1);
+	    f.setSize(400,400);
+	    f.setLayout(null);
+	    f.setVisible(true);
+	 }
+public static void main(String args[])
+{
+   new ListExample();
+}
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java AWT List Example with ActionListener
+
+import java.awt.*;
+import java.awt.event.*;
+public class ListExample
+{
+	 ListExample(){
+	    Frame f= new Frame();
+	    final Label label = new Label();        
+	    label.setAlignment(Label.CENTER);
+	    label.setSize(500,100);
+	    Button b=new Button("Show");
+	    b.setBounds(200,150,80,30);
+	    final List l1=new List(4, false);
+	    l1.setBounds(100,100, 70,70);
+	    l1.add("C");
+	    l1.add("C++");
+	    l1.add("Java");
+	    l1.add("PHP");
+	    final List l2=new List(4, true);
+	    l2.setBounds(100,200, 70,70);
+	    l2.add("Turbo C++");
+	    l2.add("Spring");
+	    l2.add("Hibernate");
+	    l2.add("CodeIgniter");
+	    f.add(l1); f.add(l2); f.add(label); f.add(b);
+	    f.setSize(450,450);
+	    f.setLayout(null);
+	    f.setVisible(true);
+	    b.addActionListener(new ActionListener() {
+	     public void actionPerformed(ActionEvent e) {     
+	      String data = "Programming language Selected: "+l1.getItem(l1.getSelectedIndex());
+	      data += ", Framework Selected:";
+	      for(String frame:l2.getSelectedItems()){
+	               data += frame + " ";
+	      }
+	      label.setText(data);
+	      }
+	     }); 	    
+}
+public static void main(String args[])
+{
+   new ListExample();
+}
+}
+
+Output:

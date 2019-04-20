@@ -1,0 +1,63 @@
+Java Convert boolean to String
+We can convert 
+boolean to String in java
+ using 
+String.valueOf(boolean)
+ method.
+Alternatively, we can use 
+Boolean.toString(boolean)
+ method which also converts boolean into String. 
+1) String.valueOf()
+The String.valueOf() method converts boolean to String. The valueOf() is the static method of String class. The 
+signature
+ of valueOf() method is given below:
+
+public static String valueOf(boolean b)
+
+Java boolean to String Example using String.valueOf()
+Let's see the simple example of converting boolean to String in java.
+
+public class BooleanToStringExample1{
+public static void main(String args[]){
+boolean b1=true;
+boolean b2=false;
+String s1=String.valueOf(b1);
+String s2=String.valueOf(b2);
+System.out.println(s1);
+System.out.println(s2);
+}}
+
+Test it Now
+Output:
+
+true
+false
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+2) Boolean.toString()
+The Boolean.toString() method converts boolean to String. The toString() is the static method of Boolean class. The 
+signature
+ of toString() method is given below:
+
+public static String toString(boolean b)
+
+Java boolean to String Example using Boolean.toString()
+Let's see the simple code to convert boolean to String in java using Boolean.toString() method.
+
+public class BooleanToStringExample2{
+public static void main(String args[]){
+boolean b1=true;
+boolean b2=false;
+String s1=Boolean.toString(b1);
+String s2=Boolean.toString(b2);
+System.out.println(s1);
+System.out.println(s2);
+}}
+
+Test it Now
+Output:
+
+true
+false

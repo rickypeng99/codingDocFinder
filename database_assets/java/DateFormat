@@ -1,0 +1,216 @@
+Java Date Format
+There are two classes for formatting date in java: DateFormat and SimpleDateFormat.
+The java.text.DateFormat class provides various methods to format and parse date and time in java in language independent manner. The DateFormat class is an abstract class. java.text.Format is the parent class and java.text.SimpleDateFormat is the subclass of java.text.DateFormat class.
+In java, converting date into string is called formatting and vice-versa parsing. In other words, 
+formatting means date to string
+ and 
+parsing means string to date
+.
+java.text.DateFormat Fields
+
+protected Calendar calendar
+protected NumberFormat numberFormat
+public static final int ERA_FIELD
+public static final int YEAR_FIELD
+public static final int MONTH_FIELD
+public static final int DATE_FIELD
+public static final int HOUR_OF_DAY1_FIELD
+public static final int HOUR_OF_DAY0_FIELD
+public static final int MINUTE_FIELD
+public static final int SECOND_FIELD
+public static final int MILLISECOND_FIELD
+public static final int DAY_OF_WEEK_FIELD
+public static final int DAY_OF_YEAR_FIELD
+public static final int DAY_OF_WEEK_IN_MONTH_FIELD
+public static final int WEEK_OF_YEAR_FIELD
+public static final int WEEK_OF_MONTH_FIELD
+public static final int AM_PM_FIELD
+public static final int HOUR1_FIELD
+public static final int HOUR0_FIELD
+public static final int TIMEZONE_FIELD
+public static final int FULL
+public static final int LONG
+public static final int MEDIUM
+public static final int SHORT
+public static final int DEFAULT
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+java.text.DateFormat Methods
+
+
+No.
+Public Method
+Description
+
+
+1)
+final String format(Date date)
+converts given Date object into string.
+
+
+2)
+Date parse(String source)throws ParseException
+converts string into Date object.
+
+
+3)
+static final DateFormat getTimeInstance()
+returns time formatter with default formatting style for the default locale.
+
+
+4)
+static final DateFormat getTimeInstance(int style)
+returns time formatter with the given formatting style for the default locale.
+
+
+5)
+static final DateFormat getTimeInstance(int style, Locale locale)
+returns time formatter with the given formatting style for the given locale.
+
+
+6)
+static final DateFormat getDateInstance()
+returns date formatter with default formatting style for the default locale.
+
+
+7)
+static final DateFormat getDateInstance(int style)
+returns date formatter with the given formatting style for the default locale.
+
+
+8)
+static final DateFormat getDateInstance(int style, Locale locale)
+returns date formatter with the given formatting style for the given locale.
+
+
+9)
+static final DateFormat getDateTimeInstance()
+returns date/time formatter with default formatting style for the default locale.
+
+
+10)
+static final DateFormat getDateTimeInstance(int dateStyle,int timeStyle)
+returns date/time formatter with the given date formatting style and time formatting style for the default locale.
+
+
+11)
+static final DateFormat getDateTimeInstance(int dateStyle, int timeStyle, Locale locale)
+returns date/time formatter with the given date formatting style and time formatting style for the given locale.
+
+
+12)
+static final DateFormat getInstance()
+returns date/time formatter with short formatting style for date and time.
+
+
+13)
+static Locale[] getAvailableLocales()
+returns an array of available locales.
+
+
+14)
+Calendar getCalendar()
+returns an instance of Calendar for this DateFormat instance.
+
+
+15)
+NumberFormat getNumberFormat()
+returns an instance of NumberFormat for this DateFormat instance.
+
+
+16)
+TimeZone getTimeZone()
+returns an instance of TimeZone for this DateFormat instance.
+
+
+
+Java DateFormat Example: Date to String
+Let's see the simple example to 
+format date and time in java
+ using java.text.DateFormat class.
+
+import java.text.DateFormat;
+import java.util.Date;
+public class DateFormatExample {
+	public static void main(String[] args) {
+		Date currentDate = new Date();
+		System.out.println("Current Date: "+currentDate);
+		String dateToStr = DateFormat.getInstance().format(currentDate);
+		System.out.println("Date Format using getInstance(): "+dateToStr);
+	}
+}
+
+Output:
+
+Current Date: Tue Mar 31 14:37:23 IST 2015
+Date Format using getInstance(): 31/3/15 2:37 PM
+
+Let's see the full example to 
+format date and time in java
+ using java.text.DateFormat class.
+
+import java.text.DateFormat;
+import java.util.Date;
+public class DateFormatExample2 {
+	public static void main(String[] args) {
+		Date currentDate = new Date();
+		System.out.println("Current Date: "+currentDate);
+
+		String dateToStr = DateFormat.getInstance().format(currentDate);
+		System.out.println("Date Format using getInstance(): "+dateToStr);
+
+		dateToStr = DateFormat.getDateInstance().format(currentDate);
+		System.out.println("Date Format using getDateInstance(): "+dateToStr);
+
+		dateToStr = DateFormat.getTimeInstance().format(currentDate);
+		System.out.println("Date Format using getTimeInstance(): "+dateToStr);
+
+		dateToStr = DateFormat.getDateTimeInstance().format(currentDate);
+		System.out.println("Date Format using getDateTimeInstance(): "+dateToStr);
+
+		dateToStr = DateFormat.getTimeInstance(DateFormat.SHORT).format(currentDate);
+		System.out.println("Date Format using getTimeInstance(DateFormat.SHORT): "+dateToStr);
+
+		dateToStr = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(currentDate);
+		System.out.println("Date Format using getTimeInstance(DateFormat.MEDIUM): "+dateToStr);
+		
+		dateToStr = DateFormat.getTimeInstance(DateFormat.LONG).format(currentDate);
+		System.out.println("Date Format using getTimeInstance(DateFormat.LONG): "+dateToStr);
+		
+		dateToStr = DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.SHORT).format(currentDate);
+		System.out.println("Date Format using getDateTimeInstance(DateFormat.LONG,DateFormat.SHORT): "+dateToStr);
+
+	}
+}
+
+Output:
+
+Current Date: Tue Mar 31 14:37:23 IST 2015
+Date Format using getInstance(): 31/3/15 2:37 PM
+Date Format using getDateInstance(): 31 Mar, 2015
+Date Format using getTimeInstance(): 2:37:23 PM
+Date Format using getDateTimeInstance(): 31 Mar, 2015 2:37:23 PM
+Date Format using getTimeInstance(DateFormat.SHORT): 2:37 PM
+Date Format using getTimeInstance(DateFormat.MEDIUM): 2:37:23 PM
+Date Format using getTimeInstance(DateFormat.LONG): 2:37:23 PM IST
+Date Format using getDateTimeInstance(DateFormat.LONG,DateFormat.SHORT): 31 March, 2015 2:37 PM
+
+Java DateFormat Example: String to Date
+Let's see the simple example to 
+convert string into date
+ using java.text.DateFormat class.
+
+import java.text.DateFormat;
+import java.util.Date;
+public class DateFormatExample3 {
+	public static void main(String[] args)throws Exception {
+		Date d = DateFormat.getDateInstance().parse("31 Mar, 2015");
+		System.out.println("Date is: "+d);
+	}
+}
+
+Output:
+
+Date is: Tue Mar 31 00:00:00 IST 2015

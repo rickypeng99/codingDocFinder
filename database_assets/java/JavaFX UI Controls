@@ -1,0 +1,199 @@
+JavaFX UI Controls
+This part of the tutorial provides you the in-depth knowledge of JavaFX UI controls. The graphical user interface of every desktop application mainly considers UI elements, layouts and behaviour.
+The UI elements are the one which are actually shown to the user for interaction or information exchange. Layout defines the organization of the UI elements on the screen. Behaviour is the reaction of the UI element when some event is occurred on it.
+However, the package 
+javafx.scene.control
+ provides all the necessary classes for the UI components like Button, Label, etc. Every class represents a specific UI control and defines some methods for their styling.
+
+
+
+	
+SN
+
+	
+Control
+
+	
+Description
+
+
+
+
+
+	
+1
+
+	
+Label
+
+	
+Label is a component that is used to define a simple text on the screen. Typically, a label is placed with the node, it describes.
+
+
+
+
+
+	
+2
+
+	
+Button
+
+	
+Button is a component that controls the function of the application. Button class is used to create a labelled button.
+
+
+
+
+
+
+	
+3
+
+	
+RadioButton
+
+	
+The Radio Button is used to provide various options to the user. The user can only choose one option among all. A radio button is either selected or deselected.
+
+
+
+
+
+
+	
+4
+
+	
+CheckBox
+
+	
+Check Box is used to get the kind of information from the user which contains various choices. User marked the checkbox either on (true) or off(false).
+
+
+
+
+
+	
+5
+
+	
+TextField
+
+	
+Text Field is basically used to get the input from the user in the form of text. javafx.scene.control.TextField represents TextField 
+
+
+
+
+
+	
+6
+
+	
+PasswordField
+
+	
+PasswordField is used to get the user's password. Whatever is typed in the passwordfield is not shown on the screen to anyone. 
+
+
+
+
+	
+
+	
+7
+
+	
+HyperLink
+
+	
+HyperLink are used to refer any of the webpage through your appication. It is represented by the class 
+javafx.scene.control.HyperLink
+ 
+
+
+
+
+
+	
+8
+
+	
+Slider
+
+	
+ Slider is used to provide a pane of options to the user in a graphical form where the user needs to move a slider over the range of values to select one of them.  
+
+
+
+
+
+	
+9
+
+	
+ProgressBar
+
+	
+Progress Bar is used to show the work progress to the user. It is represented by the class 
+ javafx.scene.control.ProgressBar
+. 
+
+
+
+
+
+	
+10
+
+	
+ProgressIndicator
+
+	
+Instead of showing the analogue progress to the user, it shows the digital progress so that the user may know the amount of work done in percentage. 
+
+
+
+
+
+	
+11
+
+	
+ScrollBar
+
+	
+JavaFX Scroll Bar is used to provide a scroll bar to the user so that the user can scroll down the application pages. 
+
+
+
+
+
+	
+12
+
+	
+Menu
+
+	
+JavaFX provides a Menu class to implement menus. Menu is the main component of any application. 
+
+
+
+
+
+	
+13
+
+	
+ToolTip
+
+	
+JavaFX ToolTip is used to provide hint to the user about any component. It is mainly used to provide hints about the text fields or password fields being used in the application. 
+
+
+
+
+
+

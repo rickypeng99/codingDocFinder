@@ -1,0 +1,190 @@
+Java FilterWriter
+Java FilterWriter class is an abstract 
+class
+ which is used to write filtered character streams.
+The sub class of the FilterWriter should override some of its methods and it may provide additional methods and fields also.
+Fields
+
+    
+
+        
+Modifier
+
+		
+Type
+
+        
+Field
+
+        
+Description
+
+    
+
+    
+
+        
+protected
+
+		
+Writer
+
+        
+out
+
+        
+The underlying character-output stream.
+
+    
+
+
+Constructors
+
+    
+
+        
+Modifier
+
+        
+Constructor
+
+		
+Description
+
+    
+
+    
+
+        
+protected
+
+        
+FilterWriter(Writer out)
+
+        
+It creates InputStream class Object
+
+    
+
+
+Methods
+
+    
+
+        
+Modifier and Type
+
+		
+Method
+
+		
+Description
+
+    
+
+    
+
+        
+void
+
+        
+close()
+
+       
+It closes the stream, flushing it first.
+
+    
+
+	  
+
+        
+void
+
+        
+flush()
+
+        
+It flushes the stream.
+
+    
+
+	  
+
+        
+void
+
+		
+write(char[] cbuf, int off, int len)
+
+        
+It writes a portion of an 
+array
+ of characters.
+
+    
+
+	  
+
+        
+void
+
+        
+write(int c)
+
+        
+It writes a single character.
+
+    
+
+	
+
+        
+void
+
+        
+write(String str, int off, int len)
+
+        
+It writes a portion of a 
+string
+.
+
+    
+
+
+FilterWriter Example
+
+import java.io.*;
+class CustomFilterWriter extends FilterWriter {
+	CustomFilterWriter(Writer out) {
+		super(out);
+	}
+	public void write(String str) throws IOException {
+		super.write(str.toLowerCase());
+	}
+}
+public class FilterWriterExample {
+	public static void main(String[] args) {
+		try {
+			FileWriter fw = new FileWriter("Record.txt"); 
+			CustomFilterWriter filterWriter = new CustomFilterWriter(fw);			
+			filterWriter.write("I LOVE MY COUNTRY");
+			filterWriter.close();
+			FileReader fr = new FileReader("record.txt");
+			BufferedReader bufferedReader = new BufferedReader(fr);
+			int k;
+			while ((k = bufferedReader.read()) != -1) {
+				System.out.print((char) k);
+			}
+			bufferedReader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+Output:
+
+i love my country
+
+While running the current program if the current working directory does not contain the file, a new file is created and CustomFileWriter will write the text "I LOVE MY COUNTRY" in lowercase to the file.

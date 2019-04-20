@@ -1,0 +1,94 @@
+Java String replace()
+The 
+java string replace()
+ method returns a string replacing all the old char or CharSequence to new char or CharSequence. 
+Since JDK 1.5, a new replace() method is introduced, allowing you to replace a sequence of char values.
+Internal implementation
+
+ public String replace(char oldChar, char newChar) {
+        if (oldChar != newChar) {
+            int len = value.length;
+            int i = -1;
+            char[] val = value; /* avoid getfield opcode */
+
+            while (++i < len) {
+                if (val[i] == oldChar) {
+                    break;
+                }
+            }
+            if (i < len) {
+                char buf[] = new char[len];
+                for (int j = 0; j < i; j++) {
+                    buf[j] = val[j];
+                }
+                while (i < len) {
+                    char c = val[i];
+                    buf[i] = (c == oldChar) ? newChar : c;
+                    i++;
+                }
+                return new String(buf, true);
+            }
+        }
+        return this;
+    }
+
+
+Signature
+There are two type of replace methods in java string.
+
+public String replace(char oldChar, char newChar)
+and
+public String replace(CharSequence target, CharSequence replacement)
+
+The second replace method is added since JDK 1.5.
+Parameters
+oldChar
+ : old character
+newChar
+ : new character
+target
+ : target sequence of characters
+replacement
+ : replacement sequence of characters
+Returns
+replaced string
+Java String replace(char old, char new) method example
+
+public class ReplaceExample1{
+public static void main(String args[]){
+String s1="javatpoint is a very good website";
+String replaceString=s1.replace('a','e');//replaces all occurrences of 'a' to 'e'
+System.out.println(replaceString);
+}}
+
+Test it Now
+
+jevetpoint is e very good website
+
+Java String replace(CharSequence target, CharSequence replacement) method example
+
+public class ReplaceExample2{
+public static void main(String args[]){
+String s1="my name is khan my name is java";
+String replaceString=s1.replace("is","was");//replaces all occurrences of "is" to "was"
+System.out.println(replaceString);
+}}
+
+Test it Now
+
+my name was khan my name was java
+
+Java String replace() Method Example 3
+
+public class ReplaceExample3 {
+	public static void main(String[] args) {
+		String str = "oooooo-hhhh-oooooo";
+		String rs = str.replace("h","s"); // Replace 'h' with 's'
+		System.out.println(rs);
+		rs = rs.replace("s","h"); // Replace 's' with 'h'
+		System.out.println(rs);
+	}
+}
+
+oooooo-ssss-oooooo
+oooooo-hhhh-oooooo

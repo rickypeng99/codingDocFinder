@@ -1,0 +1,125 @@
+JavaFX LineChart
+In general, the Line Chart is defined as the type of graph in which the group of data points called markers are used to display the information.
+In Line Chart, the markers are plotted on the mapping points between the two Number axes. The markers are connected by the line segments. Basically, the line chart shows the deviation in the values of one axis with respect to the change in values of other axis.
+In the following image, the line chart shows the variation in the price of Milk over the last 8 years. On the Y axis, the price is shown while on the X axis, the years are shown.
+In JavaFX, the Line Chart is represented by the class javafx.scene.chart.LineChart
+Properties
+The properties of the class along with the setter methods are described in the following table.
+
+
+
+    
+Property
+
+    
+Description
+
+	
+Setter Methods
+
+
+
+
+
+    
+axisSortingPolicy
+
+    
+This is an 
+LineChart.SortingPolicy
+ type property. It represents whether the data is to be sorted according the nature of one of the axis.
+
+	
+setAxisSortingProperty(LineChart.SortingPolicy value)
+
+
+
+
+
+    
+createSymbols
+
+    
+This is a boolean type property. It represents whether the symbols are needed to be created for the ones for which the symbol nodes are not specified.
+
+	
+setCreateSymbols(Boolean true)
+
+
+
+
+Constructors
+There are two constructors in the class.
+
+
+public LineChart(Axis
+ Xaxis, Axis
+ Yaxis ) :
+ creates a new instance of LineChart with the specified axis.
+
+
+public LineChart(Axis
+ Xaxis, Axis
+ Yaxis,  ObservableList
+> data) :
+ creates the new instance of LineChart with the specified axis and data
+
+
+Example
+In the following example, we have shown the variation in the share price of a stock in the different years.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.stage.Stage;
+public class LineChartTest extends Application
+{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		//Defining Axis 
+		final NumberAxis xaxis = new NumberAxis(2008,2018,1);
+		final NumberAxis yaxis = new NumberAxis(10,80,5);
+		
+		//Defining Label for Axis 
+		xaxis.setLabel("Year");
+		yaxis.setLabel("Price");
+		
+		//Creating the instance of linechart with the specified axis
+		LineChart linechart = new LineChart(xaxis,yaxis);
+		
+		//creating the series 
+		XYChart.Series series = new XYChart.Series();
+		
+		//setting name and the date to the series 
+		series.setName("Stock Analysis");
+		series.getData().add(new XYChart.Data(2009,25));
+		series.getData().add(new XYChart.Data(2010,15));
+		series.getData().add(new XYChart.Data(2011,68));
+		series.getData().add(new XYChart.Data(2012,60));
+		series.getData().add(new XYChart.Data(2013,35));
+		series.getData().add(new XYChart.Data(2014,55));
+		series.getData().add(new XYChart.Data(2015,45));
+		series.getData().add(new XYChart.Data(2016,67));
+		series.getData().add(new XYChart.Data(2017,78));
+		
+		//adding series to the linechart 
+		linechart.getData().add(series);
+		
+		//setting Group and Scene 
+		Group root = new Group(linechart);
+		Scene scene = new Scene(root,600,400);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("LineChart Example");
+		primaryStage.show();
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+}

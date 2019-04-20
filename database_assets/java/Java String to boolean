@@ -1,0 +1,65 @@
+Java Convert String to boolean
+We can convert 
+String to boolean in java
+ using 
+Boolean.parseBoolean(string)
+ method.
+To convert String into Boolean object, we can use 
+Boolean.valueOf(string)
+ method which returns instance of Boolean class.
+To get boolean true, string must contain "true". Here, case is ignored. So, "true" or "TRUE" will return boolean true. Any other string value except "true" returns boolean false.
+Java String to boolean Example: Boolean.parseBoolean()
+The parseBoolean() method converts string into boolean primitive. 
+The parseBoolean() is the static method of Boolean class. The 
+signature
+ of parseBoolean() method is given below:
+
+public static int parseBoolean(String s)
+
+Let's see the simple example of converting String to boolean in java.
+
+public class StringToBooleanExample{
+public static void main(String args[]){
+String s1="true";
+String s2="TRue";
+String s3="ok";
+boolean b1=Boolean.parseBoolean(s1);
+boolean b2=Boolean.parseBoolean(s2);
+boolean b3=Boolean.parseBoolean(s3);
+System.out.println(b1);
+System.out.println(b2);
+System.out.println(b3);
+}}
+
+Test it Now
+Output:
+
+true
+true
+false
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java String to Boolean Example: Boolean.valueOf()
+The Boolean.valueOf() method converts string into Boolean object. Let's see the simple code to convert String to Boolean in java.
+
+public class StringToBooleanExample2{
+public static void main(String args[]){
+String s1="true";  
+String s2="TRue";  
+String s3="ok";  
+Boolean b1=Boolean.valueOf(s1);  
+Boolean b2=Boolean.valueOf(s2);  
+Boolean b3=Boolean.valueOf(s3);  
+System.out.println(b1);  
+System.out.println(b2);  
+System.out.println(b3);
+}}
+
+Test it Now
+Output:
+
+true
+true
+false

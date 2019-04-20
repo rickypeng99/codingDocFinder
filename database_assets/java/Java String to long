@@ -1,0 +1,36 @@
+Java String to long
+We can convert 
+String to long in java
+ using 
+Long.parseLong()
+ method.
+Scenario
+It is generally used if we have to perform mathematical operations on the string that contains long number. Whenever we get data from textfield or textarea, entered data is received as a string. If entered data is long, we need to convert string to long. To do so, we use Long.parseLong() method.
+Signature
+The parseLong() is the static method of Long class. The 
+signature
+ of parseLong() method is given below:
+
+public static long parseLong(String s)
+
+Java String to long Example
+Let's see the simple code to convert string to long in java.
+
+long l=Long.parseLong("200");
+
+Let's see the simple example of converting String to long in java.
+
+public class StringToLongExample{
+public static void main(String args[]){
+String s="9990449935";
+long l=Long.parseLong(s);
+System.out.println(l);
+}}
+
+Test it Now
+Output:
+
+9990449935
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});

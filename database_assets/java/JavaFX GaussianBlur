@@ -1,0 +1,100 @@
+JavaFX GaussianBlur Effect
+GaussianBlur Effect is very much similar to BoxBlur effect. The only difference between the both is that the GaussianBlur effect uses a Gaussian convolution kernel to blur the nodes. However, JavaFX provides the class 
+javafx.scene.effect.GaussianBlur
+ to implement GaussianBlur on the nodes. This class needs to be instantiated in order to apply an appropriate effect on the node.  
+Properties
+The properties of the class along with the setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods 
+
+
+
+
+
+	
+input
+
+	
+This property is of effect type. It represents the input for the effect. 
+
+	
+setInput(Effect value)
+
+
+
+
+
+	
+radius 
+
+	
+This property is of double type. It represents the radius of the blur kernel. 
+
+	
+setRadius(Double value)
+
+
+
+
+Constructors
+The class contains two constructors.
+
+
+public GaussianBlur() :
+ creates the new instance with the default value of parameters. 
+
+
+public GaussianBlur(double radius) :
+ creates a new instance with the specified value of parameters.
+ 
+
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+public class GaussianBlurExample extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		Text text = new Text();
+		text.setText("Welcome to JavaTpoint");
+		text.setX(100);
+		text.setY(100);
+		text.setFont(Font.font("Calibri",FontWeight.BLACK,FontPosture.ITALIC,20));
+		text.setFill(Color.RED);
+		text.setStroke(Color.BLACK);
+		text.setUnderline(true);
+		GaussianBlur g = new GaussianBlur();
+		g.setRadius(5);
+		text.setEffect(g);
+		Group root = new Group();
+		root.getChildren().add(text);
+		Scene scene = new Scene(root,450,200);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("GaussianBlur Example");
+		primaryStage.show();
+	}
+public static void main(String[] args) {
+	launch(args);
+}
+}

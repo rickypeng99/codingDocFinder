@@ -1,0 +1,243 @@
+Java JToggleButton
+JToggleButton is used to create toggle button, it is two-states button to switch on or off.
+Nested Classes
+
+    
+
+        
+Modifier and Type 
+
+        
+Class
+
+        
+Description
+
+    
+
+    
+
+        
+protected class 
+
+        
+JToggleButton.AccessibleJToggleButton
+
+        
+This class implements accessibility support for the JToggleButton class.
+
+    
+
+    
+
+        
+static class 
+
+        
+JToggleButton.ToggleButtonModel
+
+        
+The ToggleButton model
+
+    
+
+
+Constructors
+
+    
+
+        
+Constructor 
+
+        
+Description
+
+    
+
+    
+
+        
+JToggleButton()
+
+        
+It creates an initially unselected toggle button without setting the text or image.
+
+    
+
+    
+
+        
+JToggleButton(Action a)
+
+        
+It creates  a toggle button where properties are taken from the Action supplied.
+
+    
+
+    
+
+        
+JToggleButton(Icon icon)
+
+        
+It creates  an initially unselected toggle button with the specified image but no text.
+
+    
+
+    
+
+        
+JToggleButton(Icon icon, boolean selected)
+
+        
+It creates  a toggle button with the specified image and selection state, but no text.
+
+    
+
+    
+
+        
+JToggleButton(String text)
+
+        
+It creates  an unselected toggle button with the specified text.
+
+    
+
+    
+
+        
+JToggleButton(String text, boolean selected)
+
+        
+It creates  a toggle button with the specified text and selection state.
+
+    
+
+    
+
+        
+JToggleButton(String text, Icon icon)
+
+        
+It creates  a toggle button that has the specified text and image, and that is initially unselected.
+
+    
+
+    
+
+        
+JToggleButton(String text, Icon icon, boolean selected)
+
+        
+It creates  a toggle button with the specified text, image, and selection state.
+
+    
+
+
+Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+AccessibleContext
+
+        
+getAccessibleContext()
+
+        
+It gets the AccessibleContext associated with this JToggleButton.
+
+    
+
+    
+
+        
+String
+
+        
+getUIClassID()
+
+        
+It returns a string that specifies the name of the l&f class that renders this component.
+
+    
+
+    
+
+        
+protected String
+
+        
+paramString()
+
+        
+It returns a string representation of this JToggleButton.
+
+    
+
+    
+
+        
+void
+
+        
+updateUI()
+
+        
+It resets the UI property to a value from the current look and feel.
+
+    
+
+
+JToggleButton Example
+
+import java.awt.FlowLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.JFrame;
+import javax.swing.JToggleButton;
+
+public class JToggleButtonExample extends JFrame implements ItemListener {
+	public static void main(String[] args) {
+		new JToggleButtonExample();
+	}
+	private JToggleButton button;
+	JToggleButtonExample() {
+		setTitle("JToggleButton with ItemListener Example");
+		setLayout(new FlowLayout());
+		setJToggleButton();
+		setAction();
+		setSize(200, 200);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	private void setJToggleButton() {
+		button = new JToggleButton("ON");
+		add(button);
+	}
+	private void setAction() {
+		button.addItemListener(this);
+	}
+	public void itemStateChanged(ItemEvent eve) {
+		if (button.isSelected())
+			button.setText("OFF");
+		else
+			button.setText("ON");
+	}
+}
+
+Output

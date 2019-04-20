@@ -1,0 +1,108 @@
+JavaFX Layouts
+Layouts are the top level container classes that define the UI styles for scene graph objects. Layout can be seen as the parent node to all the other nodes. JavaFX provides various layout panes that support different styles of layouts.
+In JavaFX, Layout defines the way in which the components are to be seen on the stage. It basically organizes the scene-graph nodes. We have several built-in layout panes in JavaFX that are HBox, VBox, StackPane, FlowBox, AnchorPane, etc. Each Built-in layout is represented by a separate class which needs to be instantiated in order to implement that particular layout pane.
+All these classes belong to 
+javafx.scene.layout
+ package. 
+javafx.scene.layout.Pane
+ class is the base class for all the built-in layout classes in JavaFX.
+Layout Classes
+javafx.scene.layout
+ Package provides various classes that represents the layouts. The classes are described in the table below.
+
+
+
+    
+Class
+
+    
+Description
+
+
+
+
+
+    
+BorderPane
+
+    
+Organizes nodes in top, left, right, centre and the bottom of the screen.
+
+
+
+
+
+    
+FlowPane
+
+    
+Organizes the nodes in the horizontal rows according to the available horizontal spaces. Wraps the nodes to the next line if the horizontal space is less than the total width of the nodes
+
+
+
+
+
+    
+GridPane
+
+    
+Organizes the nodes in the form of rows and columns.
+
+
+
+
+
+    
+HBox
+
+    
+Organizes the nodes in a single row.
+
+
+
+
+
+    
+Pane
+
+    
+It is the base class for all the layout classes.
+
+
+
+
+
+    
+StackPane
+
+    
+Organizes nodes in the form of a stack i.e. one onto another
+
+
+
+
+
+    
+VBox
+
+    
+Organizes nodes in a vertical column.
+
+
+
+
+Steps to create layout
+In order to create the layouts, we need to follow the following steps.
+
+
+Instantiate the respective layout class, for example, 
+HBox root = new HBox();
+
+
+Setting the properties for the layout, for example, 
+root.setSpacing(20);
+
+
+Adding nodes to the layout object, for example, 
+root.getChildren().addAll(<NodeObjects>);
+

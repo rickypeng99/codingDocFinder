@@ -1,0 +1,352 @@
+Java JViewport
+The JViewport class is used to implement scrolling. JViewport is designed to support both logical scrolling and pixel-based scrolling. The viewport's child, called the view, is scrolled by calling the JViewport.setViewPosition() method.
+Nested Classes
+
+    
+
+        
+Modifier and Type
+
+        
+Class 
+
+        
+Description
+
+    
+
+    
+
+        
+protected class 
+
+        
+JViewport.AccessibleJViewport
+
+        
+This class implements accessibility support for the Jviewport class.
+
+    
+
+    
+
+        
+protected class 
+
+        
+JViewport.ViewListener
+
+        
+A listener for the view.
+
+    
+
+
+Fields
+
+    
+
+        
+Modifier and Type
+
+		
+Field
+
+        
+Description
+
+    
+
+    
+
+        
+static int
+
+		
+BACKINGSTORE_SCROLL_MODE
+
+        
+It draws viewport contents into an offscreen image.
+
+    
+
+    
+
+        
+protected Image
+
+		
+backingStoreImage
+
+        
+The view image used for a backing store.
+
+    
+
+    
+
+        
+static int
+
+		
+BLIT_SCROLL_MODE
+
+        
+It uses graphics.copyArea to implement scrolling.
+
+    
+
+    
+
+        
+protected boolean
+
+		
+isViewSizeSet
+
+        
+True when the viewport dimensions have been determined.
+
+    
+
+	
+
+        
+protected Point
+
+		
+lastPaintPosition
+
+        
+The last viewPosition that we've painted, so we know how much of the backing store image is valid.
+
+    
+
+    
+
+        
+protected boolean
+
+		
+scrollUnderway
+
+        
+The scrollUnderway flag is used for components like JList.
+
+    
+
+	
+
+        
+static int
+
+		
+SIMPLE_SCROLL_MODE
+
+        
+This mode uses the very simple method of redrawing the entire contents of the scrollpane each time it is scrolled.
+
+    
+
+
+Constructor
+
+   
+
+     
+Constructor
+
+	 
+Description
+
+   
+
+   
+ 
+     
+JViewport()
+
+	 
+Creates a JViewport.
+
+   
+
+
+Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method 
+
+        
+Description
+
+    
+
+    
+
+        
+void
+
+        
+addChangeListener(ChangeListener l)
+
+        
+It adds a ChangeListener to the list that is notified each time the view's size, position, or the viewport's extent size has changed.
+
+    
+
+    
+
+        
+protected LayoutManager
+
+        
+createLayoutManager()
+
+        
+Subclassers can override this to install a different layout manager (or null) in the constructor.
+
+    
+
+    
+
+        
+protected Jviewport.ViewListener
+
+        
+createViewListener()
+
+        
+It creates a listener for the view.
+
+    
+
+    
+
+        
+int
+
+        
+getScrollMode()
+
+        
+It returns the current scrolling mode.
+
+    
+
+    
+
+        
+Component
+
+        
+getView()
+
+        
+It returns the JViewport's one child or null.
+
+    
+
+    
+
+        
+Point
+
+        
+getViewPosition()
+
+        
+It returns the view coordinates that appear in the upper left hand corner of the viewport, or 0,0 if there's no view.
+
+    
+
+    
+
+        
+Dimension
+
+        
+getViewSize()
+
+        
+If the view's size hasn't been explicitly set, return the preferred size, otherwise return the view's current size.
+
+    
+
+    
+
+        
+void
+
+        
+setExtentSize(Dimension newExtent)
+
+        
+It sets the size of the visible part of the view using view coordinates.
+
+    
+
+    
+
+        
+void
+
+        
+setScrollMode(int mode)
+
+        
+It used to control the method of scrolling the viewport contents. 
+
+    
+
+    
+
+        
+void
+
+        
+setViewSize(Dimension newSize)
+
+        
+It sets the size of the view.
+
+    
+
+
+JViewport Example
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.border.LineBorder;
+public class ViewPortClass2 {
+	public static void main(String[] args) {
+		JFrame frame = new JFrame("Tabbed Pane Sample");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JLabel label = new JLabel("Label");
+		label.setPreferredSize(new Dimension(1000, 1000));
+		JScrollPane jScrollPane = new JScrollPane(label);
+
+		JButton jButton1 = new JButton();
+		jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		jScrollPane.setViewportBorder(new LineBorder(Color.RED));
+		jScrollPane.getViewport().add(jButton1, null);
+
+		frame.add(jScrollPane, BorderLayout.CENTER);
+		frame.setSize(400, 150);
+		frame.setVisible(true);
+	}
+}
+
+Output:

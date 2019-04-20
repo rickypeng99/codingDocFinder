@@ -1,0 +1,183 @@
+New Features in Java
+
+There are many new features that have been added in java. There are major enhancement made in Java5, Java6, Java7 and Java8 like 
+auto-boxing
+, 
+generics
+, 
+var-args
+,  
+java annotations
+, 
+enum
+, 
+premain method
+ , 
+lambda expressions
+, 
+functional interface
+, 
+method references
+ etc.
+
+Most of the interviewers ask questions from this chapter.
+
+
+
+Do You Know? 
+
+
+
+
+
+
+How to create generic class and generic method in java ?
+
+
+What is annotation and how to create custom annotation ?
+
+
+What is the advantage of assertion and where we should not use it ?
+
+
+What is variable argument and what rules are defined for variable argument ?
+
+
+What is the difference between import and static import ?
+
+
+How autoboxing is applied in method overloading. Which concept beats autoboxing ?
+
+
+What is enum type and how to specify specific value to the enum constants ?
+
+
+
+
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+JavaSE 8 Features
+The important features of JavaSE 8 are lambda expressions, methods references, default methods, functional interface, java 8 date/time, stream classes etc.
+
+
+Java 8 Date/Time API (Java 8)
+
+
+Lambda Expressions (Java 8)
+
+
+Method References (Java 8)
+
+
+Functional Interfaces (Java 8)
+
+
+Stream (Java 8)
+
+
+Base64 Encode Decode (Java 8)
+
+
+Default Methods (Java 8)
+
+
+forEach method(Java 8)
+
+
+Collectors(Java 8)
+
+
+StringJoiner(Java 8)
+
+
+Optional class (Java 8)
+
+
+Nashorn JavaScript (Java 8)
+
+
+Parallel Array Sorting (Java 8)
+
+
+Type Inference (Java 8)
+
+
+Method Parameter Reflection (Java 8)
+
+
+Type annotations and repeating annotations (Java 8)
+
+
+Java JDBC Improvements (Java 8)
+
+
+Java IO Improvement (Java 8)
+
+
+Java Concurrency Improvement (Java 8)
+
+
+JavaSE 7 Features
+The important features of JavaSE 7 are try with resource, catching multiple exceptions etc.
+
+
+String in switch statement (Java 7)
+
+
+Binary Literals (Java 7)
+
+
+The try-with-resources (Java 7)
+
+
+Caching Multiple Exceptions by single catch (Java 7)
+
+
+Underscores in Numeric Literals (Java 7)
+
+
+JavaSE 6 Features
+The important feature of JavaSE 6 is premain method (also known as instrumentation).
+
+
+Instrumentation (premain method) (Java 6)
+
+
+J2SE 5 Features
+The important features of J2SE 5 are generics and assertions. Others are auto-boxing, enum, var-args, static import, for-each loop (enhanced for loop etc.
+
+
+For-each loop (Java 5)
+
+
+Varargs (Java 5)
+
+
+Static Import (Java 5)
+
+
+ Autoboxing and Unboxing  (Java 5)
+
+
+Enum (Java 5)
+
+
+Covariant Return Type (Java 5)
+
+
+Annotation (Java 5)
+
+
+Generics (Java 5)
+
+
+J2SE 4 Features
+The important feature of J2SE 4 is assertions. It is used for testing.
+
+
+Assertion
+ (Java 4)
+

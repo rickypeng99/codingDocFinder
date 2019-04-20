@@ -1,0 +1,130 @@
+JavaFX StackedAreaChart
+Stacked area chart is the extension of the basic area charts in which the evolution of the values of several groups on the same graphic is displayed. The area is plotted for all the data points of a certain group. However, the areas of the different groups are shown in the form of a stack but they don't overlap each other. The stacked area chart is mainly used to trace the comparison between the values of the two groups.
+In the following image, the population of different states is shown. The population of men and women are represented by the two different area where the area representing the women population is plotted onto the area representing the women population. On the X-axis, some states are plotted while, on the Y-axis, the population (in crores) is plotted.
+In JavaFX, the class 
+javafx.scene.chart.StackedAreaChart
+ is used to represent the stacked area chart. We need to instantiate this class in order to generate a Stacked-Area-Chart node.
+Properties
+The class contains only one property that is described along with its setter method in the following table.
+
+
+
+    
+Property
+
+    
+Description
+
+	
+Setter Method
+
+
+
+
+
+    
+createSymbols
+
+    
+It is a boolean type property. Its true value indicates that the CSS symbols will get created for any of the data items for which the symbols are not created yet.
+
+	
+setCreateSymbols(boolean value)
+
+
+
+
+Constructors
+There are two constructors in the class.
+
+
+public StackedAreaChart(Axis
+ Xaxis, Axis
+ Yaxis) :
+ creates the new instance of StackedAreaChart with the specified axis.
+
+
+public StackedAreaChart(Axis
+ Xaxis, Axis
+ Yaxis, ObservableList
+> data)) :
+ creates the new instance of StackedAreaChart with the specified axis and data. 
+
+
+Example
+In the following example, we have shown the comparison between the sales of a company in two different years.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.StackedAreaChart;
+import javafx.scene.chart.XYChart;
+import javafx.stage.Stage;
+public class StackedAreaChartExample extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	// Configuring Xaxis and Yaxis 
+	CategoryAxis xaxis = new CategoryAxis();
+	NumberAxis yaxis = new NumberAxis(100,700,50);
+	xaxis.setLabel("Month");
+	yaxis.setLabel("Sales Value (lacs)");
+	
+	//Creating StackedAreaChart 
+	StackedAreaChart stack = new StackedAreaChart(xaxis,yaxis);
+	stack.setTitle("Sales Comparison between the year 2016 and 2017");
+	
+	//Configuring Series 1 
+	XYChart.Series year1 = new XYChart.Series<>();
+	year1.getData().add(new XYChart.Data("Jan",140));
+	year1.getData().add(new XYChart.Data("Feb",110));
+	year1.getData().add(new XYChart.Data("Mar",125));
+	year1.getData().add(new XYChart.Data("Apr",130));
+	year1.getData().add(new XYChart.Data("May",180));
+	year1.getData().add(new XYChart.Data("Jun",120));
+	year1.getData().add(new XYChart.Data("Jul",133));
+	year1.getData().add(new XYChart.Data("Aug",200));
+	year1.getData().add(new XYChart.Data("Sep",230));
+	year1.getData().add(new XYChart.Data("Oct",250));
+	year1.getData().add(new XYChart.Data("Nov",255));
+	year1.getData().add(new XYChart.Data("Dec",390));
+	
+	//adding series1 to the stackedareachart 
+	stack.getData().add(year1);
+	year1.setName("2017");
+	
+	//Configuring Series 2 
+	XYChart.Series year2 = new XYChart.Series<>();
+	year2.getData().add(new XYChart.Data("Jan",200));
+	year2.getData().add(new XYChart.Data("Feb",210));
+	year2.getData().add(new XYChart.Data("Mar",225));
+	year2.getData().add(new XYChart.Data("Apr",430));
+	year2.getData().add(new XYChart.Data("May",180));
+	year2.getData().add(new XYChart.Data("Jun",334));
+	year2.getData().add(new XYChart.Data("Jul",143));
+	year2.getData().add(new XYChart.Data("Aug",400));
+	year2.getData().add(new XYChart.Data("Sep",431));
+	year2.getData().add(new XYChart.Data("Oct",359));
+	year2.getData().add(new XYChart.Data("Nov",155));
+	year2.getData().add(new XYChart.Data("Dec",190));
+	
+	//Adding Series2 to the StackedAreaChart
+	stack.getData().add(year2);
+	year2.setName("2016");
+	
+	
+	//Configuring group and Scene 
+	Group root = new Group();
+	root.getChildren().add(stack);
+	Scene scene = new Scene(root,600,400);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("StackedAreaChart Example");
+	primaryStage.show();		
+	
+}
+public static void main(String[] args) {
+	launch(args);
+}}

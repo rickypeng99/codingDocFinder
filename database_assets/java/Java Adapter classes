@@ -1,0 +1,197 @@
+Java Adapter Classes
+Java adapter classes 
+provide the default implementation of listener 
+interfaces
+. If you inherit the adapter class, you will not be forced to provide the implementation of all the methods of listener interfaces. So it 
+saves code
+.
+The adapter classes are found in 
+java.awt.event
+, 
+java.awt.dnd
+ and 
+javax.swing.event
+ 
+packages
+. The Adapter classes with their corresponding listener interfaces are given below.
+java.awt.event Adapter classes
+
+
+Adapter class
+Listener 
+interface
+
+
+WindowAdapter
+WindowListener
+
+
+KeyAdapter
+KeyListener
+
+
+MouseAdapter
+MouseListener
+
+
+MouseMotionAdapter
+MouseMotionListener
+
+
+FocusAdapter
+FocusListener
+
+
+ComponentAdapter
+ComponentListener
+
+
+ContainerAdapter
+ContainerListener
+
+
+HierarchyBoundsAdapter
+HierarchyBoundsListener
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+java.awt.dnd Adapter classes
+
+
+Adapter class
+Listener interface
+
+
+DragSourceAdapter
+DragSourceListener
+
+
+DragTargetAdapter
+DragTargetListener
+
+
+javax.swing.event Adapter classes
+
+
+Adapter class
+Listener interface
+
+
+MouseInputAdapter
+MouseInputListener
+
+
+InternalFrameAdapter
+InternalFrameListener
+
+
+Java WindowAdapter Example
+
+import java.awt.*;
+import java.awt.event.*;
+public class AdapterExample{
+	Frame f;
+	AdapterExample(){
+		f=new Frame("Window Adapter");
+		f.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e) {
+				f.dispose();
+			}
+		});
+		
+		f.setSize(400,400);
+		f.setLayout(null);
+		f.setVisible(true);
+	}
+public static void main(String[] args) {
+	new AdapterExample();
+}
+}
+
+Output:
+Java MouseAdapter Example
+
+import java.awt.*;
+import java.awt.event.*;
+public class MouseAdapterExample extends MouseAdapter{
+	Frame f;
+	MouseAdapterExample(){
+		f=new Frame("Mouse Adapter");
+		f.addMouseListener(this);
+		
+		f.setSize(300,300);
+		f.setLayout(null);
+		f.setVisible(true);
+	}
+	public void mouseClicked(MouseEvent e) {
+		Graphics g=f.getGraphics();
+		g.setColor(Color.BLUE);
+		g.fillOval(e.getX(),e.getY(),30,30);
+	}
+	
+public static void main(String[] args) {
+	new MouseAdapterExample();
+}
+}
+
+Output:
+Java MouseMotionAdapter Example
+
+import java.awt.*;
+import java.awt.event.*;
+public class MouseMotionAdapterExample extends MouseMotionAdapter{
+	Frame f;
+	MouseMotionAdapterExample(){
+		f=new Frame("Mouse Motion Adapter");
+		f.addMouseMotionListener(this);
+		
+		f.setSize(300,300);
+		f.setLayout(null);
+		f.setVisible(true);
+	}
+public void mouseDragged(MouseEvent e) {
+	Graphics g=f.getGraphics();
+	g.setColor(Color.ORANGE);
+	g.fillOval(e.getX(),e.getY(),20,20);
+}
+public static void main(String[] args) {
+	new MouseMotionAdapterExample();
+}
+}
+
+Output:
+Java KeyAdapter Example
+
+import java.awt.*;
+import java.awt.event.*;
+public class KeyAdapterExample extends KeyAdapter{
+	Label l;
+	TextArea area;
+	Frame f;
+	KeyAdapterExample(){
+		f=new Frame("Key Adapter");
+		l=new Label();
+		l.setBounds(20,50,200,20);
+		area=new TextArea();
+		area.setBounds(20,80,300, 300);
+		area.addKeyListener(this);
+		
+		f.add(l);f.add(area);
+		f.setSize(400,400);
+		f.setLayout(null);
+		f.setVisible(true);
+	}
+	public void keyReleased(KeyEvent e) {
+		String text=area.getText();
+		String words[]=text.split("\\s");
+		l.setText("Words: "+words.length+" Characters:"+text.length());
+	}
+
+	public static void main(String[] args) {
+		new KeyAdapterExample();
+	}
+}
+
+Output:

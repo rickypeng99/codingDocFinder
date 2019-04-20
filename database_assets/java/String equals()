@@ -1,0 +1,104 @@
+Java String equals()
+The 
+java string equals()
+ method compares the two given strings based on the content of the string. If any character is not matched, it returns false. If all characters are matched, it returns true.
+The String equals() method overrides the equals() method of Object class.
+Internal implementation
+
+	 public boolean equals(Object anObject) {
+        if (this == anObject) {
+            return true;
+        }
+        if (anObject instanceof String) {
+            String anotherString = (String) anObject;
+            int n = value.length;
+            if (n == anotherString.value.length) {
+                char v1[] = value;
+                char v2[] = anotherString.value;
+                int i = 0;
+                while (n-- != 0) {
+                    if (v1[i] != v2[i])
+                            return false;
+                    i++;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+Signature
+
+public boolean equals(Object anotherObject)
+
+Parameter
+anotherObject
+ : another object i.e. compared with this string.
+Returns
+true
+ if characters of both strings are equal otherwise 
+false
+.
+Overrides
+equals() method of java Object class.
+Java String equals() method example
+
+public class EqualsExample{
+public static void main(String args[]){
+String s1="javatpoint";
+String s2="javatpoint";
+String s3="JAVATPOINT";
+String s4="python";
+System.out.println(s1.equals(s2));//true because content and case is same
+System.out.println(s1.equals(s3));//false because case is not same
+System.out.println(s1.equals(s4));//false because content is not same
+}}
+
+Test it Now
+
+true
+false
+false
+
+Java String equals() Method Example 2
+The equals() method compares two strings and can be used in if-else control structure. 
+
+public class EqualsExample {
+	public static void main(String[] args) {
+		String s1 = "javatpoint";  
+		String s2 = "javatpoint";  
+		String s3 = "Javatpoint";
+		System.out.println(s1.equals(s2)); // True because content is same  
+		if (s1.equals(s3)) {
+			System.out.println("both strings are equal");
+		}else System.out.println("both strings are unequal");	
+	}
+}
+
+
+true
+both strings are unequal
+
+Java String equals() Method Example 3
+Let's see one more example to test the equality of string present in the list.
+
+import java.util.ArrayList;
+public class EqualsExample3 {
+	public static void main(String[] args) {
+		String str1 = "Mukesh";
+		ArrayList
+ list = new ArrayList<>();
+		list.add("Ravi"); 
+		list.add("Mukesh");
+		list.add("Ramesh");
+		list.add("Ajay");
+		for (String str : list) {
+			if (str.equals(str1)) {
+				System.out.println("Mukesh is present");
+			}
+		}
+	}
+}
+
+
+Mukesh is present

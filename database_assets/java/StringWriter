@@ -1,0 +1,175 @@
+Java StringWriter Class
+Java StringWriter class is a character stream that collects output from string buffer, which can be used to construct a 
+string
+. The StringWriter class inherits the 
+Writer
+ class.
+In StringWriter class, system resources like 
+network
+ 
+sockets
+ and 
+files
+ are not used, therefore closing the StringWriter is not necessary.
+Java StringWriter class declaration
+Let's see the declaration for Java.io.StringWriter class:
+
+public class StringWriter extends Writer
+
+Methods of StringWriter class
+
+  
+
+      
+Method
+
+      
+Description
+
+  
+
+  
+
+      
+void write(int c)
+
+      
+It is used to write the single character.
+
+  
+
+  
+
+      
+void write(String str)
+
+      
+It is used to write the string.
+
+  
+
+  
+
+      
+void write(String str, int off, int len)
+
+      
+It is used to write the portion of a string.
+
+  
+
+  
+
+      
+void write(char[] cbuf, int off, int len)
+
+      
+It is used to write the portion of an 
+array
+ of characters.
+
+  
+
+  
+
+      
+String toString()
+
+      
+It is used to return the buffer current value as a string.
+
+  
+
+  
+
+      
+StringBuffer getBuffer()
+
+      
+It is used t return the string buffer.
+
+   
+
+   
+
+       
+StringWriter append(char c)
+
+       
+It is used to append the specified character to the writer.
+
+   
+
+   
+
+       
+StringWriter append(CharSequence csq)
+
+       
+It is used to append the specified character sequence to the writer.
+
+   
+
+   
+
+       
+StringWriter append(CharSequence csq, int start, int end)
+
+       
+It is used to append the subsequence of specified character sequence to the writer.
+
+   
+
+   
+
+       
+void flush()
+
+       
+It is used to flush the stream.
+
+   
+
+   
+
+       
+void close()
+
+       
+It is used to close the stream.
+
+   
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java StringWriter Example
+Let's see the simple example of StringWriter using BufferedReader to read file data from the stream.
+
+import java.io.*;
+public class StringWriterExample {
+	public static void main(String[] args) throws IOException {
+		char[] ary = new char[512];
+		StringWriter writer = new StringWriter();
+		FileInputStream input = null;
+		BufferedReader buffer = null;
+		input = new FileInputStream("D://testout.txt");
+		buffer = new BufferedReader(new InputStreamReader(input, "UTF-8"));
+		int x;
+		while ((x = buffer.read(ary)) != -1) {
+                   writer.write(ary, 0, x);
+		}
+		System.out.println(writer.toString());		
+		writer.close();
+		buffer.close();
+    }
+}
+
+testout.txt:
+
+Javatpoint provides tutorial in Java, Spring, Hibernate, Android, PHP etc.
+
+Output:
+
+Javatpoint provides tutorial in Java, Spring, Hibernate, Android, PHP etc.

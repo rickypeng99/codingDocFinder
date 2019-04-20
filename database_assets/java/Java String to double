@@ -1,0 +1,36 @@
+Java Convert String to double
+We can convert 
+String to double in java
+ using 
+Double.parseDouble()
+ method.
+Scenario
+It is generally used if we have to perform mathematical operations on the string that contains double number. Whenever we get data from textfield or textarea, entered data is received as a string. If entered data is double, we need to convert string to double. To do so, we use Double.parseDouble() method.
+Signature
+The parseDouble() is the static method of Double class. The 
+signature
+ of parseDouble() method is given below:
+
+public static double parseDouble(String s)
+
+Java String to double Example
+Let's see the simple code to convert string to double in java.
+
+double d=Double.parseDouble("23.6");
+
+Let's see the simple example of converting String to double in java.
+
+public class StringToDoubleExample{
+public static void main(String args[]){
+String s="23.6";
+double d=Double.parseDouble("23.6");
+System.out.println(d);
+}}
+
+Test it Now
+Output:
+
+23.6
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});

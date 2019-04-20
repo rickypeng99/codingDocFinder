@@ -1,0 +1,85 @@
+Java JDialog
+The JDialog control represents a top level window with a border and a title used to take some form of input from the user. It inherits the Dialog class.
+Unlike JFrame, it doesn't have maximize and minimize buttons.
+JDialog class declaration
+Let's see the declaration for javax.swing.JDialog class.
+
+public class JDialog extends Dialog implements WindowConstants, Accessible, RootPaneContainer
+
+Commonly used Constructors:
+
+     
+
+         
+Constructor
+
+		 
+Description
+
+     
+
+     
+
+         
+JDialog()
+
+         
+It is used to create a modeless dialog without a title and without a specified Frame owner.
+
+     
+
+     
+
+         
+JDialog(Frame owner)
+
+         
+It is used to create a modeless dialog with specified Frame as its owner and an empty title.
+
+     
+
+     
+
+         
+JDialog(Frame owner, String title, boolean modal)
+
+         
+It is used to create a dialog with the specified title, owner Frame and modality.
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java JDialog Example
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class DialogExample {
+	private static JDialog d;
+	DialogExample() {
+		JFrame f= new JFrame();
+		d = new JDialog(f , "Dialog Example", true);
+		d.setLayout( new FlowLayout() );
+		JButton b = new JButton ("OK");
+		b.addActionListener ( new ActionListener()
+		{
+			public void actionPerformed( ActionEvent e )
+			{
+				DialogExample.d.setVisible(false);
+			}
+		});
+		d.add( new JLabel ("Click button to continue."));
+		d.add(b); 
+		d.setSize(300,300);  
+		d.setVisible(true);
+	}
+	public static void main(String args[])
+	{
+		new DialogExample();
+	}
+}
+
+Output:

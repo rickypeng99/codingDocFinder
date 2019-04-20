@@ -1,0 +1,135 @@
+JavaFX Quad Curve
+Quad curve is a plain curve of order two. This is different from Cubic Curve in the sense that it doesn't have two control points like cubic curve. It rather has a single control point (X,Y).
+In JavaFX, we can instantiate 
+javafx.scene.shape.QuadCurve
+ class to create a Quad curve. The class contains various properties which are defined in the table below. The class also contains the setter methods which can be used to set the properties to get the quad curve according to our requirements.
+Properties
+The properties of the class along with their setter methods are given in the table below.
+
+
+
+    
+Property
+
+    
+Description
+
+	
+Setter Method
+
+
+
+
+
+    
+controlX
+
+    
+X coordinate of the control point of quad curve 
+
+	
+setControlX(Double)
+
+
+
+
+
+    
+controlY
+
+    
+Y coordinate of the control point of quad curve 
+
+	
+setControlY(Double)
+
+
+
+
+
+    
+endX
+
+    
+X coordinate of the end point of quad curve 
+
+	
+setEndX(Double)
+
+
+
+
+
+    
+endY
+
+    
+Y coordinate of ending point of quad curve 
+
+	
+setEndY(Double)
+
+
+
+
+
+    
+startX
+
+    
+X coordinate of starting point of quad curve 
+
+	
+setStartX(Double)
+
+
+
+
+
+    
+startY
+
+    
+Y coordinate of starting point of quad curve
+
+	
+setStartY(Double)
+
+
+
+
+Example
+
+package application; 
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.QuadCurve;
+import javafx.stage.Stage;
+public class Shape_Example extends Application {
+
+  @Override
+  public void start(Stage primarystage) {
+    Group root = new Group();
+    primarystage.setTitle("QuadCurve Example");
+    QuadCurve c = new QuadCurve();
+    c.setStartX(70);
+    c.setStartY(30);
+    c.setControlX(250);
+    c.setControlY(50);
+    c.setFill(Color.RED);
+    c.setEffect(new DropShadow());
+    c.setEndX(250);
+    c.setEndY(300);
+    root.getChildren().add(c);
+    Scene scene = new Scene(root,300,400);
+    primarystage.setScene(scene);
+    primarystage.show();
+  }
+
+  public static void main(String[] args) {
+    launch(args);
+  }
+}

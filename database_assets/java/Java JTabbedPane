@@ -1,0 +1,79 @@
+Java JTabbedPane
+The JTabbedPane class is used to switch between a group of components by clicking on a tab with a given title or icon. It inherits JComponent class.
+JTabbedPane class declaration
+Let's see the declaration for javax.swing.JTabbedPane class.
+
+public class JTabbedPane extends JComponent implements Serializable, Accessible, SwingConstants
+
+Commonly used Constructors:
+
+     
+
+         
+Constructor
+
+		 
+Description
+
+     
+
+     
+
+         
+JTabbedPane()
+
+         
+Creates an empty TabbedPane with a default tab placement of JTabbedPane.Top.
+
+     
+
+     
+
+         
+JTabbedPane(int tabPlacement)
+
+         
+Creates an empty TabbedPane with a specified tab placement.
+
+     
+
+	 
+
+         
+JTabbedPane(int tabPlacement, int tabLayoutPolicy)
+
+         
+Creates an empty TabbedPane with a specified tab placement and tab layout policy.
+
+     
+
+
+Java JTabbedPane Example
+
+import javax.swing.*;
+public class TabbedPaneExample {
+JFrame f;
+TabbedPaneExample(){
+	f=new JFrame();
+	JTextArea ta=new JTextArea(200,200);
+	JPanel p1=new JPanel();
+	p1.add(ta);
+	JPanel p2=new JPanel();
+	JPanel p3=new JPanel();
+	JTabbedPane tp=new JTabbedPane();
+	tp.setBounds(50,50,200,200);
+	tp.add("main",p1);
+	tp.add("visit",p2);
+	tp.add("help",p3);	
+	f.add(tp);
+	f.setSize(400,400);
+	f.setLayout(null);
+	f.setVisible(true);
+}
+public static void main(String[] args) {
+	new TabbedPaneExample();
+}}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});

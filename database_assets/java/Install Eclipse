@@ -1,0 +1,32 @@
+Install Eclipse
+In order to run the JavaFX application, we need to set up eclipse. Follow the instructions given below to install the eclipse and configure to execute the JavaFX application.
+Step 1: Download the Latest version
+Click the link 
+Download Eclipse
+ to visit the download page of eclipse. You can download the latest version of eclipse i.e. eclipse oxygen from that page. The opened page will look like following, click on 
+DOWNLOAD 64 BIT
+ to proceed the download.
+Eclipse oxygen 64 bit installer will be installed on our system. Here, we are using Windows operating system therefore the downloaded file  will be different from the one which needs to be installed on Linux based systems.
+Just Click on 
+DOWNLOAD
+ button to download the installer.
+Step 2: Install Eclipse
+Double click on the 
+exe
+ file which has just been downloaded. The screen will look like following. Click 
+Run
+ to proceed the installation.
+Choose the software suit which you want to install. In our case, we have chosen 
+Eclipse IDE for Java Developers
+ which is recommended in our case.
+Now, the Set up is ready to install Eclipse oxygen 64 bit in the directory shown in the image. However, we can select any destination folder present on our system. Just click install when you done with the directory selection.
+The set up will ask us to accept the Eclipse Foundation Software Agreement. Just click 
+Accept
+ to continue.
+Now, we will have to wait for the time the Eclipse will be installing on our system. Once the installation will be done, the following screen will appear. Just click the 
+LAUNCH
+ button to launch eclipse.
+Browse the workspace directory, just click the 
+Launch
+ button once you done with the process.
+We have got the Eclipse IDE opened on our system. However,the screen will appear like following. Now, we are all set to configure Eclipse in order to run the JavaFX application.

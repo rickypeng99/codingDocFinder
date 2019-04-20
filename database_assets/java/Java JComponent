@@ -1,0 +1,332 @@
+Java JComponent
+The JComponent class is the base class of all Swing components except top-level containers. Swing components whose names begin with "J" are descendants of the JComponent class. For example, JButton, JScrollPane, JPanel, JTable etc. But, JFrame and JDialog don't inherit JComponent class because they are the child of top-level containers.
+The JComponent class extends the Container class which itself extends Component. The Container class has support for adding components to the container.
+Fields
+
+    
+
+        
+Modifier and Type
+
+        
+Field
+
+        
+Description
+
+    
+
+    
+
+        
+protected AccessibleContext
+
+        
+accessibleContext
+
+        
+The AccessibleContext associated with this JComponent.
+
+    
+
+    
+
+        
+protectedEventListenerList
+
+        
+listenerList
+
+        
+A list of event listeners for this component.
+
+    
+
+    
+
+        
+static String
+
+        
+TOOL_TIP_TEXT_KEY
+
+        
+The comment to display when the cursor is over the component, also known as a "value tip", "flyover help", or "flyover label"
+
+    
+
+    
+
+        
+protected ComponentUI
+
+        
+ui
+
+        
+The look and feel delegate for this component.
+
+    
+
+    
+
+        
+static int
+
+        
+UNDEFINED_CONDITION
+
+        
+It is a constant used by some of the APIs to mean that no condition is defined. 
+
+    
+
+    
+
+        
+static int
+
+        
+WHEN_ANCESTOR_OF_FOCUSED_COMPONENT
+
+        
+It is a constant used for registerKeyboardAction that means that the command should be invoked when the receiving component is an ancestor of the focused component or is itself the focused component.
+
+    
+
+    
+
+        
+static int
+
+        
+WHEN_FOCUSED
+
+        
+It is a constant used for registerKeyboardAction that means that the command should be invoked when the component has the focus.
+
+    
+
+    
+
+        
+static int
+
+        
+WHEN_IN_FOCUSED_WINDOW
+
+        
+Constant used for registerKeyboardAction that means that the command should be invoked when the receiving component is in the window that has the focus or is itself the focused component.
+
+    
+
+
+Constructor
+
+    
+
+        
+Constructor
+
+        
+Description
+
+    
+
+    
+
+        
+JComponent()
+
+        
+Default JComponent constructor.
+
+    
+
+
+Useful Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method 
+
+        
+Description
+
+    
+
+    
+
+        
+void
+
+        
+setActionMap(ActionMap am)
+
+        
+It sets the ActionMap to am.
+
+    
+
+    
+
+        
+void
+
+        
+setBackground(Color bg)
+
+        
+It sets  the background color of this component.
+
+    
+
+    
+
+        
+void
+
+        
+setFont(Font font)
+
+        
+It sets  the font for this component.
+
+    
+
+    
+
+        
+void
+
+        
+setMaximumSize(Dimension maximumSize)
+
+        
+It sets  the maximum size of this component to a constant value.
+
+    
+
+    
+
+        
+void
+
+        
+setMinimumSize(Dimension minimumSize)
+
+        
+It sets  the minimum size of this component to a constant value.
+
+    
+
+    
+
+        
+protected void
+
+        
+setUI(ComponentUI newUI)
+
+        
+It sets  the look and feel delegate for this component.
+
+    
+
+    
+
+        
+void
+
+        
+setVisible(boolean aFlag)
+
+        
+It makes the component visible or invisible.
+
+    
+
+    
+
+        
+void
+
+        
+setForeground(Color fg)
+
+        
+It sets  the foreground color of this component.
+
+    
+
+    
+
+        
+String
+
+        
+getToolTipText(MouseEvent event)
+
+        
+It returns the string to be used as the tooltip for event.
+
+    
+
+    
+
+        
+Container
+
+        
+getTopLevelAncestor()
+
+        
+It returns the top-level ancestor of this component (either the containing Window or Applet), or null if this component has not been added to any container.
+
+    
+
+    
+
+        
+TransferHandler
+
+        
+getTransferHandler()
+
+        
+It gets the transferHandler property.
+
+    
+
+
+Java JComponent Example
+
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+class MyJComponent extends JComponent {
+	  public void paint(Graphics g) {
+	    g.setColor(Color.green);
+	    g.fillRect(30, 30, 100, 100);
+	  }
+}
+public class JComponentExample {
+	  public static void main(String[] arguments) {
+	    MyJComponent com = new MyJComponent();
+	    // create a basic JFrame
+	    JFrame.setDefaultLookAndFeelDecorated(true);
+	    JFrame frame = new JFrame("JComponent Example");
+	    frame.setSize(300,200);
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    // add the JComponent to main frame
+	    frame.add(com);
+	    frame.setVisible(true);
+	  }
+}
+
+Output:

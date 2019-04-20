@@ -1,0 +1,94 @@
+java.sql.Date
+The java.sql.Date class represents only date in java. It inherits java.util.Date class.
+The java.sql.Date instance is widely used in JDBC because it represents the date that can be stored in database.
+Some constructors and methods of java.sql.Date class has been deprecated. Here, we are not giving list of any deprecated constructor and method.
+java.sql.Date Constructor
+
+
+No.
+Constructor
+Description
+
+
+1)
+Date(long milliseconds)
+Creates a sql date object for the given milliseconds since January 1, 1970, 00:00:00 GMT.
+
+
+java.sql.Date Methods
+
+
+No.
+Method
+Description
+
+
+1)
+void setTime(long time)
+changes the current sql date to given time.
+
+
+2)
+Instant toInstant()
+converts current sql date into Instant object.
+
+
+3)
+LocalDate toLocalDate()
+converts current sql date into LocalDate object.
+
+
+4)
+String toString()
+converts this sql date object to a string.
+
+
+5)
+static Date valueOf(LocalDate date)
+returns sql date object for the given LocalDate.
+
+
+6)
+static Date valueOf(String date)
+returns sql date object for the given String.
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+java.sql.Date Example: get current date
+Let's see the example to 
+print date in java
+ using java.sql.Date class.
+
+public class SQLDateExample {
+	public static void main(String[] args) {
+    	long millis=System.currentTimeMillis();
+	    java.sql.Date date=new java.sql.Date(millis);
+	    System.out.println(date);
+	}
+}
+
+Test it Now
+Output:
+
+2015-03-30
+
+Java String to java.sql.Date Example
+Let's see the example to 
+convert string into java.sql.Date
+ using valueOf() method.
+
+import java.sql.Date;
+public class StringToSQLDateExample {
+public static void main(String[] args) {
+	String str="2015-03-31";
+	Date date=Date.valueOf(str);//converting string into sql date
+	System.out.println(date);
+}
+}
+
+Test it Now
+Output:
+
+2015-03-31

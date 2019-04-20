@@ -1,0 +1,130 @@
+Java Comparable interface
+Java Comparable interface is used to order the objects of the user-defined class. This interface is found in java.lang package and contains only one method named compareTo(Object). It provides a single sorting sequence only, i.e., you can sort the elements on the basis of single data member only. For example, it may be rollno, name, age or anything else.
+
+compareTo(Object obj) method
+public int compareTo(Object obj):
+ It is used to compare the current object with the specified object. It returns
+
+
+positive integer, if the current object is greater than the specified object.
+
+
+negative integer, if the current object is less than the specified object.
+
+
+zero, if the current object is equal to the specified object.
+
+
+We can sort the elements of:
+
+
+String objects
+
+
+Wrapper class objects
+
+
+User-defined class objects
+
+
+Collections class
+Collections
+ class provides static methods for sorting the elements of collections. If collection elements are of Set or Map, we can use TreeSet or TreeMap. However, we cannot sort the elements of List. Collections class provides methods for sorting the elements of List type elements.
+Method of Collections class for sorting List elements
+public void sort(List list):
+ It is used to sort the elements of List. List elements must be of the Comparable type.
+Note: String class and Wrapper classes implement the Comparable interface by default. So if you store the objects of string or wrapper classes in a list, set or map, it will be Comparable by default.
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Comparable Example
+Let's see the example of the Comparable interface that sorts the list elements on the basis of age.
+File: Student.java
+
+class Student implements Comparable
+{
+int rollno;
+String name;
+int age;
+Student(int rollno,String name,int age){
+this.rollno=rollno;
+this.name=name;
+this.age=age;
+}
+
+public int compareTo(Student st){
+if(age==st.age)
+return 0;
+else if(age>st.age)
+return 1;
+else
+return -1;
+}
+}
+
+File: TestSort1.java
+
+import java.util.*;
+public class TestSort1{
+public static void main(String args[]){
+ArrayList
+ al=new ArrayList
+();
+al.add(new Student(101,"Vijay",23));
+al.add(new Student(106,"Ajay",27));
+al.add(new Student(105,"Jai",21));
+
+Collections.sort(al);
+for(Student st:al){
+System.out.println(st.rollno+" "+st.name+" "+st.age);
+}
+}
+}
+
+
+105 Jai 21
+101 Vijay 23
+106 Ajay 27
+
+Java Comparable Example: reverse order
+Let's see the same example of the Comparable interface that sorts the list elements on the basis of age in reverse order.
+File: Student.java
+
+   class Student implements Comparable
+{  
+    int rollno;  
+    String name;  
+    int age;  
+    Student(int rollno,String name,int age){  
+    this.rollno=rollno;  
+    this.name=name;  
+    this.age=age;  
+    }  
+      
+    public int compareTo(Student st){  
+    if(age==st.age)  
+    return 0;  
+    else if(age
+File: TestSort2.java
+
+    import java.util.*;  
+    public class TestSort2{  
+    public static void main(String args[]){  
+    ArrayList
+ al=new ArrayList
+();  
+    al.add(new Student(101,"Vijay",23));  
+    al.add(new Student(106,"Ajay",27));  
+    al.add(new Student(105,"Jai",21));  
+      
+    Collections.sort(al);  
+    for(Student st:al){  
+    System.out.println(st.rollno+" "+st.name+" "+st.age);  
+    }  
+    }  
+    }  
+
+
+106 Ajay 27
+101 Vijay 23
+105 Jai 21

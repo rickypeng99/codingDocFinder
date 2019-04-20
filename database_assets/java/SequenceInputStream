@@ -1,0 +1,236 @@
+Java SequenceInputStream Class
+
+
+Java
+ SequenceInputStream 
+class
+ is used to read data from multiple 
+
+streams
+. It reads data sequentially (one by one).
+Java SequenceInputStream Class declaration
+Let's see the declaration for Java.io.SequenceInputStream class:
+
+public class SequenceInputStream extends InputStream
+
+Constructors of SequenceInputStream class
+
+  
+
+      
+
+
+Constructor
+
+      
+Description
+
+  
+
+  
+
+      
+SequenceInputStream(InputStream s1, InputStream s2)
+
+      
+creates a new input stream by reading the data of two input stream in order, first s1 and then s2.
+
+  
+
+  
+
+      
+SequenceInputStream(Enumeration e)
+
+      
+creates a new input stream by reading the data of an enumeration whose type is InputStream.
+
+  
+
+
+Methods of SequenceInputStream class
+
+
+
+      
+Method
+
+      
+Description
+
+  
+
+  
+
+      
+int read()
+
+      
+It is used to read the next byte of data from the input stream.
+
+  
+
+  
+
+      
+int read(byte[] ary, int off, int len)
+
+      
+It is used to read len bytes of data from the input stream into the 
+array
+ of bytes.
+
+  
+
+  
+
+      
+int available()
+
+      
+It is used to return the maximum number of byte that can be read from an input stream.
+
+  
+
+  
+
+      
+void close()
+
+      
+It is used to close the input stream.
+
+  
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java SequenceInputStream Example
+In this example, we are printing the data of two files testin.txt and testout.txt.
+
+package com.javatpoint;
+
+import java.io.*;
+class InputStreamExample {  
+  public static void main(String args[])throws Exception{  
+   FileInputStream input1=new FileInputStream("D:\\testin.txt");  
+   FileInputStream input2=new FileInputStream("D:\\testout.txt");  
+   SequenceInputStream inst=new SequenceInputStream(input1, input2);  
+   int j;  
+   while((j=inst.read())!=-1){  
+    System.out.print((char)j);  
+   }  
+   inst.close();  
+   input1.close();  
+   input2.close();  
+  }  
+}  
+
+Here, we are assuming that you have two files: testin.txt and testout.txt which have following information:
+testin.txt:
+
+Welcome to Java IO Programming.
+
+testout.txt:
+
+It is the example of Java SequenceInputStream class.
+
+After executing the program, you will get following output:
+Output:
+
+Welcome to Java IO Programming. It is the example of Java SequenceInputStream class.
+
+Example that reads the data from two files and writes into another file
+In this example, we are writing the data of two files 
+testin1.txt
+ and 
+testin2.txt
+ into another file named 
+testout.txt.
+
+package com.javatpoint;
+
+import java.io.*;  
+class Input1{  
+  public static void main(String args[])throws Exception{  
+   FileInputStream fin1=new FileInputStream("D:\\testin1.txt");  
+   FileInputStream fin2=new FileInputStream("D:\\testin2.txt");  
+   FileOutputStream fout=new FileOutputStream("D:\\testout.txt");    
+   SequenceInputStream sis=new SequenceInputStream(fin1,fin2);  
+   int i;  
+   while((i=sis.read())!=-1)  
+   {  
+     fout.write(i);      
+   }  
+   sis.close();  
+   fout.close();    
+   fin1.close();    
+   fin2.close();     
+   System.out.println("Success..");
+  }  
+}  
+
+Output:
+
+Succeess...
+
+testout.txt:
+
+Welcome to Java IO Programming. It is the example of Java SequenceInputStream class.
+
+SequenceInputStream example that reads data using enumeration
+If we need to read the data from more than two files, we need to use 
+Enumeration
+. Enumeration object can be obtained by calling elements() method of the Vector class. Let's see the simple example where we are reading the data from 4 files: a.txt, b.txt, c.txt and d.txt.
+
+package com.javatpoint;
+import java.io.*;  
+import java.util.*;  
+class Input2{  
+public static void main(String args[])throws IOException{  
+//creating the FileInputStream objects for all the files  
+FileInputStream fin=new FileInputStream("D:\\a.txt");  
+FileInputStream fin2=new FileInputStream("D:\\b.txt");  
+FileInputStream fin3=new FileInputStream("D:\\c.txt");  
+FileInputStream fin4=new FileInputStream("D:\\d.txt");  
+//creating Vector object to all the stream  
+Vector v=new Vector();  
+v.add(fin);  
+v.add(fin2);  
+v.add(fin3);  
+v.add(fin4);            
+//creating enumeration object by calling the elements method  
+Enumeration e=v.elements();    
+//passing the enumeration object in the constructor  
+SequenceInputStream bin=new SequenceInputStream(e);  
+int i=0;    
+while((i=bin.read())!=-1){  
+System.out.print((char)i);  
+}   
+bin.close();  
+fin.close();  
+fin2.close();  
+}  
+}  
+
+The a.txt, b.txt, c.txt and d.txt have following information:
+a.txt:
+
+Welcome
+
+b.txt:
+
+to
+
+c.txt:
+
+java
+
+d.txt:
+
+programming
+
+Output:
+
+Welcometojavaprogramming

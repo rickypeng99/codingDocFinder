@@ -1,0 +1,57 @@
+Java Convert Date to Timestamp
+We can convert 
+Date to Timestamp in java
+ using 
+constructor of java.sql.Timestamp class
+.
+The constructor of Timestamp class receives long value as an argument. So you need to convert date into long value using 
+getTime() method of java.util.Date class
+.
+You can also format the output of Timestamp using java.text.SimpleDateFormat class.
+Constructor of Timestamp class:
+
+Timestamp(long l)
+
+getTime() method of Date class:
+
+public long getTime()
+
+Java Date to Timestamp Example
+Let's see the simple example to convert Date to Timestamp in java.
+
+import java.sql.Timestamp;  
+import java.util.Date;  
+ public class DateToTimestampExample1 {  
+       public static void main(String args[]){  
+                Date date = new Date();
+                Timestamp ts=new Timestamp(date.getTime());
+                System.out.println(ts);                   
+        }  
+}  
+
+Test it Now
+Output:
+
+2017-11-02 01:59:30.274
+
+You can format the Timestamp value using SimpleDateFormat class. Let's see the example of display Timestamp value without milliseconds.
+
+import java.sql.Timestamp;  
+import java.util.Date;  
+import java.text.SimpleDateFormat;
+ public class DateToTimestampExample2 {  
+       public static void main(String args[]){  
+                Date date = new Date();
+                Timestamp ts=new Timestamp(date.getTime());
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                System.out.println(formatter.format(ts));                   
+        }  
+}  
+
+Test it Now
+Output:
+
+2017-11-02 02:04:03
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});

@@ -1,0 +1,56 @@
+Java String getBytes()
+The 
+java string getBytes()
+ method returns the byte array of the string. In other words, it returns sequence of bytes.
+Signature
+There are 3 variant of getBytes() method. The signature or syntax of string getBytes() method is given below:
+
+public byte[] getBytes()
+public byte[] getBytes(Charset charset)
+public byte[] getBytes(String charsetName)throws UnsupportedEncodingException
+
+Internal implementation
+
+public byte[] getBytes() {
+        return StringCoding.encode(value, 0, value.length);
+    }
+
+Returns
+sequence of bytes.
+Java String getBytes() method example
+
+public class StringGetBytesExample{
+public static void main(String args[]){
+String s1="ABCDEFG";
+byte[] barr=s1.getBytes();
+for(int i=0;i
+Test it Now
+Output:
+
+65
+66
+67
+68
+69
+70
+71
+
+Java String getBytes() Method Example 2
+This method returns a byte array that again can be passed to String constructor to get String.
+
+public class StringGetBytesExample2 {
+	public static void main(String[] args) {
+		String s1 = "ABCDEFG";
+		byte[] barr = s1.getBytes();
+		for(int i=0;i
+Test it Now
+Output:
+
+65
+66
+67
+68
+69
+70
+71
+ABCDEFG

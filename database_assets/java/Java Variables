@@ -1,0 +1,123 @@
+Java Variables
+A variable is a container which holds the value while the java program is executed. A variable is assigned with a datatype.
+Variable is a name of memory location. There are three types of variables in java: local, instance and static.
+There are two types of data types in java: primitive and non-primitive.
+Variable
+Variable
+ is name of 
+reserved area allocated in memory
+. In other words, it is a 
+name of memory location
+. It is a combination of "vary + able" that means its value can be changed.
+
+int data=50;//Here data is variable
+
+Types of Variables
+There are three types of variables in java:
+
+
+local variable
+
+
+instance variable
+
+
+static variable
+
+
+1) Local Variable
+A variable declared inside the body of the method is called local variable. You can use this variable only within that method and the other methods in the class aren't even aware that the variable exists. 
+A local variable cannot be defined with "static" keyword.
+2) Instance Variable
+A variable declared inside the class but outside the body of the method, is called instance variable. It is not declared as static. 
+It is called instance variable because its value is instance specific and is not shared among instances. 
+3) Static variable
+A variable which is declared as static is called static variable. It cannot be local. You can create a single copy of static variable and share among all the instances of the class. Memory allocation for static variable happens only once when the class is loaded in the memory. 
+Example to understand the types of variables in java
+
+class A{
+int data=50;//instance variable
+static int m=100;//static variable
+void method(){
+int n=90;//local variable
+}
+}//end of class
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Variable Example: Add Two Numbers
+
+class Simple{
+public static void main(String[] args){
+int a=10;
+int b=10;
+int c=a+b;
+System.out.println(c);
+}}
+
+Output:
+
+20
+
+Java Variable Example: Widening
+
+class Simple{
+public static void main(String[] args){
+int a=10;
+float f=a;
+System.out.println(a);
+System.out.println(f);
+}}
+
+Output:
+
+10
+10.0
+
+Java Variable Example: Narrowing (Typecasting)
+
+class Simple{
+public static void main(String[] args){
+float f=10.5f;
+//int a=f;//Compile time error
+int a=(int)f;
+System.out.println(f);
+System.out.println(a);
+}}
+
+Output:
+
+10.5
+10
+
+Java Variable Example: Overflow
+
+class Simple{
+public static void main(String[] args){
+//Overflow
+int a=130;
+byte b=(byte)a;
+System.out.println(a);
+System.out.println(b);
+}}
+
+Output:
+
+130
+-126
+
+Java Variable Example: Adding Lower Type
+
+class Simple{
+public static void main(String[] args){
+byte a=10;
+byte b=10;
+//byte c=a+b;//Compile Time Error: because a+b=20 will be int
+byte c=(byte)(a+b);
+System.out.println(c);
+}}
+
+Output:
+
+20

@@ -1,0 +1,84 @@
+Java String compareTo()
+The 
+java string compareTo()
+ method compares the given string with current string lexicographically. It returns positive number, negative number or 0.
+It compares strings on the basis of Unicode value of each character in the strings.
+If first string is lexicographically greater than second string, it returns positive number (difference of character value). If first string is less than second string lexicographically, it returns negative number and if first string is lexicographically equal to second string, it returns 0.
+
+if s1 > s2, it returns positive number
+if s1 < s2, it returns negative number
+if s1 == s2, it returns 0
+
+Internal implementation
+
+	public boolean equals(Object anObject) {
+        if (this == anObject) {
+            return true;
+        }
+        if (anObject instanceof String) {
+            String anotherString = (String) anObject;
+            int n = value.length;
+            if (n == anotherString.value.length) {
+                char v1[] = value;
+                char v2[] = anotherString.value;
+                int i = 0;
+                while (n-- != 0) {
+                    if (v1[i] != v2[i])
+                            return false;
+                    i++;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+Signature
+
+public int compareTo(String anotherString)
+
+Parameters
+anotherString
+: represents string that is to be compared with current string
+Returns
+an integer value
+Java String compareTo() method example
+
+public class CompareToExample{
+public static void main(String args[]){
+String s1="hello";
+String s2="hello";
+String s3="meklo";
+String s4="hemlo";
+String s5="flag";
+System.out.println(s1.compareTo(s2));//0 because both are equal
+System.out.println(s1.compareTo(s3));//-5 because "h" is 5 times lower than "m"
+System.out.println(s1.compareTo(s4));//-1 because "l" is 1 times lower than "m"
+System.out.println(s1.compareTo(s5));//2 because "h" is 2 times greater than "f"
+}}
+
+Test it Now
+Output:
+
+0
+-5
+-1
+2
+
+Java String compareTo(): empty string
+If you compare string with blank or empty string, it returns length of the string. If second string is empty, result would be positive. If first string is empty, result would be negative. 
+
+public class CompareToExample2{
+public static void main(String args[]){
+String s1="hello";
+String s2="";
+String s3="me";
+System.out.println(s1.compareTo(s2));
+System.out.println(s2.compareTo(s3));
+}}
+
+Test it Now
+Output:
+
+5
+-2

@@ -1,0 +1,71 @@
+Java String equalsIgnoreCase()
+The 
+String equalsIgnoreCase()
+ method compares the two given strings on the basis of content of the string irrespective of case of the string. It is like equals() method but doesn't check case. If any character is not matched, it returns false otherwise it returns true.
+Internal implementation
+
+	public boolean equalsIgnoreCase(String anotherString) {
+        return (this == anotherString) ? true
+                : (anotherString != null)
+                && (anotherString.value.length == value.length)
+                && regionMatches(true, 0, anotherString, 0, value.length);
+    }
+
+
+Signature
+
+public boolean equalsIgnoreCase(String str)
+
+Parameter
+str
+ : another string i.e. compared with this string.
+Returns
+It returns 
+true
+ if characters of both strings are equal ignoring case otherwise 
+false
+.
+Java String equalsIgnoreCase() method example
+
+public class EqualsIgnoreCaseExample{
+public static void main(String args[]){
+String s1="javatpoint";
+String s2="javatpoint";
+String s3="JAVATPOINT";
+String s4="python";
+System.out.println(s1.equalsIgnoreCase(s2));//true because content and case both are same
+System.out.println(s1.equalsIgnoreCase(s3));//true because case is ignored
+System.out.println(s1.equalsIgnoreCase(s4));//false because content is not same
+}}
+
+Test it Now
+
+true
+true
+false
+
+Java String equalsIgnoreCase() Method Example 2
+Let's see an example where we are testing string equality among the strings.
+
+import java.util.ArrayList;
+public class EqualsIgnoreCaseExample2 {
+	public static void main(String[] args) {
+		String str1 = "Mukesh Kumar";
+		ArrayList
+ list = new ArrayList<>();
+		list.add("Mohan"); 
+		list.add("Mukesh");
+		list.add("RAVI");
+		list.add("MuKesH kuMar");
+		list.add("Suresh");
+		for (String str : list) {
+			if (str.equalsIgnoreCase(str1)) {
+				System.out.println("Mukesh kumar is present");
+			}
+		}
+	}
+}
+
+Output:
+
+Mukesh kumar is present

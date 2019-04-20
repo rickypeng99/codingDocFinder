@@ -1,0 +1,66 @@
+Java String startsWith()
+The 
+java string startsWith()
+ method checks if this string starts with given prefix. It returns true if this string starts with given prefix else returns false.
+Internal implementation
+
+   public boolean startsWith(String prefix, int toffset) {
+        char ta[] = value;
+        int to = toffset;
+        char pa[] = prefix.value;
+        int po = 0;
+        int pc = prefix.value.length;
+        // Note: toffset might be near -1>>>1.
+        if ((toffset < 0) || (toffset > value.length - pc)) {
+            return false;
+        }
+        while (--pc >= 0) {
+            if (ta[to++] != pa[po++]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+Signature
+The syntax or signature of startWith() method is given below.
+
+public boolean startsWith(String prefix)
+public boolean startsWith(String prefix, int offset)
+
+Parameter
+prefix
+ : Sequence of character
+Returns
+true or false
+Java String startsWith() method example
+
+public class StartsWithExample{
+public static void main(String args[]){
+String s1="java string split method by javatpoint";
+System.out.println(s1.startsWith("ja"));
+System.out.println(s1.startsWith("java string"));
+}}
+
+Test it Now
+Output:
+
+true
+true
+
+Java String startsWith(String prefix, int offset) Method Example
+This is overloaded method of startWith() method which is used to pass one extra argument (offset) to the function. This method works from the passed offset. Let's see an example.
+
+public class StartsWithExample2 {
+	public static void main(String[] args) {
+	    String str = "Javatpoint";
+	    System.out.println(str.startsWith("J")); // True
+	    System.out.println(str.startsWith("a")); // False
+	    System.out.println(str.startsWith("a",1)); // True
+	}
+}
+Output:
+
+true
+false
+true

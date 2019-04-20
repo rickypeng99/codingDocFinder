@@ -1,0 +1,68 @@
+Java Convert Decimal to Binary
+We can convert 
+decimal to binary in java
+ using 
+Integer.toBinaryString()
+ method or custom logic.
+Java Decimal to Binary conversion: Integer.toBinaryString()
+The Integer.toBinaryString() method converts decimal to binary string. The 
+signature
+ of toBinaryString() method is given below:
+
+public static String toBinaryString(int decimal)
+
+Let's see the simple example of converting decimal to binary in java.
+
+public class DecimalToBinaryExample1{
+public static void main(String args[]){
+System.out.println(Integer.toBinaryString(10));
+System.out.println(Integer.toBinaryString(21));
+System.out.println(Integer.toBinaryString(31));
+}}
+
+Test it Now
+Output:
+
+1010
+10101
+11111
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Decimal to Binary conversion: Custom Logic
+We can convert 
+decimal to binary in java
+ using custom logic.
+
+public class DecimalToBinaryExample2{  
+public static void toBinary(int decimal){  
+     int binary[] = new int[40];  
+     int index = 0;  
+     while(decimal > 0){  
+       binary[index++] = decimal%2;  
+       decimal = decimal/2;  
+     }  
+     for(int i = index-1;i >= 0;i--){  
+       System.out.print(binary[i]);  
+     }  
+System.out.println();//new line
+}  
+public static void main(String args[]){    
+System.out.println("Decimal of 10 is: ");
+toBinary(10);  
+System.out.println("Decimal of 21 is: ");
+toBinary(21);  
+System.out.println("Decimal of 31 is: ");  
+toBinary(31);
+}}    
+
+Test it Now
+Output:
+
+Decimal of 10 is: 
+1010
+Decimal of 21 is: 
+10101
+Decimal of 31 is: 
+11111

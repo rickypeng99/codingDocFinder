@@ -1,0 +1,69 @@
+Java While Loop
+The Java 
+while loop
+ is used to iterate a part of the program several times. If the number of iteration is not fixed, it is recommended to use while loop.
+Syntax:
+
+while(condition){
+//code to be executed
+}
+
+Example:
+
+public class WhileExample {
+public static void main(String[] args) {
+    int i=1;
+    while(i<=10){
+    	System.out.println(i);
+    i++;
+    }
+}
+}
+
+Test it Now
+Output:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Infinitive While Loop
+If you pass 
+true
+ in the while loop, it will be infinitive while loop.
+Syntax:
+
+while(true){
+//code to be executed
+}
+
+Example:
+
+public class WhileExample2 {
+public static void main(String[] args) {
+	while(true){
+		System.out.println("infinitive while loop");
+	}
+}
+}
+
+Output:
+
+infinitive while loop
+infinitive while loop
+infinitive while loop
+infinitive while loop
+infinitive while loop
+ctrl+c
+
+Now, you need to press ctrl+c to exit from the program.

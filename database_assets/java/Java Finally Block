@@ -1,0 +1,90 @@
+Java finally block
+Java finally block
+ is a block that is used 
+to execute important code
+ such as closing connection, stream etc.
+Java finally block is always executed whether exception is handled or not.
+Java finally block follows try or catch block.
+Note: If you don't handle exception, before terminating the program, JVM executes finally block(if any).
+Why use java finally
+
+
+Finally block in java can be used to put "cleanup" code such as closing a file, closing connection etc.
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Usage of Java finally
+Let's see the different cases where java finally block can be used.
+Case 1
+Let's see the java finally example where 
+exception doesn't occur
+.
+
+class TestFinallyBlock{
+  public static void main(String args[]){
+  try{
+   int data=25/5;
+   System.out.println(data);
+  }
+  catch(NullPointerException e){System.out.println(e);}
+  finally{System.out.println("finally block is always executed");}
+  System.out.println("rest of the code...");
+  }
+}
+
+Test it Now
+
+Output:5
+       finally block is always executed
+       rest of the code...
+
+Case 2
+Let's see the java finally example where 
+exception occurs and not handled
+.
+
+class TestFinallyBlock1{
+  public static void main(String args[]){
+  try{
+   int data=25/0;
+   System.out.println(data);
+  }
+  catch(NullPointerException e){System.out.println(e);}
+  finally{System.out.println("finally block is always executed");}
+  System.out.println("rest of the code...");
+  }
+}
+
+Test it Now
+
+Output:finally block is always executed
+       Exception in thread main java.lang.ArithmeticException:/ by zero
+
+Case 3
+Let's see the java finally example where 
+exception occurs and handled
+.
+
+public class TestFinallyBlock2{
+  public static void main(String args[]){
+  try{
+   int data=25/0;
+   System.out.println(data);
+  }
+  catch(ArithmeticException e){System.out.println(e);}
+  finally{System.out.println("finally block is always executed");}
+  System.out.println("rest of the code...");
+  }
+}
+
+Test it Now
+
+Output:Exception in thread main java.lang.ArithmeticException:/ by zero
+       finally block is always executed
+       rest of the code...
+
+
+Rule: For each try block there can be zero or more catch blocks, but only one finally block. 
+Note: The finally block will not be executed if program exits(either by calling System.exit() or by causing a fatal error that causes the process to abort). 

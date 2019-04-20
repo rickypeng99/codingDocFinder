@@ -1,0 +1,162 @@
+JavaFX  Cubic Curve
+In general, cubic curve is a curve of order 3. In JavaFX, we can create cubic curve by just instantiating 
+javafx.scene.shape.CubicCurve
+ class. The class contains various properties defined in the table along with the setter methods. These properties needs to be set in order to create the cubic curve as required.
+Properties
+The properties of Cubic Curve class have the following properties.
+
+
+
+    
+Property
+
+    
+Description
+
+	
+Setter method
+
+
+
+
+
+    
+controlX1
+
+    
+X coordinate of first control point of cubic curve.
+
+	
+setControlX1(Double)
+
+
+
+
+
+    
+controlX2
+
+    
+X coordinate of second control point of cubic curve
+
+	
+setControlX2(Double)
+
+
+
+
+
+    
+controlY1
+
+    
+Y coordinate of first control point of cubic curve
+
+	
+setControlY1(Double)
+
+
+
+
+
+    
+controlY2
+
+    
+Y coordinate of second control point of cubic curve
+
+	
+setControlX1(Double)
+
+
+
+
+
+    
+endX
+
+    
+X coordinate of end point of cubic curve
+
+	
+setEndX(Double)
+
+
+
+
+
+    
+endY
+
+    
+Y coordinate of end point of cubic curve.
+
+	
+setEndY(Double)
+
+
+
+
+
+    
+startX
+
+    
+X coordinate of starting point of cubic curve
+
+	
+setStartX(Double)
+
+
+
+
+
+    
+startY
+
+    
+Y coordinate of starting point of cubic curve
+
+	
+setStartY(Double)
+
+
+
+
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.CubicCurve;
+import javafx.stage.Stage;
+public class Shape_Example extends Application {
+
+  @Override
+  public void start(Stage primarystage) {
+    Group root = new Group();
+    primarystage.setTitle("Cubic Curve Example");
+    CubicCurve c = new CubicCurve();
+    c.setStartX(20);
+    c.setStartY(100);
+    c.setControlX1(300);
+    c.setControlX2(200);
+    c.setControlY1(100);
+    c.setControlY2(90);
+    c.setFill(Color.RED);
+    c.setEffect(new DropShadow());
+    c.setEndX(100);
+    c.setEndY(300);
+    root.getChildren().add(c);
+    Scene scene = new Scene(root,300,400);
+    primarystage.setScene(scene);
+    primarystage.show();
+  }
+
+  public static void main(String[] args) {
+    launch(args);
+  }
+}

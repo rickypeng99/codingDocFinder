@@ -1,0 +1,325 @@
+Java JFrame
+The javax.swing.JFrame class is a type of container which inherits the java.awt.Frame class. JFrame works like the main window where components like labels, buttons, textfields are added to create a GUI.
+Unlike Frame, JFrame has the option to hide or close the window with the help of setDefaultCloseOperation(int) method.
+Nested Class
+
+    
+
+        
+Modifier and Type
+
+        
+Class
+
+        
+Description
+
+    
+
+    
+
+        
+protected class 
+
+        
+JFrame.AccessibleJFrame
+
+        
+This class implements accessibility support for the JFrame class.
+
+    
+
+
+Fields
+
+    
+
+        
+Modifier and Type
+
+        
+Field
+
+        
+Description
+
+    
+
+    
+
+        
+protected AccessibleContext
+
+        
+accessibleContext
+
+        
+The accessible context property.
+
+    
+
+    
+
+        
+static int
+
+        
+EXIT_ON_CLOSE
+
+        
+The exit application default window close operation.
+
+    
+
+    
+
+        
+protected JRootPane
+
+        
+rootPane
+
+        
+The JRootPane instance that manages the contentPane and optional menuBar for this frame, as well as the glassPane.
+
+    
+
+    
+
+        
+protected boolean
+
+        
+rootPaneCheckingEnabled
+
+        
+If true then calls to add and setLayout will be forwarded to the contentPane.
+
+    
+
+
+Constructors
+
+    
+
+        
+Constructor
+
+        
+Description
+
+    
+
+    
+
+        
+JFrame()
+
+        
+It constructs a new frame that is initially invisible.
+
+    
+
+    
+
+        
+JFrame(GraphicsConfiguration gc)
+
+        
+It creates a Frame in the specified GraphicsConfiguration of a screen device and a blank title.
+
+    
+
+    
+
+        
+JFrame(String title)
+
+        
+It creates a new, initially invisible Frame with the specified title.
+
+    
+
+    
+
+        
+JFrame(String title, GraphicsConfiguration gc)
+
+        
+It creates a JFrame with the specified title and the specified GraphicsConfiguration of a screen device.
+
+    
+
+
+Useful Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method 
+
+        
+Description
+
+    
+
+    
+
+        
+protected void
+
+        
+addImpl(Component comp, Object constraints, int index)
+
+        
+Adds the specified child Component.
+
+    
+
+    
+
+        
+protected JRootPane
+
+        
+createRootPane()
+
+        
+Called by the constructor methods to create the default rootPane.
+
+    
+
+    
+
+        
+protected void
+
+        
+frameInit()
+
+        
+Called by the constructors to init the JFrame properly. 
+
+    
+
+    
+
+        
+void
+
+        
+setContentPane(Containe contentPane)
+
+        
+It sets the contentPane property
+
+    
+
+    
+
+        
+static void
+
+        
+setDefaultLookAndFeelDecorated(boolean defaultLookAndFeelDecorated)
+
+        
+Provides a hint as to whether or not newly created JFrames should have their Window decorations (such as borders, widgets to close the window, title...) provided by the current look and feel.
+
+    
+
+    
+
+        
+void
+
+        
+setIconImage(Image image)
+
+        
+It sets the image to be displayed as the icon for this window.
+
+    
+
+    
+
+        
+void
+
+        
+setJMenuBar(JMenuBar menubar)
+
+        
+It sets the menubar for this frame.
+
+    
+
+    
+
+        
+void
+
+        
+setLayeredPane(JLayeredPane layeredPane)
+
+        
+It sets the layeredPane property.
+
+    
+
+    
+
+        
+JRootPane
+
+        
+getRootPane()
+
+        
+It returns the rootPane object for this frame.
+
+    
+
+    
+
+        
+TransferHandler
+
+        
+getTransferHandler()
+
+        
+It gets the transferHandler property.
+
+    
+
+
+JFrame Example
+
+import java.awt.FlowLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.Jpanel;
+public class JFrameExample {
+	public static void main(String s[]) {
+		JFrame frame = new JFrame("JFrame Example");
+		JPanel panel = new JPanel();
+		panel.setLayout(new FlowLayout());
+		JLabel label = new JLabel("JFrame By Example");
+		JButton button = new JButton();
+		button.setText("Button");
+		panel.add(label);
+		panel.add(button);
+		frame.add(panel);
+		frame.setSize(200, 300);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+	}
+}
+
+Output

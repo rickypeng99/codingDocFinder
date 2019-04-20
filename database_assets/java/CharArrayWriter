@@ -1,0 +1,206 @@
+Java CharArrayWriter Class
+The CharArrayWriter class can be used to write common data to multiple files. This class inherits 
+Writer
+ class. Its buffer automatically grows when data is written in this stream. Calling the close() method on this 
+object
+ has no effect.
+Java CharArrayWriter class declaration
+Let's see the declaration for Java.io.CharArrayWriter class:
+
+public class CharArrayWriter extends Writer
+
+Java CharArrayWriter class Methods
+
+  
+
+     
+Method	
+
+     
+Description
+
+  
+
+  
+
+     
+int size()
+
+     
+It is used to return the current size of the buffer.
+
+  
+
+  
+
+     
+char[] toCharArray()
+
+     
+It is used to return the copy of an input data.
+
+  
+
+  
+
+     
+String toString()
+
+     
+It is used for converting an input data to a 
+string
+.
+
+  
+
+  
+
+     
+CharArrayWriter append(char c)
+
+     
+It is used to append the specified character to the writer.
+
+  
+
+  
+
+     
+CharArrayWriter append(CharSequence csq)
+
+     
+It is used to append the specified character sequence to the writer.
+
+  
+
+  
+
+     
+CharArrayWriter append(CharSequence csq, int start, int end)
+
+     
+It is used to append the subsequence of a specified character to the writer.
+
+  
+
+  
+
+     
+void write(int c)
+
+     
+It is used to write a character to the buffer.
+
+  
+
+  
+
+     
+void write(char[] c, int off, int len)
+
+     
+It is used to write a character to the buffer.
+
+  
+
+  
+
+     
+void write(String str, int off, int len)
+
+     
+It is used to write a portion of string to the buffer.
+
+  
+
+  
+
+     
+void writeTo(Writer out)
+
+     
+It is used to write the content of buffer to different character stream.
+
+  
+
+  
+
+     
+void flush()
+
+     
+It is used to flush the stream.
+
+  
+
+  
+
+     
+void reset()
+
+     
+It is used to reset the buffer.
+
+  
+
+  
+
+     
+void close()
+
+     
+It is used to close the stream.
+
+  
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Example of CharArrayWriter Class:
+In this example, we are writing a common data to 4 files a.txt, b.txt, c.txt and d.txt.
+
+package com.javatpoint;
+
+import java.io.CharArrayWriter;
+import java.io.FileWriter;
+public class CharArrayWriterExample {
+public static void main(String args[])throws Exception{  
+		  CharArrayWriter out=new CharArrayWriter();  
+		  out.write("Welcome to javaTpoint");  
+		  FileWriter f1=new FileWriter("D:\\a.txt");  
+		  FileWriter f2=new FileWriter("D:\\b.txt");  
+		  FileWriter f3=new FileWriter("D:\\c.txt");  
+		  FileWriter f4=new FileWriter("D:\\d.txt");  
+		  out.writeTo(f1);  
+		  out.writeTo(f2);  
+		  out.writeTo(f3);  
+		  out.writeTo(f4);  
+		  f1.close();  
+		  f2.close();  
+		  f3.close();  
+		  f4.close();  
+  		  System.out.println("Success...");  
+		 }  
+		}  
+
+Output
+
+Success...
+
+After executing the program, you can see that all files have common data: Welcome to javaTpoint.
+a.txt:
+
+Welcome to javaTpoint
+
+b.txt:
+
+Welcome to javaTpoint
+
+c.txt:
+
+Welcome to javaTpoint
+
+d.txt:
+
+Welcome to javaTpoint

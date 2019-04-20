@@ -1,0 +1,219 @@
+JavaFX Charts
+In general, the cart can be defined as the graph or diagram which represents the data in the form of symbols.
+Charts are mainly used to represent the large quantities of data and the relationship between parts of the data. We can create the different kind of charts to represent different kind of information.
+In JavaFX, we can create the charts by using the classes provided by the package
+javafx.scene.chart.
+Types of charts
+Charts can be categorized into the following types.
+
+
+Pie Chart :
+ In Pie Chart, the sectors of a circle are used to represent the different proportions of the whole information. In JavaFX, the class
+javafx.scene.chart.PieChart
+ is used to deal with the pie chart. We will discuss PieChart later in detail. 
+
+
+XYChart :
+ In XYChart, the information is plotted on the XY (horizontal and vertical) axes. The X axis represents one type of value while the Y axis represents the other type of value. The mapping is done between the values plotted on X and Y charts to show the appropriate information. In JavaFX, the class 
+javafx.scene.chart.XYChart
+ is used to deal with the XYChart.
+
+
+Types of Axis
+The X and Y Axis can be the one of the following two types.
+
+
+Category Axis :
+ the category axis is used to represent the different category of the information. This is different from the value axis in the sense that the exact values are not shown on the category axis. In JavaFX, the class 
+javafx.scene.chart.CategoryAxis
+ represents the category axis. We just need to instantiate this class in order to create the category axis.
+
+
+Number Axis :
+ the Number axis is used to represent the exact range of values. In JavaFX, the class 
+javafx.scene.chart.NumberAxis
+ represents the value axis. We just need to instantiate this class in order to create the Number axis.
+
+
+How to create Charts in JavaFX?
+Use the following instructions to create the charts in JavaFX.
+Configure the Axes
+In order to create the Xaxis and Yaxis, we need to instantiate the respective class. However, this step is not necessary for pie-charts. Use the following code for creating the axes and setting the properties for them.
+
+NumberAxis xaxis = new NumberAxis();
+CategoryAxis yaxis = new CategoryAxis();
+xaxis.setLabel(?X-Axis?);
+yaxis.setLabel(?Y-Axis?);  
+
+Create the chart
+We just need to instantiate the respective class in order to create the chart. For example, the following syntax will be used to create the LineChart.
+
+LineChart linechart = new LineChart(xaxis,yaxis);
+linechart.setTitle(?Line Chart Example?); 
+
+Passing Data to the Chart :
+This is the most important step of the process. Use the following steps for this purpose.
+Instantiate XYChart.Series:
+We need to create instance of the XYChart.Series class and set the appropriate name for the series. Basically, a series represents the set of information for a type of the entity. The number of series in the chart is equal to the number of entities in the chart. An entity is the one, whose data is shown in the graph. In the following code, we have instantiated XYChart.Series class.
+
+XYChart.Series series = new XYChart.Series();
+series.setName(?Value type 1?);   
+
+Adding Data to the series:
+A mapping between the X-axis and Y-axis needs to be done in order to represent the appropriate information for a series. By the mapping, we simply mean setting the value of one of the axis for the value of the other axis. In the following part of the code, we are adding the data for the series.
+
+series.getData().add(new XYChart.Data(2010,25)); series.getData().add(new XYChart.Data(2011,15));
+series.getData().add(new XYChart.Data(2012,78))
+series.getData().add(new XYChart.Data(2013,60));
+
+Adding Series to the Chart :
+ At the last, we need to add the series to the chart. In the following part of the code, we have added the series to the LineChart.
+Linechart.getData().add(series)
+Configure Group and Scene
+This is the most common portion of all the javafx applications. Here, we will create the group and add the linechart to the group. The group object is passed into the scene class constructor. The scene class object is passed to the 
+setScene
+ Method. Use the following part of the code for this purpose.
+
+Group group = new Group();
+group.getChildren().add(linechart);
+Scene scene = new Scene(group,600,400);
+primaryStage.setScene(scene);
+primaryStage.showTitle(?Chart Example?);
+primaryStage.show();
+
+JavaFX provides different types of classes for the different types of charts. All the chart classes of the package 
+javafx.scene.chart
+ are described in the following table.
+
+
+
+    
+SN
+
+    
+Chart Name
+
+	
+Description
+
+
+
+
+
+    
+1
+
+    
+Pie Chart
+
+	
+In general, Pie chart is a type of the graph or diagram in which the sectors of a circle are used to represent different proportions of the whole information. The angle of the arc of a sector varies according to the percentage of information represented by that sector. In JavaFX, Pie Chart is represented by the class 
+javafx.scene.chart.PieChrt.
+ We need to instantiate this class in order to create pi-chart.
+
+
+
+
+
+    
+2
+
+    
+Line Chart
+
+	
+In general, the Line Chart is defined as the type of graph in which the group of data points called markers are used to display the information. The data points are connected by the straight line segments. In JavaFX, the Line Chart is represented by the class 
+javafx.scene.chart.LineChart
+
+
+
+
+
+    
+3
+
+    
+Area Chart 
+
+	
+In general, the area chart is used to display the graphically quantitative data. This basically plots the area for the series of points on a XY Plane. In JavaFX, the class 
+javafx.scene.chart.AreaChart
+ represents the Area Chart
+
+
+
+
+
+    
+4
+
+    
+Bar Chart
+
+	
+In general, A bar chart can be defined as a diagram in which the rectangular bars are used to represent the Numeric data values. The height of the bars varies according to the numeric values. In JavaFX, the class
+javafx.scene.chart.BarChart
+ represents the Bar Chart.
+
+
+
+
+
+    
+5
+
+    
+Bubble Chart
+
+	
+A Bubble Chart can be defined as the diagram which is used to display the three dimensional data. Each entity is identified by a bubble which contains three triplets (v1, v2, v3). Two of the triplets are shown by the Bubble's (X,Y) coordinate while the third one is identified by the radius of the bubble. In JavaFX, the class
+ javafx.scene.chart.BubbleChart
+ represents the Bubble chart. We need to instantiate this class in order to create the Bubble Chart
+
+
+
+
+
+    
+6
+
+    
+Scatter Chart
+
+	
+In Scatter Chart, the data points are scattered along the graph. Each data point displays the mapping between both the axis. It is mainly used to plot the relationship between the two variables of the two axes. In JavaFX, the Scatter Chart is represented by the class 
+javafx.scene.chart.ScatterChart
+ class. We need to instantiate this class in order to create the scatter chart.
+
+
+
+
+
+    
+7
+
+    
+Stacked Area Chart
+
+	
+Stacked area chart is the extension of the basic area charts in which the evolution of the values of several groups on the same graphic is displayed. The area is plotted for all the data points of a certain group. However, the areas of the different groups are shown in the form of a stack but they  don't overlap each other. The stacked area chart is mainly used to trace the comparison between  the values of the two groups. In JavaFX, the class
+ javafx.scene.chart.StackedAreaChart
+ is used to represent the stacked area chart. We need to instantiate this class in order to genera a stackedareachart node.
+
+
+
+
+
+    
+8
+
+    
+Stacked Bar Chart
+
+	
+In stacked bar charts, the values of the different groups are displayed on a rectangular bar in the form of a stack. This is mainly used to compare the values of the different groups according to its length plotted on the bar. In JavaFX, the class 
+javafx.scene.chart.StackedBarChart
+ represents the stacked bar chart. We need to instantiate this class to generate a stackedbarchart node.
+
+
+

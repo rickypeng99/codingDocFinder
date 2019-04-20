@@ -1,0 +1,143 @@
+Java FilePermission Class
+Java FilePermission class contains the permission related to a directory or 
+file
+. All the permissions are related with path. The path can be of two types:
+1) 
+D:\\IO\\
+-: It indicates that the permission is associated with all sub directories and files recursively.
+2) 
+D:\\IO\\*
+: It indicates that the permission is associated with all directory and files within this directory excluding sub directories.
+Java FilePermission class declaration
+Let's see the declaration for Java.io.FilePermission class:
+
+public final class FilePermission extends Permission implements Serializable
+
+Methods of FilePermission class
+
+  
+
+      
+Method
+
+      
+Description
+
+  
+
+  
+
+      
+ByteArrayOutputStream()
+
+      
+Creates a new byte 
+array
+ output stream with the initial capacity of 32 bytes, though its size increases if necessary.
+
+  
+
+  
+
+      
+ByteArrayOutputStream(int size)
+
+      
+Creates a new byte array output stream, with a buffer capacity of the specified size, in bytes.
+
+  
+
+
+Java FilePermission class methods
+
+  
+
+      
+Method
+
+      
+Description
+
+  
+
+  
+
+      
+int hashCode()
+
+      
+It is used to return the hash code value of an 
+object
+.
+
+  
+
+  
+
+      
+String getActions()
+
+      
+It is used to return the "canonical string representation" of an action.
+
+  
+
+  
+
+      
+boolean equals(Object obj)
+
+      
+It is used to check the two FilePermission objects for equality.
+
+  
+
+  
+
+      
+boolean implies(Permission p)
+
+      
+It is used to check the FilePermission object for the specified permission. 
+
+  
+
+  
+
+      
+PermissionCollection newPermissionCollection()
+
+      
+It is used to return the new PermissonCollection object for storing the FilePermission object.
+
+  
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java FilePermission Example
+Let's see the simple example in which permission of a directory path is granted with read permission and a file of this directory is granted for write permission. 
+
+package com.javatpoint;
+
+import java.io.*;
+import java.security.PermissionCollection;
+public class FilePermissionExample{
+	   public static void main(String[] args) throws IOException {
+	    String srg = "D:\\IO Package\\java.txt";
+	    FilePermission file1 = new FilePermission("D:\\IO Package\\-", "read");
+	    PermissionCollection permission = file1.newPermissionCollection();
+	    permission.add(file1);
+	         FilePermission file2 = new FilePermission(srg, "write");
+	         permission.add(file2);
+		     if(permission.implies(new FilePermission(srg, "read,write"))) {
+	         System.out.println("Read, Write permission is granted for the path "+srg );
+  	         }else {
+  	        System.out.println("No Read, Write permission is granted for the path "+srg);  	         }
+	   } 
+}
+
+Output
+
+Read, Write permission is granted for the path D:\IO Package\java.txt

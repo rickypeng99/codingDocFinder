@@ -1,0 +1,47 @@
+Java Nested try block
+The try block within a try block is known as nested try block in java.
+Why use nested try block
+Sometimes a situation may arise where a part of a block may cause one error and the entire block itself may cause another error. In such cases, exception handlers have to be nested.
+Syntax:
+
+....
+try
+{
+    statement 1;
+    statement 2;
+    try
+    {
+        statement 1;
+        statement 2;
+    }
+    catch(Exception e)
+    {
+    }
+}
+catch(Exception e)
+{
+}
+....
+
+Java nested try example
+Let's see a simple example of java nested try block.
+
+class Excep6{
+ public static void main(String args[]){
+  try{
+    try{
+     System.out.println("going to divide");
+     int b =39/0;
+    }catch(ArithmeticException e){System.out.println(e);}
+ 
+    try{
+    int a[]=new int[5];
+    a[5]=4;
+    }catch(ArrayIndexOutOfBoundsException e){System.out.println(e);}
+   
+    System.out.println("other statement);
+  }catch(Exception e){System.out.println("handeled");}
+
+  System.out.println("normal flow..");
+ }
+}

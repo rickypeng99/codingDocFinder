@@ -1,0 +1,305 @@
+JavaFX Architecture
+The following image shows the complete architecture of JavaFX platform. There are various built-in components which are interconnected with each other. However, JavaFX contains a rich set of APIs which are more than enough to develop rich internet applications which run consistently across many platforms.
+JavaFX public API
+The top layer of JavaFX architecture contains a JavaFX public API which provides all the necessary classes that are responsible for executing a full featured JavaFX application. The list of all the packages of this API are as follows.
+
+
+
+	
+Package Name
+
+	
+Description
+
+
+
+
+
+	
+javafx.animation
+
+	
+Provides the set of classes that are responsible for transitions based animations
+
+
+
+
+
+	
+javafx.application 
+
+	
+Provides application life-cycle methods
+
+
+
+
+
+	
+javafx.collections
+
+	
+Provides classes that can handle collections and related utilities 
+
+
+
+
+
+	
+javafx.concurrent 
+
+	
+Provides classes that are responsible for multitasking 
+
+
+
+
+
+	
+javafx.embed.swing
+
+	
+Provides the set of classes that can be used inside the swing code 
+
+
+
+
+
+	
+javafx.embed.swt
+
+	
+Provides the set of classes that can be used inside the swt code
+
+
+
+
+
+	
+javafx.event
+
+	
+Provides the classes that deal with events and their handling 
+
+
+
+
+
+	
+javafx.fxml
+
+	
+Contains the set of classes that are responsible of loading hierarchy from mark-up  
+
+
+
+
+
+	
+javafx.geometry
+
+	
+Provides the 2D classes that contains the methods to operate 2D geometry on the object.
+
+
+
+
+
+	
+javafx.scene
+
+	
+Provides the classes to deal with scene graph API 
+
+
+
+
+
+	
+javafx.scene.canvas
+
+	
+Provides the set of classes that deal with canvas. 
+
+
+
+
+
+	
+javafx.scene.control
+
+	
+Contains the classes for all JavaFX components. 
+
+
+
+
+
+	
+javafx.scene.effect
+
+	
+Contains the set of classes that apply the graphic effects to scene graph nodes 
+
+
+
+
+
+	
+javafx.scene.image
+
+	
+Provides the set of classes for loading and displaying images 
+
+
+
+
+
+	
+javafx.scene.input
+
+	
+Provides the set of classes for the mouse and keyboard events
+
+
+
+
+
+	
+javafx.scene.layout
+
+	
+Provides the set of classes to support user interface layout
+
+
+
+
+
+	
+javafx.scene.media
+
+	
+Provides the set of classes to integrate audio and video into JavaFX application
+
+
+
+
+
+	
+javafx.scene.paint
+
+	
+Provides the set of classes for colours and gradients to fill shapes and backgrounds when rendering scene graph. 
+
+
+
+
+
+	
+javafx.scene.shape 
+
+	
+Provides the set of 2D classes that performs the operations on objects related to 2D geometry. 
+
+
+
+
+
+	
+javafx.scene.text
+
+	
+Provides the set of classes for fonts and rendering text nodes. 
+
+
+
+
+
+	
+javafx.scene.transform
+
+	
+Provides the set of classes that are used to perform rotating, scaling, shearing operations on objects. 
+
+
+
+
+
+	
+javafx.scene.web
+
+	
+Provides means for loading and displaying web content. 
+
+
+
+
+
+	
+javafx.stage
+
+	
+Provides the top level container classes for JavaFX content. 
+
+
+
+
+
+	
+javafx.util
+
+	
+Provides utilities classes 
+
+
+
+
+
+	
+javafx.util.converter 
+
+	
+This package is for standard string converters for JavaFX 
+
+
+
+
+Scene Graph
+It is the starting point of constructing a JavaFX application. It is a hierarchical tree of nodes that represent all the visual elements of user interface. It also have the capability of handling event. In general, scene graph can be defined as a collection of nodes. 
+Each node has its separate id, style and volume. Every node of a scene graph can only have single parent and zero or more children. 
+All the implementation on a scene graph are actually applied to its node. Their are various classes present in 
+javafx.scene package
+ that are used for creating, modifying and applying some transformations on the node. We will discuss Scene graph later in detail. 
+Graphics Engine
+The JavaFX graphics engine provides the graphics support to the the scene graph. It basically supports 2D as well as 3D graphics both. It provides the software rendering when the graphics hardware present on the system is not able to support hardware accelerated rendering.
+The two graphics accelerated pipelines in the JavaFX are: 
+Prism
+prism can be seen as 
+High Performance hardware-accelerated graphics pipeline
+. It has the capability to render both 2D and 3D graphics. Prism implements different ways to render graphics on different platforms.
+
+
+DirectX 9 on windows XP or vista
+ 
+
+DirectX 11 on windows 7 
+
+
+OpenGL on Mac, Linux and embedded
+ 
+
+Java 2D when hardware acceleration is not possible
+  
+
+Quantum Tool kit
+Quantum Tool Kit is used to bind prism and glass windowing tool kit together and makes them available for the above layers in stack.
+Glass Windowing tool kit
+It is present on the lowest level of JavaFX graphics stack. It basically can be seen as a platform dependent layer which works as an interface between JavaFX platform and native operating system.
+It is responsible for providing the operating system services such as managing the windows, timers, event queues and surfaces.
+Web View
+We can also embed the HTML content to a JavaFX scene graph. For this purpose, JavaFX uses a component called web view. Web view uses web kit which is an internal open source browser and can render HTM5, DOM, CSS, SVG and JavaScript.
+Using web view, we can render the HTML content from JavaFX application , and also apply some CSS styles to the user interface.
+Media Engine
+By using Media engine, the JavaFX application can support the playback of audio and video media files. JavaFX media engine depends upon an open source engine called as G Streamer. The package 
+javafx.scene.media
+ contains all the classes and interfaces that can provide media functionalities to JavaFX applications.

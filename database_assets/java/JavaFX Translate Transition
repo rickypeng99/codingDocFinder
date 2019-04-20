@@ -1,0 +1,241 @@
+JavaFX Translate Transition
+It translates the node from one position to the another position over the specified duration. Transition is done by keep updating the translateX and translateY properties of the node at the regular intervals. 
+The speed of the transition depends upon the number of cycles, transition will have in the specified duration. 
+In JavaFX, the TranslateTransition is represented by the class javafx.animation.TranslateTransition. We need to instantiate this class in order to apply an appropriate Translate Transition on an object.
+Properties
+The properties of the class along with the setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Method
+
+
+
+
+
+	
+byX
+
+	
+This is a double type property. It represents the incremented X-coordinate value at which, the translation stops.   
+
+	
+setByX(double value)
+
+
+
+
+
+	
+byY
+
+	
+This is a double type property. It represents the incremented Y-coordinate value at which, the translation stops. 
+
+	
+setByY(double value)
+
+
+
+
+
+	
+byZ
+
+	
+This is a double type property. It represents the incremented Z-coordinate value at which, the translation stops. 
+
+	
+setByZ(double value)
+
+
+
+
+
+	
+duration
+
+	
+This is an object type property of the class Duration . It represents the duration of Translate transition. 
+
+	
+setDuration(Duration value)
+
+
+
+
+
+	
+fromX
+
+	
+This is a double type property. It represents the X coordinate value from which the translation starts.  
+
+	
+setFromX(double value)
+
+
+
+
+
+	
+fromY
+
+	
+This is a double type property. It represents the Y coordinate value from which the translation starts. This is a double type property. It represents the X coordinate value from which the translation starts. 
+
+	
+setFromY(double value)
+
+
+
+
+
+	
+fromZ
+
+	
+This is a double type property. It represents the Z coordinate value from which the translation starts. 
+
+	
+setFromZ(double value)
+
+
+
+
+
+	
+node
+
+	
+This is an object type property of the class Node. It represents the node onto which, the scale transition is applied. 
+
+	
+setNode(Node node)
+
+
+
+
+
+	
+toX
+
+	
+This is a double type property. It represents the stop X coordinate value of the translate transition. 
+
+	
+setToX(double value)
+
+
+
+
+
+	
+toY
+
+	
+This is a double type property. It represents the stop Y coordinate value of the translate transition. 
+
+	
+setToY(double value)
+
+
+
+
+
+	
+toZ
+
+	
+This is a double type property. It represents the stop Z coordinate value of the scale transition. 
+
+	
+setToZ(double value)
+
+
+
+
+Constructors
+There are three constructors in the class.
+
+
+public TranslateTransition() :
+ creates the new instance of TranslateTransition with the default parameters.
+ 
+
+public TranslateTransition(Duration duration) :
+ creates the new instance of TranslateTransition with the specified duration.
+ 
+
+public TranslateTransition(Duration duration, Node node) :
+ creates the new instance of Translate Transition with the specified duration and node.
+
+
+Example:
+In the following example, we have made a circle translating itself by 400 in the X direction. 
+
+package application;
+import javafx.animation.TranslateTransition;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+public class Translate_Transition extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		//Creating the circle 
+		Circle cir = new Circle(50,100,50);
+		
+		//setting color and stroke of the cirlce
+		cir.setFill(Color.RED);
+		cir.setStroke(Color.BLACK);
+		
+		//Instantiating TranslateTransition class 
+		TranslateTransition translate = new TranslateTransition();
+		
+		//shifting the X coordinate of the centre of the circle by 400 
+		translate.setByX(400);
+		
+		//setting the duration for the Translate transition 
+		translate.setDuration(Duration.millis(1000));
+		
+		//setting cycle count for the Translate transition 
+		translate.setCycleCount(500);
+		
+		//the transition will set to be auto reversed by setting this to true 
+		translate.setAutoReverse(true);
+		
+		//setting Circle as the node onto which the transition will be applied
+		translate.setNode(cir);
+		
+		//playing the transition 
+		translate.play();
+		
+		//Configuring Group and Scene 
+		Group root = new Group();
+		root.getChildren().addAll(cir);
+		Scene scene = new Scene(root,500,200,Color.WHEAT);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Translate Transition example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}
+
+Output:

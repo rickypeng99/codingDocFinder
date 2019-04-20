@@ -1,0 +1,49 @@
+JavaFX Polygons
+Polygon can be defined as a plain figure with at least three straight sides forming a loop. In the case of polygons, we mainly considers the length of its sides and the interior angles. Triangles, squares, Pentagons, Hexagons,etc are all polygons.
+In JavaFX, Polygon can be created by instantiating 
+javafx.scene.shape.Polygon
+ class. We need to pass a Double array into the class constructor representing X-Y coordinates of all the points of the polygon. The syntax is given below.
+
+Polygon poly = new Polygon(DoubleArray); 
+
+We can also create polygon by anonymously calling 
+addAll()
+ method on the reference returned by calling 
+getPoints()
+ method which is an instance method of Polygon class. However, we need to pass the double array into this method, which represents X-Y coordinates of the polygon. The syntax is given below.
+
+Pollygon polygon_object = new Pollygon();
+Pollygon_Object.getPoints().addAll(Double_Array);
+
+Example:
+The following example creates a polygon with three sides.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.shape.Polygon;
+import javafx.stage.Stage;
+public class Shape_Example extends Application {
+
+  @Override
+  public void start(Stage primarystage) {
+    Group root = new Group();
+    primarystage.setTitle("Pollygon Example");
+    
+    Polygon polygon = new Polygon();
+    polygon.getPoints().addAll(new Double[]{
+        0.0, 0.0,
+        100.0, 200.0,
+        200.0, 100.0 });
+    
+    root.getChildren().add(polygon);
+    Scene scene = new Scene(root,300,400);
+    primarystage.setScene(scene);
+    primarystage.show();
+  }
+
+  public static void main(String[] args) {
+    launch(args);
+  }
+}

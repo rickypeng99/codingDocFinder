@@ -1,0 +1,101 @@
+Java Convert Octal to Decimal
+We can convert 
+octal to decimal in java
+ using 
+Integer.parseInt()
+ method or custom logic.
+Java Octal to Decimal conversion: Integer.parseInt()
+The Integer.parseInt() method converts a string to an int with the given radix. If you pass 8 as a radix, it converts an octal string into decimal. Let us see the 
+signature
+ of parseInt() method:
+
+public static int parseInt(String s,int radix)
+
+Let's see the simple example of converting octal to decimal in java.
+
+//Java Program to demonstrate the use of Integer.parseInt() method
+//for converting Octal to Decimal number
+public class OctalToDecimalExample1{
+public static void main(String args[]){
+//Declaring an octal number
+String octalString="121";
+//Converting octal number into decimal
+int decimal=Integer.parseInt(octalString,8);
+//Printing converted decimal number
+System.out.println(decimal);
+}}
+
+Test it Now
+Output:
+
+81
+
+Let's see another example of Integer.parseInt() method.
+
+//Shorthand example of Integer.parseInt() method
+public class OctalToDecimalExample2{
+public static void main(String args[]){
+System.out.println(Integer.parseInt("121",8));
+System.out.println(Integer.parseInt("23",8));
+System.out.println(Integer.parseInt("10",8));
+}}
+
+Test it Now
+Output:
+
+81
+19
+8
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Octal to Decimal conversion: Custom Logic
+We can convert 
+octal to decimal in java
+ using custom logic.
+
+//Java Program to demonstrate the conversion of Octal to Decimal
+//using custom code
+public class OctalToDecimalExample3{
+//Declaring method
+public static int getDecimal(int octal){  
+    //Declaring variable to store decimal number
+    int decimal = 0;  
+    //Declaring variable to use in power
+    int n = 0;  
+    //writing logic 
+    while(true){  
+      if(octal == 0){  
+        break;  
+      } else {  
+          int temp = octal%10;  
+          decimal += temp*Math.pow(8, n);  
+          octal = octal/10;  
+          n++;  
+       }  
+    }  
+    return decimal;  
+}  
+public static void main(String args[]){    
+//Printing the result of conversion
+System.out.println("Decimal of 121 octal is: "+getDecimal(121));  
+System.out.println("Decimal of 23 octal is: "+getDecimal(23));  
+System.out.println("Decimal of 10 octal is: "+getDecimal(10));  
+}}
+
+Test it Now
+Output:
+
+Decimal of 121 is: 81
+Decimal of 23: 19
+Decimal of 10 is: 8
+
+References
+
+    
+Integer.parseInt() JavaDoc
+
+    
+Integer.parseInt() Javatpoint
+

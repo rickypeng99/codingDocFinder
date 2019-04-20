@@ -1,0 +1,187 @@
+Java YearMonth class
+Java YearMonth class is an immutable date-time object that represents the combination of a year and month. It inherits the Object class and implements the Comparable interface.
+Java YearMonth class declaration
+Let's see the declaration of java.time.YearMonth class.
+
+public final class YearMonth extends Object 
+implements Temporal, TemporalAdjuster, Comparable<YearMonth>, Serializable
+
+Methods of Java YearMonth
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+Temporal adjustInto(Temporal temporal)
+
+        
+It is used to adjust the specified temporal object to have this year-month.
+
+    
+
+    
+
+        
+String format(DateTimeFormatter formatter)
+
+        
+It is used to format this year-month using the specified formatter.
+
+    
+
+    
+
+        
+int get(TemporalField field)
+
+        
+It is used to get the value of the specified field from this year-month as an int.
+
+    
+
+    
+
+        
+boolean isLeapYear()
+
+        
+It is used to check if the year is a leap year, according to the ISO proleptic calendar system rules.
+
+    
+
+    
+
+        
+static YearMonth now()
+
+        
+It is used to obtain the current year-month from the system clock in the default time zone.
+
+    
+
+    
+
+        
+static YearMonth of(int year, int month)
+
+        
+It is used to obtain an instance of YearMonth from a year and month.
+
+    
+
+    
+
+        
+YearMonth plus(TemporalAmount amountToAdd)
+
+        
+It is used to return a copy of this year-month with the specified amount added.
+
+    
+
+    
+
+        
+YearMonth	minus (TemporalAmount amountToSubtract)
+
+        
+It is used to return a copy of this year-month with the specified amount subtracted.
+
+    
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java YearMonth Example: now()
+
+import java.time.YearMonth;
+public class YearMonthExample1 {
+public static void main(String[] args) {
+  YearMonth ym = YearMonth.now();
+  System.out.println(ym);
+}
+}
+
+Test it Now
+Output:
+
+2017-01  
+
+Java YearMonth Example: format()
+
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+public class YearMonthExample2 {
+  public static void main(String[] args) {
+    YearMonth ym = YearMonth.now();
+    String s = ym.format(DateTimeFormatter.ofPattern("MM yyyy"));
+    System.out.println(s);
+  }
+}
+
+Test it Now
+Output:
+
+01 2017
+
+Java YearMonth Example: get()
+
+import java.time.YearMonth;
+import java.time.temporal.ChronoField;
+public class YearMonthExample3 {
+  public static void main(String[] args) {
+    YearMonth y = YearMonth.now();
+    long l1 = y.get(ChronoField.YEAR);
+    System.out.println(l1);
+    long l2 = y.get(ChronoField.MONTH_OF_YEAR);
+    System.out.println(l2);
+  }
+}
+
+Test it Now
+Output:
+
+2017
+1
+
+Java YearMonth Example: plus()
+
+import java.time.*;
+public class YearMonthExample4 {
+  public static void main(String[] args) {
+    YearMonth ym1 = YearMonth.now();
+    YearMonth ym2 = ym1.plus(Period.ofYears(2));
+    System.out.println(ym2);
+  }
+}
+
+Test it Now
+Output:
+
+2019-01
+
+Java YearMonth Example: minus()
+
+import java.time.*;
+public class YearMonthExample5 {
+  public static void main(String[] args) {
+    YearMonth ym1 = YearMonth.now();
+    YearMonth ym2 = ym1.minus(Period.ofYears(2));
+    System.out.println(ym2);
+  }
+}
+
+Test it Now
+Output:
+
+2015-01

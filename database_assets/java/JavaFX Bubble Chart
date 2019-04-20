@@ -1,0 +1,77 @@
+JavaFX Bubble Chart
+A Bubble Chart can be defined as the diagram which is used to display the three dimensional data. Each entity is identified by a bubble which contains three triplets (v1, v2, v3). Two of the triplets are shown by the Bubble's (X,Y) coordinate while the third one is identified by the radius of the bubble.
+In the following bubble chart, a bubble chart is plotted at mapping point of X and Y-axis. There are two series in the chart named as series 1 and series 2.
+In JavaFX, the class 
+javafx.scene.chart.BubbleChart
+ represents the Bubble chart. We need to instantiate this class in order to create the Bubble Chart.
+Constructors
+There are two constructors in the class.
+
+
+public BubbleChart(Axis
+ Xaxis, Axis
+ Yaxis) :
+ creates the new instance of the bubble chart with the specified axis.
+
+
+public BubbleChart(Axis
+ Xaxis, Axis
+ Yaxis, ObservableList
+> data) :
+ creates the new instance of the bubble chart with the specified axis and data.
+
+
+Example
+In the following example, we have shown the time (in hours) spent on-line by the different aged people. There are two categories(series) of the people, male and female.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.chart.BubbleChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.stage.Stage;
+public class BubbleChartExample extends Application
+{
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		NumberAxis xaxis = new NumberAxis(0,70,5);
+		NumberAxis yaxis = new NumberAxis(0,24,4);
+		xaxis.setLabel("Age");
+		yaxis.setLabel("Hours spent");
+		BubbleChart bubble = new BubbleChart(xaxis, yaxis);
+		bubble.setTitle("Hours spent online by different age groups");
+		XYChart.Series male = new XYChart.Series<>();
+		male.setName("Male");
+		male.getData().add(new XYChart.Data(10,2));
+		male.getData().add(new XYChart.Data(15,7));
+		male.getData().add(new XYChart.Data(25,4));
+		male.getData().add(new XYChart.Data(35,6));
+		male.getData().add(new XYChart.Data(45,10));
+		male.getData().add(new XYChart.Data(55,13));
+		male.getData().add(new XYChart.Data(65,15));
+		
+		XYChart.Series female = new XYChart.Series<>();
+		female.setName("Female");
+		female.getData().add(new XYChart.Data(10,1));
+		female.getData().add(new XYChart.Data(15,2));
+		female.getData().add(new XYChart.Data(25,9));
+		female.getData().add(new XYChart.Data(35,12));
+		female.getData().add(new XYChart.Data(45,15));
+		female.getData().add(new XYChart.Data(55,4));
+		female.getData().add(new XYChart.Data(65,2));
+		bubble.getData().add(male);
+		bubble.getData().add(female);
+		Group root = new Group();
+		root.getChildren().add(bubble);
+		Scene scene = new Scene(root,600,400);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("BubbleChart Example");
+		primaryStage.show();	
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

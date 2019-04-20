@@ -1,0 +1,62 @@
+Java Convert Decimal to Hexadecimal
+We can convert 
+decimal to hexadecimal in java
+ using 
+Integer.toHexString()
+ method or custom logic.
+Java Decimal to Hex conversion: Integer.toHexString()
+The Integer.toHexString() method converts decimal to hexadecimal. The 
+signature
+ of toHexString() method is given below:
+
+public static String toHexString(int decimal)
+
+Let's see the simple example of converting decimal to binary in java.
+
+public class DecimalToHexExample1{
+public static void main(String args[]){
+System.out.println(Integer.toHexString(10));
+System.out.println(Integer.toHexString(15));
+System.out.println(Integer.toHexString(289));
+}}
+
+Test it Now
+Output:
+
+a
+f
+121
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Decimal to Hex conversion: Custom Logic
+We can convert 
+decimal to hex in java
+ using custom logic.
+
+public class DecimalToHexExample2{  
+public static String toHex(int decimal){  
+     int rem;
+     String hex=""; 
+     char hexchars[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+    while(decimal>0)
+     {
+       rem=decimal%16; 
+       hex=hexchars[rem]+hex; 
+       decimal=decimal/16;
+     }
+    return hex;
+}  
+public static void main(String args[]){    
+     System.out.println("Hexadecimal of 10 is: "+toHex(10));
+     System.out.println("Hexadecimal of 15 is: "+toHex(15));
+     System.out.println("Hexadecimal of 289 is: "+toHex(289));
+}}    
+
+Test it Now
+Output:
+
+Hexadecimal of 10 is: A
+Hexadecimal of 15 is: F
+Hexadecimal of 289 is: 121

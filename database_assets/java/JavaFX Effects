@@ -1,0 +1,297 @@
+JavaFX Effects
+Effects are basically actions that can improve the appearance of the graphics. JavaFX provides the package named as  
+javafx.scene.effect
+ which contains various classes that can be used to apply effects on the UI graphic components like images and shapes. The effects along with their description is given in the table below. 
+
+
+
+	
+SN
+
+	
+Effect
+
+	
+Description
+
+
+
+
+
+	
+1
+
+	
+ColorAdjust
+
+	
+This Effect adjusts the color of the node by varying the properties like Hue, Saturation, Brightness, contrast etc. 
+javafx.scene.effect.ColorAdjust
+ class deals with all the stuff regarding adjustments of colors of the node.  
+
+
+
+
+
+	
+2
+
+	
+ColorInput
+
+	
+javafx.scene.ColorInput
+ class represents ColorInput effect. It makes a coloured rectangle. This displays a rectangular box if applied to a node.
+
+
+
+
+
+	
+3
+
+	
+ImageInput
+
+	
+ImageInput
+ effect is used to bind the image to the scene. It basically passes the specified image to some effect. 
+
+
+
+
+
+	
+4
+
+	
+Blend
+
+	
+javafx.scene.effect.Blend
+ class represents the blend effect. This effect joins the pixels of two inputs and produces the combined output at the same location. There are various blend modes defined in the class which can alter the output appearance. 
+
+
+
+
+
+	
+5
+
+	
+Bloom
+
+	
+javafx.scene.effect.Bloom
+ class represents bloom effect. This effect makes the pixels of a few portions of the component glow. 
+
+
+
+
+
+	
+6
+
+	
+Glow
+
+	
+This effect is very much similar to Bloom. This can make the input image glow by enhancing the brightness of the bright pixels. 
+
+
+
+
+
+	
+7
+
+	
+BoxBlur
+
+	
+The blur makes the image unclear. JavaFX provides the class 
+javafx.scene.effect.BoxBlur
+ which needs to be instantiated in order to apply the blur effect to the nodes. The Box filter is used in the case of BoxBlur effect in JavaFX.
+
+
+
+
+
+	
+8
+
+	
+GaussionBlur
+
+	
+In JavaFX, GaussionBlur is used to blur the nodes. This class uses Gaussion Convolution Kernel for this purpose. 
+
+
+
+
+
+	
+9
+
+	
+MotionBlur
+
+	
+MotionBlur
+ effect is used to make the nodes blur. By applying this effect,  the nodes are seemed to be blurred as they are in motion. 
+javafx.scene.effect.MotionBlur
+ class represents this effect.
+
+
+
+
+
+	
+10
+
+	
+Reflection
+
+	
+It adds the reflection of the node on the bottom of the node. The class named as 
+javafx.scene.effect.Reflection
+ represents Reflection effect. 
+
+
+
+
+
+	
+11
+
+	
+SepiaTone
+
+	
+SapiaTone effect makes the node toned with radish brown color. The class named as 
+javafx.scene.effect.SepiaTone
+ class represents SapiaTone effect. The resulting nodes are similar to antique photographs. 
+
+
+
+
+
+	
+12
+
+	
+Shadow
+
+	
+This duplicates the nodes with the blurry edges. The class named as 
+javafx.scene.effect.Shadow
+ represents Shadow effect. 
+
+
+
+
+
+	
+13
+
+	
+DropShadow
+
+	
+This is a high level effect that is used to display the duplicate content behind the original content with the specified color and size. 
+
+
+
+
+
+	
+14
+
+	
+InnerShadow
+
+	
+This effect displays the shadow inside the edges of the nodes to which it is applied. 
+
+
+
+
+
+	
+15
+
+	
+Lighting
+
+	
+This effect is used to lighten the node from a light source. This effect is represented by 
+javafx.scene.effect.Lighting
+ class. 
+
+
+
+
+
+	
+16
+
+	
+Light.Distant
+
+	
+It implements lighting on the node from a distant light source. It is represented by 
+Light.Distant
+ class. 
+
+
+
+
+
+	
+17
+
+	
+Light.Spot
+
+	
+It implements lighting on a node from a spot light source. It is represented by 
+Light.Spot
+ class. 
+
+
+
+
+
+	
+18
+
+	
+Light.Point
+
+	
+It implements lighting on a node from a point light source. It is represented by 
+Light.Point
+ class. 
+
+
+
+
+How to apply the effect to a node
+JavaFX provides a method named as 
+setEffect()
+ which needs to be called through a node object. We need to pass the effect class object into this method. To apply any effect to the node, we need to follow the following steps. 
+
+
+Create the node 
+
+
+Create the object of the respective Effect class which is to be applied on the node.
+ 
+
+Set the properties of the Effect. 
+
+
+Call 
+setEffect()
+ method through the node object and pass the Effect class object into it. 
+

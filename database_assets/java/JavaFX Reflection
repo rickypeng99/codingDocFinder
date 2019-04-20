@@ -1,0 +1,137 @@
+JavaFX Reflection Effect
+In general, Reflection can be defined as the change in the direction. JavaFX allows us to generate the reflection effect on any node. Reflection effect basically adds the reflection of the node to its bottom. It is represented by the class 
+javafx.scene.effect.Reflection
+. We just need to instantiate this class in order to apply the appropriate effect to a node. 
+Properties
+The properties of the class along with the setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+bottomOpacity
+
+	
+It is a double type property. It represents the opacity of the reflection at the bottom extreme.
+
+	
+setBottomOpacity(double value)
+
+
+
+
+
+	
+fraction
+
+	
+It is a double type property. It represents the fraction of the input that is to be displayed in the reflection. 
+
+	
+setFraction(double value)
+
+
+
+
+
+	
+input
+
+	
+It is a object type property. It represents the input for the effect. 
+
+	
+setInput(Effect value)
+
+
+
+
+
+	
+topOffset
+
+	
+It is a double type property. It represents the distance between the top and bottom of the reflection. 
+
+	
+setTopOffset(Double value)
+
+
+
+
+
+	
+topOpacity
+
+	
+It represents the opacity of the reflection at the top of the input. 
+
+	
+setTopOpacity(Double value)
+
+
+
+
+Constructors
+The class contains two constructors. 
+
+
+public Reflection() :
+ Creates a new instance of Reflection with the default parameters
+
+
+public Reflection(double topOffset, double fraction, double topOpacity, double bottomOpacity) :
+ Creates a new instance of Reflection with the specified parameters
+ 
+
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.Reflection;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+public class ReflectionExample extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		Text text = new Text();
+		text.setFont(Font.font("calibri",FontWeight.BLACK,FontPosture.REGULAR,20));
+		text.setText("Welcome to JavaTPoint");
+		text.setX(90);
+		text.setY(90);
+		Reflection ref = new Reflection();
+		ref.setBottomOpacity(0.2);
+		ref.setFraction(12);
+		ref.setTopOffset(10);
+		ref.setTopOpacity(0.2);
+		text.setEffect(ref);
+		Group root = new Group();
+		Scene scene = new Scene(root,400,300);
+		root.getChildren().add(text);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Reflection Example");
+		primaryStage.show();
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

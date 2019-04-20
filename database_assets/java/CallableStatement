@@ -1,0 +1,131 @@
+Java CallableStatement Interface
+CallableStatement interface is used to call the 
+stored procedures and functions
+.
+We can have business logic on the database by the use of stored procedures and functions that will make the performance better because these are precompiled.
+ Suppose you need the get the age of the employee based on the date of birth, you may create a function that receives date as the input and returns age of the employee as the output.
+What is the difference between stored procedures and functions.
+The differences between stored procedures and functions are given below:
+
+
+Stored Procedure
+Function
+
+
+is used to perform business logic.
+is used to perform calculation.
+
+
+must not have the return type.
+must have the return type.
+
+
+may return 0 or more values.
+may return only one values.
+
+
+We can call functions from the procedure.
+Procedure cannot be called from function.
+
+
+Procedure supports input and output parameters.
+Function supports only input parameter.
+
+
+Exception handling using try/catch block can be used in stored procedures.
+Exception handling using try/catch can't be used in user defined functions.
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+How to get the instance of CallableStatement?
+The prepareCall() method of Connection interface returns the instance of CallableStatement. Syntax is given below:
+
+public CallableStatement prepareCall("{ call procedurename(?,?...?)}");
+
+The example to get the instance of CallableStatement is given below:
+
+CallableStatement stmt=con.prepareCall("{call myprocedure(?,?)}");
+
+It calls the procedure myprocedure that receives 2 arguments.
+Full example to call the stored procedure using JDBC
+To call the stored procedure, you need to create it in the database. Here, we are assuming that stored procedure looks like this.
+
+create or replace procedure "INSERTR"
+(id IN NUMBER,
+name IN VARCHAR2)
+is
+begin
+insert into user420 values(id,name);
+end;
+/   
+
+The table structure is given below:
+
+create table user420(id number(10), name varchar2(200));
+
+In this example, we are going to call the stored procedure INSERTR that receives id and name as the parameter and inserts it into the table user420. Note that you need to create the user420 table as well to run this application.
+
+import java.sql.*;
+public class Proc {
+public static void main(String[] args) throws Exception{
+
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Connection con=DriverManager.getConnection(
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+
+CallableStatement stmt=con.prepareCall("{call insertR(?,?)}");
+stmt.setInt(1,1011);
+stmt.setString(2,"Amit");
+stmt.execute();
+
+System.out.println("success");
+}
+}
+
+Now check the table in the database, value is inserted in the user420 table.
+Example to call the function using JDBC
+In this example, we are calling the sum4 function that receives two input and returns the sum of the given number. Here, we have used the 
+registerOutParameter
+ method of CallableStatement interface, that registers the output parameter with its corresponding type. It provides information to the CallableStatement about the type of result being displayed.
+The 
+Types
+ class defines many  constants such as INTEGER, VARCHAR, FLOAT, DOUBLE, BLOB, CLOB etc.
+Let's create the simple function in the database first.
+
+create or replace function sum4
+(n1 in number,n2 in number)
+return number
+is 
+temp number(8);
+begin
+temp :=n1+n2;
+return temp;
+end;
+/
+
+Now, let's write the simple program to call the function.
+
+import java.sql.*;
+
+public class FuncSum {
+public static void main(String[] args) throws Exception{
+
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Connection con=DriverManager.getConnection(
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+
+CallableStatement stmt=con.prepareCall("{?= call sum4(?,?)}");
+stmt.setInt(2,10);
+stmt.setInt(3,43);
+stmt.registerOutParameter(1,Types.INTEGER);
+stmt.execute();
+
+System.out.println(stmt.getInt(1));
+		
+}
+}
+
+
+Output: 53

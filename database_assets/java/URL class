@@ -1,0 +1,86 @@
+Java URL
+The 
+Java URL
+ class represents an URL. URL is an acronym for Uniform Resource Locator. It points to a resource on the World Wide Web. For example:
+
+http://www.javatpoint.com/java-tutorial
+
+A URL contains many information:
+
+
+Protocol:
+ In this case, http is the protocol.
+
+
+Server name or IP Address:
+ In this case, www.javatpoint.com is the server name.
+
+
+Port Number:
+ It is an optional attribute. If we write http//ww.javatpoint.com:80/sonoojaiswal/ , 80 is the port number. If port number is not mentioned in the URL, it returns -1.
+
+
+File Name or directory name:
+ In this case, index.jsp is the file name.
+
+
+Commonly used methods of Java URL class
+
+The java.net.URL class provides many methods. The important methods of URL class are given below.
+
+
+Method
+Description
+
+
+public String getProtocol()
+it returns the protocol of the URL.
+
+
+public String getHost()
+it returns the host name of the URL.
+
+
+public String getPort()
+it returns the Port Number of the URL.
+
+
+public String getFile()
+it returns the file name of the URL.
+
+
+public URLConnection openConnection()
+it returns the instance of URLConnection i.e. associated with this URL.
+
+
+Example of Java URL class
+
+//URLDemo.java
+import java.io.*;
+import java.net.*;
+public class URLDemo{
+public static void main(String[] args){
+try{
+URL url=new URL("http://www.javatpoint.com/java-tutorial");
+
+System.out.println("Protocol: "+url.getProtocol());
+System.out.println("Host Name: "+url.getHost());
+System.out.println("Port Number: "+url.getPort());
+System.out.println("File Name: "+url.getFile());
+
+}catch(Exception e){System.out.println(e);}
+}
+}
+
+Test it Now
+Output:
+
+       Protocol: http
+       Host Name: www.javatpoint.com
+       Port Number: -1
+       File Name: /java-tutorial
+
+
+
+download this example
+

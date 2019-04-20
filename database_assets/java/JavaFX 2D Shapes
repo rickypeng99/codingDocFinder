@@ -1,0 +1,137 @@
+JavaFX 2D Shapes
+In some of the applications, we need to show two dimensional shapes to the user. However, JavaFX provides the flexibility to create our own 2D shapes on the screen .
+There are various classes which can be used to implement 2D shapes in our application. All these classes resides in 
+javafx.scene.shape
+ package. 
+This package contains the classes which represents different types of 2D shapes. There are several methods in the classes which deals with the coordinates regarding 2D shape creation.
+What are 2D shapes?
+In general, a two dimensional shape can be defined as the geometrical figure that can be drawn on  the coordinate system consist of X and Y planes. However, this is different from 3D shapes in the sense that each point of the 2D shape always consists of two coordinates (X,Y). 
+Using JavaFX, we can create 2D shapes such as Line, Rectangle, Circle, Ellipse, Polygon, Cubic Curve, quad curve, Arc, etc. The class 
+javafx.scene.shape.Shape
+ is the base class for all the shape classes.
+How to create 2D shapes?
+As we have mentioned earlier that every shape is represented by a specific class of the package 
+javafx.scene.shape
+. For creating a two dimensional shape, the following instructions need to be followed.
+1. Instantiate the respective class : for example, 
+Rectangle rect = new Rectangle()
+2. Set the required properties for the class using instance setter methods: for example,
+
+rect.setX(10);
+	rect.setY(20); 
+	rect.setWidth(100);
+	rect.setHeight(100);
+
+3. Add class object to the Group layout: for example,
+
+Group root = new Group(); 
+	root.getChildren().add(rect);
+
+The following table consists of the JavaFX shape classes along with their descriptions. 
+
+
+
+	
+Shape
+
+	
+Description
+
+
+
+
+
+	
+Line
+
+	
+In general, Line is the geometrical figure which joins two (X,Y) points on 2D coordinate system. In JavaFX, 
+javafx.scene.shape.Line
+ class needs to be instantiated in order to create lines.
+
+
+
+
+
+	
+Rectangle
+
+	
+In general, Rectangle is the geometrical figure with two pairs of two equal sides and four right angles at their joint. In JavaFX, 
+javafx.scene.shape.Rectangle
+ class needs to be instantiated in order to create Rectangles. 
+
+
+
+
+
+	
+Ellipse
+
+	
+In general, ellipse can be defined as a curve with two focal points. The sum of the distances to the focal points are constant from each point of the ellipse. In JavaFX. 
+javafx.scene.shape.Ellipse
+  class needs to be instantiated in order to create Ellipse. 
+
+
+
+
+
+	
+Arc
+
+	
+Arc can be defined as the part of the circumference of the circle of ellipse. In JavaFX, 
+javafx.scene.shape.Arc
+ class needs to be instantiated in order to create Arcs.  
+
+
+
+
+
+	
+Circle
+
+	
+A circle is the special type of Ellipse having both the focal points at the same location. In JavaFX, Circle can be created by instantiating 
+javafx.scene.shape.Circle
+ class. 
+
+
+
+
+
+	
+Polygon
+
+	
+Polygon is a geometrical figure that can be created by joining the multiple Co-planner line segments. In JavaFX, 
+javafx.scene.shape
+. Pollygon class needs to be instantiated in order to create polygon.
+
+
+
+
+
+	
+Cubic Curve
+
+	
+A Cubic curve is a curve of degree 3 in the XY plane. In Javafx, 
+javafx.scene.shape.CubicCurve
+ class needs to be instantiated in order to create Cubic Curves.
+
+
+
+
+
+	
+Quad Curve
+
+	
+A Quad Curve is a curve of degree 2 in the XY plane. In JavaFX, 
+javafx.scene.shape.QuadCurve
+ class needs to be instantiated in order to create QuadCurve.
+
+
+

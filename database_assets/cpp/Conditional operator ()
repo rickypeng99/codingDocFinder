@@ -1,0 +1,55 @@
+C++ Conditional ? : Operator
+
+
+
+
+
+
+ 
+
+
+
+
+Exp1 ? Exp2 : Exp3;
+
+where Exp1, Exp2, and Exp3 are expressions. Notice the use and placement of the colon. The value of a ? expression is determined like this: Exp1 is evaluated. If it is true, then Exp2 is evaluated and becomes the value of the entire ? expression. If Exp1 is false, then Exp3 is evaluated and its value becomes the value of the expression.
+The ? is called a ternary operator because it requires three operands and can be used to replace if-else statements, which have the following form −
+
+if(condition) {
+   var = X;
+} else {
+   var = Y;
+}
+
+For example, consider the following code −
+
+if(y < 10) { 
+   var = 30;
+} else {
+   var = 40;
+}
+
+Above code can be rewritten like this −
+
+var = (y < 10) ? 30 : 40;
+
+Here, x is assigned the value of 30 if y is less than 10 and 40 if it is not. You can the try following example −
+
+#include <iostream>
+using namespace std;
+ 
+int main () {
+   // Local variable declaration:
+   int x, y = 10;
+
+   x = (y < 10) ? 30 : 40;
+   cout << "value of x: " << x << endl;
+ 
+   return 0;
+}
+
+When the above code is compiled and executed, it produces the following result −
+
+value of x: 40
+
+cpp_operators.htm

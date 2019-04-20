@@ -1,0 +1,359 @@
+Java JEditorPane
+JEditorPane class is used to create a simple text editor window. This  class has  setContentType() and  setText() methods.
+setContentType("text/plain"):
+ This method is used to set the content type to be plain text.
+setText(text):
+ This method is used to  set the initial text content.
+Nested Classes
+
+  
+
+     
+Modifier and Type
+
+	 
+Class
+
+	 
+Description
+
+  
+
+  
+
+     
+protected class 
+
+	 
+JEditorPane.AccessibleJEditorPane
+
+	 
+This class implements accessibility support for the JEditorPane class.
+
+  
+
+  
+
+     
+protected class 
+
+	 
+JEditorPane.AccessibleJEditorPaneHTML
+
+	 
+This class provides support for AccessibleHypertext, and is used in instances where the EditorKit installed in this JEditorPane is an instance of HTMLEditorKit.
+
+  
+
+  
+
+     
+protected class 
+
+	 
+JEditorPane.JEditorPaneAccessibleHypertextSupport
+
+	 
+What's returned by AccessibleJEditorPaneHTML.getAccessibleText
+
+  
+
+
+Fields
+
+  
+
+     
+Modifier and Type
+
+	 
+Field
+
+	 
+Description
+
+  
+
+  
+
+     
+static String
+
+	 
+HONOR_DISPLAY_PROPERTIES
+
+	 
+Key for a client property used to indicate whether the default font and foreground color from the component are used if a font or foreground color is not specified in the styled text.
+
+  
+
+  
+
+     
+static String
+
+	 
+W3C_LENGTH_UNITS
+
+	 
+Key for a client property used to indicate whether w3c compliant length units are used for html rendering.
+
+  
+
+
+Constructors
+
+    
+
+        
+Constructor
+
+        
+Description
+
+    
+
+    
+
+        
+JEditorPane()
+
+        
+It creates a new JEditorPane.
+
+    
+
+    
+
+        
+JEditorPane(String url)
+
+        
+It creates a JEditorPane based on a string containing a URL specification.
+
+    
+
+    
+
+        
+JEditorPane(String type, String text)
+
+        
+It creates a JEditorPane that has been initialized to the given text.
+
+    
+
+    
+
+        
+JEditorPane(URL initialPage)
+
+        
+It creates a JEditorPane based on a specified URL for input.
+
+    
+
+
+Useful Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+void
+
+        
+addHyperlinkListener(HyperlinkListener listener)
+
+        
+Adds a hyperlink listener for notification of any changes, for example when a link is selected and entered.
+
+    
+
+    
+
+        
+protected EditorKit
+
+        
+createDefaultEditorKit()
+
+        
+It creates the default editor kit (PlainEditorKit) for when the component is first created.
+
+    
+
+    
+
+        
+void
+
+        
+setText(String t)
+
+        
+It sets the text of this TextComponent to the specified content, which is expected to be in the format of the content type of this editor.
+
+    
+
+    
+
+        
+void
+
+        
+setContentType(String type)
+
+        
+It sets the type of content that this editor handles.
+
+    
+
+    
+
+        
+void
+
+        
+setPage(URL page)
+
+        
+It sets the current URL being displayed.
+
+    
+
+    
+
+        
+void
+
+        
+read(InputStream in, Object desc)
+
+        
+This method initializes from a stream.
+
+    
+
+    
+
+        
+void
+
+        
+scrollToReference(String reference)
+
+        
+It scrolls the view to the given reference location (that is, the value returned by the UL.getRef method for the URL being displayed).
+
+    
+
+    
+
+        
+void
+
+        
+setText(String t)
+
+        
+It sets the text of this TextComponent to the specified content, which is expected to be in the format of the content type of this editor.
+
+    
+
+    
+
+        
+String
+
+        
+getText()
+
+        
+It returns the text contained in this TextComponent in terms of the content type of this editor.
+
+    
+
+    
+
+        
+void
+
+        
+read(InputStream in, Object desc)
+
+        
+This method initializes from a stream.
+
+    
+
+
+JEditorPane Example
+
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+
+public class JEditorPaneExample {
+	JFrame myFrame = null;
+
+	public static void main(String[] a) {
+		(new JEditorPaneExample()).test();
+	}
+
+	private void test() {
+		myFrame = new JFrame("JEditorPane Test");
+		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myFrame.setSize(400, 200);
+		JEditorPane myPane = new JEditorPane();
+		myPane.setContentType("text/plain");
+		myPane.setText("Sleeping is necessary for a healthy body."
+				+ " But sleeping in unnecessary times may spoil our health, wealth and studies."
+				+ " Doctors advise that the sleeping at improper timings may lead for obesity during the students days.");
+		myFrame.setContentPane(myPane);
+		myFrame.setVisible(true);
+	}
+}
+
+Output:
+JEditorPane Example: using HTML
+
+import javax.swing.JEditorPane;  
+import javax.swing.JFrame;  
+  
+public class JEditorPaneExample {  
+    JFrame myFrame = null;  
+  
+    public static void main(String[] a) {  
+        (new JEditorPaneExample()).test();  
+    }  
+  
+    private void test() {  
+        myFrame = new JFrame("JEditorPane Test");  
+        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        myFrame.setSize(400, 200);  
+        JEditorPane myPane = new JEditorPane();  
+        myPane.setContentType("text/html");  
+        myPane.setText("
+Sleeping
+Sleeping is necessary for a healthy body."  
+                + " But sleeping in unnecessary times may spoil our health, wealth and studies."  
+                + " Doctors advise that the sleeping at improper timings may lead for obesity during the students days.
+");  
+        myFrame.setContentPane(myPane);  
+        myFrame.setVisible(true);  
+    }  
+}  
+
+Output:

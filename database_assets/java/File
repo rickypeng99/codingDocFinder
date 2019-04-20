@@ -1,0 +1,489 @@
+Java File Class
+The File class is an abstract representation of file and directory pathname. A pathname can be either absolute or relative. 
+The File class have several methods for working with directories and files such as creating new directories or files, deleting and renaming directories or files, listing the contents of a directory etc.
+Fields 
+
+    
+
+	    
+Modifier
+
+		
+Type
+
+		
+Field
+
+        
+Description
+
+    
+
+    
+
+	  
+static
+
+	  
+String
+
+	  
+pathSeparator
+
+      
+It is system-dependent path-separator character, represented as a 
+string
+ for convenience.
+
+     
+
+    
+
+        
+static
+
+        
+char
+
+        
+pathSeparatorChar
+
+		
+It is system-dependent path-separator character.
+
+    
+
+    
+
+	    
+static
+
+	    
+String
+
+	    
+separator
+
+        
+It is system-dependent default name-separator character, represented as a string for convenience.
+
+    
+
+    
+
+        
+static
+
+		
+char
+
+        
+separatorChar
+
+        
+It is system-dependent default name-separator character.
+
+    
+
+
+Constructors
+
+    
+
+        
+Constructor
+
+	    
+Description
+
+    
+
+    
+
+        
+File(File parent, String child)
+
+		
+It creates a new File instance from a parent abstract pathname and a child pathname string.
+
+    
+
+    
+
+        
+File(String pathname)
+
+		
+It creates a new File instance by converting the given pathname string into an abstract pathname.
+
+    
+
+    
+
+        
+File(String parent, String child)
+
+		
+It creates a new File instance from a parent pathname string and a child pathname string.
+
+    
+
+    
+
+        
+File(URI uri)
+
+		
+It creates a new File instance by converting the given file: URI into an abstract pathname.
+
+    
+
+
+Useful Methods
+
+    
+
+	    
+Modifier and Type
+ 
+		
+Method
+
+        
+Description
+
+    
+
+    
+
+	    
+static File
+
+        
+createTempFile(String prefix, String suffix)
+
+        
+It creates an empty file in the default temporary-file directory, using the given prefix and suffix to generate its name.
+ 
+    
+
+    
+
+        
+boolean
+
+        
+createNewFile()
+
+        
+It atomically creates a new, empty file named by this abstract pathname if and only if a file with this name does not yet exist.
+
+    
+
+    
+
+        
+boolean
+
+        
+canWrite()
+
+        
+It tests whether the application can modify the file denoted by this abstract pathname.String[]	
+
+    
+
+    
+
+        
+boolean
+
+        
+canExecute()
+
+        
+It tests whether the application can execute the file denoted by this abstract pathname.
+
+    
+
+    
+
+        
+boolean
+
+        
+canRead()
+
+        
+It tests whether the application can read the file denoted by this abstract pathname.
+
+    
+
+    
+
+        
+boolean
+
+        
+isAbsolute()
+
+        
+It tests whether this abstract pathname is absolute.
+
+    
+
+    
+
+        
+boolean
+
+        
+isDirectory()
+
+        
+It tests whether the file denoted by this abstract pathname is a directory. 
+
+    
+
+    
+
+        
+boolean
+
+        
+isFile()
+
+        
+It tests whether the file denoted by this abstract pathname is a normal file.
+
+    
+
+    
+
+        
+String
+
+        
+getName()
+
+        
+It returns the name of the file or directory denoted by this abstract pathname.
+
+    
+
+    
+
+        
+String
+
+        
+getParent()
+
+        
+It returns the pathname string of this abstract pathname's parent, or null if this pathname does not name a parent directory.
+
+    
+
+    
+
+        
+Path
+
+        
+toPath()
+
+        
+It returns a java.nio.file.Path object constructed from the this abstract path.
+
+    
+
+    
+
+        
+URI
+
+        
+toURI()
+
+        
+It constructs a file: URI that represents this abstract pathname.
+
+    
+
+    
+
+        
+File[]
+
+        
+listFiles()
+
+        
+It returns an 
+array
+ of abstract pathnames denoting the files in the directory denoted by this abstract pathname
+
+    
+
+    
+
+        
+long
+
+        
+getFreeSpace()
+
+        
+It returns the number of unallocated bytes in the partition named by this abstract path name.
+
+    
+
+    
+
+        
+String[]
+
+        
+list(FilenameFilter filter)
+
+        
+It returns an array of strings naming the files and directories in the directory denoted by this abstract pathname that satisfy the specified filter.
+
+    
+
+    
+
+        
+boolean
+
+        
+mkdir()
+
+        
+It creates the directory named by this abstract pathname.
+
+    
+
+
+Java File Example 1
+
+import java.io.*;
+public class FileDemo {
+	public static void main(String[] args) {
+
+		try {
+			File file = new File("javaFile123.txt");
+			if (file.createNewFile()) {
+				System.out.println("New File is created!");
+			} else {
+				System.out.println("File already exists.");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+}
+
+Output:
+
+New File is created!
+
+Java File Example 2
+
+import java.io.*;
+public class FileDemo2 {
+	public static void main(String[] args) {
+
+		String path = "";
+		boolean bool = false;
+		try {
+			// createing  new files
+			File file  = new File("testFile1.txt");
+			file.createNewFile();
+			System.out.println(file);
+			// createing new canonical from file object
+			File file2 = file.getCanonicalFile();
+			// returns true if the file exists
+			System.out.println(file2);
+			bool = file2.exists();
+			// returns absolute pathname
+			path = file2.getAbsolutePath();
+			System.out.println(bool);
+			// if file exists
+			if (bool) {
+				// prints
+				System.out.print(path + " Exists? " + bool);
+			}
+		} catch (Exception e) {
+			// if any error occurs
+			e.printStackTrace();
+		}
+	}
+}
+
+Output:
+
+testFile1.txt
+/home/Work/Project/File/testFile1.txt
+true
+/home/Work/Project/File/testFile1.txt Exists? true
+
+Java File Example 3
+
+import java.io.*;
+public class FileExample {
+public static void main(String[] args) {
+	File f=new File("/Users/sonoojaiswal/Documents");
+	String filenames[]=f.list();
+	for(String filename:filenames){
+		System.out.println(filename);
+	}
+}
+}
+
+Output:
+
+"info.properties"
+"info.properties".rtf
+.DS_Store
+.localized
+Alok news
+apache-tomcat-9.0.0.M19
+apache-tomcat-9.0.0.M19.tar
+bestreturn_org.rtf
+BIODATA.pages
+BIODATA.pdf
+BIODATA.png
+struts2jars.zip
+workspace
+
+Java File Example 4
+
+import java.io.*;
+public class FileExample {
+public static void main(String[] args) {
+	File dir=new File("/Users/sonoojaiswal/Documents");
+	File files[]=dir.listFiles();
+	for(File file:files){
+		System.out.println(file.getName()+" Can Write: "+file.canWrite()+" 
+		Is Hidden: "+file.isHidden()+" Length: "+file.length()+" bytes");
+	}
+}
+}
+
+Output:
+
+"info.properties" Can Write: true Is Hidden: false Length: 15 bytes
+"info.properties".rtf Can Write: true Is Hidden: false Length: 385 bytes
+.DS_Store Can Write: true Is Hidden: true Length: 36868 bytes
+.localized Can Write: true Is Hidden: true Length: 0 bytes
+Alok news Can Write: true Is Hidden: false Length: 850 bytes
+apache-tomcat-9.0.0.M19 Can Write: true Is Hidden: false Length: 476 bytes
+apache-tomcat-9.0.0.M19.tar Can Write: true Is Hidden: false Length: 13711360 bytes
+bestreturn_org.rtf Can Write: true Is Hidden: false Length: 389 bytes
+BIODATA.pages Can Write: true Is Hidden: false Length: 707985 bytes
+BIODATA.pdf Can Write: true Is Hidden: false Length: 69681 bytes
+BIODATA.png Can Write: true Is Hidden: false Length: 282125 bytes
+workspace Can Write: true Is Hidden: false Length: 1972 bytes
+

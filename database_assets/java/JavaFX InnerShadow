@@ -1,0 +1,201 @@
+JavaFX InnerShadow Effect
+By applying this effect to the node, The shadow is displayed inside the edges of the node. The class 
+javafx.scene.effect.InnerShadow
+ represents the InnerShadow effect. We just need to instantiate this class in order to generate an appropriate effect. 
+Properties
+The properties of the class along with the setter methods are described in the following table.
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+blurType
+
+	
+This represents the algorithm used to blur the shadow. 
+
+	
+setBlurType(BlurType value)
+
+
+
+
+
+	
+choke
+
+	
+This property is of double type. This represents the choke of the shadow. 
+
+	
+setChoke(Double value)
+
+
+
+
+
+	
+color
+
+	
+The color of the shadow blur kernel. This property is of color type. 
+
+	
+setColor(Color value)
+
+
+
+
+
+	
+height
+
+	
+This represents the height of the shadow blur kernel. This property is of double type. 
+
+	
+setHeight(Double value)
+
+
+
+
+
+	
+input
+
+	
+This represents the input for the effect. 
+
+	
+setInput(Effect value)
+
+
+
+
+
+	
+offsetX
+
+	
+This represents the X coordinate of the shadow offset. This properly is of double type. 
+
+	
+setOffsetX(Double value)
+
+
+
+
+
+	
+offsetY
+
+	
+This represents the Y coordinate of the shadow offset. This property is of double type. 
+
+	
+setOffsetY(Double value)
+
+
+
+
+
+	
+Radius
+
+	
+This represents the radius of the shadow blur kernel. 
+
+	
+setRadius(Double value)
+
+
+
+
+
+	
+Width
+
+	
+It represents the width of the shadow blur kernel. 
+
+	
+setWidth(double value)
+
+
+
+
+Constructors 
+The class contains four constructors 
+
+
+public InnerShadow() :
+ creates the instance with the default parameters.
+  
+
+public InnerShadow(double radius, Color color) :
+ creates the instance with the specified radius and color value.
+  
+
+public InnerShadow(double radius, double offsetX, double offsetY, Color color) :
+ creates the instance with the specified radius, offset and color values.
+  
+
+public InnerShadow(BlurType blurtype, Color color, double radius, double choke, double offsetX, double offsetY)  :
+ creates the instnance with the specified BlurType. Color, Radius, Choke and offset values. 
+ 
+
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.InnerShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+public class ShadowExample extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		Image img = new Image("https://www.javatpoint.com/images/logo/jtp_logo.png");
+		ImageView imgview = new ImageView(img);
+		imgview.setFitHeight(100);
+		imgview.setFitWidth(350);
+		imgview.setX(100);
+		imgview.setY(100);
+		InnerShadow shadow = new InnerShadow();
+		shadow.setBlurType(BlurType.GAUSSIAN);
+		shadow.setColor(Color.RED);
+		shadow.setHeight(25);
+		shadow.setRadius(12);
+		shadow.setWidth(20);
+		shadow.setChoke(0.9);
+		imgview.setEffect(shadow);
+		Group root = new Group();
+		root.getChildren().add(imgview);
+		Scene scene = new Scene(root,600,350);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("InnerShadow Effect Example");
+		primaryStage.show();	
+	}
+public static void main(String[] args) {
+	launch(args);
+}
+
+}

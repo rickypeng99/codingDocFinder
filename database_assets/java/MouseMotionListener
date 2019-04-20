@@ -1,0 +1,70 @@
+Java MouseMotionListener Interface
+The Java MouseMotionListener is notified whenever you move or drag mouse. It is notified against MouseEvent. The MouseMotionListener interface is found in java.awt.event package. It has two methods.
+Methods of MouseMotionListener interface
+The signature of 2 methods found in MouseMotionListener interface are given below:
+
+public abstract void mouseDragged(MouseEvent e);
+public abstract void mouseMoved(MouseEvent e);
+
+Java MouseMotionListener Example
+
+import java.awt.*;
+import java.awt.event.*;
+public class MouseMotionListenerExample extends Frame implements MouseMotionListener{
+	MouseMotionListenerExample(){
+		addMouseMotionListener(this);
+		
+		setSize(300,300);
+		setLayout(null);
+		setVisible(true);
+	}
+public void mouseDragged(MouseEvent e) {
+	Graphics g=getGraphics();
+	g.setColor(Color.BLUE);
+	g.fillOval(e.getX(),e.getY(),20,20);
+}
+public void mouseMoved(MouseEvent e) {}
+
+public static void main(String[] args) {
+	new MouseMotionListenerExample();
+}
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java MouseMotionListener Example 2
+
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+public class Paint extends Frame implements MouseMotionListener{
+	Label l;
+	Color c=Color.BLUE;
+	Paint(){
+	l=new Label();
+	l.setBounds(20,40,100,20);
+	add(l);
+	
+	addMouseMotionListener(this);
+	
+	setSize(400,400);
+	setLayout(null);
+	setVisible(true);
+}
+public void mouseDragged(MouseEvent e) {
+	l.setText("X="+e.getX()+", Y="+e.getY());
+	Graphics g=getGraphics();
+	g.setColor(Color.RED);
+	g.fillOval(e.getX(),e.getY(),20,20);
+}
+public void mouseMoved(MouseEvent e) {
+	l.setText("X="+e.getX()+", Y="+e.getY());
+}
+public static void main(String[] args) {
+	new Paint();
+}
+}
+
+Output:

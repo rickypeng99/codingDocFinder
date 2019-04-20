@@ -1,0 +1,78 @@
+Java 9 Control Panel
+Java control panel is used to control Java applications that are embedded in browser. This control panel maintains the settings that manage Java application embedded in browser.
+In Java 9, control panel was rewritten as a JavaFX application and the storage location has changed.  To start control panel, enter 
+jcontrol
+ to the terminal (cmd for windows) and it will open a window that looks below.
+It contains the following tabs :
+General
+This tab shows version details and security status of JRE Java runtime (JRE) that we are running.
+Update
+This tab shows when the check for updates is done and enables us to change the settings for the update process.
+Desktop Settings
+This tab shows information about the JREs that are installed on our system and enables us to choose the JREs that we want to use to run applications that are embedded in a web page or launched from a browser.
+Web Settings
+This tab shows information about permissions for Java applications and how the applications connect to the network. It also allows us to manage temporary files.
+The Web Settings tab further contains the following tabs.
+
+
+Exception Site List Tab
+
+
+Deployment Rule Set Tab
+
+
+Temporary Files Settings Tab
+
+
+Network Settings Tab
+
+
+Java Cache Viewer Tab
+
+
+Security
+It shows general security settings and information about certificates used to sign RIAs.
+The Security tab further contains the following tabs.
+
+
+General Security Settings Tab
+
+
+Manage Certificates Tab
+
+
+Advanced
+It allows us to set options for available JRE. JRE has following options.
+
+
+Debugging
+
+
+Java Console
+
+
+Shortcut Creation
+
+
+JNLP File/MIME Association
+
+
+Application Installation
+
+
+Execution Environment Security Settings
+
+
+Mixed code (sandboxed vs. trusted) security verification
+
+
+Perform signed code certificate revocation checks on
+
+
+Check for signed code certificate revocation using
+
+
+Advanced Security Settings
+
+
+Miscellaneous

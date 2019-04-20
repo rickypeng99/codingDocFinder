@@ -1,0 +1,403 @@
+JavaFX Text
+In some of the cases, we need to provide the text based information on the interface of our application. JavaFX library provides a class named 
+javafx.scene.text.Text
+ for this purpose. This class provides various methods to alter various properties of the text. We just need to instantiate this class to implement text in our application.
+Properties
+The properties of JavaFX Text are described in the table below. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+boundstype
+
+	
+This property is of object type. It determines the way in which the bounds of the text is being calculated. 
+
+	
+setBoundsType(TextBoundsType value)
+
+
+
+
+
+	
+font
+
+	
+Font of the text. 
+
+	
+setFont(Font value)
+
+
+
+
+
+	
+fontsmoothingType
+
+	
+Defines the requested smoothing type for the font. 
+
+	
+setFontSmoothingType(FontSmoothingType value)
+
+
+
+
+
+	
+linespacing
+
+	
+Vertical space in pixels between the lines. It is double type property. 
+
+	
+setLineSpacing(double spacing)
+
+
+
+
+
+	
+strikethrough
+
+	
+This is a boolean type property. We can put a line through the text by setting this property to true. 
+
+	
+setStrikeThrough(boolean value)
+
+
+
+
+
+	
+textalignment
+
+	
+Horizontal Text alignment 
+
+	
+setTextAlignment(TextAlignment value)
+
+
+
+
+
+	
+textorigin
+
+	
+Origin of text coordinate system in local coordinate system. 
+
+	
+setTextOrigin(VPos value)
+
+
+
+
+
+	
+text
+
+	
+It is a string type property. It defines the text string which is to be displayed. 
+
+	
+setText(String value)
+
+
+
+
+
+	
+underline
+
+	
+It is a boolean type property. We can underline the text by setting this property to true. 
+
+	
+setUnderLine(boolean value)
+
+
+
+
+
+	
+wrappingwidth
+
+	
+Width limit for the text from where the text is to be wrapped. It is a double type property.  
+
+	
+setWrappingWidth(double value)
+
+
+
+
+
+	
+x
+
+	
+X coordinate of the text 
+
+	
+setX(double value)
+
+
+
+
+
+	
+y
+
+	
+Y coordinate of the text
+
+	
+setY(double value)
+
+
+
+
+Creating a text node
+The class 
+javafx.scene.text.Text
+ needs to be instantiated in order to create the text node. Use the setter method 
+setText(string)
+ to set the string as a text for the text class object. Follow the syntax given below to instantiate the Text class. 
+
+Text <text_Object> = new Text(); 
+text.setText(<string-text>); 
+
+Example
+The following example illustrates the 
+Text
+ class. Here, we are not setting the positions for the text  therefore the text will be displayed to the centre of the screen.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+public class TextExample extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	Text text = new Text();
+	text.setText("Hello !! Welcome to JavaTPoint");
+	StackPane root = new StackPane();
+	Scene scene = new Scene(root,300,400);
+	root.getChildren().add(text);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Text Example");
+	primaryStage.show();
+}
+public static void main(String[] args) {
+	launch(args);
+	
+}
+}
+
+Font and position of the Text
+JavaFX enables us to apply various fonts to the text nodes. We just need to set the property 
+font
+ of the Text class by using the setter method 
+setFont()
+. This method accepts the object of 
+Font
+ class. The class 
+Font
+ belongs the package 
+javafx.scene.text
+. It contains a static method named 
+font()
+. This returns an object of 
+Font
+ type which will be passed as an argument into the 
+setFont()
+ method of Text class. The method 
+Font.font()
+ accepts the following parameters.
+
+
+Family: 
+ it represents the family of the font. It is of string type and should be an appropriate font family present in the system. 
+ 
+
+Weight: 
+ this Font class property is for the weight of the font. There are 9 values which can be used as the font weight. The values are 
+FontWeight.BLACK, BOLD, EXTRA_BOLD, EXTRA_LIGHT, LIGHT, MEDIUM, NORMAL, SEMI_BOLD, THIN
+. 
+
+
+Posture: 
+ this Font class property represents the posture of the font. It can be either 
+FontPosture.ITALIC
+ or 
+FontPosture.REGULAR
+.
+ 
+
+Size
+: this is a double type property. It is used to set the size of the font.
+
+
+The Syntax of the method setFont() is given below. 
+
+<text_object>.setFont(Font.font(<String font_family>, <FontWeight>, <FontPosture>, <FontSize>)
+
+Example
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+public class TextExample extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	Text text = new Text();
+	
+	text.setX(100);
+	text.setY(20);
+	text.setFont(Font.font("Abyssinica SIL",FontWeight.BOLD,FontPosture.REGULAR,20));
+	text.setText("Welcome to JavaTPoint");
+	Group root = new Group();
+	Scene scene = new Scene(root,500,200);
+	root.getChildren().add(text);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Text Example");
+	primaryStage.show();
+}
+publicstaticvoid main(String[] args) {
+	launch(args);
+	
+}
+}
+
+Applying Stroke and Color to Text
+Stroke means the padding at the boundary of the text. JavaFX allows us to apply stroke and colors to the text. 
+javafx.scene.text.Text
+ class provides a method named 
+setStroke()
+ which accepts the Paint class object as an argument. Just pass the color which will be painted on the stroke. We can also set the width of the stroke by passing a width value of double type into 
+setStrokeWidth()
+ method.  To set the color of the Text, 
+javafx.scene.text.Text
+ class provides another method named 
+setFill()
+. We just need to pass the 
+color
+ which is to be filled in the text.
+Example
+The following example illustrates the functions of above mentioned methods. 
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+public class TextExample extends Application{
+@Override
+publicvoid start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	Text text = new Text();
+	
+	text.setX(100);
+	text.setY(20);
+	text.setFont(Font.font("Abyssinica SIL",FontWeight.BOLD,FontPosture.REGULAR,25));
+	text.setFill(Color.BLUE);// setting colour of the text to blue 
+	text.setStroke(Color.BLACK); // setting the stroke for the text  
+	text.setStrokeWidth(1); // setting stroke width to 2 
+	text.setText("Welcome to JavaTPoint"); 
+	Group root = new Group();
+	Scene scene = new Scene(root,500,200);
+	root.getChildren().add(text);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Text Example");
+	primaryStage.show();
+}
+public static void main(String[] args) {
+	launch(args);
+	
+}
+}
+
+Applying Decorations to the text
+We can apply the decorations to the text by setting the properties 
+strikethrough
+ and 
+underline
+ of 
+javafx.scene.text.Text
+ class. The syntax of both the methods is given below.
+
+<TextObject>.setStrikeThrough(Boolean value) //pass true to put a line across the text
+<TextObject>.setUnderLine(Boolean value) //pass true to underline the text
+
+We can also apply JavaFX Effects to the Text class objects. We will discuss JavaFX effects in the upcoming chapters. 
+Example
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+public class TextExample extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	Text text = new Text();
+	
+	text.setX(100);
+	text.setY(40);
+	text.setFont(Font.font("Liberation Serif",25));
+	text.setText("Hello !!"); 
+	text.setStrikethrough(true);
+	Text text1=new Text();
+	text1.setX(100);
+	text1.setY(140);
+	text1.setText("Welcome to JavaTPoint!");
+	text1.setFont(Font.font("Liberation Serif",25));
+	text1.setUnderline(true);
+	Group root = new Group();
+	Scene scene = new Scene(root,500,200);
+	root.getChildren().addAll(text,text1);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Text Example");
+	primaryStage.show();
+}
+public static void main(String[] args) {
+	launch(args);
+	
+}
+}

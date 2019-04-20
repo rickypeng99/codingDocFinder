@@ -1,0 +1,110 @@
+java.util.Date
+The java.util.Date class represents date and time in java. It provides constructors and methods to deal with date and time in java.
+The java.util.Date class implements Serializable, Cloneable and Comparable<Date> interface. It is inherited by java.sql.Date, java.sql.Time and java.sql.Timestamp interfaces.
+ After Calendar class, most of the constructors and methods of java.util.Date class has been deprecated. Here, we are not giving list of any deprecated constructor and method.
+java.util.Date Constructors
+
+
+No.
+Constructor
+Description
+
+
+1)
+Date()
+Creates a date object representing current date and time.
+
+
+2)
+Date(long milliseconds)
+Creates a date object for the given milliseconds since January 1, 1970, 00:00:00 GMT.
+
+
+java.util.Date Methods
+
+
+No.
+Method
+Description
+
+
+1)
+boolean after(Date date)
+tests if current date is after the given date.
+
+
+2)
+boolean before(Date date)
+tests if current date is before the given date.
+
+
+3)
+Object clone()
+returns the clone object of current date.
+
+
+4)
+int compareTo(Date date)
+compares current date with given date.
+
+
+5)
+boolean equals(Date date)
+compares current date with given date for equality.
+
+
+6)
+static Date from(Instant instant)
+returns an instance of Date object from Instant date.
+
+
+7)
+long getTime()
+returns the time represented by this date object.
+
+
+8)
+int hashCode()
+returns the hash code value for this date object.
+
+
+9)
+void setTime(long time)
+changes the current date and time to given time.
+
+
+10)
+Instant toInstant()
+converts current date into Instant object.
+
+
+11)
+String toString()
+converts this date into Instant object.
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+java.util.Date Example
+Let's see the example to print date in java using java.util.Date class.
+1st way:
+
+java.util.Date date=new java.util.Date();
+System.out.println(date);
+
+Test it Now
+Output:
+
+Wed Mar 27 08:22:02 IST 2015
+
+2nd way:
+
+long millis=System.currentTimeMillis();
+java.util.Date date=new java.util.Date(millis);
+System.out.println(date);
+
+Test it Now
+Output:
+
+Wed Mar 27 08:22:02 IST 2015

@@ -1,0 +1,194 @@
+Java ByteArrayOutputStream Class
+Java ByteArrayOutputStream class is used to 
+write common data
+ into multiple files. In this stream, the data is written into a byte 
+array
+ which can be written to multiple streams later.
+The ByteArrayOutputStream holds a copy of data and forwards it to multiple streams.
+The buffer of ByteArrayOutputStream automatically grows according to data.
+Java ByteArrayOutputStream class declaration
+Let's see the declaration for Java.io.ByteArrayOutputStream class:
+
+public class ByteArrayOutputStream extends OutputStream
+
+Java ByteArrayOutputStream class constructors
+
+  
+
+      
+Constructor
+
+      
+Description
+
+  
+
+  
+
+      
+ByteArrayOutputStream()
+
+      
+Creates a new byte array output 
+stream
+ with the initial capacity of 32 bytes, though its size increases if necessary.
+
+  
+
+  
+
+      
+ByteArrayOutputStream(int size)
+
+      
+Creates a new byte array output stream, with a buffer capacity of the specified size, in bytes.
+
+  
+
+
+Java ByteArrayOutputStream class methods
+
+  
+
+      
+Method
+
+      
+Description
+
+  
+
+  
+
+      
+int size()
+
+      
+It is used to returns the current size of a buffer.
+
+  
+
+  
+
+      
+byte[] toByteArray()
+
+      
+It is used to create a newly allocated byte array.
+
+  
+
+  
+
+      
+String toString()
+
+      
+It is used for converting the content into a 
+string
+ decoding bytes using a platform default character set.
+
+  
+
+  
+
+      
+String toString(String charsetName)
+
+      
+It is used for converting the content into a string decoding bytes using a specified charsetName.
+
+  
+
+  
+
+      
+void write(int b)
+
+      
+It is used for writing the byte specified to the byte array output stream. 
+
+  
+
+  
+
+      
+void write(byte[] b, int off, int len
+
+      
+It is used for writing 
+len
+ bytes from specified byte array starting from the offset 
+off
+ to the byte array output stream.
+
+   
+
+   
+
+       
+void writeTo(OutputStream out)
+
+       
+It is used for writing the complete content of a byte array output stream to the specified output stream.
+
+   
+
+   
+
+       
+void reset()
+
+       
+It is used to reset the count field of a byte array output stream to zero value.
+
+   
+
+   
+
+       
+void close()
+
+       
+It is used to close the ByteArrayOutputStream.
+
+   
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Example of Java ByteArrayOutputStream
+Let's see a simple example of 
+java
+ ByteArrayOutputStream class to write common data into 2 files: f1.txt and f2.txt. 
+
+package com.javatpoint;
+import java.io.*;
+public class DataStreamExample {
+public static void main(String args[])throws Exception{  
+	  FileOutputStream fout1=new FileOutputStream("D:\\f1.txt");  
+	  FileOutputStream fout2=new FileOutputStream("D:\\f2.txt");  
+	  
+	  ByteArrayOutputStream bout=new ByteArrayOutputStream();  
+	  bout.write(65);  
+	  bout.writeTo(fout1);  
+	  bout.writeTo(fout2);  
+	  
+	  bout.flush();  
+	  bout.close();//has no effect  
+	  System.out.println("Success...");  
+	 }  
+	} 
+
+Output:
+
+Success...
+
+f1.txt:
+
+A
+
+f2.txt:
+
+A

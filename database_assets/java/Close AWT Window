@@ -1,0 +1,98 @@
+How to close AWT Window in Java
+We can close the AWT Window or Frame by calling 
+dispose()
+ or 
+System.exit()
+ inside windowClosing() method. The  windowClosing() method is found in 
+WindowListener
+ interface and 
+WindowAdapter
+ class.
+The WindowAdapter class implements WindowListener interfaces. It provides the default implementation of all the 7 methods of WindowListener interface. To override the windowClosing() method, you can either use WindowAdapter class or WindowListener interface. 
+If you implement the WindowListener interface, you will be forced to override all the 7 methods of WindowListener interface. So it is better to use WindowAdapter class.
+Different ways to override windowClosing() method
+There are many ways to override windowClosing() method:
+
+
+By anonymous class
+
+
+By inheriting WindowAdapter class
+
+
+By implementing WindowListener interface
+
+
+Close AWT Window Example 1: Anonymous class
+
+import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+public class WindowExample extends Frame{
+	WindowExample(){
+		addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e) {
+				dispose();
+			}
+		});
+		setSize(400,400);
+		setLayout(null);
+		setVisible(true);
+	}
+public static void main(String[] args) {
+	new WindowExample();
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Close AWT Window Example 2: extending WindowAdapter
+
+import java.awt.*;
+import java.awt.event.*;
+public class AdapterExample extends WindowAdapter{
+	Frame f;
+	AdapterExample(){
+		f=new Frame();
+		f.addWindowListener(this);
+		
+		f.setSize(400,400);
+		f.setLayout(null);
+		f.setVisible(true);
+	}
+public void windowClosing(WindowEvent e) {
+	f.dispose();
+}
+public static void main(String[] args) {
+	new AdapterExample();
+}
+}
+
+Close AWT Window Example 3: implementing WindowListener
+
+import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+public class WindowExample extends Frame implements WindowListener{
+	WindowExample(){
+		addWindowListener(this);
+		
+		setSize(400,400);
+		setLayout(null);
+		setVisible(true);
+	}
+	
+public static void main(String[] args) {
+	new WindowExample();
+}
+public void windowActivated(WindowEvent e) {}
+public void windowClosed(WindowEvent e) {}
+public void windowClosing(WindowEvent e) {
+	dispose();
+}
+public void windowDeactivated(WindowEvent e) {}
+public void windowDeiconified(WindowEvent e) {}
+public void windowIconified(WindowEvent e) {}
+public void windowOpened(WindowEvent arg0) {}
+}

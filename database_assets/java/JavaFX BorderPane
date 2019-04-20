@@ -1,0 +1,150 @@
+JavaFX BorderPane
+BorderPane arranges the nodes at the left, right, centre, top and bottom of the screen. It is represented by 
+javafx.scene.layout.BorderPane
+ class. This class provides various methods like 
+setRight(), setLeft(), setCenter(), setBottom()
+ and 
+setTop()
+ which are used to set the position for the specified nodes. We need to instantiate BorderPane class to create the 
+BorderPane
+ layout.
+Properties
+The properties of BorderPane class along with their setter methods are given in the table below.
+
+
+
+    
+Type
+
+    
+Property
+
+	
+Setter Methods
+
+	
+Description
+
+
+
+
+
+    
+Node
+
+    
+Bottom
+
+	
+setBottom()
+
+	
+Add the node to the bottom of the screen
+
+
+
+
+
+    
+Node
+
+    
+Centre
+
+	
+setCentre()
+
+	
+Add the node to the centre of the screen
+
+
+
+
+
+    
+Node
+
+    
+Left
+
+	
+setLeft()
+
+	
+Add the node to the left of the screen
+
+
+
+
+
+    
+Node
+
+    
+Right
+
+	
+setRight()
+
+	
+Add the node to the right of the screen
+
+
+
+
+
+    
+Node
+
+    
+Top
+
+	
+setTop()
+
+	
+Add the node to the top of the screen
+
+
+
+
+Constructors
+There are the following constructors in the class.
+
+
+BorderPane() : create the empty layout 
+
+
+BorderPane(Node Center) : create the layout with the center node 
+
+
+BorderPane(Node Center, Node top, Node right, Node bottom, Node left) : create the layout with all the nodes 
+
+
+Example
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+public class Label_Test extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		BorderPane BPane = new BorderPane();
+		BPane.setTop(new Label("This will be at the top"));
+		BPane.setLeft(new Label("This will be at the left"));
+		BPane.setRight(new Label("This will be at the Right"));
+		BPane.setCenter(new Label("This will be at the Centre"));
+		BPane.setBottom(new Label("This will be at the bottom"));
+		Scene scene = new Scene(BPane,600,400);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+}

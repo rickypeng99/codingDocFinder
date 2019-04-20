@@ -1,0 +1,40 @@
+Java Convert long to int
+We can convert 
+long to int in java
+ using typecasting. To convert higher data type into lower, we need to perform typecasting.
+Typecasting in java is performed through typecast operator 
+(datatype)
+.
+Here, we are going to learn how to convert long primitive type into int and Long object into int.
+Java long to int Example
+Let's see the simple code to convert long to int in java.
+
+public class LongToIntExample1{
+public static void main(String args[]){
+long l=500;
+int i=(int)l;
+System.out.println(i);
+}}
+
+Test it Now
+Output:
+
+500
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Long to int Example
+We can convert Long object to int by intValue() method of Long class. Let's see the simple code to convert Long to int in java.
+
+public class LongToIntExample2{
+public static void main(String args[]){
+Long l= new Long(10);
+int i=l.intValue();
+System.out.println(i);
+}}
+
+Test it Now
+Output:
+
+10

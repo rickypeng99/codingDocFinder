@@ -1,0 +1,1063 @@
+Java Collections class
+Java collection class is used exclusively with static methods that operate on or return collections. It inherits Object class.
+The important points about Java Collections class are:
+
+
+Java Collection class supports the 
+polymorphic algorithms
+ that operate on collections.
+
+
+Java Collection class throws a 
+NullPointerException
+ if the collections or class objects provided to them are null.
+
+
+Collections class declaration
+Let's see the declaration for java.util.Collections class.
+
+public class Collections extends Object
+
+
+
+
+	
+SN
+
+	
+Modifier & Type
+
+	
+Methods
+
+	
+Descriptions
+
+
+
+
+
+	
+1)
+
+	
+static <T> boolean
+
+	
+addAll()
+
+	
+It is used to adds all of the specified elements to the specified collection.
+
+
+
+
+
+	
+2)
+
+	
+static <T> Queue<T>
+
+	
+asLifoQueue()
+
+	
+It returns a view of a Deque as a Last-in-first-out (LIFO) Queue.
+
+
+
+
+
+	
+3)
+
+	
+static <T> int
+
+	
+binarySearch()
+
+	
+It searches the list for the specified object and returns their position in a sorted list.
+
+
+
+
+
+	
+4)
+
+	
+static <E> Collection<E>
+
+	
+checkedCollection()
+
+	
+It is used to returns a dynamically typesafe view of the specified collection.
+
+
+
+
+
+	
+5)
+
+	
+static <E> List<E>
+
+	
+checkedList()
+
+	
+It is used to returns a dynamically typesafe view of the specified list.
+
+
+
+
+
+	
+6)
+
+	
+static <K,V> Map<K,V>
+
+	
+checkedMap()
+
+	
+It is used to returns a dynamically typesafe view of the specified map.
+
+
+
+
+
+	
+7)
+
+	
+static <K,V> NavigableMap<K,V>
+
+	
+checkedNavigableMap()
+
+	
+It is used to returns a dynamically typesafe view of the specified navigable map.
+
+
+
+
+
+	
+8)
+
+	
+static <E> NavigableSet<E>
+
+	
+checkedNavigableSet()
+
+	
+It is used to returns a dynamically typesafe view of the specified navigable set.
+
+
+
+
+
+	
+9)
+
+	
+static <E> Queue<E>
+
+	
+checkedQueue()
+
+	
+It is used to returns a dynamically typesafe view of the specified queue.
+
+
+
+
+
+	
+10)
+
+	
+static <E> Set<E>
+
+	
+checkedSet()
+
+	
+It is used to returns a dynamically typesafe view of the specified set.
+
+
+
+
+
+	
+11)
+
+	
+static <K,V> SortedMap<K,V>
+
+	
+checkedSortedMap()
+
+	
+It is used to returns a dynamically typesafe view of the specified sorted map.
+
+
+
+
+
+	
+12)
+
+	
+static <E> SortedSet<E>
+
+	
+checkedSortedSet()
+
+	
+It is used to returns a dynamically typesafe view of the specified sorted set.
+
+
+
+
+
+	
+13)
+
+	
+static <T> void
+
+	
+copy()
+
+	
+It is used to copy all the elements from one list into another list.
+
+
+
+
+
+	
+14)
+
+	
+static boolean
+
+	
+disjoint()
+
+	
+It returns true if the two specified collections have no elements in common.
+
+
+
+
+
+	
+15)
+
+	
+static <T> Enumeration<T>
+
+	
+emptyEnumeration()
+
+	
+It is used to get an enumeration that has no elements.
+
+
+
+
+
+	
+16)
+
+	
+static <T> Iterator<T>
+
+	
+emptyIterator()
+
+	
+It is used to get an Iterator that has no elements.
+
+
+
+
+
+	
+17)
+
+	
+static <T> List<T>
+
+	
+emptyList()
+
+	
+It is used to get a List that has no elements.
+
+
+
+
+
+	
+18)
+
+	
+static <T> ListIterator<T>
+
+	
+emptyListIterator()
+
+	
+It is used to get a List Iterator that has no elements.
+
+
+
+
+
+	
+19)
+
+	
+static <K,V> Map<K,V>
+
+	
+emptyMap()
+
+	
+It returns an empty map which is immutable.
+
+
+
+
+
+	
+20)
+
+	
+static <K,V> NavigableMap<K,V>
+
+	
+emptyNavigableMap()
+
+	
+It returns an empty navigable map which is immutable.
+
+
+
+
+
+	
+21)
+
+	
+static <E> NavigableSet<E>
+
+	
+emptyNavigableSet()
+
+	
+It is used to get an empty navigable set which is immutable in nature.
+
+
+
+
+
+	
+22)
+
+	
+static <T> Set<T>
+
+	
+emptySet()
+
+	
+It is used to get the set that has no elements.
+
+
+
+
+
+	
+23)
+
+	
+static <K,V> SortedMap<K,V>
+
+	
+emptySortedMap()
+
+	
+It returns an empty sorted map which is immutable.
+
+
+
+
+
+	
+24)
+
+	
+static <E> SortedSet<E>
+
+	
+emptySortedSet()
+
+	
+It is used to get the sorted set that has no elements.
+
+
+
+
+
+	
+25)
+
+	
+static <T> Enumeration<T>
+
+	
+enumeration()
+
+	
+It is used to get the enumeration over the specified collection.
+
+
+
+
+
+	
+26)
+
+	
+static <T> void
+
+	
+fill()
+
+	
+It is used to replace all of the elements of the specified list with the specified elements.
+
+
+
+
+
+	
+27)
+
+	
+static int
+
+	
+frequency()
+
+	
+It is used to get the number of elements in the specified collection equal to the specified object.
+
+
+
+
+
+	
+28)
+
+	
+static int
+
+	
+indexOfSubList()
+
+	
+It is used to get the starting position of the first occurrence of the specified target list within the specified source list. It returns -1 if there is no such occurrence in the specified list.
+
+
+
+
+
+	
+29)
+
+	
+static int
+
+	
+lastIndexOfSubList()
+
+	
+It is used to get the starting position of the last occurrence of the specified target list within the specified source list. It returns -1 if there is no such occurrence in the specified list.
+
+
+
+
+
+	
+30)
+
+	
+static <T> ArrayList<T>
+
+	
+list()
+
+	
+It is used to get an array list containing the elements returned by the specified enumeration in the order in which they are returned by the enumeration.
+
+
+
+
+
+	
+31)
+
+	
+static <T extends Object & Comparable<? super T>> T
+
+	
+max()
+
+	
+It is used to get the maximum value of the given collection, according to the natural ordering of its elements.
+
+
+
+
+
+	
+32)
+
+	
+static <T extends Object & Comparable<? super T>> T
+
+	
+min()
+
+	
+It is used to get the minimum value of the given collection, according to the natural ordering of its elements.
+
+
+
+
+
+	
+33)
+
+	
+static <T> List<T>
+
+	
+nCopies()
+
+	
+It is used to get an immutable list consisting of 
+n
+ copies of the specified object.
+
+
+
+
+
+	
+34)
+
+	
+static <E> Set<E>
+
+	
+newSetFromMap()
+
+	
+It is used to return a set backed by the specified map.
+
+
+
+
+
+	
+35)
+
+	
+static <T> boolean
+
+	
+replaceAll()
+
+	
+It is used to replace all occurrences of one specified value in a list with the other specified value.
+
+
+
+
+
+	
+36)
+
+	
+static void
+
+	
+reverse()
+
+	
+It is used to reverse the order of the elements in the specified list.
+
+
+
+
+
+	
+37)
+
+	
+static <T> Comparator<T>
+
+	
+reverseOrder()
+
+	
+It is used to get the comparator that imposes the reverse of the natural ordering on a collection of objects which implement the Comparable interface.
+
+
+
+
+
+	
+38)
+
+	
+static void
+
+	
+rotate()
+
+	
+It is used to rotate the elements in the specified list by a given distance.
+
+
+
+
+
+	
+39)
+
+	
+static void
+
+	
+shuffle()
+
+	
+It is used to randomly reorders the specified list elements using a default randomness.
+
+
+
+
+
+	
+40)
+
+	
+static <T> Set<T>
+
+	
+singleton()
+
+	
+It is used to get an immutable set which contains only the specified object.
+
+
+
+
+
+	
+41)
+
+	
+static <T> List<T>
+
+	
+singletonList()
+
+	
+It is used to get an immutable list which contains only the specified object.
+
+
+
+
+
+	
+42)
+
+	
+static <K,V> Map<K,V>
+
+	
+singletonMap()
+
+	
+It is used to get an immutable map, mapping only the specified key to the specified value.
+
+
+
+
+
+	
+43)
+
+	
+static <T extends Comparable<? super T>>void
+
+	
+sort()
+
+	
+It is used to sort the elements presents in the specified list of collection in ascending order.
+
+
+
+
+
+	
+44)
+
+	
+static void
+
+	
+swap()
+
+	
+It is used to swap the elements at the specified positions in the specified list.
+
+
+
+
+
+	
+45)
+
+	
+static <T> Collection<T>
+
+	
+synchronizedCollection()
+
+	
+It is used to get a synchronized (thread-safe) collection backed by the specified collection.
+
+
+
+
+
+	
+46)
+
+	
+static <T> List<T>
+
+	
+synchronizedList()
+
+	
+It is used to get a synchronized (thread-safe) collection backed by the specified list.
+
+
+
+
+
+	
+47)
+
+	
+static <K,V> Map<K,V>
+
+	
+synchronizedMap()
+
+	
+It is used to get a synchronized (thread-safe) map backed by the specified map.
+
+
+
+
+
+	
+48)
+
+	
+static <K,V> NavigableMap<K,V>
+
+	
+synchronizedNavigableMap()
+
+	
+It is used to get a synchronized (thread-safe) navigable map backed by the specified navigable map.
+
+
+
+
+
+	
+49)
+
+	
+static <T> NavigableSet<T>
+
+	
+synchronizedNavigableSet()
+
+	
+It is used to get a synchronized (thread-safe) navigable set backed by the specified navigable set.
+
+
+
+
+
+	
+50)
+
+	
+static <T> Set<T>
+
+	
+synchronizedSet()
+
+	
+It is used to get a synchronized (thread-safe) set backed by the specified set.
+
+
+
+
+
+	
+51)
+
+	
+static <K,V> SortedMap<K,V>
+
+	
+synchronizedSortedMap()
+
+	
+It is used to get a synchronized (thread-safe) sorted map backed by the specified sorted map.
+
+
+
+
+
+	
+52)
+
+	
+static <T> SortedSet<T>
+
+	
+synchronizedSortedSet()
+
+	
+It is used to get a synchronized (thread-safe) sorted set backed by the specified sorted set.
+
+
+
+
+
+	
+53)
+
+	
+static <T> Collection<T>
+
+	
+unmodifiableCollection()
+
+	
+It is used to get an unmodifiable view of the specified collection.
+
+
+
+
+
+	
+54)
+
+	
+static <T> List<T>
+
+	
+unmodifiableList()
+
+	
+It is used to get an unmodifiable view of the specified list.
+
+
+
+
+
+	
+55)
+
+	
+static <K,V> Map<K,V>
+
+	
+unmodifiableMap()
+
+	
+It is used to get an unmodifiable view of the specified map.
+
+
+
+
+
+	
+56)
+
+	
+static <K,V> NavigableMap<K,V>
+
+	
+unmodifiableNavigableMap()
+
+	
+It is used to get an unmodifiable view of the specified navigable map.
+
+
+
+
+
+	
+57)
+
+	
+static <T> NavigableSet<T>
+
+	
+unmodifiableNavigableSet()
+
+	
+It is used to get an unmodifiable view of the specified navigable set.
+
+
+
+
+
+	
+58)
+
+	
+static <T> Set<T>
+
+	
+unmodifiableSet()
+
+	
+It is used to get an unmodifiable view of the specified set.
+
+
+
+
+
+	
+59)
+
+	
+static <K,V> SortedMap<K,V>
+
+	
+unmodifiableSortedMap()
+
+	
+It is used to get an unmodifiable view of the specified sorted map.
+
+
+
+
+
+	
+60
+
+	
+static <T> SortedSet<T>
+
+	
+unmodifiableSortedSet()
+
+	
+It is used to get an unmodifiable view of the specified sorted set.
+
+
+
+
+Java Collections Example
+
+import java.util.*;
+public class CollectionsExample {
+    public static void main(String a[]){    
+        List<String> list = new ArrayList<String>();
+        list.add("C");
+        list.add("Core Java");
+        list.add("Advance Java");
+        System.out.println("Initial collection value:"+list);
+        Collections.addAll(list, "Servlet","JSP");
+        System.out.println("After adding elements collection value:"+list);
+        String[] strArr = {"C#", ".Net"};
+        Collections.addAll(list, strArr);
+        System.out.println("After adding array collection value:"+list);
+    }
+}
+
+Output:
+
+Initial collection value:[C, Core Java, Advance Java]
+After adding elements collection value:[C, Core Java, Advance Java, Servlet, JSP]
+After adding array collection value:[C, Core Java, Advance Java, Servlet, JSP, C#, .Net]
+
+Java Collections Example: max()
+
+import java.util.*;
+public class CollectionsExample {
+    public static void main(String a[]){       
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(46);
+        list.add(67);
+        list.add(24);
+        list.add(16);
+        list.add(8);
+        list.add(12);
+        System.out.println("Value of maximum element from the collection: "+Collections.max(list));
+    }
+}
+
+Output:
+
+Value of maximum element from the collection: 67
+
+Java Collections Example: min()
+
+import java.util.*;
+public class CollectionsExample {
+    public static void main(String a[]){       
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(46);
+        list.add(67);
+        list.add(24);
+        list.add(16);
+        list.add(8);
+        list.add(12);
+        System.out.println("Value of minimum element from the collection: "+Collections.min(list));
+    }
+}
+
+Output:
+
+Value of minimum element from the collection: 8                                      

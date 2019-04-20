@@ -1,0 +1,115 @@
+JavaFX Light.Point Effect
+In this lighting effect, the light source is given a certain position in the 3D space. As the name suggests, the light source is situated at a certain point and the nodes are seamed to be lightened from that particular source. The class 
+javafx.scene.effect.Light.Point
+ represents this light source. We need to instantiate this class in order to generate the appropriate lighting on the node. 
+Properties
+The properties of the class along with their setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+X
+
+	
+It is a double type property. It represents the X coordinate of the Light source. 
+
+	
+setX(Double value)
+
+
+
+
+
+	
+Y
+
+	
+It is a double type property. It represents the Y Coordinate of the light source. 
+
+	
+setY(Double value)
+
+
+
+
+
+	
+Z
+
+	
+It is a double type property. It represents the Z coordinate of the light source. 
+
+	
+setZ(Double value)
+
+
+
+
+Constructors 
+The class contains two constructors 
+
+
+public Light.Point() :
+ Creates the new instance with the default parameters.
+ 
+
+Public Light.Point(double x, double y, double z, Color color) :
+ Creates the new instance with the specified 3D coordinates and light color
+ 
+
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.geometry.VPos;
+import javafx.scene.Group; 
+import javafx.scene.Scene;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage; 
+import javafx.scene.text.Font; 
+import javafx.scene.text.FontWeight; 
+import javafx.scene.text.Text; 
+
+public class LightingExample1 extends Application { 
+@Override
+public void start(Stage stage) {  
+Text text = new Text();       
+text.setFont(Font.font(null, FontWeight.BOLD, 40));        
+text.setX(50); 
+text.setY(40); 
+text.setTextOrigin(VPos.TOP);
+text.setText("HELLO WORLD!!");        
+text.setFill(Color.RED);   
+Light.Point light = new Light.Point();
+light.setX(0);
+light.setY(0);
+light.setZ(-100);
+Lighting lighting = new Lighting(); 
+lighting.setSurfaceScale(5);
+text.setEffect(lighting);       
+Group root = new Group();
+root.getChildren().add(text);
+Scene scene = new Scene(root, 500, 200);  
+stage.setTitle("light.Point example");  
+stage.setScene(scene);
+stage.show();         
+} 
+public static void main(String args[]){ 
+launch(args); 
+} 
+}

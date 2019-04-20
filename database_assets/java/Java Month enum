@@ -1,0 +1,193 @@
+Java Month enum
+In Java the Month is an enum representing the 12 months of the year. In addition with the textual enum name, every month-of-year has an int value.
+Java Month enum declaration
+Let's see the declaration of java.time.Month.
+
+public enum Month extends Enum<Month> implements TemporalAccessor, TemporalAdjuster
+
+Methods of Java Month
+
+    
+
+      
+Method
+
+      
+Description
+
+    
+
+    
+
+      
+int getValue()
+
+      
+It is used to get the month-of-year int value
+
+    
+
+    
+
+      
+int get(TemporalField field)
+
+      
+It is used to get the value of the specified field from this month-of-year as an int.
+
+    
+
+    
+
+      
+int length(boolean leapYear)
+
+      
+It is used to get the length of this month in days.
+
+    
+
+     
+
+      
+int maxLength()
+
+      
+It is used to get the maximum length of this month in days.
+
+    
+
+     
+
+      
+int minLength()
+
+      
+It is used to get the minimum length of this month in days.
+
+    
+
+     
+
+      
+Month minus(long months)
+
+      
+It is used to return the month-of-year that is the specified number of months before this one.
+
+    
+
+     
+
+      
+Month plus(long months)
+
+      
+It is used to return the month-of-year that is the specified number of quarters after this one.
+
+    
+
+     
+
+      
+static Month of(int month)
+
+      
+It is used to obtain an instance of Month from an int value.
+
+    
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Month enum Example
+
+import java.time.*;
+import java.time.temporal.*;
+public class MonthEnumExample1 {
+    public static void main(String[] args) {
+        Month month = Month.valueOf("January".toUpperCase());
+        System.out.printf("For the month of %s all Sunday are:%n", month);
+        LocalDate localdate = Year.now().atMonth(month).atDay(1).
+        with(TemporalAdjusters.firstInMonth(DayOfWeek.SUNDAY));
+        Month mi = localdate.getMonth();
+        while (mi == month) {
+            System.out.printf("%s%n", localdate);
+            localdate = localdate.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+            mi = localdate.getMonth();
+        }
+    }
+}
+
+Test it Now
+Output:
+
+For the month of JANUARY all Sunday are:
+2017-01-01
+2017-01-08
+2017-01-15
+2017-01-22
+2017-01-29
+
+Java Month enum Example: getValue()
+
+import java.time.*;
+public class MonthEnumExample2 {
+  public static void main(String[] args) {
+    Month month = Month.from(LocalDate.now());
+    System.out.println(month.getValue());
+    System.out.println(month.name());
+  }
+}
+
+Test it Now
+Output:
+
+1
+JANUARY
+
+Java Month enum Example: minus()
+
+import java.time.*;
+public class MonthEnumExample3 {
+  public static void main(String[] args) {
+    Month month = Month.from(LocalDate.now());  
+    System.out.println(month.minus(2));
+  }
+}
+
+Test it Now
+Output:
+
+NOVEMBER
+
+Java Month enum Example: plus()
+
+import java.time.*;
+public class MonthEnumExample4 {
+  public static void main(String[] args) {
+    Month month = Month.from(LocalDate.now());  
+    System.out.println(month.plus(2));
+  }
+}
+
+Test it Now
+Output:
+
+MARCH
+
+Java Month enum Example: length()
+
+import java.time.*;
+public class MonthEnumExample5 {
+  public static void main(String[] args) {
+    Month month = Month.from(LocalDate.now());  
+    System.out.println("Total Number of days: "+month.length(true));
+  }
+}
+
+Test it Now
+Output:
+
+Total Number of days: 31	

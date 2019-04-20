@@ -1,0 +1,68 @@
+Java AWT Toolkit
+Toolkit class is the abstract superclass of every implementation in the Abstract Window Toolkit. Subclasses of Toolkit are used to bind various components. It inherits Object class.
+AWT Toolkit class declaration
+
+public abstract class Toolkit extends Object
+
+Java AWT Toolkit Example
+
+import java.awt.*;
+public class ToolkitExample {
+  public static void main(String[] args) {
+	  Toolkit t = Toolkit.getDefaultToolkit();
+	  System.out.println("Screen resolution = " + t.getScreenResolution());
+	  Dimension d = t.getScreenSize();
+	  System.out.println("Screen width = " + d.width);
+	  System.out.println("Screen height = " + d.height);
+  }
+}
+
+Output:
+
+Screen resolution = 96
+Screen width = 1366
+Screen height = 768
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java AWT Toolkit Example: beep()
+
+import java.awt.event.*;
+public class ToolkitExample {
+public static void main(String[] args) {
+	Frame f=new Frame("ToolkitExample");
+	Button b=new Button("beep");
+	b.setBounds(50,100,60,30);
+	f.add(b);	
+	f.setSize(300,300);
+	f.setLayout(null);
+	f.setVisible(true);
+	b.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent e){
+			Toolkit.getDefaultToolkit().beep();
+		}
+	});		
+}
+}
+
+Output:
+Java AWT Toolkit Example: Change TitleBar Icon
+
+import java.awt.*; 
+class ToolkitExample { 
+ToolkitExample(){ 
+Frame f=new Frame(); 
+Image icon = Toolkit.getDefaultToolkit().getImage("D:\\icon.png");
+f.setIconImage(icon);
+f.setLayout(null); 
+f.setSize(400,400); 
+f.setVisible(true); 
+} 
+public static void main(String args[]){ 
+new ToolkitExample(); 
+} 
+}
+
+
+Output:

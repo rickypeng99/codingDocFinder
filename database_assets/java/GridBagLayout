@@ -1,0 +1,509 @@
+Java GridBagLayout
+The Java GridBagLayout class is used to align components vertically, horizontally or along their baseline.
+The components may not be of same size. Each GridBagLayout object maintains a dynamic, rectangular grid of cells. Each component occupies one or more cells known as its display area. Each component associates an instance of GridBagConstraints. With the help of constraints object we arrange component's display area on the grid. The GridBagLayout manages each component's minimum and preferred sizes in order to determine component's size.
+Fields
+
+    
+
+        
+Modifier and Type
+
+        
+Field
+
+        
+Description
+
+    
+
+    
+
+        
+double[]
+
+        
+columnWeights
+
+        
+It is used to hold the overrides to the column weights.
+
+    
+
+    
+
+        
+int[]
+
+        
+columnWidths
+
+        
+It is used to hold the overrides to the column minimum width.
+
+    
+
+    
+
+        
+protected Hashtable<Component,GridBagConstraints>
+
+        
+comptable
+
+        
+It is used to maintains the association between a component and its gridbag constraints.
+
+    
+
+    
+
+        
+protected GridBagConstraints
+
+        
+defaultConstraints
+
+        
+It is used to hold a gridbag constraints instance containing the default values.
+
+    
+
+    
+
+        
+protected GridBagLayoutInfo
+
+        
+layoutInfo
+
+        
+It is used to hold the layout information for the gridbag.
+
+    
+
+    
+
+        
+protected static int
+
+        
+MAXGRIDSIZE
+
+        
+No longer in use just for backward compatibility 
+
+    
+
+    
+
+        
+protected static int
+
+        
+MINSIZE
+
+        
+It is smallest grid that can be laid out by the grid bag layout.
+
+    
+
+    
+
+        
+protected static int
+
+        
+PREFERREDSIZE
+
+        
+It is preferred grid size that can be laid out by the grid bag layout.
+
+    
+
+    
+
+        
+int[]
+
+        
+rowHeights
+
+        
+It is used to hold  the overrides to the row minimum heights.
+
+    
+
+    
+
+        
+double[]
+
+        
+rowWeights
+
+        
+It is used to hold  the overrides to the row weights.
+
+    
+
+
+Useful Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+void
+
+        
+addLayoutComponent(Component comp, Object constraints)
+
+        
+It adds specified component to the layout, using the specified constraints object.
+
+    
+
+    
+
+        
+void
+
+        
+addLayoutComponent(String name, Component comp)
+
+        
+It has no effect, since this layout manager does not use a per-component string.
+
+    
+
+    
+
+        
+protected void
+
+        
+adjustForGravity(GridBagConstraints constraints, Rectangle r)
+
+        
+It adjusts the x, y, width, and height fields to the correct values depending on the constraint geometry and pads.
+
+    
+
+    
+
+        
+protected void
+
+        
+AdjustForGravity(GridBagConstraints constraints, Rectangle r)
+
+        
+This method is for backwards compatibility only
+
+    
+
+    
+
+        
+protected void	
+
+        
+arrangeGrid(Container parent)
+
+        
+Lays out the grid.
+
+    
+
+    
+
+        
+protected void
+
+        
+ArrangeGrid(Container parent)
+
+        
+This method is obsolete and supplied for backwards compatibility
+
+    
+
+    
+
+        
+GridBagConstraints
+
+        
+getConstraints(Component comp)
+
+        
+It is for getting the constraints for the specified component.
+
+    
+
+    
+
+        
+float
+
+        
+getLayoutAlignmentX(Container parent)
+
+        
+It returns the alignment along the x axis.
+
+    
+
+    
+
+        
+float
+
+        
+getLayoutAlignmentY(Container parent)
+
+        
+It returns the alignment along the y axis.
+
+    
+
+    
+
+        
+int[][]	
+
+        
+getLayoutDimensions()
+
+        
+It determines column widths and row heights for the layout grid.
+
+    
+
+    
+
+        
+protected GridBagLayoutInfo
+
+        
+getLayoutInfo(Container parent, int sizeflag)
+
+        
+This method is obsolete and supplied for backwards compatibility.
+
+    
+
+    
+
+        
+protected GridBagLayoutInfo
+
+        
+GetLayoutInfo(Container parent, int sizeflag)
+
+        
+This method is obsolete and supplied for backwards compatibility.
+
+    
+
+    
+
+        
+Point
+
+        
+getLayoutOrigin()
+
+        
+It determines the origin of the layout area, in the graphics coordinate space of the target container.
+
+    
+
+    
+
+        
+double[][]	
+
+        
+getLayoutWeights()
+
+        
+It determines the weights of the layout grid's columns and rows.
+
+    
+
+    
+
+        
+protected Dimension
+
+        
+getMinSize(Container parent, GridBagLayoutInfo info)
+
+        
+It figures out the minimum size of the master based on the information from getLayoutInfo.
+
+    
+
+    
+
+        
+protected Dimension
+
+        
+GetMinSize(Container parent, GridBagLayoutInfo info)
+
+        
+This method is obsolete and supplied for backwards compatibility only
+
+    
+
+
+Example
+
+import java.awt.Button;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.*;
+public class GridBagLayoutExample extends JFrame{
+	public static void main(String[] args) {
+	        GridBagLayoutExample a = new GridBagLayoutExample();
+	    }
+		public GridBagLayoutExample() {
+	GridBagLayoutgrid = new GridBagLayout();
+	        GridBagConstraints gbc = new GridBagConstraints();
+	        setLayout(grid);
+	        setTitle("GridBag Layout Example");
+	        GridBagLayout layout = new GridBagLayout();
+	this.setLayout(layout);
+	gbc.fill = GridBagConstraints.HORIZONTAL;
+	gbc.gridx = 0;
+	gbc.gridy = 0;
+	this.add(new Button("Button One"), gbc);
+	gbc.gridx = 1;
+	gbc.gridy = 0;
+	this.add(new Button("Button two"), gbc);
+	gbc.fill = GridBagConstraints.HORIZONTAL;
+	gbc.ipady = 20;
+	gbc.gridx = 0;
+	gbc.gridy = 1;
+	this.add(new Button("Button Three"), gbc);
+	gbc.gridx = 1;
+	gbc.gridy = 1;
+	this.add(new Button("Button Four"), gbc);
+	gbc.gridx = 0;
+	gbc.gridy = 2;
+	gbc.fill = GridBagConstraints.HORIZONTAL;
+	gbc.gridwidth = 2;
+	this.add(new Button("Button Five"), gbc);
+	        setSize(300, 300);
+	        setPreferredSize(getSize());
+	        setVisible(true);
+	        setDefaultCloseOperation(EXIT_ON_CLOSE);
+	
+	    }
+	
+}
+
+Output:
+Example 2
+
+public class GridBagLayoutDemo {
+final static boolean shouldFill = true;
+final static boolean shouldWeightX = true;
+final static boolean RIGHT_TO_LEFT = false;
+
+public static void addComponentsToPane(Container pane) {
+if (RIGHT_TO_LEFT) {
+pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+}
+
+JButton button;
+pane.setLayout(new GridBagLayout());
+GridBagConstraints c = new GridBagConstraints();
+if (shouldFill) {
+//natural height, maximum width
+c.fill = GridBagConstraints.HORIZONTAL;
+}
+
+button = new JButton("Button 1");
+if (shouldWeightX) {
+c.weightx = 0.5;
+}
+c.fill = GridBagConstraints.HORIZONTAL;
+c.gridx = 0;
+c.gridy = 0;
+pane.add(button, c);
+
+button = new JButton("Button 2");
+c.fill = GridBagConstraints.HORIZONTAL;
+c.weightx = 0.5;
+c.gridx = 1;
+c.gridy = 0;
+pane.add(button, c);
+
+button = new JButton("Button 3");
+c.fill = GridBagConstraints.HORIZONTAL;
+c.weightx = 0.5;
+c.gridx = 2;
+c.gridy = 0;
+pane.add(button, c);
+
+button = new JButton("Long-Named Button 4");
+c.fill = GridBagConstraints.HORIZONTAL;
+c.ipady = 40;      //make this component tall
+c.weightx = 0.0;
+c.gridwidth = 3;
+c.gridx = 0;
+c.gridy = 1;
+pane.add(button, c);
+
+button = new JButton("5");
+c.fill = GridBagConstraints.HORIZONTAL;
+c.ipady = 0;       //reset to default
+c.weighty = 1.0;   //request any extra vertical space
+c.anchor = GridBagConstraints.PAGE_END; //bottom of space
+c.insets = new Insets(10,0,0,0);  //top padding
+c.gridx = 1;       //aligned with button 2
+c.gridwidth = 2;   //2 columns wide
+c.gridy = 2;       //third row
+pane.add(button, c);
+}
+
+
+private static void createAndShowGUI() {
+//Create and set up the window.
+JFrame frame = new JFrame("GridBagLayoutDemo");
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+//Set up the content pane.
+addComponentsToPane(frame.getContentPane());
+
+//Display the window.
+frame.pack();
+frame.setVisible(true);
+}
+
+public static void main(String[] args) {
+javax.swing.SwingUtilities.invokeLater(new Runnable() {
+public void run() {
+createAndShowGUI();
+}
+});
+}
+}
+
+Output:

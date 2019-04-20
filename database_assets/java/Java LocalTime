@@ -1,0 +1,218 @@
+Java LocalTime class
+Java LocalTime class is an immutable class that represents time with a default format of hour-minute-second. It inherits Object class and implements the Comparable interface.
+Java LocalTime class declaration
+Let's see the declaration of java.time.LocalTime class.
+
+public final class LocalTime extends Object 
+implements Temporal, TemporalAdjuster, Comparable<LocalTime>, Serializable
+
+Methods of Java LocalTime
+
+    
+
+      
+Method
+
+      
+Description
+
+    
+
+    
+
+      
+LocalDateTime atDate(LocalDate date)
+
+      
+It is used to combine this time with a date to create a LocalDateTime.
+
+    
+
+    
+
+      
+int compareTo(LocalTime other)
+
+      
+It is used to compare this time to another time.
+
+    
+
+    
+
+      
+String format(DateTimeFormatter formatter)
+
+      
+It is used to format this time using the specified formatter.
+
+    
+
+     
+
+      
+int get(TemporalField field)
+
+      
+It is used to get the value of the specified field from this time as an int.
+
+    
+
+     
+
+      
+LocalTime minusHours(long hoursToSubtract)
+
+      
+It is used to return a copy of this LocalTime with the specified number of hours subtracted.
+
+    
+
+     
+
+      
+LocalTime minusMinutes(long minutesToSubtract)
+
+      
+It is used to return a copy of this LocalTime with the specified number of minutes subtracted.
+
+    
+
+     
+
+      
+static LocalTime now()
+
+      
+It is used to obtain the current time from the system clock in the default time-zone.
+
+    
+
+     
+
+      
+static LocalTime of(int hour, int minute, int second)
+
+      
+It is used to obtain an instance of LocalTime from an hour, minute and second.
+
+    
+
+    
+
+      
+LocalTime plusHours(long hoursToAdd)
+
+      
+It is used to return a copy of this LocalTime with the specified number of hours added.
+
+    
+
+    
+
+      
+LocalTime plusMinutes(long minutesToAdd)
+
+      
+It is used to return a copy of this LocalTime with the specified number of minutes added.
+
+    
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java LocalTime Example: now()
+
+import java.time.LocalTime;
+public class LocalTimeExample1 {
+  public static void main(String[] args) {
+    LocalTime time = LocalTime.now();
+    System.out.println(time);
+  }
+}
+
+Test it Now
+Output:
+
+15:19:47.459
+
+Java LocalTime Example: of()
+
+import java.time.LocalTime;
+public class LocalTimeExample2 {
+  public static void main(String[] args) {
+    LocalTime time = LocalTime.of(10,43,12);
+    System.out.println(time);
+  }
+}
+
+Test it Now
+Output:
+
+10:43:12
+
+Java LocalTime Example: minusHours() and minusMinutes()
+
+import java.time.LocalTime;
+public class LocalTimeExample3 {
+  public static void main(String[] args) {
+    LocalTime time1 = LocalTime.of(10,43,12);
+    System.out.println(time1);
+    LocalTime time2=time1.minusHours(2);
+    LocalTime time3=time2.minusMinutes(34);
+    System.out.println(time3);
+  }
+}
+
+Test it Now
+Output:
+
+10:43:12
+08:09:12
+
+Java LocalTime Example: plusHours() and plusMinutes()
+
+import java.time.LocalTime;
+public class LocalTimeExample4 {
+  public static void main(String[] args) {
+    LocalTime time1 = LocalTime.of(10,43,12);
+    System.out.println(time1);
+    LocalTime time2=time1.plusHours(4);
+    LocalTime time3=time2.plusMinutes(18);
+    System.out.println(time3);
+  }
+}
+
+Test it Now
+Output:
+
+10:43:12
+15:01:12
+
+Java LocalTime Example
+
+import java.time.*;
+import java.time.temporal.ChronoUnit;
+public class LocalTimeExample5 {
+  public static void main(String... args) {
+    ZoneId zone1 = ZoneId.of("Asia/Kolkata");
+    ZoneId zone2 = ZoneId.of("Asia/Tokyo");
+    LocalTime time1 = LocalTime.now(zone1);
+    System.out.println("India Time Zone: "+time1);
+    LocalTime time2 = LocalTime.now(zone2);
+    System.out.println("Japan Time Zone: "+time2);
+    long hours = ChronoUnit.HOURS.between(time1, time2);
+    System.out.println("Hours between two Time Zone: "+hours);
+    long minutes = ChronoUnit.MINUTES.between(time1, time2);
+    System.out.println("Minutes between two time zone: "+minutes);
+  }
+}
+
+Test it Now
+Output:
+
+India Time Zone: 14:56:43.087
+Japan Time Zone: 18:26:43.103
+Hours between two Time Zone: 3
+Minutes between two time zone: 210

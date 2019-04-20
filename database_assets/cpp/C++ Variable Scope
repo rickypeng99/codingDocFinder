@@ -1,0 +1,155 @@
+Variable Scope in C++
+
+
+
+
+
+
+ 
+
+
+
+A scope is a region of the program and broadly speaking there are three places, where variables can be declared −
+
+
+Inside a function or a block which is called local variables,
+
+
+In the definition of function parameters which is called formal parameters.
+
+
+Outside of all functions which is called global variables.
+
+
+We will learn what is a function and it's parameter in subsequent chapters. Here let us explain what are local and global variables.
+Local Variables
+Variables that are declared inside a function or block are local variables. They can be used only by statements that are inside that function or block of code. Local variables are not known to functions outside their own. Following is the example using local variables −
+
+#include <iostream>
+using namespace std;
+ 
+int main () {
+   // Local variable declaration:
+   int a, b;
+   int c;
+ 
+   // actual initialization
+   a = 10;
+   b = 20;
+   c = a + b;
+ 
+   cout << c;
+ 
+   return 0;
+}
+
+Global Variables
+Global variables are defined outside of all the functions, usually on top of the program. The global variables will hold their value throughout the life-time of your program.
+A global variable can be accessed by any function. That is, a global variable is available for use throughout your entire program after its declaration. Following is the example using global and local variables −
+
+#include <iostream>
+using namespace std;
+ 
+// Global variable declaration:
+int g;
+ 
+int main () {
+   // Local variable declaration:
+   int a, b;
+ 
+   // actual initialization
+   a = 10;
+   b = 20;
+   g = a + b;
+  
+   cout << g;
+ 
+   return 0;
+}
+
+A program can have same name for local and global variables but value of local variable inside a function will take preference. For example −
+
+#include <iostream>
+using namespace std;
+ 
+// Global variable declaration:
+int g = 20;
+ 
+int main () {
+   // Local variable declaration:
+   int g = 10;
+ 
+   cout << g;
+ 
+   return 0;
+}
+
+When the above code is compiled and executed, it produces the following result −
+
+10
+
+Initializing Local and Global Variables
+When a local variable is defined, it is not initialized by the system, you must initialize it yourself. Global variables are initialized automatically by the system when you define them as follows −
+
+
+
+
+Data Type
+
+
+Initializer
+
+
+
+
+
+
+int
+
+
+0
+
+
+
+
+
+
+char
+
+
+'\0'
+
+
+
+
+
+
+float
+
+
+0
+
+
+
+
+
+
+double
+
+
+0
+ 
+
+
+
+
+
+pointer
+
+
+NULL
+ 
+
+
+
+It is a good programming practice to initialize variables properly, otherwise sometimes program would produce unexpected result.

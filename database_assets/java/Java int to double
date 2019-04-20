@@ -1,0 +1,41 @@
+Java Convert int to double
+We can convert 
+int to double in java
+ using assignment operator. There is nothing to do extra because lower type can be converted to higher type implicitly. 
+It is also known as implicit type casting or type promotion.
+Java int to double Example
+Let's see the simple code to convert int to double in java.
+
+public class IntToDoubleExample1{
+public static void main(String args[]){
+int i=200;
+double d=i;
+System.out.println(d);
+}}
+
+Test it Now
+Output:
+
+200.0
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java int to Double Example
+We can convert int value to Double object by instantiating Double class or calling Double.valueOf() method. 
+Let's see the simple code to convert int to Double in java.
+
+public class IntToDoubleExample2{
+public static void main(String args[]){
+int i=100;
+Double d= new Double(i);//first way
+Double d2=Double.valueOf(i);//second way
+System.out.println(d);
+System.out.println(d2);
+}}
+
+Test it Now
+Output:
+
+100.0
+100.0

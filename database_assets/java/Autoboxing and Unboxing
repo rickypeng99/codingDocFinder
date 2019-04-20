@@ -1,0 +1,183 @@
+Autoboxing and Unboxing:
+The automatic conversion of primitive data types into its equivalent Wrapper type is known as boxing and opposite operation is known as unboxing. This is the new feature of Java5. So java programmer doesn't need to write the conversion code.
+Advantage of Autoboxing and Unboxing:
+
+
+No need of conversion between primitives and Wrappers manually so less coding is required.
+
+
+Simple Example of Autoboxing in java:
+
+  
+class BoxingExample1{
+  public static void main(String args[]){
+	int a=50;
+        Integer a2=new Integer(a);//Boxing
+
+        Integer a3=5;//Boxing
+        
+        System.out.println(a2+" "+a3);
+ } 
+}
+    
+
+Test it Now
+
+Output:50 5
+
+
+
+download this example
+
+
+Simple Example of Unboxing in java:
+The automatic conversion of wrapper class type into corresponding primitive type, is known as Unboxing. Let's see the example of unboxing:
+
+  
+class UnboxingExample1{
+  public static void main(String args[]){
+	Integer i=new Integer(50);
+        int a=i;
+        
+        System.out.println(a);
+ } 
+}
+    
+
+Test it Now
+
+Output:50
+
+Autoboxing and Unboxing with comparison operators
+
+
+Autoboxing can be performed with comparison operators. Let's see the example of boxing with comparison operator:
+
+
+
+  
+class UnboxingExample2{
+  public static void main(String args[]){
+	Integer i=new Integer(50);
+        
+        if(i<100){            //unboxing internally
+        System.out.println(i);
+        }
+ } 
+}
+    
+
+Test it Now
+
+Output:50
+
+Autoboxing and Unboxing with method overloading
+
+
+In method overloading, boxing and unboxing can be performed. There are some rules for method overloading with boxing:
+
+
+
+Widening beats boxing
+
+
+Widening beats varargs
+
+
+Boxing beats varargs
+
+
+
+
+
+
+1) Example of Autoboxing where widening beats boxing
+
+
+If there is possibility of widening and boxing, widening beats boxing.
+
+
+
+  
+class Boxing1{
+  static void m(int i){System.out.println("int");}
+  static void m(Integer i){System.out.println("Integer");}
+
+  public static void main(String args[]){
+   short s=30;
+   m(s);
+ } 
+}
+    
+
+Test it Now
+
+Output:int
+
+2) Example of Autoboxing where widening beats varargs
+
+
+If there is possibility of widening and varargs, widening beats var-args.
+
+
+
+  
+class Boxing2{
+  static void m(int i, int i2){System.out.println("int int");}
+  static void m(Integer... i){System.out.println("Integer...");}
+
+  public static void main(String args[]){
+   short s1=30,s2=40;
+   m(s1,s2);
+ } 
+}
+    
+
+Test it Now
+
+Output:int int
+
+3) Example of Autoboxing where boxing beats varargs
+
+
+Let's see the program where boxing beats variable argument:
+
+
+
+  
+class Boxing3{
+  static void m(Integer i){System.out.println("Integer");}
+  static void m(Integer... i){System.out.println("Integer...");}
+
+  public static void main(String args[]){
+   int a=30;
+   m(a);
+ } 
+}
+    
+
+Test it Now
+
+Output:Integer
+
+Method overloading with Widening and Boxing
+
+
+Widening and Boxing can't be performed as given below:
+
+
+
+  
+class Boxing4{
+  static void m(Long l){System.out.println("Long");}
+
+  public static void main(String args[]){
+   int a=30;
+   m(a);
+ } 
+}
+    
+
+Test it Now
+
+Output:Compile Time Error

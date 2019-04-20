@@ -1,0 +1,306 @@
+JavaFX Parallel Transition
+This transition applies multiple animations on a node in parallel. It is similar to Sequential Transition except the fact that it applies multiple transition on a node at the same time while the sequential transition applies the multiple transition on the node by the order in which the animations are passed into the constructor.
+In JavaFX, the class 
+javafx.animation.ParallelTransition
+ represents the parallel transition. We just need to pass the list of transitions into the constructor while instantiating this class.
+Properties
+The class contains only one property that is described in the following table along with its setter method.
+
+
+
+    
+Property
+
+    
+Description
+
+	
+Setter Methods
+
+
+
+
+
+    
+node
+
+    
+This is the property of the type object of class Node. It represents the node onto which the transition is to be applied.
+
+	
+setNode(Node node)
+
+
+
+
+Constructors
+There are four constructors in the class.
+
+
+public ParallelTransition() :
+ creates an instance of ParallelTransition with the default parameters.
+
+
+public ParallelTransition(Animation? children) :
+ creates an instance of ParallelTransition with the list of animations.
+
+
+public ParallelTransition(Node node) :
+ creates an instance of ParallelTransition with specified node onto which the parallel transition will be applied.
+
+
+public ParallelTransition(Node node, Animation?  children) :
+ creates an instance of ParallelTransition with the specified node and the list of animations.
+
+
+Example
+In the following example, we have created a polygon and applied various animations on it in parallel.
+
+package application;
+import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.PauseTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition; 
+
+import javafx.application.Application; 
+
+import javafx.scene.Group; 
+import javafx.scene.Scene; 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
+import javafx.stage.Stage; 
+import javafx.util.Duration; 
+         
+public class Parallel_Transition extends Application { 
+   @Override 
+   public void start(Stage primaryStage) {      
+	   //Setting points for the polyogn 
+		Polygon poly = new Polygon(); 
+	   poly.getPoints().addAll(new Double[] {320.0,270.0,270.0,220.0,270.0,270.0,320.0,120.0,370.0,270.0,370.0,220.0});
+		
+		 //Setting Color and Stroke properties for the polygon  
+		 poly.setFill(Color.LIMEGREEN);
+		 poly.setStroke(Color.BLACK);
+	 
+		 //Setting durations for the transition 
+	     Duration dur1 = Duration.millis(1000);
+	     Duration dur2 = Duration.millis(1000);
+	 
+	     
+	     //Setting the pause transition
+	     PauseTransition pause = new PauseTransition(Duration.millis(1000));
+	     
+	     //Setting the fade transition 
+	     FadeTransition fade = new FadeTransition(dur2);
+	     fade.setFromValue(1.0f);
+	     fade.setToValue(0.3f);
+	     fade.setCycleCount(5);
+	     fade.setAutoReverse(true);
+	     
+	     //Setting Translate transition
+	     TranslateTransition translate = new TranslateTransition(dur1);
+	     translate.setToX(-150f);
+	     translate.setCycleCount(5);
+	     translate.setAutoReverse(true);
+	     
+	     //Setting Rotate Transition 
+	     RotateTransition rotate = new RotateTransition(dur2);
+	     rotate.setByAngle(360f);
+	     rotate.setCycleCount(5);
+	     rotate.setAutoReverse(true);
+	     
+	     //Setting Scale Transition 
+	     ScaleTransition scale = new ScaleTransition(dur1);
+	     scale.setByX(1.5f);
+	     scale.setByY(1.2f);
+	     scale.setCycleCount(5);
+	     scale.setAutoReverse(true);
+	     
+	     //Instantiating Parallel Transition class by passing the list of transitions into its constructor
+	     ParallelTransition seqT = new ParallelTransition (poly,rotate, pause, fade, translate,  scale);
+	     
+	     //playing the transition 
+	     seqT.play();
+	 	 
+	     //Configuring the group and scene 
+	     Group root = new Group();
+		 root.getChildren().addAll(poly);
+		 Scene scene = new Scene(root,490,450,Color.WHEAT);
+		 primaryStage.setScene(scene);
+		 primaryStage.setTitle("Parallel Transition Example");
+		 primaryStage.show();
+   }      
+   public static void main(String args[]){ 
+      launch(args); 
+   } 
+}
+
+Output:
+Simulating Parallel transition
+The following code illustrates the simulation of the parallel transitions on the different nodes. Here, we have applied similar transitions on the different nodes without using ParallelTransition.
+
+package application;
+import javafx.animation.FadeTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+public class Parallel_Transition extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+
+	Circle cir1 = new Circle(50,100,50);
+	Circle cir2 = new Circle(550,100,50);
+	
+	//setting colours and strokes for circle
+	cir1.setFill(Color.BLUE);
+	cir2.setFill(Color.LIMEGREEN);
+	cir1.setStroke(Color.BLACK);
+	cir2.setStroke(Color.BLACK);
+	
+	
+	Line line1 = new Line(100,100,500, 100);
+	
+	Circle cir3 = new Circle(50,400,50);
+	Circle cir4 = new Circle(550,400,50);
+	cir3.setFill(Color.RED);
+	cir4.setFill(Color.PURPLE);
+	cir3.setStroke(Color.BLACK);
+	cir4.setStroke(Color.BLACK);
+	
+	Line line2 = new Line(100,400,500, 400);
+	Line line3 = new Line(50,150,50,350);
+	
+	RotateTransition rotateline3 = new RotateTransition();
+	rotateline3.setAxis(Rotate.X_AXIS);
+	rotateline3.setByAngle(180);
+	rotateline3.setAutoReverse(true);
+	rotateline3.setDuration(Duration.millis(500));
+	rotateline3.setCycleCount(50);
+	rotateline3.setNode(line3);
+	rotateline3.play();
+	
+	Line line4 = new Line(550,150,550,350);
+	RotateTransition rotateline4 = new RotateTransition();
+	rotateline4.setAxis(Rotate.X_AXIS);
+	rotateline4.setByAngle(180);
+	rotateline4.setAutoReverse(true);
+	rotateline4.setDuration(Duration.millis(500));
+	rotateline4.setCycleCount(50);
+	rotateline4.setNode(line4);
+	rotateline4.play();
+
+	FadeTransition fadeCir1 = new FadeTransition();
+	fadeCir1.setAutoReverse(true);
+	fadeCir1.setFromValue(10);
+	fadeCir1.setToValue(0.1);
+	fadeCir1.setCycleCount(50);
+	fadeCir1.setDuration(Duration.millis(500));
+	fadeCir1.setNode(cir1);
+	fadeCir1.play();
+	
+	FadeTransition fadeCir2 = new FadeTransition();
+	fadeCir2.setAutoReverse(true);
+	fadeCir2.setFromValue(10);
+	fadeCir2.setToValue(0.1);
+	fadeCir2.setCycleCount(50);
+	fadeCir2.setDuration(Duration.millis(500));
+	fadeCir2.setNode(cir2);
+	fadeCir2.play();
+	
+	FadeTransition fadeCir3 = new FadeTransition();
+	fadeCir3.setAutoReverse(true);
+	fadeCir3.setFromValue(10);
+	fadeCir3.setToValue(0.1);
+	fadeCir3.setCycleCount(50);
+	fadeCir3.setDuration(Duration.millis(500));
+	fadeCir3.setNode(cir3);
+	fadeCir3.play();
+	
+	FadeTransition fadeCir4 = new FadeTransition();
+	fadeCir4.setAutoReverse(true);
+	fadeCir4.setFromValue(10);
+	fadeCir4.setToValue(0.1);
+	fadeCir4.setCycleCount(50);
+	fadeCir4.setDuration(Duration.millis(500));
+	fadeCir4.setNode(cir4);
+	fadeCir4.play();
+	
+	
+	
+	TranslateTransition trans1 = new TranslateTransition();
+	trans1.setByY(300);
+	trans1.setCycleCount(50);
+	trans1.setDuration(Duration.millis(500));
+	trans1.setAutoReverse(true);
+	trans1.setNode(cir1);
+	trans1.play();
+	
+	TranslateTransition trans2 = new TranslateTransition();
+	trans2.setCycleCount(50);
+	trans2.setByY(300);
+	trans2.setCycleCount(50);
+	trans2.setDuration(Duration.millis(500));
+	trans2.setAutoReverse(true);
+	trans2.setNode(cir2);
+	trans2.play();
+	
+	TranslateTransition trans3 = new TranslateTransition();
+	trans3.setByY(-300);
+	trans3.setCycleCount(50);
+	trans3.setDuration(Duration.millis(500));
+	trans3.setAutoReverse(true);
+	trans3.setNode(cir3);
+	trans3.play();
+	
+	TranslateTransition trans4 = new TranslateTransition();
+	
+	trans4.setByY(-300);
+	trans4.setAutoReverse(true);
+	trans4.setCycleCount(50);
+	trans4.setDuration(Duration.millis(500));
+	trans4.setNode(cir4);
+	trans4.play();
+	
+	TranslateTransition linetrans1 = new TranslateTransition();
+	linetrans1.setByY(300);
+	linetrans1.setCycleCount(50);
+	linetrans1.setDuration(Duration.millis(500));
+	linetrans1.setAutoReverse(true);
+	linetrans1.setNode(line1);
+	linetrans1.play();
+	
+	TranslateTransition linetrans2 = new TranslateTransition();
+	linetrans2.setCycleCount(50);
+	linetrans2.setByY(-300);
+	linetrans2.setCycleCount(50);
+	linetrans2.setDuration(Duration.millis(500));
+	linetrans2.setAutoReverse(true);
+	linetrans2.setNode(line2);
+	linetrans2.play();
+	
+	Group root = new Group();
+	root.getChildren().addAll(cir1,cir2,line1,cir3,cir4,line2,line3,line4);
+	Scene scene = new Scene(root,600,550,Color.WHEAT);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Animation example");
+	primaryStage.show();
+	
+
+}
+public static void main(String[] args) {
+	launch(args);
+}
+}
+
+Output:

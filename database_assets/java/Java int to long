@@ -1,0 +1,41 @@
+Java Convert int to long
+We can convert 
+int to long in java
+ using assignment operator. There is nothing to do extra because lower type can be converted to higher type implicitly. 
+It is also known as implicit type casting or type promotion.
+Java int to long Example
+Let's see the simple code to convert int to long in java.
+
+public class IntToLongExample1{
+public static void main(String args[]){
+int i=200;
+long l=i;
+System.out.println(l);
+}}
+
+Test it Now
+Output:
+
+200
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java int to Long Example
+We can convert int value to Long object by instantiating Long class or calling Long.valueOf() method. 
+Let's see the simple code to convert int to Long in java.
+
+public class IntToLongExample2{
+public static void main(String args[]){
+int i=100;
+Long l= new Long(i);//first way
+Long l2=Long.valueOf(i);//second way
+System.out.println(l);
+System.out.println(l2);
+}}
+
+Test it Now
+Output:
+
+100
+100

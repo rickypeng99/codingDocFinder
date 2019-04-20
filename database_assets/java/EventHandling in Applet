@@ -1,0 +1,57 @@
+EventHandling in Applet
+
+
+As we perform event handling in AWT or Swing, we can perform it in applet also. Let's see the simple example of event handling in applet that prints a message by click on the button.
+
+
+Example of EventHandling in applet:
+
+
+
+
+import java.applet.*;
+import java.awt.*;
+import java.awt.event.*;
+public class EventApplet extends Applet implements ActionListener{
+Button b;
+TextField tf;
+
+public void init(){
+tf=new TextField();
+tf.setBounds(30,40,150,20);
+
+b=new Button("Click");
+b.setBounds(80,150,60,50);
+
+add(b);add(tf);
+b.addActionListener(this);
+
+setLayout(null);
+}
+
+ public void actionPerformed(ActionEvent e){
+  tf.setText("Welcome");
+ } 
+}
+
+
+
+
+In the above example, we have created all the controls in init() method because it is invoked only once.
+
+
+myapplet.html
+
+
+<html>
+<body>
+<applet code="EventApplet.class" width="300" height="300">
+</applet>
+</body>
+</html>
+
+
+
+
+download this example.
+

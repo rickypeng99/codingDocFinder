@@ -1,0 +1,114 @@
+JavaFX GridPane
+GridPane Layout pane allows us to add the multiple nodes in multiple rows and columns. It is seen as a flexible grid of rows and columns where nodes can be placed in any cell of the grid. It is represented by 
+javafx.scence.layout.GridPane
+ class. We just need to instantiate this class to implement GridPane.
+Properties
+The properties of the class along with their setter methods are given in the table below. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+alignment
+
+	
+Represents the alignment of the grid within the GridPane. 
+
+	
+setAlignment(Pos value)
+
+
+
+
+
+	
+gridLinesVisible
+
+	
+This property is intended for debugging. Lines can be displayed to show the gidpane's rows and columns by setting this property to true. 
+
+	
+setGridLinesVisible(Boolean value)
+
+
+
+
+
+	
+hgap
+
+	
+Horizontal gaps among the columns 
+
+	
+setHgap(Double value)
+
+
+
+
+
+	
+vgap
+
+	
+Vertical gaps among the rows
+
+	
+setVgap(Double value)
+
+
+
+
+Constructors
+The class contains only one constructor that is given below. 
+
+
+Public GridPane(): creates a gridpane with 0 hgap/vgap. 
+
+
+Example:
+
+ package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+public class Label_Test extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		Label first_name=new Label("First Name");
+		Label last_name=new Label("Last Name");
+		TextField tf1=new TextField();
+		TextField tf2=new TextField();
+		Button Submit=new Button ("Submit"); 
+		GridPane root=new GridPane();
+		Scene scene = new Scene(root,400,200);
+		root.addRow(0, first_name,tf1);
+		root.addRow(1, last_name,tf2);
+		root.addRow(2, Submit);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+}
+
+Output:

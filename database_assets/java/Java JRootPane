@@ -1,0 +1,326 @@
+Java JRootPane
+JRootPane is a lightweight container used behind the scenes by JFrame, JDialog, JWindow, JApplet, and JInternalFrame.
+Nested Classes
+
+    
+
+        
+Modifier and Type
+
+        
+Class
+
+        
+Description
+
+    
+
+    
+
+        
+protected class
+
+        
+JRootPane.AccessibleJRootPane
+
+        
+This class implements accessibility support for the JRootPane class.
+
+    
+
+    
+
+        
+protected class
+
+        
+JRootPane.RootLayout
+
+        
+A custom layout manager that is responsible for the layout of layeredPane, glassPane, and menuBar.
+
+    
+
+
+Fields
+
+    
+
+        
+Modifier and Type
+
+        
+Field
+
+        
+Description
+
+    
+
+    
+
+        
+static int
+
+        
+COLOR_CHOOSER_DIALOG
+
+        
+Constant used for the windowDecorationStyle property.
+
+    
+
+    
+
+        
+protected JButton
+
+        
+contentPane
+
+        
+The content pane.
+
+    
+
+    
+
+        
+protected Container
+
+        
+defaultButton
+
+        
+The button that gets activated when the pane has the focus and a UI-specific action like pressing the Enter key occurs.
+
+    
+
+    
+
+        
+protected JMenuBar
+
+        
+menuBar
+
+        
+The menu bar.
+
+    
+
+    
+
+        
+protected Component
+
+        
+glassPane
+
+        
+The glass pane that overlays the menu bar and content pane, so it can intercept mouse movements and such.
+
+    
+
+    
+
+        
+static int
+
+        
+ERROR_DIALOG
+
+        
+Constant used for the windowDecorationStyle property.
+
+    
+
+
+Constructor
+
+    
+
+        
+Constructor
+
+        
+Description
+
+    
+
+    
+
+        
+JRootPane()
+
+        
+Creates a JRootPane, setting up its glassPane, layeredPane, and contentPane.
+
+    
+
+
+Useful Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+protected void
+
+        
+addImpl(Component comp, Object constraints, int index)
+
+        
+Overridden to enforce the position of the glass component as the zero child.
+
+    
+
+    
+
+        
+void
+
+        
+addNotify()
+
+        
+Notifies this component that it now has a parent component.
+
+    
+
+    
+
+        
+protected Container
+
+        
+createContentPane()
+
+        
+It is called by the constructor methods to create the default contentPane.
+
+    
+
+    
+
+        
+protected Component
+
+        
+createGlassPane()
+
+        
+It called by the constructor methods to create the default glassPane.
+
+    
+
+    
+
+        
+AccessibleContext
+
+        
+getAccessibleContext()
+
+        
+It gets the AccessibleContext associated with this JRootPane.
+
+    
+
+    
+
+        
+JButton
+
+        
+getDefaultButton()
+
+        
+It returns the value of the defaultButton property.
+
+    
+
+    
+
+        
+void
+
+        
+setContentPane(Container content)
+
+        
+It sets the content pane -- the container that holds the components parented by the root pane.
+
+    
+
+    
+
+        
+void
+
+        
+setDefaultButton(JButton defaultButton)
+
+        
+It sets the defaultButton property, which determines the current default button for this JRootPane.
+
+    
+
+    
+
+        
+void
+
+        
+setJMenuBar(JMenuBar menu)
+
+        
+It adds or changes the menu bar used in the layered pane.
+
+    
+
+
+JRootPane Example
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JRootPane;
+
+public class JRootPaneExample {
+	 public static void main(String[] args) {
+		    JFrame f = new JFrame();
+		    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		    JRootPane root = f.getRootPane();
+
+		    // Create a menu bar
+		    JMenuBar bar = new JMenuBar();
+		    JMenu menu = new JMenu("File");
+		    bar.add(menu);
+		    menu.add("Open");
+		    menu.add("Close");
+		    root.setJMenuBar(bar);
+
+		    // Add a button to the content pane
+		    root.getContentPane().add(new JButton("Press Me"));
+
+		    // Display the UI
+		    f.pack();
+		    f.setVisible(true);
+		  }
+}
+
+Output

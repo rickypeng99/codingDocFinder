@@ -1,0 +1,115 @@
+Java Annotations
+Java 
+Annotation
+ is a tag that represents the 
+metadata
+ i.e. attached with class, interface, methods or fields to indicate some additional information which can be used by java compiler and JVM.
+Annotations in java are used to provide additional information, so it is an alternative option for XML and java marker interfaces.
+First, we will learn some built-in annotations then we will move on creating and using custom annotations.
+Built-In Java Annotations
+There are several built-in annotations in java. Some annotations are applied to java code and some to other annotations. 
+Built-In Java Annotations used in java code
+
+
+@Override
+
+
+@SuppressWarnings
+
+
+@Deprecated
+
+
+Built-In Java Annotations used in other annotations
+
+
+@Target
+
+
+@Retention
+
+
+@Inherited
+
+
+@Documented
+
+
+Understanding Built-In Annotations in java
+Let's understand the built-in annotations first.
+@Override
+@Override annotation assures that the subclass method is overriding the parent class method. If it is not so, compile time error occurs.
+Sometimes, we does the silly mistake such as spelling mistakes etc. So, it is better to mark @Override annotation that provides assurity that method is overridden.
+
+class Animal{
+void eatSomething(){System.out.println("eating something");}
+}
+
+class Dog extends Animal{
+@Override
+void eatsomething(){System.out.println("eating foods");}//should be eatSomething
+}
+
+class TestAnnotation1{
+public static void main(String args[]){
+Animal a=new Dog();
+a.eatSomething();
+}}
+
+Test it Now
+
+Output:Comple Time Error
+
+@SuppressWarnings
+@SuppressWarnings annotation: is used to suppress warnings issued by the compiler.
+
+import java.util.*;
+class TestAnnotation2{
+@SuppressWarnings("unchecked")
+public static void main(String args[]){
+ArrayList list=new ArrayList();
+list.add("sonoo");
+list.add("vimal");
+list.add("ratan");
+
+for(Object obj:list)
+System.out.println(obj);
+
+}}
+
+
+Test it Now
+
+Now no warning at compile time.
+
+If you remove the @SuppressWarnings("unchecked") annotation, it will show warning at compile time because we are using non-generic collection.
+@Deprecated
+@Deprecated annoation marks that this method is deprecated so compiler prints warning. It informs user that it may be removed in the future versions. So, it is better not to use such methods.
+
+class A{
+void m(){System.out.println("hello m");}
+
+@Deprecated
+void n(){System.out.println("hello n");}
+}
+
+class TestAnnotation3{
+public static void main(String args[]){
+
+A a=new A();
+a.n();
+}}
+
+Test it Now
+At Compile Time:
+
+Note: Test.java uses or overrides a deprecated API.
+
+Note: Recompile with -Xlint:deprecation for details.
+
+At Runtime:
+
+hello n
+
+Custom Annotation
+To create and use custom java annotation, visit the next page.

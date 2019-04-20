@@ -1,0 +1,154 @@
+Java String split()
+The 
+java string split()
+ method splits this string against given regular expression and returns a char array.
+Internal implementation
+
+public String[] split(String regex, int limit) {
+        /* fastpath if the regex is a
+         (1)one-char String and this character is not one of the
+            RegEx's meta characters ".$|()[{^?*+\\", or
+         (2)two-char String and the first char is the backslash and
+            the second is not the ascii digit or ascii letter.
+         */
+        char ch = 0;
+        if (((regex.value.length == 1 &&
+             ".$|()[{^?*+\\".indexOf(ch = regex.charAt(0)) == -1) ||
+             (regex.length() == 2 &&
+              regex.charAt(0) == '\\' &&
+              (((ch = regex.charAt(1))-'0')|('9'-ch)) < 0 &&
+              ((ch-'a')|('z'-ch)) < 0 &&
+              ((ch-'A')|('Z'-ch)) < 0)) &&
+            (ch < Character.MIN_HIGH_SURROGATE ||
+             ch > Character.MAX_LOW_SURROGATE))
+        {
+            int off = 0;
+            int next = 0;
+            boolean limited = limit > 0;
+            ArrayList
+ list = new ArrayList<>();
+            while ((next = indexOf(ch, off)) != -1) {
+                if (!limited || list.size() < limit - 1) {
+                    list.add(substring(off, next));
+                    off = next + 1;
+                } else {    // last one
+                    //assert (list.size() == limit - 1);
+                    list.add(substring(off, value.length));
+                    off = value.length;
+                    break;
+                }
+            }
+            // If no match was found, return this
+            if (off == 0)
+                return new String[]{this};
+
+            // Add remaining segment
+            if (!limited || list.size() < limit)
+                list.add(substring(off, value.length));
+
+            // Construct result
+            int resultSize = list.size();
+            if (limit == 0)
+                while (resultSize > 0 && list.get(resultSize - 1).length() == 0)
+                    resultSize--;
+            String[] result = new String[resultSize];
+            return list.subList(0, resultSize).toArray(result);
+        }
+        return Pattern.compile(regex).split(this, limit);
+    }
+
+
+Signature
+There are two signature for split() method in java string.
+
+public String split(String regex)
+and,
+public String split(String regex, int limit)
+
+Parameter
+regex
+ : regular expression to be applied on string.
+limit
+ : limit for the number of strings in array. If it is zero, it will returns all the strings matching regex.
+Returns
+array of strings
+Throws
+PatternSyntaxException
+ if pattern for regular expression is invalid
+Since
+1.4
+Java String split() method example
+The given example returns total number of words in a string excluding space only. It also includes special characters.
+
+public class SplitExample{
+public static void main(String args[]){
+String s1="java string split method by javatpoint";
+String[] words=s1.split("\\s");//splits the string based on whitespace
+//using java foreach loop to print elements of string array
+for(String w:words){
+System.out.println(w);
+}
+}}
+
+Test it Now
+
+java
+string
+split
+method
+by
+javatpoint
+
+Java String split() method with regex and length example
+
+public class SplitExample2{
+public static void main(String args[]){
+String s1="welcome to split world";
+System.out.println("returning words:");
+for(String w:s1.split("\\s",0)){
+System.out.println(w);
+}
+System.out.println("returning words:");
+for(String w:s1.split("\\s",1)){
+System.out.println(w);
+}
+System.out.println("returning words:");
+for(String w:s1.split("\\s",2)){
+System.out.println(w);
+}
+
+}}
+
+Test it Now
+
+returning words:
+welcome 
+to 
+split 
+world
+returning words:
+welcome to split world
+returning words:
+welcome 
+to split world
+
+Java String split() method with regex and length example 2
+Here, we are passing split limit as a second argument to this function. This limits the number of splitted strings.
+
+public class SplitExample3 {
+	public static void main(String[] args) {
+		String str = "Javatpointtt";
+		System.out.println("Returning words:");
+		String[] arr = str.split("t", 0);
+		for (String w : arr) {
+			System.out.println(w);
+		}
+		System.out.println("Split array length: "+arr.length);
+	}
+}
+
+
+Returning words:
+Java
+poin
+Split array length: 2

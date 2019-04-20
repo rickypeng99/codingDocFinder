@@ -1,0 +1,124 @@
+Java EnumSet class
+Java EnumSet class is the specialized Set implementation for use with enum types. It inherits AbstractSet class and implements the Set interface.
+EnumSet class hierarchy
+The hierarchy of EnumSet class is given in the figure given below.
+EnumSet class declaration
+Let's see the declaration for java.util.EnumSet class.
+
+public abstract class EnumSet
+> extends AbstractSet
+ implements Cloneable, Serializable
+
+Methods of Java EnumSet class
+
+       
+
+	      
+Method
+
+		  
+Description
+
+	   
+
+	   
+
+          
+static <E extends Enum<E>> EnumSet<E> allOf(Class<E> elementType)
+
+          
+It is used to create an enum set containing all of the elements in the specified element type.
+
+       
+
+	   
+
+          
+static <E extends Enum<E>> EnumSet<E> copyOf(Collection<E> c)
+
+          
+It is used to create an enum set initialized from the specified collection.
+
+       
+
+	   
+
+          
+static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType)
+
+          
+It is used to create an empty enum set with the specified element type.
+
+       
+
+	   
+
+          
+static <E extends Enum<E>> EnumSet<E> of(E e)
+
+          
+It is used to create an enum set initially containing the specified element.
+
+       
+
+	   
+
+          
+static <E extends Enum<E>> EnumSet<E> range(E from, E to)
+
+          
+It is used to create an enum set initially containing the specified elements.
+
+       
+
+	   
+
+          
+EnumSet<E> clone()
+
+          
+It is used to return a copy of this set.
+
+       
+
+
+Java EnumSet Example
+
+import java.util.*;
+enum days {
+  SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+}
+public class EnumSetExample {
+  public static void main(String[] args) {
+    Set<days> set = EnumSet.of(days.TUESDAY, days.WEDNESDAY);
+    // Traversing elements
+    Iterator<days> iter = set.iterator();
+    while (iter.hasNext())
+      System.out.println(iter.next());
+  }
+}
+
+Output:
+
+TUESDAY
+WEDNESDAY
+
+Java EnumSet Example: allOf() and noneOf()
+
+import java.util.*;
+enum days {
+  SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+}
+public class EnumSetExample {
+  public static void main(String[] args) {
+    Set<days> set1 = EnumSet.allOf(days.class);
+      System.out.println("Week Days:"+set1);
+      Set<days> set2 = EnumSet.noneOf(days.class);
+      System.out.println("Week Days:"+set2);   
+  }
+}
+
+Output:
+
+Week Days:[SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY]
+Week Days:[]

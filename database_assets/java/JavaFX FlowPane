@@ -1,0 +1,173 @@
+JavaFX FlowPane
+FlowPane layout pane organizes the nodes in a flow that are wrapped at the flowpane's boundary. The horizontal flowpane arranges the nodes in a row and wrap them according to the flowpane's width. The vertical flowpane arranges the nodes in a column and wrap them according to the flowpane's height. FlowPane layout is represented by 
+javafx.scene.layout.FlowPane
+ class. We just need to instantiate this class to create the flowpane layout. 
+Property
+There are various properties of the class which are described in the table below. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+alignment
+
+	
+The overall alignment of the flowpane's content. 
+
+	
+setAlignment(Pos value)
+
+
+
+
+
+	
+columnHalignment 
+
+	
+The horizontal alignment of nodes within the columns. 
+
+	
+setColumnHalignment(HPos Value)
+
+
+
+
+
+	
+hgap
+
+	
+Horizontal gap between the columns. 
+
+	
+setHgap(Double value)
+
+
+
+
+
+	
+orientation
+
+	
+Orientation of the flowpane 
+
+	
+setOrientation(Orientation value)
+
+
+
+
+
+	
+prefWrapLength
+
+	
+The preferred height or width where content should wrap in the horizontal or vertical flowpane. 
+
+	
+setPrefWrapLength(double value)
+
+
+
+
+
+	
+rowValignment
+
+	
+The vertical alignment of the nodes within the rows. 
+
+	
+setRowValignment(VPos value)
+
+
+
+
+
+	
+vgap
+
+	
+The vertical gap among the rows 
+
+	
+setVgap(Double value)
+
+
+
+
+Constructors
+There are 8 constructors in the class that are given below. 
+
+
+FlowPane()
+
+
+FlowPane(Double Hgap, Double Vgap)
+
+
+FlowPane(Double Hgap, Double Vgap, Node? children)
+
+
+FlowPane(Node... Children)
+
+
+FlowPane(Orientation orientation) 
+
+
+FlowPane(Orientation orientation, double Hgap, Double Vgap)
+
+
+FlowPane(Orientation orientation, double Hgap, Double Vgap, Node? children )
+
+
+FlowPane(Orientation orientation, Node... Children)
+
+
+Example
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class FlowPaneTest extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("FlowPane Example");
+        FlowPane root = new FlowPane();
+        root.setVgap(6);
+        root.setHgap(5);
+        root.setPrefWrapLength(250);
+        root.getChildren().add(new Button("Start"));
+        root.getChildren().add(new Button("Stop"));
+        root.getChildren().add(new Button("Reset"));
+        Scene scene = new Scene(root,300,200);
+ 
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+ 
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+Output:

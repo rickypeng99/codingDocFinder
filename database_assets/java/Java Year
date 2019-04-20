@@ -1,0 +1,164 @@
+Java Year class
+Java Year class is an immutable date-time object that represents a year. It inherits the Object class and implements the Comparable interface.
+Java Year class declaration
+Let's see the declaration of java.time.Year class.
+
+public final class Year extends Object implements Temporal, TemporalAdjuster, Comparable<Year>, Serializable
+
+Methods of Java Year
+
+    
+
+      
+Method
+
+      
+Description
+
+    
+
+    
+
+      
+LocalDate atDay(int dayOfYear)
+
+      
+It is used to combine this year with a day-of-year to create a LocalDate.
+
+    
+
+    
+
+      
+String format(DateTimeFormatter formatter)
+
+      
+It is used to format this year using the specified formatter.
+
+    
+
+    
+
+      
+int get(TemporalField field)
+
+      
+It is used to get the value of the specified field from this year as an int.
+
+    
+
+     
+
+      
+boolean isAfter(Year other)
+
+      
+It is used to check if this year is after the specified year.
+
+    
+
+     
+
+      
+boolean isBefore(Year other)
+
+      
+It is used to check if this year is before the specified year.
+
+    
+
+     
+
+      
+boolean isLeap()
+
+      
+It is used to check if the year is a leap year, according to the ISO proleptic calendar system rules.
+
+    
+
+	
+
+      
+int length()
+
+      
+It is used to get the length of this year in days.
+
+    
+
+	
+
+      
+static Year now()
+
+      
+It is used to obtain the current year from the system clock in the default time-zone.
+
+    
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Year Example: now()
+
+import java.time.Year;
+public class YearExample1 {
+  public static void main(String[] args) {
+    Year y = Year.now();
+    System.out.println(y);
+  }
+}
+
+Test it Now
+Output:
+
+2017
+
+Java Year Example: atDay()
+
+import java.time.LocalDate;
+import java.time.Year;
+public class YearExample2{
+  public static void main(String[] args) {
+    Year y = Year.of(2017);
+    LocalDate l = y.atDay(123);
+    System.out.println(l);
+  }
+}
+
+Test it Now
+Output:
+
+2017-05-03
+
+Java Year Example: length()
+
+import java.time.Year;
+public class YearExample3 {
+  public static void main(String[] args) {
+    Year year = Year.of(2017);
+    System.out.println(year.length());
+  }
+}
+
+Test it Now
+Output:
+
+365
+
+Java Year Example: isLeap()
+
+import java.time.Year;
+public class YearExample4 {
+  public static void main(String[] args) {
+    Year year = Year.of(2016);
+    System.out.println(year.isLeap());
+  }
+}
+
+Test it Now
+Output:
+
+true

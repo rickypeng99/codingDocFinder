@@ -1,0 +1,402 @@
+3D Object Properties
+JavaFX allows us to set the various properties of 3D objects. There are the special classes defined for each property in JavaFX. In this part of the tutorial, we will discuss the types of the properties which can be applied to the 3D objects for the better appearance. 
+Cull Face
+Culling can be simply defined as the process of removing the part of the 3D objects which are not visible in the view area. In JavaFX, 3D shapes contain the property of the type 
+CullFace
+. This property can be set to an appropriate value by using the following instance method which is to be called on the 3D shape class object. .
+
+
+setCullFace(CullFace value)
+there are three type of strokes defined in the CullFace class that are:
+
+
+None:
+ Culling is not performed
+ 
+
+Front :
+ all the front facing polygons get culled
+ 
+
+Back :
+ all the back facing polygons get culled
+
+
+Example
+In the following example, we have created three spheres and set three of the cull faces for each one of them.  
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.SubScene;
+import javafx.scene.shape.CullFace;
+import javafx.scene.shape.Sphere;
+import javafx.stage.Stage;
+public class SphereTest extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	
+	//Creating the first sphere 
+	Sphere sphere = new Sphere();
+	sphere.setRadius(50);
+	sphere.setTranslateX(100);
+	sphere.setTranslateY(200);
+	
+	//Setting cullface for the sphere 1 
+	sphere.setCullFace(CullFace.BACK);
+	
+	//creating second sphere 
+	Sphere sphere1 = new Sphere();
+	sphere1.setRadius(50);
+	sphere1.setTranslateX(250);
+	sphere1.setTranslateY(200);
+	
+	//setting CullFace for the sphere 2
+	sphere1.setCullFace(CullFace.FRONT);
+	
+	//creating third sphere 
+	Sphere sphere2 = new Sphere();
+	sphere2.setRadius(50);
+	sphere2.setTranslateX(400);
+	sphere2.setTranslateY(200);
+	
+	//setting CullFace for the sphere 3
+	sphere2.setCullFace(CullFace.NONE);
+	
+	//Configuring Group and Scene 
+	Group root = new Group();
+	root.getChildren().addAll(sphere,sphere1,sphere2);
+	Scene scene = new Scene(root,500,400);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("CullFaces");
+	primaryStage.show();
+	}
+	publicstaticvoid main(String[] args) {
+		launch(args);
+	}
+
+}
+
+3D Object Material
+JavaFX provides different kinds of material which can be applied to the surface of a 3D shape. The class 
+Material
+ of the package 
+javafx.scene.paint
+ provides all the classes to deal with the material of a 3D shape. The class 
+PhongMaterial
+ is the subclass of the class 
+Material
+. We just need to instantiate this class to create the desired material.
+This class provides various types of materials as the properties of this class which can be set to a certain value by using the setter methods. However, the material can be applied to a shape by using the following method.
+
+shape.setMaterial(<material-type>)
+
+Properties
+The properties of the class 
+javafx.scene.paint.PhongMaterial
+ along with their setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+bumpMap
+
+	
+This property is of the type Image. This represents the Bump Map of the material. 
+
+	
+setBumpMap(Image URL)
+
+
+
+
+
+	
+diffuseColor
+
+	
+This is a color type property. This represents the diffuse color of the material. 
+
+	
+setDiffuseColor(Color color)
+
+
+
+
+
+	
+diffuseMap
+
+	
+This is an Image type property. This represents the DiffuseMap of the material. 
+
+	
+setDiffuseMap(Image URL)
+
+
+
+
+
+	
+selfIlluminationMap
+
+	
+This is an Image type property. This represents the selfillumination map of the material 
+
+	
+setSelfIlluminationMap(Image URL)
+
+
+
+
+
+	
+specularColor
+
+	
+This is a color type property. This represents the specular color of the material. 
+
+	
+setSpecularColor(Color value)
+
+
+
+
+
+	
+specularPower
+
+	
+This is a double type property. This represents the specular power of the Material. 
+
+	
+setSpecularPower(Double value)
+
+
+
+
+Example
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Cylinder;
+import javafx.scene.shape.Sphere;
+import javafx.stage.Stage;
+public class MaterialExample extends Application{
+@Override
+publicvoid start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	
+	//Creating Cylinder 1
+	Cylinder cyn = new Cylinder();
+	cyn.setRadius(70);
+	cyn.setHeight(200);
+	cyn.setTranslateX(180);
+	cyn.setTranslateY(150);
+	
+	//Creating cylinder 2 
+	Cylinder cyn1=new Cylinder();
+	cyn1.setRadius(70);
+	cyn1.setHeight(200);
+	cyn1.setTranslateX(380);
+	cyn1.setTranslateY(150);
+	
+	//Creating cylinder 3
+	Cylinder cyn2=new Cylinder();
+	cyn2.setRadius(70);
+	cyn2.setHeight(200);
+	cyn2.setTranslateX(580);
+	cyn2.setTranslateY(150);
+	
+	//Creating Sphere 
+	Sphere s=new Sphere();
+	s.setRadius(70);
+	s.setTranslateX(780);
+	s.setTranslateY(150);
+	
+
+	//Setting Material 1
+	Image img1 = new Image("https://www.javatpoint.com/kotlin/images/kotlin-	tutorial.png");
+	PhongMaterial mat = new PhongMaterial();
+	mat.setDiffuseMap(img1);
+	mat.setDiffuseColor(Color.WHITE);
+	
+	//Setting Material 2
+	PhongMaterial mat2 = new PhongMaterial();
+	mat2.setSelfIlluminationMap(img1);
+	
+	//Setting Material 3
+	PhongMaterial mat3 = new PhongMaterial();
+	mat3.setSpecularMap(img1);
+	
+	//Setting Material for sphere
+	PhongMaterial mat4 = new PhongMaterial();
+	mat4.setDiffuseColor(Color.BLUE);
+	
+	// Applying Material to 	mat4.setBumpMap(img1);the shape 
+	cyn.setMaterial(mat);
+	cyn1.setMaterial(mat2);
+	cyn2.setMaterial(mat3);
+	s.setMaterial(mat4);
+	
+	//Setting Camera 	mat4.setBumpMap(img1);
+	PerspectiveCamera camera = new PerspectiveCamera();
+	camera.setTranslateX(20);
+	camera.setTranslateY(10);
+	camera.setTranslateZ(50);
+	
+	//setting group and stage 
+	Group root = new Group();
+	root.getChildren().addAll(cyn,cyn1,cyn2,s);
+	Scene scene = new Scene(root,900,300,Color.WHITE);
+	scene.setCamera(camera);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Material Example");
+	primaryStage.show();
+}
+publicstaticvoid main(String[] args) {
+	launch(args);
+}
+}
+
+Drawing Modes
+JavaFX provides various Drawing modes to draw the 3D shapes. This property is of the type 
+DrawMode
+. The following types of DrawMode are defined in the class. 
+
+
+Fill :
+ this mode draws and fill the 3D shape. It is represented by DrawMode.Fill
+ 
+
+Line :
+  this mode draws the 3D shape using Lines only. It is represented by DrawMode.Line
+
+
+Use the following setter method to set a drawmode for the 3D shape. 
+
+Shape3D.setDrawMode(<DrawMode value>)
+
+Example
+In the following example, we have created two boxes, one is by using DrawMode Fill while the other is by using DrawMode Line. 
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
+import javafx.scene.shape.Box;
+import javafx.scene.shape.DrawMode;
+import javafx.stage.Stage;
+public class DrawModeExample extends Application{
+@Override
+publicvoid start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	//Creating Boxes 
+	Box box1 = new Box();
+	Box box2 = new Box();
+	
+	//Setting properties for second box 
+	box2.setTranslateX(450);
+	box2.setTranslateY(300);
+	box2.setTranslateZ(100);
+	box2.setHeight(150);
+	box2.setWidth(50);
+	box2.setDepth(400);
+	
+	//Setting properties for first box
+	box1.setHeight(100);
+	box1.setWidth(100);
+	box1.setDepth(400);
+	box1.setTranslateX(200);
+	box1.setTranslateY(200);
+	box1.setTranslateZ(200);
+	
+	//Setting DrawModes for the boxes 
+	box1.setDrawMode(DrawMode.FILL);
+	box2.setDrawMode(DrawMode.LINE);
+	
+	//Setting the perspective camera
+	PerspectiveCamera camera = new PerspectiveCamera();
+	camera.setTranslateX(100);
+	camera.setTranslateY(100);
+	camera.setTranslateZ(50);
+		
+	//Configuring Group, Scene and Stage
+	Group root = new Group();
+	root.getChildren().addAll(box1,box2);
+	Scene scene = new Scene(root,450,350);
+	scene.setCamera(camera);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Setting DrawMode");
+	primaryStage.show();
+	}
+	publicstaticvoid main(String[] args) {
+		launch(args);
+	}
+}
+
+JavaFX Camera
+In JavaFX, the camera is treated as an object which can be moved around a 3D layout and change the view of the Scene accordingly. The class 
+javafx.scene.Camera
+ represents camera. However, it is different from a 2D space where we don't need to move camera around the screen.
+In JavaFX, camera coordinate system, the X-coordinate points to the right, the Y-coordinate points to the down, and the Z-coordinate points away from the viewer or into the screen.
+For creating camera and adding it to the scene, we must use the following lines of code.
+// creating the instance of javafx.scene.Camera
+
+Camera  camera = new Camera();
+
+//setting the camera to 50 in the right X direction 
+
+camera.setTranslateX(50);
+
+camera.setTranslateX(50);
+
+camera.setTranslateY(100); 
+
+//setting the camera to 20 into the screen 
+
+camera.setTranslateZ(20);
+
+//Adding the camera to the scene
+
+scene.setCamera(camera);
+
+JavaFX Subscene
+A subscene node can be defined as a container which can hold the some node of the scene for which the camera angle needs to be specified. It is used for scene separation. We can use the subscene node if we need to set the different camera for a part of the scene. Subscene can be used in one of the following cases. 
+
+
+If we need a static camera(overlay) for the UI controls we are using in our scene.
+ 
+
+Y-up for the 3D objects and Y-down for the 2D UI.
+ 
+
+Underlay for background
+
+
+Use the following syntax to instantiate a subscene. 
+
+SubScene <reference> = new SubScene(Parent root, double width, double height, boolean depthbuffer, boolean antiAliasing) 

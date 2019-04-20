@@ -1,0 +1,201 @@
+JavaFX DropShadow Effect
+This effect is similar to the shadow effect. However, in DropShadow, the duplicate of the node is displayed behind the original node with the specified size and color. The class 
+javafx.scene.effect.DropShadow
+ is represents the DropShadow effect. We just need to instantiate this class in order to generate an appropriate effect. 
+Properties
+The properties of the class along with the setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+blurType
+
+	
+This represents the algorithm used to blur the shadow. 
+
+	
+setBlurType(BlurType value)
+
+
+
+
+
+	
+setBlurType(BlurType value)
+
+	
+The color of the shadow blur kernel. This property is of color type. 
+
+	
+setColor(Color value)
+
+
+
+
+
+	
+height
+
+	
+This represents the height of the shadow blur kernel. This property is of double type. 
+
+	
+setHeight(Double value)
+
+
+
+
+
+	
+input
+
+	
+This represents the input for the effect. 
+
+	
+setInput(Effect value)
+
+
+
+
+
+	
+offsetX
+
+	
+This represents the X coordinate of the shadow offset. This properly is of double type. 
+
+	
+setOffsetX(Double value)
+
+
+
+
+
+	
+offsetY
+
+	
+This represents the Y coordinate of the shadow offset. This property is of double type. 
+
+	
+setOffsetY(Double value)
+
+
+
+
+
+	
+Radius 
+
+	
+This represents the radius of the shadow blur kernel. 
+
+	
+setRadius(Double value)
+
+
+
+
+
+	
+Spread 
+
+	
+It represents the spread of the shadow blur kernel. Is is of double type. 
+
+	
+setSpread(Double value)
+
+
+
+
+
+	
+Width 
+
+	
+It represents the width of the shadow blur kernel. 
+
+	
+setWidth(double value)
+
+
+
+
+Constructors 
+The class contains four constructors 
+
+
+public DropShadow() :
+ It creates the instance with the default parameters. 
+
+
+public DropShadow(double radius, Color color) :
+ It creates the instance with the specified radius and color values. 
+
+
+public DropShadow(double radius, double offsetX, double offsetY, Color color) :
+ It creates the instance with the specified radius, offset and color values.
+ 
+
+public DropShadow(BlurType blurtype, Color color, double radius, double spread, double offsetX, double offsetY)  :
+ It creates the instance with the specified BlurType, color, radius, spread and offset values. 
+ 
+
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+public class DropShadowExample extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		Image img = new Image("https://www.javatpoint.com/images/logo/jtp_logo.png");
+		ImageView imgview = new ImageView(img);
+		imgview.setX(130);
+		imgview.setY(125);
+		imgview.setFitWidth(175);
+		DropShadow drop = new DropShadow();
+		drop.setBlurType(BlurType.GAUSSIAN);
+		drop.setColor(Color.BLACK);
+		drop.setHeight(100);
+		drop.setWidth(150);
+		drop.setOffsetX(10);
+		drop.setOffsetY(10);
+		drop.setSpread(0.2);
+		drop.setRadius(10);
+		imgview.setEffect(drop);
+		Group root = new Group();
+		Scene scene = new Scene(root,400,300);
+		root.getChildren().add(imgview);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("DropShadow Example");
+		primaryStage.show();
+	}
+public static void main(String[] args) {
+	launch(args);
+}
+}

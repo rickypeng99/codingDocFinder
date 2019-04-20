@@ -1,0 +1,45 @@
+Java Convert char to String
+We can convert 
+char to String in java
+ using 
+String.valueOf(char)
+ method of String class and 
+Character.toString(char)
+ method of Character class.
+Java char to String Example: String.valueOf() method
+Let's see the simple code to convert char to String in java using String.valueOf() method.
+
+char c='S';
+String s=String.valueOf(c);
+
+Let's see the simple example of converting char to String in java.
+
+public class CharToStringExample1{
+public static void main(String args[]){
+char c='S';
+String s=String.valueOf(c);
+System.out.println("String is: "+s);
+}}
+
+Test it Now
+Output:
+
+String is: S
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java char to String Example: Character.toString() method
+Let's see the simple code to convert char to String in java using Character.toString() method.
+
+public class CharToStringExample2{
+public static void main(String args[]){
+char c='M';  
+String s=Character.toString(c);
+System.out.println("String is: "+s);  
+}}
+
+Test it Now
+Output:
+
+String is: M

@@ -1,0 +1,135 @@
+JavaFX BoxBlur Effect
+JavaFX allows us to make the nodes blur by using the JavaFX blur effects. In general, the blur makes the image unclear. JavaFX provides the class 
+javafx.scene.effect.BoxBlur
+ which needs to be instantiated in order to apply the blur effect to the nodes. The Box filter is used in the case of BoxBlur effect in JavaFX. 
+Properties
+The properties of the class along with the setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods 
+
+
+
+
+
+	
+height
+
+	
+This is a 
+double
+ type property. It represents the height of the blur effect. 
+
+	
+setHeight(double value)
+
+
+
+
+
+	
+width
+
+	
+This is a 
+double
+ type property. It represents the width of the blur effect. 
+
+	
+setWidth(double value)
+
+
+
+
+
+	
+input
+
+	
+This property is of 
+Effect
+ type. This represents the input for the effect. 
+
+	
+setInput(Effect value)
+
+
+
+
+
+	
+iterations
+
+	
+It represents the number of repetitions of the blur effect. This is of 
+integer
+ type. 
+
+	
+setIterations(int value)
+
+
+
+
+Constructors
+The class contains two constructors 
+
+
+public BoxBlur() :
+ Creates the new instance with the default value of properties.
+ 
+
+public BoxBlur(Double width, Double height, int iterations) :
+ creates the new instance with the specified values. 
+
+
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+public class BoxBlurExample extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		Text text = new Text();
+		text.setText("Welcome to JavaTpoint");
+		text.setX(100);
+		text.setY(100);
+		text.setFont(Font.font("Calibri",FontWeight.BLACK,FontPosture.ITALIC,20));
+		text.setFill(Color.RED);
+		text.setStroke(Color.BLACK);
+		text.setUnderline(true);
+		BoxBlur b = new BoxBlur();
+		b.setHeight(5);
+		b.setWidth(2);
+		b.setIterations(1);
+		text.setEffect(b);
+		Group root = new Group();
+		root.getChildren().add(text);
+		Scene scene = new Scene(root,450,200);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("BoxBlur Example");
+		primaryStage.show();
+	}
+publicstaticvoid main(String[] args) {
+	launch(args);
+}
+}

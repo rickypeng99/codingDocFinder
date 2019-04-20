@@ -1,0 +1,162 @@
+The try-with-resources statement
+In Java, the try-with-resources statement is a try statement that declares one or more resources. The resource is as an object that must be closed after finishing the program. The try-with-resources statement ensures that each resource is closed at the end of the statement execution.
+You can pass any object that implements java.lang.AutoCloseable, which includes all objects which implement java.io.Closeable.
+The following example writes a string into a file. It uses an instance of FileOutputStream to write data into the file. FileOutputStream is a resource that must be closed after the program is finished with it. So, in this example, closing of resource is done by itself try.
+Try-with-resources Example 1
+
+import java.io.FileOutputStream;  
+public class TryWithResources {  
+public static void main(String args[]){    
+		// Using try-with-resources
+try(FileOutputStream fileOutputStream =newFileOutputStream("/java7-new-features/src/abc.txt")){    
+String msg = "Welcome to javaTpoint!";    
+byte byteArray[] = msg.getBytes(); //converting string into byte array    
+fileOutputStream.write(byteArray);
+System.out.println("Message written to file successfuly!");    
+}catch(Exception exception){
+	   System.out.println(exception);
+}    
+}    
+}  
+
+Output:
+
+Message written to file successfuly!
+
+Output of file
+
+Welcome to javaTpoint!
+
+Try-with-resources Example : Using Multiple Resources
+
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;  
+public class TryWithResources {  
+public static void main(String args[]){    
+		// Using try-with-resources
+try(	// Using multiple resources
+		FileOutputStream fileOutputStream =new FileOutputStream("/java7-new-features/src/abc.txt");
+		InputStream input = new FileInputStream("/java7-new-features/src/abc.txt")){
+	    // -----------------------------Code to write data into file--------------------------------------------//
+	    String msg = "Welcome to javaTpoint!";    
+	    byte byteArray[] = msg.getBytes(); 	// Converting string into byte array    
+	    fileOutputStream.write(byteArray);	// Writing  data into file
+	    System.out.println("------------Data written into file--------------");
+	    System.out.println(msg);
+	    // -----------------------------Code to read data from file---------------------------------------------//
+	    // Creating input stream instance
+	    DataInputStream inst = new DataInputStream(input);  
+	    int data = input.available();  
+	    // Returns an estimate of the number of bytes that can be read from this input stream. 
+	    byte[] byteArray2 = new byte[data];	//  
+	    inst.read(byteArray2);  
+	    String str = new String(byteArray2); // passing byte array into String constructor
+	    System.out.println("------------Data read from file--------------");
+	    System.out.println(str); // display file data
+}catch(Exception exception){
+	   System.out.println(exception);
+}   
+}    
+}
+
+Output:
+
+------------Data written into file--------------
+Welcome to javaTpoint!
+------------Data read from file--------------
+Welcome to javaTpoint!
+
+You can use catch and finally blocks with try-with-resources statement just like an ordinary try statement.
+Note - In a try-with-resources statement, catch or finally block executes after closing of the declared resources.
+Try-with-resources Example: using finally block
+
+import java.io.FileOutputStream;  
+public class TryWithResources {  
+public static void main(String args[]){    
+try(	FileOutputStream fileOutputStream=
+  new FileOutputStream("/home/irfan/scala-workspace/java7-new-features/src/abc.txt")){
+	// -----------------------------Code to write data into file--------------------------------------------//
+	    String msg = "Welcome to javaTpoint!";    
+     	byte byteArray[] = msg.getBytes(); 	// Converting string into byte array    
+	    fileOutputStream.write(byteArray);	// Writing  data into file
+	    System.out.println("Data written successfully!");
+}catch(Exception exception){
+	   System.out.println(exception);
+}
+finally{
+	   System.out.println("Finally executes after closing of declared resources.");
+}
+}    
+}
+
+Output:
+
+Data written successfully!
+Finally executes after closing of declared resources.
+
+Suppressed Exceptions
+If a try block throws an exception and one or more exceptions are thrown by the try-with-resources, the exceptions thrown by try-with-resources are suppressed. In other words, we can say, exceptions which are thrown by try-with-resources are suppressed exceptions.
+You can get these exceptions by using the getSuppress() method of Throwable class.
+Java added a new constructor and two new methods in Throwable class to deal with suppressed exceptions.
+
+
+
+    
+Constructor
+
+	
+Description
+
+
+
+
+ 
+    
+protected Throwable(String message,         Throwable cause, boolean enableSuppression, boolean writableStackTrace)
+
+	
+It constructs a new throwable with the specified detail message, cause, suppression enabled or disabled, and writable stack trace enabled or disabled.
+
+
+
+
+
+
+
+    
+Method
+
+	
+Description
+
+
+
+
+ 
+    
+public final void addSuppressed(Throwable exception)/td>
+	
+It appends the specified exception to the exceptions that were suppressed in order to deliver this exception. This method is thread-safe and typically called (automatically and implicitly) by the try-with-resources statement. 
+    It throws following exceptions:
+    
+IllegalArgumentException:
+ if exception is throwable, a throwable cannot suppress itself. 
+    
+NullPointerException:
+  if exception is null.
+   
+
+
+
+
+
+    
+public final Throwable[] getSuppressed()
+
+	
+It returns an array containing all of the exceptions that were suppressed by the try-with-resources statement. If no exceptions were suppressed or suppression is disabled, an empty array is returned.
+
+
+

@@ -1,0 +1,80 @@
+Java String contains()
+The 
+java string contains()
+ method searches the sequence of characters in this string. It returns 
+true
+ if sequence of char values are found in this string otherwise returns 
+false
+.
+Internal implementation
+
+	 public boolean contains(CharSequence s) {
+        return indexOf(s.toString()) > -1;
+    }
+
+
+Signature
+The signature of string contains() method is given below:
+
+public boolean contains(CharSequence sequence)
+
+Parameter
+sequence
+ : specifies the sequence of characters to be searched.
+Returns
+true
+ if sequence of char value exists, otherwise 
+false
+.
+Throws
+NullPointerException
+ : if sequence is null.
+Java String contains() method example
+
+class ContainsExample{
+public static void main(String args[]){
+String name="what do you know about me";
+System.out.println(name.contains("do you know"));
+System.out.println(name.contains("about"));
+System.out.println(name.contains("hello"));
+}}
+
+Test it Now
+
+true
+true
+false
+
+Java String contains() Method Example 2
+The contains() method searches case sensitive char sequence. If the argument is not case sensitive, it returns false. Let's see an example below.
+
+public class ContainsExample2 {
+	public static void main(String[] args) {
+		String str = "Hello Javatpoint readers";
+		boolean isContains = str.contains("Javatpoint");
+		System.out.println(isContains);
+		// Case Sensitive
+		System.out.println(str.contains("javatpoint")); // false
+	}
+}
+
+
+true
+false
+
+Java String contains() Method Example 3
+The contains() method is helpful to find a char-sequence in the string. We can use it in control structure to produce search based result. Let us see an example below.
+
+public class ContainsExample3 {	
+	public static void main(String[] args) {		
+		String str = "To learn Java visit Javatpoint.com";		
+		if(str.contains("Javatpoint.com")) {
+			System.out.println("This string contains javatpoint.com");
+		}else
+			System.out.println("Result not found");		
+	}
+}
+
+Output:
+
+This string contains javatpoint.com

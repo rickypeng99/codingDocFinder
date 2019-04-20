@@ -1,0 +1,156 @@
+Java DayOfWeek enum
+In Java the DayOfWeek is an enum representing the 7 days of the week. In addition with the textual enum name, every day-of-week has an int value.
+Java DayOfWeek enum declaration
+Let's see the declaration of java.time.DayOfWeek.
+
+public enum DayOfWeek extends Enum<DayOfWeek> implements TemporalAccessor, TemporalAdjuster
+
+Methods of Java DayOfWeek
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+int get(TemporalField field)
+
+        
+It is used to get the value of the specified field from this day-of-week as an int.
+
+    
+
+    
+
+        
+boolean isSupported(TemporalField field)
+
+        
+It is used to check if the specified field is supported.
+
+    
+
+    
+
+        
+DayOfWeek minus(long days)
+
+        
+It is used to return the day-of-week that is the specified number of days before this one.
+
+    
+
+    
+
+        
+DayOfWeek plus(long days)
+
+        
+It is used to return the day-of-week that is the specified number of days after this one.
+
+    
+
+    
+
+        
+static DayOfWeek of(int dayOfWeek)
+
+        
+It is used to obtain an instance of DayOfWeek from an int value.
+
+    
+
+    
+
+        
+static DayOfWeek[] values()
+
+        
+It is used to return an array containing the constants of this enum type, in the order they are declared.
+
+    
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java DayOfWeek Example: get()
+
+import java.time.*;
+import java.time.temporal.ChronoField;
+public class DayOfWeekExample1 {
+  public static void main(String[] args) {
+    LocalDate localDate = LocalDate.of(2017, Month.JANUARY, 25);
+    DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
+    System.out.println(dayOfWeek.get(ChronoField.DAY_OF_WEEK));
+  }
+}
+
+Test it Now
+Output:
+
+3
+
+Java DayOfWeek Example: of()
+
+import java.time.DayOfWeek;
+public class DayOfWeekExample2 {
+  public static void main(String[] args) {
+    DayOfWeek day = DayOfWeek.of(5);
+    System.out.println(day.name());
+    System.out.println(day.ordinal());
+    System.out.println(day.getValue());
+  }
+}
+
+Test it Now
+Output:
+
+FRIDAY
+4
+5
+
+Java DayOfWeek Example: plus()
+
+import java.time.*;
+public class DayOfWeekExample3 {
+  public static void main(String[] args) {
+    LocalDate date = LocalDate.of(2017, Month.JANUARY, 31);
+    DayOfWeek day = DayOfWeek.from(date);
+    System.out.println(day.getValue());
+    day = day.plus(3);
+    System.out.println(day.getValue());
+  }
+}
+
+Test it Now
+Output:
+
+2
+5
+
+Java DayOfWeek Example: minus()
+
+import java.time.*;
+public class DayOfWeekExample4 {
+  public static void main(String[] args) {
+    LocalDate date = LocalDate.of(2017, Month.JANUARY, 31);
+    DayOfWeek day = DayOfWeek.from(date);
+    System.out.println(day.getValue());
+    day = day.minus(3);
+    System.out.println(day.getValue());
+  }
+}
+
+Test it Now
+Output:
+
+2
+6

@@ -1,0 +1,51 @@
+Animation in Applet
+
+
+Applet is mostly used in games and animation. For this purpose image is required to be moved.
+
+
+
+
+Example of animation in applet:
+
+
+import java.awt.*;
+import java.applet.*;
+public class AnimationExample extends Applet {
+
+  Image picture;
+
+  public void init() {
+    picture =getImage(getDocumentBase(),"bike_1.gif");
+  }
+  
+  public void paint(Graphics g) {
+    for(int i=0;i<500;i++){
+      g.drawImage(picture, i,30, this);
+
+      try{Thread.sleep(100);}catch(Exception e){}
+    }
+  }
+}
+
+
+
+
+In the above example, drawImage() method of Graphics class is used to display the image. The 4th argument of drawImage() method of is ImageObserver object. The Component class implements ImageObserver interface. So current class object would also be treated as ImageObserver because Applet class indirectly extends the Component class.
+
+
+myapplet.html
+
+
+<html>
+<body>
+<applet code="DisplayImage.class" width="300" height="300">
+</applet>
+</body>
+</html>
+
+
+
+
+download this example.
+

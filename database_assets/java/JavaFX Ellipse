@@ -1,0 +1,119 @@
+JavaFX Ellipse
+In general, ellipse can be defined as the geometrical structure with the two focal points. The focal points in the ellipse are chosen so that the sum of the distance to the focal points is constant from every point of the ellipse.
+In JavaFX, the class 
+javafx.scene.shape.Ellipse
+ represents Ellipse. This class needs to be instantiated in order to create ellipse. This class contains various properties which needs to be set in order to render ellipse on a XY place.
+Properties
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods 
+
+
+
+
+
+	
+CenterX 
+
+	
+Horizontal position of the centre of eclipse
+
+	
+setCenterX(Double X-value)
+
+
+
+
+
+	
+CenterY
+
+	
+Vertical position of the centre of eclipse
+
+	
+setCenterY(Double Y-value)
+
+
+
+
+
+	
+RadiousX 
+
+	
+Width of Eclipse 
+
+	
+setRadiusX(Double X-Radious Vaue)
+
+
+
+
+
+	
+RadiousY
+
+	
+Height of Eclipse 
+
+	
+setRadiusY(Double Y-Radious Value)
+
+
+
+
+How to create Ellipse?
+There are the three main steps which needs to be followed in order to create ellipse 
+
+
+Instantiate Ellipse class.
+
+
+Set the requires properties for the class.
+
+
+Add the class object to the group.
+
+
+Example
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
+import javafx.stage.Stage;
+public class Shape_Example extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+	primaryStage.setTitle("Ellipse Example");
+	Group group = new Group();
+	Ellipse elipse = new Ellipse();
+	elipse.setCenterX(100);
+	elipse.setCenterY(100);
+	elipse.setRadiusX(50);
+	elipse.setRadiusY(80);
+	group.getChildren().addAll(elipse);
+	Scene scene = new Scene(group,200,300,Color.GRAY);
+	primaryStage.setScene(scene);
+	primaryStage.show();
+}
+public static void main(String[] args) {
+	launch(args);
+}
+
+}
+
+Output:

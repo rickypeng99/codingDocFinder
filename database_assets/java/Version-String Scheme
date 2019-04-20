@@ -1,0 +1,241 @@
+Java 9 New Version-String Scheme
+Java version-string is a format that contains version specific information. This version-string consists of major, minor, security and patch update releases.
+In Java 9, a new version-string scheme is introduced that looks like the below.
+
+$MAJOR.$MINOR.$SECURITY.$PATCH
+
+$MAJOR
+This version number shows a major change in Java version. It increases when a major change occurs. Like Java 8 to Java 9. Each major release contains new features to the existing one. 
+$MINOR
+This version number shows minor changes in Java version and increases with each minor update. These updates can be bug fixes, revision to standard API etc. if an update is released to Java 9, version-string format will be Java 9.1 (contains major and minor release number). 
+$SECURITY 
+This version number represents security update and increase for each new security update. Security updates can be critical fixes and security issues. If any security update is released to Java 9, the version-string format will be like: Java 9.1.5 (contains major, minor and security release number). 
+$PATCH
+This version number increases for each security and high-priority customer fixes, which has been tested together. If a patch is released to Java 9, version-string format will be Java 9.1.5.1 (contains major, minor, security and patch release number).
+Note: Each time the $PATCH version number is reset to zero if any $SECURITY, $MINOR, or $MAJOR version numbers are incremented.
+The $MINOR and $SECURITY version numbers are set to zero, if the $MAJOR version number is incremented. However, when the $MINOR version number is incremented, the subsequent $SECURITY version number need not be set to zero.
+In Java 9, a Runtime.Version class is added to get Java version information. This class contains methods and has following signature.
+Java Runtime.Version Class Signature
+
+public static final class Runtime.Version extends Object implements Comparable<Runtime.Version>
+
+Java Runtime.Version Class Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+Optional<Integer>
+
+        
+build()
+
+        
+It returns the build number.
+
+    
+
+    
+
+        
+int
+
+        
+compareTo(Runtime.Version obj)
+
+        
+It compares this version to another.
+
+    
+
+    
+
+        
+int
+
+        
+compareToIgnoreOptional(Runtime.Version obj)
+
+        
+It compares this version to another disregarding optional build information.
+
+    
+
+    
+
+        
+boolean
+
+        
+equals(Object obj)
+
+        
+It determines whether this Version is equal to another object.
+
+    
+
+    
+
+        
+boolean
+
+        
+equalsIgnoreOptional(Object obj)
+
+        
+It determines whether this Version is equal to another disregarding optional build information.
+
+    
+
+    
+
+        
+int
+
+        
+hashCode()
+
+        
+It returns the hash code of this version.
+
+    
+
+    
+
+        
+int
+
+        
+major()
+
+        
+It returns the major version number.
+
+    
+
+    
+
+        
+int
+
+        
+major()
+
+        
+It returns the minor version number or zero if it was not set.
+
+    
+
+    
+
+        
+Optional<String>
+
+        
+optional()
+
+        
+It returns optional additional identifying build information.
+
+    
+
+    
+
+        
+static Runtime.Version
+
+        
+parse(String s)
+
+        
+It parses the given string as a valid version string containing a version number followed by pre-release and build information.
+
+    
+
+    
+
+        
+Optional<String>
+
+        
+pre()
+
+        
+It returns the optional pre-release information.
+
+    
+
+    
+
+        
+int
+
+        
+security()
+
+        
+It returns the security version number or zero if it was not set.
+
+    
+
+    
+
+        
+String
+
+        
+toString()
+
+        
+It returns a string representation of this version.
+
+    
+
+    
+
+        
+List<Integer>
+
+        
+version()
+
+        
+It returns an unmodifiable List of the integer numerals contained in the version number.
+
+    
+
+
+Java Runtime.Version Example
+
+public class VersionInfoExample {
+	public static void main(String[] args) {
+		Runtime.Version version = Runtime.version(); 			     // Getting runtime version instance
+		System.out.println("Current version is "+version);  		 // Getting current Java version
+		System.out.println("Major version number "+version.major()); // Getting major version number
+		System.out.println("Minor version number "+version.minor()); // Getting minor version number
+		System.out.println("Security version number "+version.security()); 	// Getting security version number
+		System.out.println("Pre-released information "+version.pre()); 		// Getting pre-release version information
+		System.out.println("Build Number "+version.build()); 				// Getting Optional build number
+	}
+}
+
+Output:
+
+Current version is 9.0.1+11
+Major version number 9
+Minor version number 0
+Security version number 1
+Pre-released information Optional.empty
+Build Number Optional[11]

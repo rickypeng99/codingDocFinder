@@ -1,0 +1,150 @@
+JavaFX Arc
+In general, Arc is the part of the circumference of a circle or ellipse. It needs to be created in some of the JavaFX applications wherever required. JavaFX allows us to create the Arc on GUI by just instantiating 
+javafx.scene.shape.Arc
+ class. Just set the properties of the class to the appropriate values to show arc as required by the Application.
+Properties
+JavaFX Arc properties and their setter method are given in the table below. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Method
+
+
+
+
+
+	
+CenterX
+
+	
+X coordinate of the centre point
+
+	
+serCenterX(Double value)
+
+
+
+
+
+	
+CenterY
+
+	
+Y coordinate of the centre point
+
+	
+setCenterY(Double value)
+
+
+
+
+
+	
+Length
+
+	
+Angular extent of the arc in degrees 
+
+	
+setLength(Double value)
+
+
+
+
+
+	
+RadiousX
+
+	
+Full width of the ellipse of which, Arc is a part. 
+
+	
+setRadiusX(Double value)
+
+
+
+
+
+	
+RadiousY
+
+	
+Full height of the ellipse of which, Arc is a part 
+
+	
+setRadiusY(Double value)
+
+
+
+
+
+	
+StartAngle
+
+	
+Angle of the arc in degrees 
+
+	
+setStartAngle(Double value)
+
+
+
+
+
+	
+type
+
+	
+Type of Arc : OPEN, CHORD, ROUND
+
+	
+setType(Double value)
+
+
+
+
+Example
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Arc;
+import javafx.scene.shape.ArcType;
+import javafx.stage.Stage;
+public class Shape_Example extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+	primaryStage.setTitle("Arc Example");
+	Group group = new Group();
+	Arc arc = new Arc();
+	arc.setCenterX(100);
+	arc.setCenterY(100);
+	arc.setRadiusX(50);
+	arc.setRadiusY(80);
+	arc.setStartAngle(30);
+	arc.setLength(70);
+	arc.setType(ArcType.ROUND);
+	arc.setFill(Color.RED);
+	group.getChildren().addAll(arc);
+	Scene scene = new Scene(group,200,300,Color.GRAY);
+	primaryStage.setScene(scene);
+	primaryStage.show();
+}
+public static void main(String[] args) {
+	launch(args);
+}
+
+}
+
+Output:

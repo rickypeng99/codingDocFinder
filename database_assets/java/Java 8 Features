@@ -1,0 +1,837 @@
+Java 8 Features
+Oracle released a new version of Java as Java 8 in March 18, 2014. It was a revolutionary release of the Java for software development platform. It includes various upgrades to the Java programming, JVM, Tools and libraries.
+Java 8 Programming Language Enhancements
+Java 8 provides following features for Java Programming:
+
+
+Lambda expressions, 
+
+
+Method references, 
+
+
+Functional interfaces, 
+
+
+Stream API, 
+
+
+Default methods, 
+
+
+Base64 Encode Decode,
+
+
+Static methods in interface, 
+
+
+Optional class, 
+
+
+Collectors class, 
+
+
+ForEach() method, 
+
+
+Parallel array sorting, 
+
+
+Nashorn JavaScript Engine, 
+
+
+Parallel Array Sorting, 
+
+
+Type and Repating Annotations, 
+
+
+IO Enhancements, 
+
+
+Concurrency Enhancements, 
+
+
+JDBC Enhancements etc.
+
+
+Lambda Expressions
+Lambda expression helps us to write our code in functional style. It provides a clear and concise way to implement SAM interface(Single Abstract Method) by using an expression. It is very useful in collection library in which it helps to iterate, filter and extract data.
+For more information and examples: 
+click here
+Method References
+Java 8 Method reference is used to refer method of functional interface . It is compact and easy form of lambda expression. Each time when you are using lambda expression to just referring a method, you can replace your lambda expression with method reference.
+For more information and examples: 
+click here
+Functional Interface
+An Interface that contains only one abstract method is known as functional interface. It can have any number of default and static methods. It can also declare methods of object class.
+Functional interfaces are also known as Single Abstract Method Interfaces (SAM Interfaces).
+For more information and examples: 
+click here
+Optional
+Java introduced a new class Optional in Java 8. It is a public final class which is used to deal with NullPointerException in Java application. We must import 
+java.util
+ package to use this class. It provides methods to check the presence of value for particular variable.
+For more information and examples: 
+click here
+forEach
+Java provides a new method forEach() to iterate the elements. It is defined in Iterable and Stream interfaces.
+It is a default method defined in the Iterable interface. Collection classes which extends Iterable interface can use forEach() method to iterate elements.
+This method takes a single parameter which is a functional interface. So, you can pass lambda expression as an argument.
+For more information and examples: 
+click here
+Date/Time API
+Java has introduced a new Date and Time API since Java 8. The java.time package contains Java 8 Date and Time classes.
+For more information and examples: 
+click here
+Default Methods
+Java provides a facility to create default methods inside the interface. Methods which are defined inside the interface and tagged with default keyword are known as default methods. These methods are non-abstract methods and can have method body.
+For more information and examples: 
+click here
+Nashorn JavaScript Engine
+Nashorn is a JavaScript engine. It is used to execute JavaScript code dynamically at JVM (Java Virtual Machine). Java provides a command-line tool 
+jjs
+ which is used to execute JavaScript code.
+You can execute JavaScript code by two ways:
+
+
+Using jjs command-line tool, and 
+
+
+By embedding into Java source code.
+
+
+For more information and examples: 
+click here
+StringJoiner
+Java added a new final class StringJoiner in java.util package. It is used to construct a sequence of characters separated by a delimiter. Now, you can create string by passing delimiters like comma(,), hyphen(-) etc.
+For more information and examples: 
+click here
+Collectors
+Collectors is a final class that extends Object class. It provides reduction operations, such as accumulating elements into collections, summarizing elements according to various criteria etc.
+For more information and examples: 
+click here
+Stream API
+Java 8 java.util.stream package consists of classes, interfaces and an enum to allow functional-style operations on the elements. It performs lazy computation. So, it executes only when   it requires.
+For more information and examples: 
+click here
+Stream Filter
+Java stream provides a method filter() to filter stream elements on the basis of given predicate. Suppose, you want to get only even elements of your list, you can do this easily with the help of filter() method.
+This method takes predicate as an argument and returns a stream of resulted elements.
+For more information and examples: 
+click here
+Java Base64 Encoding and Decoding
+Java provides a class Base64 to deal with encryption and decryption. You need to import java.util.Base64 class in your source file to use its methods.
+This class provides three different encoders and decoders to encrypt information at each level.
+For more information and examples: 
+click here
+Java Parallel Array Sorting
+Java provides a new additional feature in Arrays class which is used to sort array elements parallelly. The parallelSort() method has added to java.util.Arrays class that uses the JSR 166 Fork/Join parallelism common pool to provide sorting of arrays. It is an overloaded method.
+For more information and examples: 
+click here
+Java 8 Security Enhancements
+1) The Java Secure Socket Extension(JSSE) provider enables the protocols Transport Layer Security (TLS) 1.1 and TLS 1.2 by default on the client side.
+2) A improved method AccessController.doPrivileged has been added which enables code to assert a subset of its privileges, without preventing the full traversal of the stack to check for other permissions.
+3) Advanced Encryption Standard (AES) and Password-Based Encryption (PBE) algorithms, such as PBEWithSHA256AndAES_128 and PBEWithSHA512AndAES_256 has been added to the SunJCE provider.
+4) Java Secure Socket Extension (SunJSSE) has enabled Server Name Indication (SNI) extension for client applications by default in JDK 7 and JDK 8 supports the SNI extension for server applications.
+The SNI extension is a feature that extends the SSL/TLS protocols to indicate what server name the client is attempting to connect to during handshaking.
+5) The SunJSSE is enhanced to support Authenticated Encryption with Associated Data (AEAD) algorithms. The Java Cryptography Extension (SunJCE) provider is enhanced to support AES/GCM/NoPadding cipher implementation as well as Galois/Counter Mode (GCM) algorithm parameters.
+6) A new command flag -importpassword is added to the keytool utility. It is used to accept a password and store it securely as a secret key. Classes such as java.security.DomainLoadStoreParameter andjava.security.PKCS12Attribute is added to support DKS keystore type.
+7) In JDK 8, the cryptographic algorithms have been enhanced with the SHA-224 variant of the SHA-2 family of message-digest implementations.
+8) Enhanced support for NSA Suite B Cryptography which includes: 
+ 
+
+OID registration for NSA Suite B cryptography algorithms
+
+
+Support for 2048-bit DSA key pair generation and additional signature algorithms for 2048-bit DSA keys such as SHA224withDSA and SHA256withDSA.
+ 
+
+Lifting of the keysize restriction from 1024 to 2048 for Diffie-Hellman (DH) algorithm.
+ 
+
+9) SecureRandom class provides the generation of cryptographically strong random numbers which is used for private or public keys, ciphers and signed messages.
+The getInstanceStrong() method was introduced in JDK 8, which returns an instance of the strongest SecureRandom. It should be used when you need to create RSA private and public key.
+SecureRandom includes following other changes:
+
+
+Two new implementations has introduced for UNIX platforms, which provide blocking and non-blocking behavior.
+ 
+
+10) A new PKIXRevocationChecker class is included which checks the revocation status of certificates with the PKIX algorithm. It supports best effort checking, end-entity certificate checking, and mechanism-specific options. 
+11) The Public Key Cryptography Standards 11 (PKCS) has been expanded to include 64-bit supports for Windows.
+12) Two new rcache types are added to Kerberos 5. Type none means no rcache at all, and type dfl means the DFL style file-based rcache. Also, the acceptor requested subkey is now supported. They are configured using the sun.security.krb5.rcache and sun.security.krb5.acceptor.subkey system properties. 
+13) In JDK 8, Kerberos 5 protocol transition and constrained delegation are supported within the same realm.
+14) Java 8 has disabled weak encryption by default. The DES-related Kerberos 5 encryption types are not supported by default. These encryption types can be enabled by adding allow_weak_crypto=true in the krb5.conf file.
+15) You can set server name to null to denote an unbound server. It means a client can request for the service using any server name. After a context is established, the server can retrieve the name as a negotiated property with the key name SASL.BOUND_SERVER_NAME.
+16) Java Native Interface (JNI) bridge to native Java Generic Security Service (JGSS) is now supported on Mac OS X. You can set system property sun.security.jgss.native to true to enable it.
+17) A new system property, jdk.tls.ephemeralDHKeySize is defined to customize the ephemeral DH key sizes. The minimum acceptable DH key size is 1024 bits, except for exportable cipher suites or legacy mode (jdk.tls.ephemeralDHKeySize=legacy).
+18) Java Secure Socket Extension (JSSE) provider honors the client's cipher suite preference by default. However, the behavior can be changed to respect the server's cipher suite preference by calling SSLParameters.setUseCipherSuitesOrder(true) over the server.
+Java 8 Tools Enhancements
+1) A jjs command is introduced, which invokes the Nashorn engine either in interactive shell mode, or to interpret script files.
+2) The java command is capable of launching JavaFX applications, provided that the JavaFX application is packaged correctly.
+3) The java command man page (both nroff and HTML) has been completely reworked. The advanced options are now divided into Runtime, Compiler, Garbage Collection, and Serviceability, according to the area that they affect. Several previously missing options are now described. There is also a section for options that were deprecated or removed since the previous release.
+4) New jdeps command-line tool allows the developer to analyze class files to determine package-level or class-level dependencies.
+5) You can access diagnostic commands remotely, which were previously accessible only locally via the jcmd tool. Remote access is provided using the Java Management Extensions (JMX), so diagnostic commands are exposed to a platform MBean registered to the platform MBean server. The MBean is the com.sun.management.DiagnosticCommandMBean interface.
+6) A new option -tsapolicyid is included in the jarsigner tool which enables you to request a signed time stamp from a Time Stamping Authority and attach it to a signed JAR file.
+7)  A new method java.lang.reflect.Executable.getParameters is included which allows you to access the names of the formal parameters of any method or constructor. However, .class files do not store formal parameter names by default. To store formal parameter names in a particular .class file, and thus enable the Reflection API to retrieve formal parameter names, compile the source file with the -parameters option of the javac compiler.
+8) The type rules for binary comparisons in the Java Language Specification (JLS) Section 15.21 will now be correctly enforced by javac.
+9) In this release, the apt tool and its associated API contained in the package com.sun.mirror have been removed.
+Javadoc Enhancements
+In Java SE 8, the following new APIs were added to the Javadoc tool.
+
+
+A new DocTree API introduce a scanner which enables you to traverse source code that is represented by an abstract syntax tree. This extends the Compiler Tree API to provide structured access to the content of javadoc comments.
+
+
+The javax.tools package contains classes and interfaces that enable you to invoke the Javadoc tool directly from a Java application, without executing a new process.
+
+
+The "Method Summary" section of the generated documentation of a class or interface has been restructured. Method descriptions in this section are grouped by type. By default, all methods are listed. You can click a tab to view methods of a particular type (static, instance, abstract, concrete, or deprecated, if they exist in the class or interface).
+
+
+The javadoc tool now has support for checking the content of javadoc comments for issues that could lead to various problems, such as invalid HTML or accessibility issues, in the files that are generated by javadoc. The feature is enabled by default, and can also be controlled by the new -Xdoclint option.
+
+
+Pack200 Enhancements
+The Java class file format has been updated because of JSR 292 which Supports Dynamically Typed Languages on the Java Platform.
+The Pack200 engine has been updated to ensure that Java SE 8 class files are compressed effectively. Now, it can recognize constant pool entries and new bytecodes introduced by JSR 292. As a result, compressed files created with this version of the pack200 tool will not be compatible with older versions of the unpack200 tool.
+Java 8 I/O Enhancements
+In Java 8, there are several improvements to the java.nio.charset.Charset and extended charset implementations. It includes the following:
+
+
+A New SelectorProvider which may improve performance or scalability for server. The /dev/poll SelectorProvider continues to be the default. To use the Solaris event port mechanism, run with the system property java.nio.channels.spi.Selector set to the value sun.nio.ch.EventPortSelectorProvider.
+
+
+The size of <JDK_HOME>/jre/lib/charsets.jar file is decreased.
+
+
+Performance has been improvement for the java.lang.String(byte[], ∗) constructor and the java.lang.String.getBytes() method.
+
+
+Java 8 Networking Enhancements
+1) A new class java.net.URLPermission has been added. It represents a permission for accessing a resource defined by a given URL.
+2) A package jdk.net has been added which contains platform specific socket options and a mechanism for setting these options on all of the standard socket types. The socket options are defined in jdk.net.ExtendedSocketOptions.
+3) In class HttpURLConnection, if a security manager is installed, and if a method is called which results in an attempt to open a connection, the caller must possess either a "connect"SocketPermission to the host/port combination of the destination URL or a URLPermission that permits this request.
+If automatic redirection is enabled, and this request is redirected to another destination, the caller must also have permission to connect to the redirected host/URL.
+Java 8 Concurrency Enhancements
+The java.util.concurrent package added two new interfaces and four new classes.
+Java.util.concurrent Interfaces
+
+    
+
+        
+Interface
+
+        
+Description
+
+    
+
+    
+
+        
+public static interface CompletableFuture.AsynchronousCompletionTask
+
+        
+It is a marker interface which is used to identify asynchronous tasks produced by async methods. It may be useful for monitoring, debugging, and tracking asynchronous activities.
+
+    
+
+    
+
+        
+public interface CompletionStage<T>
+
+        
+It creates a stage of a possibly asynchronous computation, that performs an action or computes a value when another CompletionStage completes. 
+
+    
+
+
+Java.util.concurrent Classes
+
+    
+
+        
+Class
+
+        
+Description
+
+    
+
+    
+
+        
+public class CompletableFuture<T> extends Object implements Future<T>, CompletionStage<T>
+
+        
+It is aFuture that may be explicitly completed, and may be used as a CompletionStage, supporting dependent functions and actions that trigger upon its completion.
+
+    
+
+    
+
+        
+public static class ConcurrentHashMap.KeySetView<K,V> extends Object implements Set<K>, Serializable
+
+        
+It is a view of a ConcurrentHashMap as a Set of keys, in which additions may optionally be enabled by mapping to a common value.
+
+    
+
+    
+
+        
+public abstract class CountedCompleter<T> extends ForkJoinTask<T>
+
+        
+A ForkJoinTask with a completion action performed when triggered and there are no remaining pending actions. 
+
+    
+
+    
+
+        
+public class CompletionException extends RuntimeException
+
+        
+It throws an exception when an error or other exception is encountered in the course of completing a result or task.
+
+    
+
+
+New Methods in java.util.concurrent.ConcurrentHashMap class
+ConcurrentHashMap class introduces several new methods in its latest release. It includes various forEach methods (forEach, forEachKey, forEachValue, and forEachEntry), search methods (search, searchKeys, searchValues, and searchEntries) and a large number of reduction methods (reduce, reduceToDouble, reduceToLong etc.). Other miscellaneous methods (mappingCount and newKeySet) have been added as well.
+New classes in java.util.concurrent.atomic
+Latest release introduces scalable, updatable, variable support through a small set of new classes DoubleAccumulator, DoubleAdder, LongAccumulator andLongAdder. It internally employ contention-reduction techniques that provide huge throughput improvements as compared to Atomic variables.
+
+    
+
+        
+Class
+
+        
+Description
+
+    
+
+    
+
+        
+public class DoubleAccumulator extends Number implements Serializable
+
+        
+It is used for one or more variables that together maintain a running double value updated using a supplied function. 
+
+    
+
+    
+
+        
+public class DoubleAdder extends Number implements Serializable
+
+        
+It is used for one or more variables that together maintain an initially zero double sum. 
+
+    
+
+    
+
+        
+public class LongAccumulator extends Number implements Serializable
+
+        
+It is used for one or more variables that together maintain a running long value updated using a supplied function. 
+
+    
+
+    
+
+        
+public class LongAdder extends Number implements Serializable
+
+        
+It is used for one or more variables that together maintain an initially zero long sum. 
+
+    
+
+
+New methods in java.util.concurrent.ForkJoinPool Class
+This class has added two new methods getCommonPoolParallelism() and commonPool(), which return the targeted parallelism level of the common pool, or the common pool instance, respectively.
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+public static ForkJoinPool commonPool()
+
+        
+It returns the common pool instance. 
+
+    
+
+    
+
+        
+Public static int  getCommonPoolParallelism()
+
+        
+It returns the targeted parallelism level of the common pool.
+
+    
+
+
+New class java.util.concurrent.locks.StampedLock
+A new class StampedLock is added which is used to add capability-based lock with three modes for controlling read/write access (writing, reading, and optimistic reading). This class also supports methods that conditionally provide conversions across the three modes. 
+
+    
+
+        
+Class
+
+        
+Description
+
+    
+
+    
+
+        
+public class StampedLock extends Object implements Serializable
+
+        
+This class represents a capability-based lock with three modes for controlling read/write access.
+
+    
+
+
+Java API for XML Processing (JAXP) 1.6 Enhancements
+In Java 8, Java API is added for XML Processing (JAXP) 1.6. It requires the use of the service provider loader facility which is defined by java.util.ServiceLoader to load services from service configuration files.
+The rationale for this is to allow for future modularization of the Java SE platform where service providers may be deployed by means other than JAR files and perhaps without the service configuration files.
+Java Virtual Machine Enhancements
+The verification of invokespecial instructions has been tightened so that only an instance initialization method in the current class or its direct super class may be invoked.
+Java Mission Control 5.3 is included in Java 8
+Java Mission Control (JMC) is an advanced set of tools that enables efficient and detailed data analysis and delivers advanced, unobtrusive Java monitoring and management. JMC provides sections for common analysis areas such as code performance, memory and latency.
+Babel Language Packs in Japanese and Simplified Chinese are now included by default in the Java Mission Control that is included in the JDK 8.
+Java 8 Internationalization Enhancements
+1) Unicode Enhancements
+The JDK 8 includes support for Unicode 6.2.0. It contains the following features.
+
+
+733 new characters including Turkish Lira sign.
+
+
+
+
+7 new scripts:
+
+
+
+
+Meroitic Hieroglyphs
+ 
+
+Meroitic Cursive 
+
+
+Sora Sompeng
+
+
+Chakma
+ 
+
+Sharada
+ 
+
+Takri
+ 
+
+Miao
+ 
+
+
+
+
+
+11 new blocks: including 7 blocks for the new scripts listed above and 4 blocks for the following existing scripts:
+
+
+Arabic Extended-A
+ 
+
+Sundanese Supplement
+ 
+
+Meetei Mayek Extensions
+ 
+
+Arabic Mathematical Alphabetical Symbols
+ 
+
+Adoption of Unicode CLDR Data and the java.locale.providers System Property
+The Unicode Consortium has released the Common Locale Data Repository (CLDR) project to "support the world's languages, with the largest and most extensive standard repository of locale data available." The CLDR is becoming the de-facto standard for locale data.
+The CLDR's XML-based locale data has been incorporated into the JDK 8 release, however it is disabled by default.
+There are four distinct sources for locale data:
+
+
+CLDR represents the locale data provided by the Unicode CLDR project.
+  
+
+HOST represents the current user's customization of the underlying operating system's settings. It works only with the user's default locale, and the customizable settings may vary depending on the OS, but primarily Date, Time, Number, and Currency formats are supported. 
+ 
+
+SPI represents the locale sensitive services implemented in the installed SPI providers.
+  
+
+JRE represents the locale data that is compatible with the prior JRE releases. 
+ 
+
+To select the desired locale data source, use the java.locale.providers system property. listing the data sources in the preferred order. For example:
+java.locale.providers=HOST,SPI,CLDR,JRE
+The default behavior is equivalent to the following setting:
+java.locale.providers=JRE,SPI
+Java 8 New Calendar and Locale APIs
+The JDK 8 includes two new classes, several new methods, and a new return value for an existing static method.
+Two new abstract classes for service providers are added to the java.util.spi package.
+
+    
+
+        
+Class
+
+        
+Description
+
+    
+
+    
+
+        
+public abstract class CalendarDataProvider extends LocaleServiceProvider
+
+        
+It is an abstract class for service providers that provide locale-dependent Calendar parameters.
+
+    
+
+    
+
+        
+public abstract class CalendarNameProvider extends LocaleServiceProvider
+
+        
+It is an abstract class for service providers that provide localized string representations (display names) of Calendar field values. 
+
+    
+
+
+A static method is now able to recognize Locale.UNICODE_LOCALE_EXTENSION for the numbering system.
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+public static final DecimalFormatSymbols getInstance(Locale locale)
+
+        
+It is used to get the DecimalFormatSymbols instance for the specified locale. This method provides access to DecimalFormatSymbols instances for locales supported by the Java runtime itself as well as for those supported by installed DecimalFormatSymbolsProvider implementations.
+It throws NullPointerException if locale is null.
+
+    
+
+
+Added New methods in calender API:
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+public boolean isSupportedLocale(Locale locale)
+
+        
+It returns true if the given locale is supported by this locale service provider. The given locale may contain extensions that should be taken into account for the support determination. 
+It is define in java.util.spi.LocaleServiceProvider class
+
+
+    
+
+    
+
+        
+public String getCalendarType()
+
+        
+It returns the calendar type of this Calendar. Calendar types are defined by the Unicode Locale Data Markup Language (LDML) specification. 
+It is defined in java.util.Calendar class.
+
+
+    
+
+
+New style specifiers are added for the Calendar.getDisplayName and Calendar.getDisplayNames methods to determine the format of the Calendar name.
+
+    
+
+        
+Specifier
+
+        
+Description
+
+    
+
+    
+
+        
+public static final int SHORT_FORMAT
+
+        
+It is a style specifier for getDisplayName and getDisplayNames indicating a short name used for format.
+
+    
+
+    
+
+        
+public static final int LONG_FORMAT
+
+        
+It is a style specifier for getDisplayName and getDisplayNames indicating a long name used for format.
+
+    
+
+    
+
+        
+public static final int SHORT_STANDALONE
+
+        
+It is a style specifier for getDisplayName and getDisplayNames indicating a short name used independently, such as a month abbreviation as calendar headers.
+
+    
+
+    
+
+        
+public static final int LONG_STANDALONE
+
+        
+It is a style specifier for getDisplayName and getDisplayNames indicating a long name used independently, such as a month name as calendar headers.
+
+    
+
+
+Two new Locale methods for dealing with a locale's (optional) extensions.
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+public boolean hasExtensions()
+
+        
+It returns true if this Locale has any extensions.
+
+    
+
+    
+
+        
+public Locale stripExtensions()
+
+        
+It returns a copy of this Locale with no extensions. If this Locale has no extensions, this Locale is returned itself.
+
+    
+
+
+Two new Locale.filter methods return a list of Locale instances that match the specified criteria, as defined in RFC 4647: 
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+public static List<Locale> 
+filter(List<Locale.LanguageRange> priorityList,Collection<Locale> locales)
+
+
+        
+It returns a list of matching Locale instances using the filtering mechanism defined in RFC 4647. This is equivalent to filter(List, Collection, FilteringMode) when mode is Locale.FilteringMode.AUTOSELECT_FILTERING.
+
+    
+
+    
+
+        
+public static List<Locale> 
+filter(List<Locale.LanguageRange> priorityList,Collection<Locale> locales, Locale.FilteringMode mode)
+
+
+        
+It returns a list of matching Locale instances using the filtering mechanism defined in RFC 4647.
+
+    
+
+
+Two new Locale.filterTags methods return a list of language tags that match the specified criteria, as defined in RFC 4647.
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+public static List<String> filterTags(List<Locale.LanguageRange> priorityList, Collection<String> tags)
+
+        
+It returns a list of matching languages tags using the basic filtering mechanism defined in RFC 4647. This is equivalent to filterTags(List, Collection, FilteringMode) when mode is Locale.FilteringMode.AUTOSELECT_FILTERING.
+
+    
+
+    
+
+        
+public static List<String> filterTags(List<Locale.LanguageRange> priorityList, Collection<String> tags, Locale.FilteringMode mode)
+
+        
+It returns a list of matching languages tags using the basic filtering mechanism defined in RFC 4647.
+
+    
+
+
+Two new lookup methods return the best-matching locale or language tag using the lookup mechanism defined in RFC 4647.
+
+    
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+public static Locale lookup(List<Locale.LanguageRange> priorityList, Collection<Locale> locales)
+
+        
+It returns a Locale instance for the best-matching language tag using the lookup mechanism defined in RFC 4647.
+
+    
+
+    
+
+        
+Public static String lookupTag(List<Locale.LanguageRange> priorityList,Collection<String> tags)
+
+        
+It returns the best-matching language tag using the lookup mechanism defined in RFC 4647.
+
+    
+
+
+Other Java 8 Version Enhancements
+Enhancements in JDK 8u5
+1) The frequency in which the security prompts are shown for an application has been reduced.
+Enhancements in JDK 8u11
+1) An option to suppress offers from sponsors when the JRE is installed or updated is available in the Advanced tab of the Java Control Panel.
+2) The Entry-Point attribute can be included in the JAR file manifest to identify one or more classes as a valid entry point for your RIA(Rich Internet application).
+Enhancements in JDK 8u20
+1) The javafxpackager tool has been renamed to javapackager. This tool has been enhanced with new arguments for self-contained application bundlers.
+Follwing enhancements are related to the java tool:
+
+
+An experimental JIT compiler option related to Restricted Transactional Memory (RTM) has been added.
+
+
+Several options related to string deduplication have been added.
+
+
+Several options related to Advanced Encryption Standard (AES) intrinsics have been added.
+
+
+Combinations of garbage collection options have been deprecated.
+
+
+2) Garbage Collection Tuning Guide has been added to the Java HotSpot Virtual Machine. It describes the garbage collectors included with the Java HotSpot VM and helps you to decide which garbage collector can best optimize the performance of your application, especially if it handles large amounts of data (multiple gigabytes), has many threads, and has high transaction rates.
+Enhancements in JDK 8u31
+1) In this release, the SSLv3 protocol is removed from the Java Control Panel Advanced options.
+Enhancements in JDK 8u40
+Java tool
+1) The -XX:+CheckEndorsedAndExtDirs has been added because the endorsed-standards override mechanism (JDK-8065675) and the extension mechanism (JDK-8065702) have been deprecated. The option helps identify any existing uses of these mechanisms and is supported in JDK 7u80 and JDK 8u40.
+2) Java Flight Recorder (JFR) offers a variety of ways to unlock commercial features and enable JFR during the runtime of an application. 
+It includes java command line options such as jcmd diagnostic commands and Graphical User Interface (GUI) controls within Java Mission Control. This flexibility enables you to provide the appropriate options at startup, or interact with JFR later.
+3) The option -XX:StartFlightRecording=parameter=value has a new parameter, dumponexit={true|false}, which specifies whether a dump file of JFR data should be generated when the JVM terminates in a controlled manner.
+4) The options related to Restricted Transactional Memory (RTM) are no longer experimental. These options include -XX:RTMAbortRatio=abort_ratio, -XX:RTMRetryCount=number_of_retries, -XX:+UseRTMDeopt, and -XX:+UseRTMLocking.
+5) In Java 8, Application Class Data Sharing (AppCDS) has been introduced. AppCDS extends CDS (Class Data Sharing) to enable classes from the standard extensions directories and the application class path to be placed in the shared archive. This is a commercial feature and is no longer considered experimental.
+6) New options -XX:+ResourceManagement and -XX:ResourceManagementSampleInterval=value have been added.
+7) Additional information about large pages has been added. Large Pages, also known as huge pages, are memory pages that are significantly larger than the standard memory page size. Large pages optimize processor Translation-Lookaside Buffers. The Linux options -XX:+UseHugeTLBFS, -XX:+UseSHM, and -XX:+UseTransparentHugePages have been documented.
+8) The option -XX:ObjectAlignmentInBytes=alignment has been documented.
+JJS tool
+1) The option --optimistic-types=[true|false] has been added. It enables or disables optimistic type assumptions with deoptimizing recompilation. 
+2) The option --language=[es5] has been added to the jjs tool. It specifies the ECMAScript language version.
+Javapackager tool
+1) New arguments are available for OS X bundlers. The mac.CFBundleVersion argument identifies the internal version number to be used.
+2) The mac.dmg.simple argument indicates if DMG customization steps that depend on executing AppleScript code are skipped.
+Jcmd tool
+Jcmd tool is used to dynamically interact with Java Flight Recorder (JFR). You can use it to unlock commercial features, enable/start/stop flight recordings, and obtain various status messages from the system.
+Jstat tool
+The jstat tool has been updated with information about compressed class space which is a special part of metaspace.
+Virtual machine
+The Scalable Native Memory Tracking HotSpot VM feature helps diagnose VM memory leaks and clarify users when memory leaks are not in the VM. Native Memory Tracker can be run without self-shutdown on large systems and without causing a significant performance impact beyond what is considered acceptable for small programs.

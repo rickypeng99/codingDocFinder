@@ -1,0 +1,139 @@
+Java JColorChooser
+The JColorChooser class is used to create a color chooser dialog box so that user can select any color. It inherits 
+JComponent
+ class.
+JColorChooser class declaration
+Let's see the declaration for javax.swing.JColorChooser class.
+
+public class JColorChooser extends JComponent implements Accessible
+
+Commonly used Constructors:
+
+     
+
+         
+Constructor
+
+		 
+Description
+
+     
+
+     
+
+         
+JColorChooser()
+
+         
+It is used to create a color chooser panel with white color initially.
+
+     
+
+     
+
+         
+JColorChooser(color initialcolor)
+
+         
+It is used to create a color chooser panel with the specified color initially.
+
+     
+
+
+Commonly used Methods:
+
+     
+
+         
+Method
+
+		 
+Description
+
+     
+
+     
+
+         
+void addChooserPanel(AbstractColorChooserPanel panel)
+
+         
+It is used to add a color chooser panel to the color chooser.
+
+     
+
+     
+
+         
+static Color showDialog(Component c, String title, Color initialColor)
+
+         
+It is used to show the color chooser dialog box.
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java JColorChooser Example
+
+import java.awt.event.*;  
+import java.awt.*;  
+import javax.swing.*;   
+public class ColorChooserExample extends JFrame implements ActionListener {  
+JButton b;  
+Container c;  
+ColorChooserExample(){  
+    c=getContentPane();  
+    c.setLayout(new FlowLayout());       
+    b=new JButton("color");  
+    b.addActionListener(this);       
+    c.add(b);  
+}  
+public void actionPerformed(ActionEvent e) {  
+Color initialcolor=Color.RED;  
+Color color=JColorChooser.showDialog(this,"Select a color",initialcolor);  
+c.setBackground(color);  
+}  
+  
+public static void main(String[] args) {  
+    ColorChooserExample ch=new ColorChooserExample();  
+    ch.setSize(400,400);  
+    ch.setVisible(true);  
+    ch.setDefaultCloseOperation(EXIT_ON_CLOSE);  
+}  
+}  
+
+Output:
+Java JColorChooser Example with ActionListener
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class ColorChooserExample extends JFrame implements ActionListener{
+JFrame f;
+JButton b;
+JTextArea ta;
+ColorChooserExample(){
+	f=new JFrame("Color Chooser Example.");
+	b=new JButton("Pad Color");
+	b.setBounds(200,250,100,30);
+	ta=new JTextArea();
+	ta.setBounds(10,10,300,200);
+	b.addActionListener(this);
+	f.add(b);f.add(ta);
+	f.setLayout(null);
+	f.setSize(400,400);
+	f.setVisible(true);
+}
+public void actionPerformed(ActionEvent e){
+	Color c=JColorChooser.showDialog(this,"Choose",Color.CYAN);
+	ta.setBackground(c);
+}
+public static void main(String[] args) {
+	new ColorChooserExample();
+}
+}	
+
+Output:

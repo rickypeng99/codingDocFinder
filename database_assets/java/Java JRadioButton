@@ -1,0 +1,196 @@
+Java JRadioButton
+The JRadioButton class is used to create a radio button. It is used to choose one option from multiple options. It is widely used in exam systems or quiz.
+It should be added in ButtonGroup to select one radio button only.
+JRadioButton class declaration
+Let's see the declaration for javax.swing.JRadioButton class.
+
+public class JRadioButton extends JToggleButton implements Accessible
+
+Commonly used Constructors:
+
+     
+
+         
+Constructor
+
+		 
+Description
+
+     
+
+     
+
+         
+JRadioButton()
+
+         
+Creates an unselected radio button with no text.
+
+     
+
+     
+
+         
+JRadioButton(String s)
+
+         
+Creates an unselected radio button with specified text.
+
+     
+
+     
+
+         
+JRadioButton(String s, boolean selected)
+
+         
+Creates a radio button with the specified text and selected status.
+
+     
+
+
+Commonly used Methods:
+
+     
+
+         
+Methods
+
+		 
+Description
+
+     
+
+     
+
+         
+void setText(String s)
+
+         
+It is used to set specified text on button.
+
+     
+
+     
+
+         
+String getText()
+
+         
+It is used to return the text of the button.
+
+     
+
+     
+
+         
+void setEnabled(boolean b)
+
+         
+It is used to enable or disable the button.
+
+     
+
+	 
+
+         
+void setIcon(Icon b)
+
+         
+It is used to set the specified Icon on the button.
+
+     
+
+	 
+
+         
+ Icon getIcon()
+
+         
+It is used to get the Icon of the button.
+
+     
+
+	 
+
+         
+void setMnemonic(int a)
+
+         
+It is used to set the mnemonic on the button.
+
+     
+
+	 
+
+         
+void addActionListener(ActionListener a)
+
+         
+It is used to add the action listener to this object.
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java JRadioButton Example
+
+import javax.swing.*;  
+public class RadioButtonExample {  
+JFrame f;  
+RadioButtonExample(){  
+f=new JFrame();   
+JRadioButton r1=new JRadioButton("A) Male");  
+JRadioButton r2=new JRadioButton("B) Female");  
+r1.setBounds(75,50,100,30);  
+r2.setBounds(75,100,100,30);  
+ButtonGroup bg=new ButtonGroup();  
+bg.add(r1);bg.add(r2);  
+f.add(r1);f.add(r2);    
+f.setSize(300,300);  
+f.setLayout(null);  
+f.setVisible(true);  
+}  
+public static void main(String[] args) {  
+    new RadioButtonExample();  
+}  
+}  
+
+Output:
+Java JRadioButton Example with ActionListener
+
+import javax.swing.*;  
+import java.awt.event.*;  
+class RadioButtonExample extends JFrame implements ActionListener{  
+JRadioButton rb1,rb2;  
+JButton b;  
+RadioButtonExample(){    
+rb1=new JRadioButton("Male");  
+rb1.setBounds(100,50,100,30);    
+rb2=new JRadioButton("Female");  
+rb2.setBounds(100,100,100,30);  
+ButtonGroup bg=new ButtonGroup();  
+bg.add(rb1);bg.add(rb2);  
+b=new JButton("click");  
+b.setBounds(100,150,80,30);  
+b.addActionListener(this);  
+add(rb1);add(rb2);add(b);  
+setSize(300,300);  
+setLayout(null);  
+setVisible(true);  
+}  
+public void actionPerformed(ActionEvent e){  
+if(rb1.isSelected()){  
+JOptionPane.showMessageDialog(this,"You are Male.");  
+}  
+if(rb2.isSelected()){  
+JOptionPane.showMessageDialog(this,"You are Female.");  
+}  
+}  
+public static void main(String args[]){  
+new RadioButtonExample();  
+}} 
+
+Output:

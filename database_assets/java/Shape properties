@@ -1,0 +1,137 @@
+JavaFX Shape Properties
+All the JavaFX 2D shape classes acquires the common properties defined by 
+JavaFX.scene.shape.Shape
+ class. In the following table, we have described the common shape properties. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+fill
+
+	
+Used to fill the shape with a defined paint. This is a object <paint> type property. 
+
+	
+setFill(Paint)
+
+
+
+
+
+	
+smooth
+
+	
+This is a boolean type property. If true is passes then the edges of the shape will become smooth. 
+
+	
+setSmooth(boolean)
+
+
+
+
+
+	
+strokeDashOffset
+
+	
+It defines the distances in the coordinate system which shows the shapes in the dashing patterns. This is a double type property. 
+
+	
+setStrokeDashOffset(Double)
+
+
+
+
+
+	
+strokeLineCap
+
+	
+It represents the style of the line end cap. It is a strokeLineCap type property. 
+
+	
+setStrokeLineCap(StrokeLineCap)
+
+
+
+
+
+	
+strokeLineJoin
+
+	
+It represents the style of the joint of the two paths. 
+
+	
+setStrokeLineJoin(StrokeLineJoin)
+
+
+
+
+
+	
+strokeMiterLimit
+
+	
+It applies the limitation on the distance between the inside and outside points of a joint. It is a double type property.  
+
+	
+setStrokeMiterLimit(Double)
+
+
+
+
+
+	
+stroke 
+
+	
+It is a colour type property which represents the colour of the boundary line of the shape. 
+
+	
+setStroke(paint)
+
+
+
+
+
+	
+strokeType
+
+	
+It represents the type of the stroke (where the boundary line will be imposed to the shape) whether inside, outside or centred. 
+
+	
+setStrokeType(StrokeType)
+
+
+
+
+
+	
+strokeWidth
+
+	
+It represents the width of the stroke. 
+
+	
+setStrokeWidth(Double)
+
+
+
+
+Examples

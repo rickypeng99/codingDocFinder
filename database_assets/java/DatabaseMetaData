@@ -1,0 +1,139 @@
+Java DatabaseMetaData interface
+
+DatabaseMetaData interface provides methods to get meta data of a database such as database product name, database product version, driver name, name of total number of tables, name of total number of views etc.
+
+Commonly used methods of DatabaseMetaData interface
+
+
+public String getDriverName()throws SQLException: 
+it returns the name of the JDBC driver.
+
+
+public String getDriverVersion()throws SQLException: 
+it returns the version number of the JDBC driver.
+
+
+public String getUserName()throws SQLException: 
+it returns the username of the database.
+
+
+public String getDatabaseProductName()throws SQLException: 
+it returns the product name of the database.
+
+
+public String getDatabaseProductVersion()throws SQLException: 
+it returns the product version of the database.
+
+
+public ResultSet getTables(String catalog, String schemaPattern, String tableNamePattern, String[] types)throws SQLException: 
+it returns the description of the tables of the specified catalog. The table type can be TABLE, VIEW, ALIAS, SYSTEM TABLE, SYNONYM etc.
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+How to get the object of DatabaseMetaData:
+The getMetaData() method of Connection interface returns the object of DatabaseMetaData. Syntax:
+
+
+public DatabaseMetaData getMetaData()throws SQLException
+
+
+Simple Example of DatabaseMetaData interface :
+
+import java.sql.*;
+class Dbmd{
+public static void main(String args[]){
+try{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+
+Connection con=DriverManager.getConnection(
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+DatabaseMetaData dbmd=con.getMetaData();
+
+System.out.println("Driver Name: "+dbmd.getDriverName());
+System.out.println("Driver Version: "+dbmd.getDriverVersion());
+System.out.println("UserName: "+dbmd.getUserName());
+System.out.println("Database Product Name: "+dbmd.getDatabaseProductName());
+System.out.println("Database Product Version: "+dbmd.getDatabaseProductVersion());
+
+con.close();
+}catch(Exception e){ System.out.println(e);}
+}
+}
+
+
+Output:Driver Name: Oracle JDBC Driver
+       Driver Version: 10.2.0.1.0XE
+       Database Product Name: Oracle
+       Database Product Version: Oracle Database 10g Express Edition
+                                 Release 10.2.0.1.0 -Production
+
+
+
+download this example
+
+
+Example of DatabaseMetaData interface that prints total number of tables :
+
+
+import java.sql.*;
+class Dbmd2{
+public static void main(String args[]){
+try{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+
+Connection con=DriverManager.getConnection(
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+
+DatabaseMetaData dbmd=con.getMetaData();
+String table[]={"TABLE"};
+ResultSet rs=dbmd.getTables(null,null,null,table);
+
+while(rs.next()){
+System.out.println(rs.getString(3));
+}
+
+con.close();
+
+}catch(Exception e){ System.out.println(e);}
+
+}
+}
+
+
+
+download this example
+
+
+Example of DatabaseMetaData interface that prints total number of views :
+
+
+import java.sql.*;
+class Dbmd3{
+public static void main(String args[]){
+try{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+
+Connection con=DriverManager.getConnection(
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+
+DatabaseMetaData dbmd=con.getMetaData();
+String table[]={"VIEW"};
+ResultSet rs=dbmd.getTables(null,null,null,table);
+
+while(rs.next()){
+System.out.println(rs.getString(3));
+}
+
+con.close();
+
+}catch(Exception e){ System.out.println(e);}
+
+}
+}
+
+
+
+download this example
+

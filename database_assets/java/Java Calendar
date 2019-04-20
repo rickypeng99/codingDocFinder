@@ -1,0 +1,705 @@
+Java Calendar Class
+Java Calendar class is an abstract class that provides methods for converting date between a specific instant in time and a set of calendar fields such as MONTH, YEAR, HOUR, etc. It inherits Object class and implements the Comparable interface.
+Java Calendar class declaration
+Let's see the declaration of java.util.Calendar class.
+
+public abstract class Calendar extends Object 
+implements Serializable, Cloneable, Comparable<Calendar>
+
+List of Calendar Methods
+
+
+
+	
+No
+
+	
+Method
+
+	
+Description
+
+
+
+
+
+    
+1.
+
+    
+public void add(int field, int amount)
+
+	
+Adds the specified (signed) amount of time to the given calendar field.
+
+
+
+
+
+    
+2.
+
+    
+public boolean after (Object when)
+
+	
+The method Returns true if the time represented by this Calendar is after the time represented by when Object.
+
+
+
+
+
+    
+3.
+
+    
+public boolean before(Object when)
+
+	
+The method Returns true if the time represented by this Calendar is before the time represented by when Object.
+
+
+
+
+
+    
+4.
+
+    
+public final void clear(int field)
+
+	
+Set the given calendar field value and the time value of this Calendar undefined.
+
+
+
+
+
+    
+5.
+
+    
+public Object clone()
+
+	
+Clone method provides the copy of the current object.
+
+
+
+
+
+    
+6.
+
+    
+public int compareTo(Calendar anotherCalendar)
+
+	
+The compareTo() method of Calendar class compares the time values (millisecond offsets) between two calendar object.
+
+
+
+
+
+    
+7.
+
+    
+protected void complete()
+
+	
+It fills any unset fields in the calendar fields.
+
+
+
+
+
+    
+8.
+
+    
+protected abstract void computeFields()
+
+	
+It converts the current millisecond time value time to calendar field values in fields[].
+
+
+
+
+
+    
+9.
+
+    
+protected abstract void computeTime()
+
+	
+It converts the current calendar field values in fields[] to the millisecond time value time.
+
+
+
+
+
+    
+10.
+
+    
+public boolean equals(Object object)
+
+	
+The equals() method compares two objects for equality and Returns true if they are equal.
+
+
+
+
+
+    
+11.
+
+    
+public  int  get(int  field)
+
+	
+In get() method fields of the calendar are passed as the parameter, and this method Returns the value of fields passed as the parameter.
+
+
+
+
+
+    
+12.
+
+    
+public int getActualMaximum(int field)
+
+	
+Returns the  Maximum possible value of the calendar field passed as the parameter to getActualMaximum()  method.
+
+
+
+
+
+    
+13.
+
+    
+public int getActualMinimum(int field)
+
+	
+Returns the  Minimum possible value of the calendar field passed as parameter to getActualMinimum()  methot.
+
+
+
+
+
+    
+14.
+
+    
+public static Set<String> getAvailableCalendarTypes()
+
+	
+Returns a set which contains string set of all available calendar type supported by Java Runtime Environment.
+
+
+
+
+
+    
+15.
+
+    
+public static Locale[] getAvailableLocales()
+
+	
+Returns an array of all locales available in java runtime environment.
+
+
+
+
+
+    
+16.
+
+    
+public String getCalendarType()
+
+	
+Returns in string all available calendar type supported by Java Runtime Environment.
+
+
+
+
+
+    
+17.
+
+    
+public String getDisplayName(int field, int style, Locale locale)
+
+	
+Returns the String representation of the calendar field value passed as the parameter in a given style and local.
+
+
+
+
+
+    
+18.
+
+    
+public Map<String,Integer> getDisplayNames(int field, int style, Locale locale)
+
+	
+Returns Map representation of the calendar field value passed as the parameter in a given style and local.
+
+
+
+
+
+    
+19.
+
+    
+public int getFirstDayOfWeek()
+
+	
+Returns the first day of the week in integer form.
+
+
+
+
+
+    
+20.
+
+    
+public abstract int getGreatestMinimum(int field)
+
+	
+This method returns the highest minimum value of Calendar field passed as the parameter.
+
+
+
+
+
+    
+21.
+
+    
+public static Calendar getInstance()
+
+	
+This method is used with calendar object to get the instance of calendar according to current time zone set by java runtime environment
+
+
+
+
+
+    
+22.
+
+    
+public abstract int getLeastMaximum(int field)
+
+	
+Returns smallest value from all maximum value for the field specified as the parameter to the method.
+
+
+
+
+
+    
+23.
+
+    
+public abstract int getMaximum(int field)
+
+	
+This method is used with calendar object to get the maximum value of the specified calendar field as the parameter.
+
+
+
+
+
+    
+24.
+
+    
+public int getMinimalDaysInFirstWeek()
+
+	
+Returns required minimum days in integer form.
+
+
+
+
+
+    
+25.
+
+    
+public abstract int getMinimum(int field)
+
+	
+This method is used with calendar object to get the minimum value of specified calendar field as the parameter.
+
+
+
+
+
+    
+26.
+
+    
+public final Date getTime()
+
+	
+This method gets the time value of calendar object and Returns date.
+
+
+
+
+
+    
+27.
+
+    
+public long getTimeInMillis()
+
+	
+Returns the current time in millisecond.  This method has long as return type.
+
+
+
+
+
+    
+28.
+
+    
+public TimeZone getTimeZone()
+
+	
+This method gets the TimeZone of calendar object and Returns a TimeZone object.
+
+
+
+
+
+    
+29.
+
+    
+public int getWeeksInWeekYear()
+
+	
+Return total weeks in week year. Weeks in week year is returned in integer form.
+
+
+
+
+
+    
+30.
+
+    
+public int getWeekYear()
+
+	
+This method gets the week year represented by current Calendar.
+
+
+
+
+
+    
+31.
+
+    
+public int hashCode()
+
+	
+All other classes in Java overload hasCode() method.  This method Returns the hash code for calendar object.
+
+
+
+
+
+    
+32.
+
+    
+protected final int internalGet(int field)
+
+	
+This method returns the value of the calendar field passed as the parameter.
+
+
+
+
+
+    
+33.
+
+    
+Public  boolean isLenient()
+
+	
+Return Boolean value. True if the interpretation mode of this calendar is lenient; false otherwise.
+
+
+
+
+
+    
+34.
+
+    
+public final boolean isSet(int field)
+
+	
+This method checks if specified field as the parameter has been set or not. If not set then it returns false otherwise true.
+
+
+
+
+
+    
+35.
+
+    
+public boolean isWeekDateSupported()
+
+	
+Checks if this calendar supports week date. The default value is false.
+
+
+
+
+
+    
+36.
+
+    
+public abstract void roll(int field, boolean up)
+
+	
+This method increase or decrease the specified calendar field by one unit without affecting the other field
+
+
+
+
+
+    
+37.
+
+    
+public void set(int field, int value)
+
+	
+Sets the specified calendar field by the specified value.
+
+
+
+
+
+    
+38.
+
+    
+public void setFirstDayOfWeek(int value)
+
+	
+Sets the first day of the week. The value which is to be set as the first day of the week is passed as parameter.
+
+
+
+
+
+    
+39.
+
+    
+public void setMinimalDaysInFirstWeek(int value)
+
+	
+Sets the minimal days required in the first week. The value which is to be set as minimal days in first week is passed as parameter.
+
+
+
+
+
+    
+40.
+
+    
+public final void setTime(Date date)
+
+	
+Sets the Time of current calendar object. A Date object id passed as the parameter.
+
+
+
+
+
+    
+41.
+
+    
+public void setTimeInMillis(long millis)
+
+	
+Sets the current time in millisecond.
+
+
+
+
+
+    
+42.
+
+    
+public void setTimeZone(TimeZone value)
+
+	
+Sets the TimeZone with passed TimeZone value (object) as the parameter.
+
+
+
+
+
+    
+43.
+
+    
+public void setWeekDate(int weekYear, int weekOfYear, int dayOfWeek)
+
+	
+Sets the current date with specified integer value as the parameter. These values are weekYear, weekOfYear and dayOfWeek.
+
+
+
+
+
+    
+44.
+
+    
+public final Instant toInstant()
+
+	
+The toInstant() method convert the current object to an instant.
+
+
+
+
+
+    
+45.
+
+    
+public String toString()
+
+	
+Returns string representation of the current object.
+
+
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Calendar Class Example
+
+import java.util.Calendar;
+public class CalendarExample1 {
+   public static void main(String[] args) {
+   Calendar calendar = Calendar.getInstance();
+   System.out.println("The current date is : " + calendar.getTime());
+   calendar.add(Calendar.DATE, -15);
+   System.out.println("15 days ago: " + calendar.getTime());
+   calendar.add(Calendar.MONTH, 4);
+   System.out.println("4 months later: " + calendar.getTime());
+   calendar.add(Calendar.YEAR, 2);
+   System.out.println("2 years later: " + calendar.getTime());
+   }
+}
+
+Test it Now
+Output:
+
+The current date is : Thu Jan 19 18:47:02 IST 2017
+15 days ago: Wed Jan 04 18:47:02 IST 2017
+4 months later: Thu May 04 18:47:02 IST 2017
+2 years later: Sat May 04 18:47:02 IST 2019
+
+Java Calendar Class Example: get()
+
+import java.util.*;
+public class CalendarExample2{
+  public static void main(String[] args) {
+   Calendar calendar = Calendar.getInstance();
+   System.out.println("At present Calendar's Year: " + calendar.get(Calendar.YEAR));
+   System.out.println("At present Calendar's Day: " + calendar.get(Calendar.DATE));
+   }
+}
+
+Test it Now
+Output:
+
+At present Calendar's Year: 2017
+At present Calendar's Day: 20
+
+Java Calendar Class Example: getInstance()
+
+import java.util.*;
+public class CalendarExample3{
+   public static void main(String[] args) {
+   Calendar calendar = Calendar.getInstance();
+   System.out.print("At present Date And Time Is: " + calendar.getTime());
+   }
+}
+
+Test it Now
+Output:
+
+At present Date And Time Is: Fri Jan 20 14:26:19 IST 2017
+
+Java Calendar Class Example: getMaximum()
+
+import java.util.*;
+public class CalendarExample4 {
+   public static void main(String[] args) {
+   Calendar calendar = Calendar.getInstance();
+   int maximum = calendar.getMaximum(Calendar.DAY_OF_WEEK);
+   System.out.println("Maximum number of days in week: " + maximum);
+   maximum = calendar.getMaximum(Calendar.WEEK_OF_YEAR);
+   System.out.println("Maximum number of weeks in year: " + maximum);
+   }
+}
+
+Test it Now
+Output:
+
+Maximum number of days in week: 7
+Maximum number of weeks in year: 53
+
+Java Calendar Class Example: getMinimum()
+
+import java.util.*;
+public class CalendarExample5 {
+   public static void main(String[] args) {
+   Calendar cal = Calendar.getInstance();
+   int maximum = cal.getMinimum(Calendar.DAY_OF_WEEK);
+   System.out.println("Minimum number of days in week: " + maximum);
+   maximum = cal.getMinimum(Calendar.WEEK_OF_YEAR);
+   System.out.println("Minimum number of weeks in year: " + maximum);
+   }
+}
+
+Test it Now
+Output:
+
+Minimum number of days in week: 1
+Minimum number of weeks in year: 1

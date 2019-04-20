@@ -1,0 +1,124 @@
+Java BufferedOutputStream Class
+Java BufferedOutputStream 
+class
+ is used for buffering an output stream. It internally uses buffer to store data. It adds more efficiency than to write data directly into a stream. So, it makes the performance fast.
+For adding the buffer in an OutputStream, use the BufferedOutputStream class. Let's see the syntax for adding the buffer in an OutputStream:
+
+OutputStream os= new BufferedOutputStream(new FileOutputStream("D:\\IO Package\\testout.txt"));
+
+Java BufferedOutputStream class declaration
+Let's see the declaration for Java.io.BufferedOutputStream class:
+
+public class BufferedOutputStream extends FilterOutputStream
+
+Java BufferedOutputStream class constructors
+
+  
+
+      
+Constructor
+
+      
+Description
+
+  
+
+  
+
+      
+BufferedOutputStream(OutputStream os)
+
+      
+It creates the new buffered output stream which is used for writing the data to the specified output stream. 
+
+  
+
+  
+
+      
+BufferedOutputStream(OutputStream os, int size)
+
+      
+It creates the new buffered output stream which is used for writing the data to the specified output stream with a specified buffer size.
+
+   
+      
+
+Java BufferedOutputStream class methods
+
+  
+
+      
+Method
+
+      
+Description
+
+  
+
+  
+
+      
+void write(int b)
+
+      
+It writes the specified byte to the buffered output stream.
+
+  
+
+  
+
+      
+void write(byte[] b, int off, int len)
+
+      
+It write the bytes from the specified byte-input stream into a specified byte 
+array
+, starting with the given offset
+
+   
+      
+   
+
+      
+void flush()
+
+      
+It flushes the buffered output stream.
+
+   
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Example of BufferedOutputStream class:
+In this example, we are writing the textual information in the BufferedOutputStream object which is connected to the 
+FileOutputStream
+ 
+object
+. The flush() flushes the data of one stream and send it into another. It is required if you have connected the one stream with another.
+
+package com.javatpoint;
+import java.io.*;
+public class BufferedOutputStreamExample{  
+public static void main(String args[])throws Exception{  
+	 FileOutputStream fout=new FileOutputStream("D:\\testout.txt");  
+	 BufferedOutputStream bout=new BufferedOutputStream(fout);  
+	 String s="Welcome to javaTpoint.";  
+	 byte b[]=s.getBytes();  
+	 bout.write(b);  
+	 bout.flush();  
+	 bout.close();  
+	 fout.close();  
+	 System.out.println("success");  
+}  
+}
+
+Output:
+
+Success
+
+testout.txt
+
+Welcome to javaTpoint.

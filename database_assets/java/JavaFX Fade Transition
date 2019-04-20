@@ -1,0 +1,168 @@
+JavaFX Fade Transition
+It animates the opacity of the node so that the fill color of the node becomes dull. This can be done by keep decreasing  the opacity of the fill color over a specified duration in order to reach a target opacity value. 
+In JavaFX, the class 
+javafx.animation.FadeTransition
+ represents FadeTransition. We need to instantiate this class in order to create the appropriate Fade Transition.  
+Properties 
+The properties of the class along with their setter methods are described in the following table. 
+
+
+      
+    
+Property
+
+    
+Description
+
+    
+Setter Methods
+
+
+
+
+
+    
+byValue
+
+    
+It is a double type property. It represents the incremented stop opacity value of the Fade transition. 
+
+    
+setByValue(double property)
+
+
+
+
+
+    
+Duration
+
+    
+This is an object type property of the class Duration. It represent the duration of this fade transition. 
+
+    
+setDuration(Duration duration) 
+
+
+
+
+
+    
+fromValue
+
+    
+This is a double type property. It represents the start opacity for the fade transition. 
+
+    
+setFromValue(double value)
+
+
+
+
+
+    
+node
+
+    
+This is an object type property of the class Node. This represents the node onto which, the transition is to be applied. 
+
+    
+setNode(Node node)
+
+
+
+
+
+    
+toValue
+
+    
+This is a double type property. This represents the stop value of the opacity for the fade transition. 
+
+    
+setToValue(double value)
+
+
+
+
+Constructors 
+The class contains three Constructors. 
+
+
+public TranslateTransition() :
+ creates the new instance of TranslateTransition with the default parameters.
+
+
+public TranslateTransition(Duration duration) :
+ creates the new instance of TranslateTransition with the specified duration.
+ 
+
+public TranslateTransition(Duration duration, Node node) :
+ creates the new instance of Translate Transition with the specified duration and node.
+ 
+
+Example
+In the following example, the opacity of the color of the circle keeps decreasing from the 10 to 0.1.
+
+    package application;
+import javafx.animation.FadeTransition;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+public class Fade_Transition extends Application{
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        // TODO Auto-generated method stub
+        //Creating the circle 
+        Circle cir = new Circle(250,120,80);
+        
+        //setting color and stroke of the circle 
+        cir.setFill(Color.RED);
+        cir.setStroke(Color.BLACK);
+        
+        //Instantiating FadeTransition class 
+        FadeTransition fade = new FadeTransition();
+        
+        
+        //setting the duration for the Fade transition 
+        fade.setDuration(Duration.millis(5000));
+        
+        //setting the initial and the target opacity value for the transition 
+        fade.setFromValue(10);
+        fade.setToValue(0.1);
+        
+        //setting cycle count for the Fade transition 
+        fade.setCycleCount(1000);
+        
+        //the transition will set to be auto reversed by setting this to true 
+        fade.setAutoReverse(true);
+        
+        //setting Circle as the node onto which the transition will be applied
+        fade.setNode(cir);
+        
+        
+        //playing the transition 
+        fade.play();
+        
+        //Configuring Group and Scene 
+        Group root = new Group();
+        root.getChildren().addAll(cir);
+        Scene scene = new Scene(root,500,250,Color.WHEAT);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Translate Transition example");
+        primaryStage.show();
+        
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
+
+Output:

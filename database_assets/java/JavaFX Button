@@ -1,0 +1,267 @@
+JavaFX Button
+JavaFX button control is represented by 
+javafx.scene.control.Button
+ class. A button is a component that can control the behaviour of the Application. An event is generated whenever the button gets clicked.
+How to create a Button?
+Button can be created by instantiating Button class. Use the following line to create button object.
+
+Button btn = new Button("My Button");
+
+Adding a Button to the scene graph
+To visualize the button on the screen, we must attach it to the scene object. The following code creates a button and adds it to the scene object.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class ButtonTest extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		
+		StackPane root = new StackPane(); 
+		Button btn=new Button("This is a button");
+		Scene scene=new Scene(root,300,300);
+		root.getChildren().add(btn);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Button Class Example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+
+Output:
+Setting the Text of the Button
+There are two ways of setting the text on the button.
+
+
+Passing the text into the class constructor
+
+
+By calling setText("text") method
+
+
+Wrapping Button Text
+We can wrap the text of the button into multiple lines if the text to be displayed is too long. This can be done by calling a setter method 
+setWrapText(boolean)
+ on the instance of Button class. Pass the boolean value 
+true
+ in the method wherever required.
+
+Btn.setWrapText(true);
+
+Setting the image on the button
+Button class contains a constructor which can accept graphics along with the text displayed on the button. The following code implements image on the button.
+
+package application;
+
+import java.io.FileInputStream;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class ButtonTest extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		
+	
+		FileInputStream input=new FileInputStream("/home/javatpoint/Desktop/JavaFX/Images/colored_label.png");
+		Image image = new Image(input);
+		ImageView img=new ImageView(image);
+		
+		StackPane root = new StackPane(); 
+		Button btn=new Button("Button 1",img);
+		btn.setWrapText(true);
+		Scene scene=new Scene(root,300,300);
+		root.getChildren().add(btn);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Button Class Example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+
+Output:
+Using setGraphic() method:
+Button class also provides an instance method named 
+setGraphic()
+. We have to pass the image view object in this method. The following code implements setGraphic() method.
+
+package application;
+
+import java.io.FileInputStream;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class ButtonTest extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		
+	
+		FileInputStream input=new FileInputStream("/home/javatpoint/Desktop/JavaFX/Images/colored_label.png");
+		Image image = new Image(input);
+		ImageView img=new ImageView(image);
+		
+		StackPane root = new StackPane(); 
+		Button btn=new Button();
+		btn.setGraphic(img);
+		btn.setWrapText(true);
+		Scene scene=new Scene(root,300,300);
+		root.getChildren().add(btn);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Button Class Example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+
+Output:
+Button Action
+Button class provides 
+setOnAction()
+ methodwhich is used to set the action for the button click event. An object of the anonymous class  implementing the 
+handle()
+ method, is passed in this method as a parameter.
+We can also pass lambda expressions to handle the events. The following code implements the Button event.
+
+package application;
+
+import java.io.FileInputStream;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class LabelTest extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		
+	
+		FileInputStream input=new FileInputStream("/home/javatpoint/Desktop/JavaFX/Images/colored_label.png");
+		Image image = new Image(input);
+		ImageView img=new ImageView(image);
+		
+		StackPane root = new StackPane(); 
+		Button btn=new Button();
+		btn.setGraphic(img);
+		btn.setWrapText(true);
+		btn.setOnAction(new EventHandler
+() {
+			
+			@Override
+			publicvoid handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("Button clicked");
+				
+			}
+		} );
+		
+		Scene scene=new Scene(root,300,300);
+		root.getChildren().add(btn);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Button Class Example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+
+Output:
+Button Effects
+We can apply the effects to a Button. The effects are provided by 
+javafx.scene.effect
+ package. The following code shows how the drop shadow effect can be applied to a button.
+
+package application;
+
+import java.io.FileInputStream;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class ButtonTest extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		
+	
+		FileInputStream input=new FileInputStream("/home/javatpoint/Desktop/JavaFX/Images/colored_label.png");
+		Image image = new Image(input);
+		ImageView img=new ImageView(image);
+		DropShadow shadow = new DropShadow();
+		
+		StackPane root = new StackPane(); 
+		Button btn=new Button();
+		btn.setEffect(shadow);
+		btn.setGraphic(img);
+		btn.setWrapText(true);
+		btn.setOnAction(new EventHandler
+() {
+			
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("Button clicked");
+				
+			}
+		} );
+		Scene scene=new Scene(root,300,300);
+		root.getChildren().add(btn);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Button Class Example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+
+Output:

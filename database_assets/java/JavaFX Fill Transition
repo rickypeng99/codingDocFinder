@@ -1,0 +1,165 @@
+JavaFX Fill Transition
+It animates the node's fill color so that the fill color can fluctuate between the two color values over the specified duration.
+In JavaFX, the class 
+javafx.animation.FillTransition
+ represents the Fill Transition.  We need to instantiate this class in order to create an appropriate Fill Transition  effect. 
+Properties
+The properties of the class along with the setter methods are described in the following table.
+
+
+      
+    
+Property
+
+    
+Description
+
+    
+Setter Methods
+
+
+
+
+
+    
+duration
+
+    
+It is an object type property of the class Duration. It represents the duration of the Fill Transition. 
+
+    
+setDuration(Duration duration)
+
+
+
+
+
+    
+fromValue
+
+    
+It is a double type property. It represents the start color value for the fill transition. 
+
+    
+setFromValue(Color value)
+
+
+
+
+
+    
+shape
+
+    
+It is an object type property of the class Shape. It represents the shape on which the fill transition is applied. 
+
+    
+setShape(Shape shape)
+
+
+
+
+
+    
+toValue
+
+    
+This is a double type property. It represents the stop color value for the fill transition. 
+
+    
+setToValue(Color value)
+
+
+
+
+Constructors 
+There are five constructors in the class. 
+
+
+public FillTransition() :
+ Creates the instance of FillTransition with the default parameters. 
+
+
+public FillTransition(Duration duration) :
+ Creates the instance of the FillTransition with the specified duration.
+ 
+
+public FillTransition(Duration duration, Color fromValue, Color toValue) :
+ creates the instance of FillTransition with the specified duration and the start and end color values.
+ 
+
+public FillTransition(Duration duration, Shape shape) :
+ creates the instance of FillTransition with the specified duration and the shape object onto which, it is applied.
+  
+
+public FillTransition(Duration duration, Shape shape, Color fromValue, Color toValue) :
+ creates the new instance of FillTransition with the specified duration, shape and the start and end color values.
+ 
+
+Example 
+In the following example, we have made a polygon and applied Fill Transition on it. The initial color is set to be black while the target color is set to be white. The fill color value of the polygon fluctuates between black and white. 
+
+   package application;
+import javafx.animation.FillTransition;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+public class Fill_Transition extends Application{
+public static void main(String[] args) {
+    launch(args);
+}
+@Override
+    public void start(Stage primaryStage) throws Exception {
+        // TODO Auto-generated method stub
+    //Creating Polygon 
+    Polygon poly = new Polygon();
+    
+    //Setting points for the polyogn
+    poly.getPoints().addAll(new Double[] {220.0,270.0,170.0,220.0,170.0,120.0,220.0,70.0,270.0,120.0,270.0,220.0});
+    
+    //Setting Color and Stroke properties for the polygon  
+    poly.setStroke(Color.BLACK);
+    
+    //Instantiating Fill Transition class 
+    FillTransition fill = new FillTransition();
+    
+    //The transition will set to be auto reserved by setting this to true
+    fill.setAutoReverse(true);
+    
+    //setting cycle count for the fill transition 
+    fill.setCycleCount(50);
+    
+    //setting duration for the Fill Transition 
+    fill.setDuration(Duration.millis(1000));
+    
+    //setting the Intital from value of the color
+    fill.setFromValue(Color.BLACK);
+    
+    //setting the target value of the color
+    fill.setToValue(Color.WHITE);
+    
+    //setting polygon as the shape onto which the fill transition will be applied 
+    fill.setShape(poly);
+    
+    //playing the fill transition 
+    fill.play();
+    
+    //Configuring Group and Scene 
+    Group root = new Group();
+    root.getChildren().addAll(poly);
+    Scene scene = new Scene(root,420,400,Color.WHEAT);
+    primaryStage.setScene(scene);
+    primaryStage.setTitle("Fill Transition example");
+    primaryStage.show();
+    
+    }
+}
+
+    
+
+    
+Output:

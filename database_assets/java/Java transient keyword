@@ -1,0 +1,60 @@
+Java Transient Keyword
+Java transient
+ keyword is used in serialization. If you define any data member as transient, it will not be serialized.
+Let's take an example, I have declared a class as Student, it has three data members id, name and age. If you serialize the object, all the values will be serialized but I don't want to serialize one value, e.g. age then we can declare the age data member as transient.
+
+Example of Java Transient Keyword
+In this example, we have created the two classes Student and PersistExample. The age data member of the Student class is declared as transient, its value will not be serialized.
+If you deserialize the object, you will get the default value for transient variable.
+Let's create a class with transient variable.
+
+import java.io.Serializable;
+public class Student implements Serializable{
+ int id;
+ String name;
+ transient int age;//Now it will not be serialized
+ public Student(int id, String name,int age) {
+  this.id = id;
+  this.name = name;
+  this.age=age;
+ }
+}
+
+Now write the code to serialize the object.
+
+import java.io.*;
+class PersistExample{
+ public static void main(String args[])throws Exception{
+  Student s1 =new Student(211,"ravi",22);//creating object
+  //writing object into file
+  FileOutputStream f=new FileOutputStream("f.txt");
+  ObjectOutputStream out=new ObjectOutputStream(f);
+  out.writeObject(s1);
+  out.flush();
+
+  out.close();
+  f.close();
+  System.out.println("success");
+ }
+}
+
+Output:
+
+success
+
+Now write the code for deserialization.
+
+import java.io.*;
+class DePersist{
+ public static void main(String args[])throws Exception{
+  ObjectInputStream in=new ObjectInputStream(new FileInputStream("f.txt"));
+  Student s=(Student)in.readObject();
+  System.out.println(s.id+" "+s.name+" "+s.age);
+  in.close();
+ }
+}
+
+
+211 ravi 0
+
+As you can see, printing age of the student returns 0 because value of age was not serialized.

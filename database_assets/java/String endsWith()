@@ -1,0 +1,50 @@
+Java String endsWith()
+The 
+java string endsWith()
+ method checks if this string ends with given suffix. It returns true if this string ends with given suffix else returns false.
+Internal implementation
+
+	 public boolean endsWith(String suffix) {
+        return startsWith(suffix, value.length - suffix.value.length);
+    }
+
+Signature
+The syntax or signature of endsWith() method is given below.
+
+public boolean endsWith(String suffix)
+
+Parameter
+suffix
+ : Sequence of character
+Returns
+true or false
+Java String endsWith() method example
+
+public class EndsWithExample{
+public static void main(String args[]){
+String s1="java by javatpoint";
+System.out.println(s1.endsWith("t"));
+System.out.println(s1.endsWith("point"));
+}}
+
+Test it Now
+Output:
+
+true
+true
+
+Java String endsWith() Method Example 2
+
+public class EndsWithExample2 {
+	public static void main(String[] args) {
+		String str = "Welcome to Javatpoint.com";
+		System.out.println(str.endsWith("point"));
+		if(str.endsWith(".com")) {
+			System.out.println("String ends with .com");
+		}else System.out.println("It does not end with .com");
+	}
+}
+Output:
+
+false
+String ends with .com

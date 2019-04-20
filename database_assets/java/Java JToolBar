@@ -1,0 +1,251 @@
+Java JToolBar
+JToolBar container allows us to group other components, usually buttons with icons in a row or column. JToolBar  provides a component which is useful for displaying commonly used actions or controls.
+Nested Classes
+
+  
+
+     
+Modifier and Type
+
+     
+Class
+
+     
+Description
+
+  
+
+  
+
+     
+protected class 
+
+     
+JToolBar.AccessibleJToolBar
+
+     
+This class implements accessibility support for the JToolBar class.
+
+  
+
+  
+
+     
+static class 
+
+     
+JToolBar.Separator
+
+     
+A toolbar-specific separator.
+
+  
+
+
+Constructors
+
+  
+
+     
+Constructor
+
+     
+Description
+
+  
+
+  
+
+     
+JToolBar()
+
+     
+It creates  a new tool bar; orientation defaults to HORIZONTAL.
+
+  
+
+  
+
+     
+JToolBar(int orientation)
+
+     
+It creates  a new tool bar with the specified orientation.
+
+  
+
+  
+
+     
+JToolBar(String name)
+
+     
+It creates  a new tool bar with the specified name.
+
+  
+
+  
+
+     
+JToolBar(String name, int orientation)
+
+     
+It creates  a new tool bar with a specified name and orientation.
+
+  
+
+
+Useful Methods
+
+  
+
+     
+Modifier and Type
+
+     
+Method
+
+     
+Description
+
+  
+
+  
+
+     
+JButton
+
+     
+add(Action a)
+
+     
+It adds a new JButton which dispatches the action.
+
+  
+
+  
+
+     
+protected void
+
+     
+addImpl(Component comp, Object constraints, int index)
+
+     
+If a JButton is being added, it is initially set to be disabled.
+
+  
+
+  
+
+     
+void
+
+     
+addSeparator()
+
+     
+It appends a separator of default size to the end of the tool bar.
+
+  
+
+  
+
+     
+protected PropertyChangeListener
+
+     
+createActionChangeListener(JButton b)
+
+     
+It returns a properly configured PropertyChangeListener which updates the control as changes to the Action occur, or null if the default property change listener for the control is desired.
+
+
+  
+
+  
+
+     
+protected JButton
+
+     
+createActionComponent(Action a)
+
+     
+Factory method which creates the JButton for Actions added to the JToolBar.
+
+  
+
+  
+
+     
+ToolBarUI
+
+     
+getUI()
+
+     
+It returns the tool bar's current UI.
+
+  
+
+  
+
+     
+void
+
+     
+setUI(ToolBarUI ui)
+
+     
+It sets the L&F object that renders this component.
+
+  
+
+  
+
+     
+void
+
+     
+setOrientation(int o)
+
+     
+It sets  the orientation of the tool bar.
+
+  
+
+
+Java JToolBar Example
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JToolBar;
+
+public class JToolBarExample {
+	public static void main(final String args[]) {
+		JFrame myframe = new JFrame("JToolBar Example");
+		myframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JToolBar toolbar = new JToolBar();
+		toolbar.setRollover(true);
+		JButton button = new JButton("File");
+		toolbar.add(button);
+		toolbar.addSeparator();
+		toolbar.add(new JButton("Edit"));
+		toolbar.add(new JComboBox(new String[] { "Opt-1", "Opt-2", "Opt-3", "Opt-4" }));
+		Container contentPane = myframe.getContentPane();
+		contentPane.add(toolbar, BorderLayout.NORTH);
+		JTextArea textArea = new JTextArea();
+		JScrollPane mypane = new JScrollPane(textArea);
+		contentPane.add(mypane, BorderLayout.EAST);
+		myframe.setSize(450, 250);
+		myframe.setVisible(true);
+	}
+}
+
+Output:

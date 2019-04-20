@@ -1,0 +1,136 @@
+Java String charAt()
+The 
+java string charAt()
+ method returns 
+a char value at the given index number
+. 
+ The index number starts from 0 and goes to n-1, where n is length of the string. It returns 
+StringIndexOutOfBoundsException
+ if given index number is greater than or equal to this string length or a negative number.
+Internal implementation
+
+	public char charAt(int index) {
+        if ((index < 0) || (index >= value.length)) {
+            throw new StringIndexOutOfBoundsException(index);
+        }
+        return value[index];
+    }
+
+Signature
+The signature of string charAt() method is given below:
+
+public char charAt(int index)
+
+Parameter
+index
+ : index number, starts with 0
+Returns
+A char value
+ 
+Specified by
+CharSequence
+ interface, located inside java.lang package.
+Throws
+StringIndexOutOfBoundsException
+ : if index is negative value or greater than this string length.
+Java String charAt() method example
+
+public class CharAtExample{
+public static void main(String args[]){
+String name="javatpoint";
+char ch=name.charAt(4);//returns the char value at the 4th index
+System.out.println(ch);
+}}
+
+Test it Now
+Output:
+
+t
+
+StringIndexOutOfBoundsException with charAt()
+Let's see the example of charAt() method where we are passing greater index value. In such case, it throws StringIndexOutOfBoundsException at run time.
+
+public class CharAtExample{
+public static void main(String args[]){
+String name="javatpoint";
+char ch=name.charAt(10);//returns the char value at the 10th index
+System.out.println(ch);
+}}
+
+Output:
+
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: 
+String index out of range: 10
+at java.lang.String.charAt(String.java:658)
+at CharAtExample.main(CharAtExample.java:4)
+
+Java String charAt() Example 3
+Let's see a simple example where we are accessing first and last character from the provided string.
+
+public class CharAtExample3 {
+	public static void main(String[] args) {
+    String str = "Welcome to Javatpoint portal";    
+    int strLength = str.length();    
+    // Fetching first character
+    System.out.println("Character at 0 index is: "+ str.charAt(0));    
+    // The last Character is present at the string length-1 index
+    System.out.println("Character at last index is: "+ str.charAt(strLength-1));    
+    }
+}
+
+Output:
+
+Character at 0 index is: W
+Character at last index is: l
+
+Java String charAt() Example 4
+Let's see an example where we are accessing all the elements present at odd index.
+
+public class CharAtExample4 {
+	public static void main(String[] args) {
+		String str = "Welcome to Javatpoint portal";		
+		for (int i=0; i<=str.length()-1; i++) {
+			if(i%2!=0) {
+				System.out.println("Char at "+i+" place "+str.charAt(i));
+			}
+		}
+	}
+}
+
+Output:
+
+Char at 1 place e
+Char at 3 place c
+Char at 5 place m
+Char at 7 place  
+Char at 9 place o
+Char at 11 place J
+Char at 13 place v
+Char at 15 place t
+Char at 17 place o
+Char at 19 place n
+Char at 21 place  
+Char at 23 place o
+Char at 25 place t
+Char at 27 place l
+
+
+Java String charAt() Example 5
+Let's see an example where we are counting frequency of a character in the string.
+
+public class CharAtExample5 {
+	public static void main(String[] args) {
+		String str = "Welcome to Javatpoint portal";
+		int count = 0;
+		for (int i=0; i<=str.length()-1; i++) {
+			if(str.charAt(i) == 't') {
+				count++;
+			}
+		}
+		System.out.println("Frequency of t is: "+count);
+	}
+}
+
+Output:
+
+Frequency of t is: 4

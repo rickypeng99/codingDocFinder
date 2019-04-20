@@ -1,0 +1,53 @@
+JavaFX CheckBox
+The Check Box is used to provide more than one choices to the user. It can be used in a scenario where the user is prompted to select more than one option or the user wants to select multiple options. 
+It is different from the radiobutton in the sense that, we can select more than one checkboxes in a scenerio.
+Instantiate 
+javafx.scene.control.CheckBox
+ class to implement CheckBox.
+Use the following line in the code to create a blank CheckBox.
+
+CheckBox checkbox = new CheckBox();
+
+Use the following line to attach a label with the checkbox.
+
+CheckBox checkbox = new CheckBox("Label Name");
+
+We can change the CheckBox Label at any time by calling an instance method 
+setText("text")
+. We can make it selected by calling 
+setSelected("true")
+The following code implements CheckBox into our application.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+public class CheckBoxTest extends Application {
+
+	
+public static void main(String[] args) {
+launch(args);	
+}
+
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	Label l = new Label("What do you listen:     ");
+	CheckBox c1 = new CheckBox("Radio one");
+	CheckBox c2 = new CheckBox("Radio Mirchi");
+	CheckBox c3 = new CheckBox("Red FM");
+	CheckBox c4 = new CheckBox("FM GOLD");
+	HBox root = new HBox();
+	root.getChildren().addAll(l,c1,c2,c3,c4);
+	root.setSpacing(5);
+	Scene scene=new Scene(root,800,200);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("CheckBox Example");
+	primaryStage.show();
+}
+}
+
+Output:

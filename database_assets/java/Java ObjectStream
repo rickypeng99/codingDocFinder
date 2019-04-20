@@ -1,0 +1,184 @@
+Java - ObjectStreamClass
+ObjectStreamClass act as a 
+Serialization
+ descriptor for class. This 
+class
+ contains the name and serialVersionUID of the class.
+Fields
+
+   
+
+      
+Modifier and Type
+
+	  
+Field
+
+	  
+Description
+
+   
+ 
+   
+
+      
+static ObjectStreamField[]
+
+	  
+NO_FIELDS
+
+	  
+serialPersistentFields value indicating no serializable fields
+
+   
+
+
+Methods
+
+   
+
+      
+Modifier and Type
+
+	  
+Method
+
+	  
+Description
+
+   
+ 
+   
+
+      
+Class<?>
+
+	  
+forClass()
+
+	  
+It returns the class in the local VM that this version is mapped to.
+
+   
+
+   
+
+      
+ObjectStreamField
+
+	  
+getField(String name)
+
+	  
+It gets the field of this class by name.
+
+   
+   
+   
+
+      
+ObjectStreamField[]
+
+	  
+getFields()
+
+	  
+It returns an 
+array
+ of the fields of this serialization class.
+
+   
+   
+   
+
+      
+String
+
+	  
+getName()
+
+	  
+It returns the name of the class described by this descriptor.
+
+   
+   
+   
+
+      
+long
+
+	  
+getSerialVersionUID()
+
+	  
+It returns the serialVersionUID for this class.
+
+   
+   
+   
+
+      
+Static  ObjectStreamClass
+
+	  
+lookup(Class<?> cl)
+
+	  
+It finds the descriptor for a class that can be serialized.
+
+   
+  
+   
+
+      
+Static ObjectStreamClass
+
+	  
+lookupAny(Class<?> cl)
+
+	  
+It returns the descriptor for any class, regardless of whether it implements Serializable.
+
+   
+
+   
+
+      
+String
+
+	  
+toString()
+
+	  
+It returns a string describing this ObjectStreamClass.
+
+   
+
+
+Example
+
+import java.io.ObjectStreamClass;
+import java.util.Calendar;
+
+public class ObjectStreamClassExample {
+	public static void main(String[] args) {
+
+		// create a new object stream class for Integers
+		ObjectStreamClass osc = ObjectStreamClass.lookup(SmartPhone.class);
+
+		// get the value field from ObjectStreamClass for integers
+		System.out.println("" + osc.getField("price"));
+
+		// create a new object stream class for Calendar
+		ObjectStreamClass osc2 = ObjectStreamClass.lookup(String.class);
+
+		// get the Class instance for osc2
+		System.out.println("" + osc2.getField("hash"));
+
+	}
+}
+
+Output:
+
+I price
+null

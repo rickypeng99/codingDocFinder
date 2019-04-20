@@ -1,0 +1,54 @@
+Java String intern()
+The 
+java string intern()
+ method returns the interned string. It returns the canonical representation of string.
+It can be used to return string from memory, if it is created by new keyword.  It creates exact copy of heap string object in string constant pool.
+Signature
+The signature of intern method is given below:
+
+public String intern()
+
+Returns
+interned string
+Java String intern() method example
+
+public class InternExample{
+public static void main(String args[]){
+String s1=new String("hello");
+String s2="hello";
+String s3=s1.intern();//returns string from pool, now it will be same as s2
+System.out.println(s1==s2);//false because reference variables are pointing to different instance
+System.out.println(s2==s3);//true because reference variables are pointing to same instance
+}}
+
+Test it Now
+
+false
+true
+
+Java String intern() Method Example 2
+Let's see one more example to understand the string intern concept.
+
+public class InternExample2 {
+	public static void main(String[] args) {		
+		String s1 = "Javatpoint";
+		String s2 = s1.intern();
+		String s3 = new String("Javatpoint");
+		String s4 = s3.intern();		
+		System.out.println(s1==s2); // True
+		System.out.println(s1==s3); // False
+		System.out.println(s1==s4); // True		
+		System.out.println(s2==s3); // False
+		System.out.println(s2==s4); // True		 
+		System.out.println(s3==s4); // False		
+	}
+}
+
+Test it Now
+
+true
+false
+true
+false
+true
+false

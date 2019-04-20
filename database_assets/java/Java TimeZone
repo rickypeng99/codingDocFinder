@@ -1,0 +1,157 @@
+Java TimeZone class
+Java TimeZone class represents a time zone offset, and also figures out daylight savings. It inherits the Object class.
+Java TimeZone class declaration
+Let's see the declaration of java.util.TimeZone class.
+
+public abstract class TimeZone extends Object  implements Serializable, Cloneable
+
+Methods of Java TimeZone
+
+     
+
+         
+Method
+
+		 
+Description
+
+     
+
+     
+
+         
+static String[] getAvailableIDs()
+
+         
+It is used to get all the available IDs supported.
+
+     
+
+     
+
+         
+static TimeZone getDefault()
+
+         
+It is used to get the default TimeZone for this host.
+
+     
+
+     
+
+         
+String getDisplayName()
+
+         
+It is used to return a name of this time zone suitable for presentation to the user in the default locale.
+
+     
+
+	 
+
+         
+String getID()
+
+         
+It is used to get the ID of this time zone
+
+     
+
+	 
+
+         
+int getOffset(long date)
+
+         
+It is used to return the offset of this time zone from UTC at the specified date.
+
+     
+
+	 
+
+         
+void setID(String ID)
+
+         
+It is used to set the time zone ID
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java TimeZone class Example: getAvailableIDs()
+
+import java.util.*;
+public class TimeZoneExample1 {
+   public static void main( String args[] ){       
+   String[] id = TimeZone.getAvailableIDs();      
+   System.out.println("In TimeZone class available Ids are: ");
+   for (int i=0; i<id.length; i++){
+   System.out.println(id[i]);
+   } 
+   }    
+}
+
+Test it Now
+Output:
+
+In TimeZone class available Ids are: 
+Africa/Abidjan
+Africa/Accra
+Africa/Addis_Ababa
+Africa/Algiers
+Africa/Asmara
+Africa/Asmera
+Africa/Bamako
+Africa/Bangui
+Africa/Banjul
+Africa/Bissau and so on ....
+
+Java TimeZone class Example: getOffset()
+
+import java.util.*;
+public class TimeZoneExample2 {
+   public static void main( String args[] ){    
+   TimeZone zone = TimeZone.getTimeZone("Asia/Kolkata"); 
+   System.out.println("The Offset value of TimeZone: " + 
+   zone.getOffset(Calendar.ZONE_OFFSET));
+   }    
+}
+
+Test it Now
+Output:
+
+The Offset value of TimeZone: 19800000
+
+Java TimeZone class Example: getID()
+
+import java.util.*;
+public class TimeZoneExample3 {
+   public static void main( String args[] ){
+   TimeZone timezone = TimeZone.getTimeZone("Asia/Kolkata");     
+   System.out.println("Value of ID is: " + timezone.getID());
+   }    
+}
+
+Test it Now
+Output:
+
+Value of ID is: Asia/Kolkata
+
+Java TimeZone class Example: getDisplayName()
+
+import java.util.*;
+public class TimeZoneExample4 {
+   public static void main( String args[] ){
+   TimeZone zone = TimeZone.getDefault();
+   String name = zone.getDisplayName();       
+   System.out.println("Display name for default time zone: "+ name);
+   }    
+}
+
+Test it Now
+Output:
+
+Display name for default time zone: India Standard Time

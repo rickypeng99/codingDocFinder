@@ -1,0 +1,94 @@
+JavaFX Sphere
+In general, sphere can be defined as a round 3D object with every point on its surface equidistant from its centre. A sphere can be seen as a Circle created in a 3 dimensional plane where every coordinate contains an extra dimension Z.
+The examples of Sphere in the real world are globe, ball,  etc. In JavaFX, Sphere is represented by the class 
+javafx.scene.shape.Sphere
+. We just need to instantiate this class in order to create the sphere. A sphere is shown in the following image.
+Properties
+The properties of the class along with their setter methods are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+radius
+
+	
+It is a double type property. It represents the radius of the sphere. 
+
+	
+SetRadius(double radius)
+
+
+
+
+Constructors
+There are the three constructors 
+
+
+public Sphere() :
+ creates a new instance of sphere of radius 1.0
+
+
+public Sphere(double radius) :
+ creates a new instance of sphere with the specified radius. 
+
+
+public Sphere(double radius, int divisions) :
+ creates a new instance of sphere with the specified radius and divisions. 
+
+
+Example
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.CullFace;
+import javafx.scene.shape.Sphere;
+import javafx.stage.Stage;
+public class SphereExample extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	//creating the sphere 
+	Sphere s = new Sphere();
+
+	//setting the properties for the sphere object
+	s.setRadius(100);
+	s.setTranslateX(200);
+	s.setTranslateY(150);
+	s.setCullFace(CullFace.BACK);
+	
+	//setting camera 
+	PerspectiveCamera camera = new PerspectiveCamera();
+	camera.setTranslateX(-50);
+	camera.setTranslateY(0);
+	camera.setTranslateZ(0);
+			
+	//setting group and stage 
+	Group root = new Group();
+	root.getChildren().addAll(s);
+	Scene scene = new Scene(root,500,300,Color.LIMEGREEN);
+	scene.setCamera(camera);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Sphere Example");
+	primaryStage.show();
+}
+public static void main(String[] args) {
+	launch(args);
+}
+}

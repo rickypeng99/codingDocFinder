@@ -1,0 +1,69 @@
+Java Convert Object to String
+We can convert 
+Object to String in java
+ using toString() method of Object class or String.valueOf(object) method.
+You can convert any object to String in java whether it is user-defined class, StringBuilder, StringBuffer or anything else.
+Here, we are going to see two examples of converting Object into String. In the first example, we are going to convert Emp class object into String which is an user-defined class. In second example, we are going to convert StringBuilder to String.
+Java Object to String Example: Converting User-defined class
+Let's see the simple code to convert String to Object in java.
+
+class Emp{}
+public class ObjectToStringExample{
+public static void main(String args[]){
+Emp e=new Emp();
+String s=e.toString();
+String s2=String.valueOf(e);
+System.out.println(s);
+System.out.println(s2);
+}}
+
+Test it Now
+Output:
+
+Emp@2a139a55
+Emp@2a139a55
+
+As you can see above, a reference id of Emp class is printed on the console.
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Object to String Example: Converting StringBuilder
+Let's see the simple code to convert StringBuilder object to String in java.
+
+public class ObjectToStringExample2{
+public static void main(String args[]){
+String s="hello";
+StringBuilder sb=new StringBuilder(s);
+sb.reverse();
+String rev=sb.toString();//converting StringBuilder to String
+System.out.println("String is: "+s);
+System.out.println("Reverse String is: "+rev);
+}}
+
+Test it Now
+Output:
+
+String is: hello
+Reverse String is: olleh
+
+Now you can write the code to check the palindrome string.
+
+public class ObjectToStringExample3{
+public static void main(String args[]){
+String s="nitin";
+StringBuilder sb=new StringBuilder(s);
+sb.reverse();
+String rev=sb.toString();//converting StringBuilder to String
+if(s.equals(rev)){
+System.out.println("Palindrome String");
+}else{
+System.out.println("Not Palindrome String");
+}
+}}
+
+Test it Now
+Output:
+
+Palindrome String
+
+So, you can convert any Object to String in java using toString() or String.valueOf(object) methods.

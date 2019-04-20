@@ -1,0 +1,1172 @@
+Java Comparator interface
+Java Comparator interface
+ is used to order the objects of a user-defined class.
+This interface is found in java.util package and contains 2 methods compare(Object obj1,Object obj2) and equals(Object element).
+ It provides multiple sorting sequences, i.e., you can sort the elements on the basis of any data member, for example, rollno, name, age or anything else.
+Methods of Java Comparator Interface
+
+
+Method
+Description
+
+
+public int compare(Object obj1, Object obj2)
+It compares the first object with the second object.
+
+
+public boolean equals(Object obj)
+It is used to compare the current object with the specified object.
+
+
+public boolean equals(Object obj)
+It is used to compare the current object with the specified object.
+
+
+
+
+
+
+Collections class
+
+
+
+Collections
+ class provides static methods for sorting the elements of a collection. If collection elements are of Set or Map, we can use TreeSet or TreeMap. However, we cannot sort the elements of List. Collections class provides methods for sorting the elements of List type elements also.
+
+
+
+Method of Collections class for sorting List elements
+
+
+
+
+public void sort(List list, Comparator c):
+ is used to sort the elements of List by the given Comparator.
+
+
+
+
+
+
+
+
+
+
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+
+
+
+Java Comparator Example (Non-generic Old Style)
+
+
+Let's see the example of sorting the elements of List on the basis of age and name. In this example, we have created 4 java classes:
+
+
+
+
+Student.java
+
+
+AgeComparator.java
+
+
+NameComparator.java
+
+
+Simple.java
+
+
+
+
+
+Student.java
+
+
+This class contains three fields rollno, name and age and a parameterized constructor.
+
+
+
+
+class Student{
+int rollno;
+String name;
+int age;
+Student(int rollno,String name,int age){
+this.rollno=rollno;
+this.name=name;
+this.age=age;
+}
+}
+
+
+
+
+AgeComparator.java
+
+
+This class defines comparison logic based on the age. If the age of the first object is greater than the second, we are returning a positive value. It can be anyone such as 1, 2, 10. If the age of the first object is less than the second object, we are returning a negative value, it can be any negative value, and if the age of both objects is equal, we are returning 0.
+
+
+
+import java.util.*;
+class AgeComparator implements Comparator{
+public int compare(Object o1,Object o2){
+Student s1=(Student)o1;
+Student s2=(Student)o2;
+
+if(s1.age==s2.age)
+return 0;
+else if(s1.age>s2.age)
+return 1;
+else
+return -1;
+}
+}
+
+
+
+
+NameComparator.java
+
+
+This class provides comparison logic based on the name. In such case, we are using the compareTo() method of String class, which internally provides the comparison logic.
+
+
+
+
+import java.util.*;
+class NameComparator implements Comparator{
+public int compare(Object o1,Object o2){
+Student s1=(Student)o1;
+Student s2=(Student)o2;
+
+return s1.name.compareTo(s2.name);
+}
+}
+
+
+
+
+Simple.java
+
+
+In this class, we are printing the values of the object by sorting on the basis of name and age.
+
+
+
+
+import java.util.*;
+import java.io.*;
+
+class Simple{
+public static void main(String args[]){
+
+ArrayList al=new ArrayList();
+al.add(new Student(101,"Vijay",23));
+al.add(new Student(106,"Ajay",27));
+al.add(new Student(105,"Jai",21));
+
+System.out.println("Sorting by Name");
+
+Collections.sort(al,new NameComparator());
+Iterator itr=al.iterator();
+while(itr.hasNext()){
+Student st=(Student)itr.next();
+System.out.println(st.rollno+" "+st.name+" "+st.age);
+}
+
+System.out.println("Sorting by age");
+
+Collections.sort(al,new AgeComparator());
+Iterator itr2=al.iterator();
+while(itr2.hasNext()){
+Student st=(Student)itr2.next();
+System.out.println(st.rollno+" "+st.name+" "+st.age);
+}
+
+
+}
+}
+
+
+
+
+
+       Sorting by Name
+       106 Ajay 27
+       105 Jai 21
+       101 Vijay 23
+       
+       Sorting by age       
+       105 Jai 21
+       101 Vijay 23
+       106 Ajay 27
+
+
+
+
+
+
+Java Comparator Example (Generic)
+
+
+Student.java
+
+
+
+class Student{
+int rollno;
+String name;
+int age;
+Student(int rollno,String name,int age){
+this.rollno=rollno;
+this.name=name;
+this.age=age;
+}
+}
+
+
+
+
+AgeComparator.java
+
+
+
+import java.util.*;
+class AgeComparator implements Comparator
+{
+public int compare(Student s1,Student s2){
+if(s1.age==s2.age)
+return 0;
+else if(s1.age>s2.age)
+return 1;
+else
+return -1;
+}
+}
+
+
+
+
+NameComparator.java
+
+
+This class provides comparison logic based on the name. In such case, we are using the compareTo() method of String class, which internally provides the comparison logic.
+
+
+
+
+import java.util.*;
+class NameComparator implements Comparator
+{
+public int compare(Student s1,Student s2){
+return s1.name.compareTo(s2.name);
+}
+}
+
+
+
+
+Simple.java
+
+
+In this class, we are printing the values of the object by sorting on the basis of name and age.
+
+
+
+import java.util.*;
+import java.io.*;
+class Simple{
+public static void main(String args[]){
+
+ArrayList
+ al=new ArrayList
+();
+al.add(new Student(101,"Vijay",23));
+al.add(new Student(106,"Ajay",27));
+al.add(new Student(105,"Jai",21));
+
+System.out.println("Sorting by Name");
+
+Collections.sort(al,new NameComparator());
+for(Student st: al){
+System.out.println(st.rollno+" "+st.name+" "+st.age);
+}
+
+System.out.println("Sorting by age");
+
+Collections.sort(al,new AgeComparator());
+for(Student st: al){
+System.out.println(st.rollno+" "+st.name+" "+st.age);
+}
+}
+}
+
+
+
+
+
+       Sorting by Name
+       106 Ajay 27
+       105 Jai 21
+       101 Vijay 23
+
+       Sorting by age     
+       105 Jai 21
+       101 Vijay 23
+       106 Ajay 27
+
+
+
+
+Java 8 Comparator interface
+
+
+Java 8 Comparator interface is a functional interface that contains only one abstract method. Now, we can use the Comparator interface as the assignment target for a lambda expression or method reference.
+
+
+
+Methods of Java 8 Comparator Interface
+
+
+
+
+Method
+Description
+
+
+int compare(T o1, T o2)
+It compares the first object with second object.
+
+
+static <T,U extends Comparable<? super U>>
+Comparator<T> comparing(Function<? super T,? extends U> keyExtractor)
+It accepts a function that extracts a Comparable sort key from a type T, and returns a Comparator
+ that compares by that sort key.
+
+
+static <T,U> Comparator<T>	comparing(Function<? super T,? extends U> keyExtractor, Comparator<? super U> keyComparator)
+It accepts a function that extracts a sort key from a type T, and returns a Comparator
+ that compares by that sort key using the specified Comparator.
+
+
+static <T> Comparator<T> comparingDouble(ToDoubleFunction<? super T> keyExtractor)
+It accepts a function that extracts a double sort key from a type T, and returns a Comparator
+ that compares by that sort key.
+
+
+static <T> Comparator<T> comparingInt(ToIntFunction<? super T> keyExtractor)
+It accepts a function that extracts an int sort key from a type T, and returns a Comparator
+ that compares by that sort key.
+
+
+static <T> Comparator<T> comparingLong(ToLongFunction<? super T> keyExtractor)
+It accepts a function that extracts a long sort key from a type T, and returns a Comparator
+ that compares by that sort key.
+
+
+boolean equals(Object obj)
+It is used to compare the current object with the specified object.
+
+
+static <T extends Comparable<? super T>>
+Comparator<T> naturalOrder()
+It returns a comparator that compares Comparable objects in natural order.
+
+
+static <T> Comparator<T> nullsFirst(Comparator<? super T> comparator)
+It returns a comparator that treats null to be less than non-null elements.
+
+
+static <T> Comparator<T> nullsLast(Comparator<? super T> comparator)
+It returns a comparator that treats null to be greater than non-null elements.
+
+
+default Comparator<T> reversed()
+It returns comparator that contains reverse ordering of the provided comparator.
+
+
+static <T extends Comparable<? super T>> Comparator<T> reverseOrder()
+It returns comparator that contains reverse of natural ordering.
+
+
+default Comparator<T> thenComparing(Comparator<? super T> other)
+It returns a lexicographic-order comparator with another comparator.
+
+
+default <U extends Comparable<? super U>>
+Comparator<T> thenComparing(Function<? super T,? extends U> keyExtractor)
+It returns a lexicographic-order comparator with a function that extracts a Comparable sort key.
+
+
+default <U> Comparator<T> thenComparing(Function<? super T,? extends U> keyExtractor, Comparator<? super U> keyComparator)
+It returns a lexicographic-order comparator with a function that extracts a key to be compared with the given Comparator.
+
+
+default Comparator<T> thenComparingDouble(ToDoubleFunction<? super T> keyExtractor)
+It returns a lexicographic-order comparator with a function that extracts a double sort key.
+
+
+default Comparator<T> thenComparingInt(ToIntFunction<? super T> keyExtractor)
+It returns a lexicographic-order comparator with a function that extracts a int sort key.
+
+
+default Comparator<T> thenComparingLong(ToLongFunction<? super T> keyExtractor)
+It returns a lexicographic-order comparator with a function that extracts a long sort key.
+
+
+
+
+
+
+
+
+Java 8 Comparator Example
+
+
+Let's see the example of sorting the elements of List on the basis of age and name. 
+
+
+
+File: Student.java
+
+
+
+class Student {  
+   int rollno;  
+   String name;  
+  int age;  
+    Student(int rollno,String name,int age){  
+    this.rollno=rollno;  
+    this.name=name;  
+    this.age=age;  
+    }
+
+	public int getRollno() {
+		return rollno;
+	}
+
+	public void setRollno(int rollno) {
+		this.rollno = rollno;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+    }  
+
+
+
+
+
+File: TestSort1.java
+
+
+
+    import java.util.*;  
+    public class TestSort1{  
+    public static void main(String args[]){  
+    ArrayList
+ al=new ArrayList
+();  
+    al.add(new Student(101,"Vijay",23));  
+    al.add(new Student(106,"Ajay",27));  
+    al.add(new Student(105,"Jai",21)); 
+	//Sorting elements on the basis of name
+    Comparator
+ cm1=Comparator.comparing(Student::getName);
+     Collections.sort(al,cm1);
+     System.out.println("Sorting by Name");
+     for(Student st: al){
+    	 System.out.println(st.rollno+" "+st.name+" "+st.age);
+    	 }
+     //Sorting elements on the basis of age
+      Comparator
+ cm2=Comparator.comparing(Student::getAge);
+	 Collections.sort(al,cm2);
+     System.out.println("Sorting by Age");
+     for(Student st: al){
+    	 System.out.println(st.rollno+" "+st.name+" "+st.age);
+    	 }  
+    }  
+    }  
+
+
+
+
+
+Sorting by Name
+106 Ajay 27
+105 Jai 21
+101 Vijay 23
+Sorting by Age
+105 Jai 21
+101 Vijay 23
+106 Ajay 27
+
+
+
+
+Java 8 Comparator Example: nullsFirst() and nullsLast() method
+
+
+Here, we sort the list of elements that also contains null. 
+
+
+
+File: Student.java
+
+
+
+class Student {  
+   int rollno;  
+   String name;  
+  int age;  
+    Student(int rollno,String name,int age){  
+    this.rollno=rollno;  
+    this.name=name;  
+    this.age=age;  
+    }
+	public int getRollno() {
+		return rollno;
+	}
+	public void setRollno(int rollno) {
+		this.rollno = rollno;
+	}
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+    }  
+
+
+
+
+
+File: TestSort2.java
+
+
+
+   import java.util.*;  
+    public class TestSort2{  
+    public static void main(String args[]){  
+    ArrayList
+ al=new ArrayList
+();  
+    al.add(new Student(101,"Vijay",23));  
+    al.add(new Student(106,"Ajay",27));  
+    al.add(new Student(105,null,21));  
+    Comparator
+ cm1=Comparator.comparing(Student::getName,Comparator.nullsFirst(String::compareTo));
+     Collections.sort(al,cm1);
+     System.out.println("Considers null to be less than non-null");
+     for(Student st: al){
+    	 System.out.println(st.rollno+" "+st.name+" "+st.age);
+    	 }
+     Comparator
+ cm2=Comparator.comparing(Student::getName,Comparator.nullsLast(String::compareTo));
+     Collections.sort(al,cm2);
+     System.out.println("Considers null to be greater than non-null");
+     for(Student st: al){
+    	 System.out.println(st.rollno+" "+st.name+" "+st.age);
+    	 }
+    }  
+    }   
+
+
+
+
+
+Considers null to be less than non-null
+105 null 21
+106 Ajay 27
+101 Vijay 23
+Considers null to be greater than non-null
+106 Ajay 27
+101 Vijay 23
+105 null 21
+
+
+
+
+
+
+Next Topic
+Properties Class In Java
+
+
+
+
+
+
+
+
+
+
+
+
+← prev
+
+
+next →
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     (adsbygoogle = window.adsbygoogle || []).push({});
+
+
+
+
+
+
+Please Share
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+Learn Latest Tutorials
+
+
+
+
+                        
+
+                            
+
+                                
+Swift
+
+                            
+ 
+                        
+ 
+
+                        
+
+                            
+
+                                
+Pig
+
+                            
+ 
+                        
+ 
+
+                        
+
+                            
+
+                                
+Flask
+
+                            
+ 
+                        
+ 
+
+                        
+
+                            
+
+                                
+C. Graphics
+
+                            
+ 
+                        
+
+ 
+                        
+
+                            
+
+                                
+Automata
+
+                            
+ 
+                        
+
+                        
+
+                            
+
+                                
+Testing
+
+                            
+
+                        
+
+
+
+
+
+
+
+  
+
+Preparation
+
+
+
+
+                        
+
+                            
+
+                                
+Aptitude
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+Reasoning
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+Verbal A.
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+Interview
+
+                            
+
+                        
+
+
+
+
+ 
+
+
+
+
+                    
+B.Tech / MCA
+
+                    
+
+                        
+
+                            
+
+                                
+DBMS
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+DS
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+DAA
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+OS
+
+                            
+ 
+                        
+
+                        
+
+                            
+
+                                
+C. Network
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+Compiler D.
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+COA
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+D. Math.
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+E. Hacking
+
+                            
+
+                        
+
+
+                        
+
+                            
+
+                                
+Web Tech.
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+Cyber Sec.
+
+                            
+
+                        
+
+                        
+                        
+
+                            
+
+                                
+C
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+C++
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+Java
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+.Net
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+Python
+
+                            
+
+                        
+
+
+                        
+
+                            
+
+                                
+Programs
+
+                            
+
+                        
+
+                        
+
+                            
+
+                                
+Control S.
+
+                            
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+(function (w, d) { for (var i = 0, j = d.getElementsByTagName("ins"), k = j[i]; i < j.length; k = j[++i]){ if(k.className == "adPushupAds" && k.getAttribute("data-push") != "1") { ((w.adpushup = w.adpushup || {}).control = (w.adpushup.control || [])).push(k); k.setAttribute("data-push", "1");} } })(window, document);
+
+
+
+
+
+
+
+
+(function (w, d) { for (var i = 0, j = d.getElementsByTagName("ins"), k = j[i]; i < j.length; k = j[++i]){ if(k.className == "adPushupAds" && k.getAttribute("data-push") != "1") { ((w.adpushup = w.adpushup || {}).control = (w.adpushup.control || [])).push(k); k.setAttribute("data-push", "1");} } })(window, document);
+
+
+
+
+
+
+
+(function (w, d) { for (var i = 0, j = d.getElementsByTagName("ins"), k = j[i]; i < j.length; k = j[++i]){ if(k.className == "adPushupAds" && k.getAttribute("data-push") != "1") { ((w.adpushup = w.adpushup || {}).control = (w.adpushup.control || [])).push(k); k.setAttribute("data-push", "1");} } })(window, document);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(function (w, d) { for (var i = 0, j = d.getElementsByTagName("ins"), k = j[i]; i < j.length; k = j[++i]){ if(k.className == "adPushupAds" && k.getAttribute("data-push") != "1") { ((w.adpushup = w.adpushup || {}).control = (w.adpushup.control || [])).push(k); k.setAttribute("data-push", "1");} } })(window, document);
+
+
+
+
+
+(function (w, d) { for (var i = 0, j = d.getElementsByTagName("ins"), k = j[i]; i < j.length; k = j[++i]){ if(k.className == "adPushupAds" && k.getAttribute("data-push") != "1") { ((w.adpushup = w.adpushup || {}).control = (w.adpushup.control || [])).push(k); k.setAttribute("data-push", "1");} } })(window, document);
+
+
+
+
+
+
+
+
+
+
+
+ 
+Javatpoint Services
+ 
+JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. 
+ 
+Website Designing
+Website Development
+Java Development
+PHP Development
+WordPress
+Graphic Designing
+Logo
+Digital Marketing
+On Page and Off Page SEO
+PPC
+Content Development
+Corporate Training
+Classroom and Online Training
+Data Entry
+ 
+ 
+Training For College Campus
+ 
+JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. 
+Duration: 1 week to 2 week
+var _gaq=_gaq || []; _gaq.push(['_setAccount', 'UA-24880427-1']); _gaq.push(['_trackPageview']); (function(){var ga=document.createElement('script'); ga.type='text/javascript'; ga.async=true; ga.src=('https:'==document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s=document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
+ 
+Like/Subscribe us for latest updates or newsletter 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Learn Tutorials
+Learn Java
+Learn Data Structures
+Learn C Programming
+Learn C++ Tutorial
+Learn C# Tutorial
+Learn PHP Tutorial
+Learn HTML Tutorial
+Learn JavaScript Tutorial
+Learn jQuery Tutorial
+Learn Spring Tutorial
+Our Websites
+Javatpoint.com
+Hindi100.com
+Lyricsia.com
+Quoteperson.com
+Hindi-typing.com
+Shayaree.com
+Jobandplacement.com
+Our Services
+Website Development
+Android Development
+Website Designing
+Digital Marketing
+Summer Training
+Industrial Training
+College Campus Training
+Contact
+Address: G-13, 2nd Floor, Sec-3
+Noida, UP, 201301, India
+Contact No: 0120-4256464, 9990449935
+Contact Us
+ 
+Subscribe Us
+ 
+Privacy Policy
+Sitemap
+© Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.
+
+
+
+
+
+ dp.SyntaxHighlighter.HighlightAll('code'); 
+
+

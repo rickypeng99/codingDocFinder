@@ -1,0 +1,87 @@
+JavaFX ScrollBar
+JavaFX Scroll Bar is used to provide a scroll bar to the user so that the user can scroll down the application pages. It can be created by instantiating 
+javafx.scene.control.ScrollBar
+ class.
+The following code implements scrollbar into our application.
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+public class ScrollBar extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		ScrollBar s = new ScrollBar();
+		StackPane root = new StackPane();
+		root.getChildren().add(s);
+		Scene scene = new Scene(root,300,200);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("ScrollBar Example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}
+
+Output:
+Setting values and orientation
+As we see in the modern days application, the scrollbar is shown horizontally as well as vertically. In JavaFX, we can set any of the orientation for the scrollbar. 
+setOrientation()
+ and passing the 
+Orientation.VERTICAL
+ property into the method as an argument.
+ScrollBar class also provide three methods named as:
+
+
+setMin()
+
+
+setMax()
+
+
+setValue()
+
+
+these methods are used to set the minimum, maximum and current value of the scrollbar. It decides span of the scrollbar. The following code shows the implementation.
+
+package application;
+import javafx.application.Application;
+import javafx.geometry.Orientation;
+import javafx.scene.Scene;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+public class Progress_Indicator extends Application{
+
+	@Override
+	publicvoid start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		ScrollBar s = new ScrollBar();
+		s.setMin(0);
+		s.setMax(200);
+		s.setValue(110);
+		s.setOrientation(Orientation.VERTICAL);
+		s.setUnitIncrement(12);
+		s.setBlockIncrement(10);
+		StackPane root = new StackPane();
+		root.getChildren().add(s);
+		Scene scene = new Scene(root,300,200);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("ScrollBar Example");
+		primaryStage.show();
+		
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}
+
+Output:

@@ -1,0 +1,176 @@
+Java OutputStreamWriter
+OutputStreamWriter is a 
+class
+ which is used to convert character stream to byte stream, the characters are encoded into byte using a specified charset. write() method calls the encoding converter which converts the character into bytes. The resulting bytes are then accumulated in a buffer before being written into the underlying output stream. The characters passed to write() methods are not buffered. We optimize the performance of OutputStreamWriter by using it with in a BufferedWriter so that to avoid frequent converter invocation.
+Constructor
+
+    
+
+        
+Constructor
+
+		
+Description
+
+    
+
+    
+
+        
+OutputStreamWriter(OutputStream out)
+
+		
+It creates an OutputStreamWriter that uses the default character encoding.
+
+    
+
+	
+
+       
+OutputStreamWriter(OutputStream out, Charset cs)
+
+		
+It creates an OutputStreamWriter that uses the given charset.
+
+    
+
+	
+
+        
+OutputStreamWriter(OutputStream out, CharsetEncoder enc)
+
+		
+It creates an OutputStreamWriter that uses the given charset encoder.
+
+    
+
+	
+
+        
+OutputStreamWriter(OutputStream out, String charsetName)
+
+		
+It creates an OutputStreamWriter that uses the named charset.
+
+    
+
+
+Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+	    
+void
+
+		
+close()
+
+		
+It closes the stream, flushing it first.
+
+    
+
+	
+
+	    
+void
+
+		
+flush()
+
+		
+It flushes the stream.
+
+    
+
+	
+
+	    
+String
+
+		
+getEncoding()
+
+		
+It returns the name of the character encoding being used by this stream.
+
+    
+
+	
+
+	    
+void
+
+		
+write(char[] cbuf, int off, int len)
+
+		
+It writes a portion of an 
+array
+ of characters.
+
+    
+
+	
+
+	    
+void
+
+		
+write(int c)
+
+		
+It writes a single character.
+
+    
+
+	
+
+	    
+void
+
+		
+write(String str, int off, int len)
+
+		
+It writes a portion of a 
+string
+.
+
+    
+
+
+Example
+
+public class OutputStreamWriterExample {
+	public static void main(String[] args) {
+
+		try {
+			OutputStream outputStream = new FileOutputStream("output.txt");
+			Writer outputStreamWriter = new OutputStreamWriter(outputStream);
+
+			outputStreamWriter.write("Hello World");
+
+			outputStreamWriter.close();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+}
+
+Output:
+
+output.txt file will contains text  "Hello World"

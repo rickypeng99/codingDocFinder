@@ -1,0 +1,135 @@
+Java Clock class
+Java Clock class is used to provide an access to the current instant, date and time using a time zone. It inherits the Object class.
+Java Clock class declaration
+Let's see the declaration of java.time.Clock class.
+
+public abstract class Clock extends Object
+
+Methods of Java Clock
+
+     
+
+         
+Method
+
+		 
+Description
+
+     
+
+     
+
+         
+abstract ZoneId getZone()
+
+         
+It is used to get the time-zone being used to create dates and times.
+
+     
+
+     
+
+         
+abstract Instant instant()
+
+         
+It is used to get the current instant of the clock.
+
+     
+
+     
+
+         
+static Clock offset(Clock baseClock, Duration offsetDuration)
+
+         
+It is used to obtain a clock that returns instants from the specified clock with the specified duration added
+
+     
+
+	 
+
+         
+static Clock systemDefaultZone()
+
+         
+It is used to obtain a clock that returns the current instant using the best available system clock, converting to date and time using the default time-zone.
+
+     
+
+	 
+
+         
+static Clock systemUTC()
+
+         
+It is used to obtain a clock that returns the current instant using the best available system clock, converting to date and time using the UTC time zone.
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java Clock class Example: getZone()
+
+import java.time.Clock;
+public class ClockExample1 {
+  public static void main(String[] args) {
+    Clock c = Clock.systemDefaultZone();    
+    System.out.println(c.getZone());
+  }
+}
+
+Test it Now
+Output:
+
+Asia/Calcutta
+
+Java Clock class Example: instant()
+
+import java.time.Clock;
+public class ClockExample2 {
+  public static void main(String[] args) {
+    Clock c = Clock.systemUTC();
+    System.out.println(c.instant());
+  }
+}
+
+Test it Now
+Output:
+
+2017-01-14T07:11:07.748Z
+
+Java Clock class Example: systemUTC()
+
+import java.time.Clock;
+public class ClockExample3 {
+  public static void main(String[] args) {
+    Clock c = Clock.systemUTC();
+    System.out.println(c.instant());
+  }
+}
+
+Test it Now
+Output:
+
+2017-01-14T07:11:07.748Z
+
+Java Clock class Example: offset()
+
+import java.time.Clock;
+import java.time.Duration;
+public class ClockExample4 {
+  public static void main(String[] args) {
+    Clock c = Clock.systemUTC();
+    Duration d = Duration.ofHours(5);
+    Clock clock = Clock.offset(c, d);  
+    System.out.println(clock.instant());
+  }
+}
+
+Test it Now
+Output:
+
+2017-01-14T14:15:25.389Z

@@ -1,0 +1,102 @@
+JavaFX VBox
+Instead of arranging the nodes in horizontal row, Vbox Layout Pane arranges the nodes in a single vertical column. It is represented by 
+javafx.scene.layout.VBox
+ class which provides all the methods to deal with the styling and the distance among the nodes. This class needs to be instantiated in order to implement VBox layout in our application. 
+Properties
+This Method Provides various properties which are described in the table below.
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+Alignment
+
+	
+This property is for the alignment of the nodes. 
+
+	
+setAlignement(Double)
+
+
+
+
+
+	
+FillWidth 
+
+	
+This property is of the boolean type. The Widtht of resizeable nodes can be made equal to the Width of the VBox by setting this property to true. 
+
+	
+setFillWidth(boolean)
+
+
+
+
+
+	
+Spacing 
+
+	
+This property is to set some spacing among the nodes of VBox.
+
+	
+setSpacing(Double)
+
+
+
+
+Constructors
+
+
+VBox() : creates layout with 0 spacing
+ 
+
+Vbox(Double spacing) : creates layout with a spacing value of double type
+ 
+
+Vbox(Double spacing, Node? children) : creates a layout with the specified spacing among the specified child nodes
+
+
+Vbox(Node? children) : creates a layout with the specified nodes having 0 spacing among them
+ 
+
+Example
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+public class Label_Test extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		Button btn1 = new Button("Button 1");
+		Button btn2 = new Button("Button 2");
+		VBox root = new VBox();
+		Scene scene = new Scene(root,200,200);
+		root.getChildren().addAll(btn1,btn2);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+}
+
+Output:

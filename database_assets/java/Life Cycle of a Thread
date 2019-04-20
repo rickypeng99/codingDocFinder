@@ -1,0 +1,59 @@
+Life cycle of a Thread (Thread States)
+
+
+
+
+Life cycle of a thread
+
+ 
+
+  
+New
+
+  
+Runnable
+
+  
+Running
+
+  
+Non-Runnable (Blocked)
+
+  
+Terminated
+
+
+ 
+
+
+
+
+
+
+A thread can be in one of the five states. According to sun, there is only 4 states in 
+thread life cycle in java
+ new, runnable, non-runnable and terminated. There is no running state. 
+But for better understanding the threads, we are explaining it in the 5 states.
+The life cycle of the thread in java is controlled by JVM. The java thread states are as follows:
+
+
+New
+
+
+Runnable
+
+
+Running
+
+
+Non-Runnable (Blocked)
+
+
+Terminated
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+1) New
+The thread is in new state if you create an instance of Thread class but before the invocation of start() method.

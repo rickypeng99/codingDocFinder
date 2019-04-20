@@ -1,0 +1,190 @@
+JavaFX Scaling
+Scaling is a kind of transformation which is used to change the size of the object. It can either expand the size or compress the size of the object. The size can be altered by multiplying the coordinates of the object by a factor which is called scale factor. In JavaFX, the class 
+javafx.scene.transform.Scale
+ represents the scaling transformation.
+In the following image, the scaling transformation is applied to the cube to expend its size.
+Properties
+The properties of the class are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+pivotX
+
+	
+It is a double type property. It represents the x coordinate of the pivot point about which the scaling is done. 
+
+	
+setPivotX(double value)
+
+
+
+
+
+	
+pivotY
+
+	
+It is a double type property. It represents the y coordinate of the pivot point about which the scaling is done. 
+
+	
+setPivotY(double value)
+
+
+
+
+
+	
+pivotZ
+
+	
+It is a double type property. It represents the z coordinate of the pivot point about which the scaling is done. 
+
+	
+setPivotZ(double value)
+
+
+
+
+
+	
+x
+
+	
+It is a double type property. It represents the factor by which the object is scaled along the X axis. 
+
+	
+setX(double value)
+
+
+
+
+
+	
+y
+
+	
+It is a double type property. It represents the factor by which the object is scaled along the Y axis. 
+
+	
+setY(double value)
+
+
+
+
+
+	
+z
+
+	
+It is a double type property. It represents the factor by which the object is scaled along the Z axis. 
+
+	
+setZ(double value)
+
+
+
+
+Constructors 
+The class contains five constructors described below. 
+
+
+public Scale() :
+ creates the new instance with the default parameters.
+ 
+
+public Scale(double X, double Y) :
+ creates the new instance of 2D Scale.
+ 
+
+public Scale(double X, double Y, double Z) :
+ creates the new instance of 3D scale.
+ 
+
+public Scale(double X, double Y, double pivotX, double pivotY) :
+ creates the new instance of the 2D scale with the specified pivot coordinates.
+ 
+
+public Scale(double X, double Y, double Z, double pivotX, double pivotY, double pivotZ) :
+ creates the new instance of the 3D Scale with the specified pivot coordinates. 
+
+
+Example:
+The following example illustrates the implementation of Scaling transformation. Here, we have created two circles with the same dimensions and same color. The scaling transform is applied to the 2nd circle to get it scaled by the factor 1.5 in X-Y direction both. After applying the scaling transform to the 2nd circle, it gets 1.5 of the first circle.  
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.transform.Scale;
+import javafx.stage.Stage;
+public class ScaleExample extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	//Creating the two circles 
+	Circle cir1=new Circle(230,200,100);
+	Circle cir2=new Circle(550,200,100);
+	
+	//setting the color and stroke for the circles
+	cir1.setFill(Color.YELLOW);
+	cir1.setStroke(Color.BLACK);
+	cir2.setFill(Color.YELLOW);
+	cir2.setStroke(Color.BLACK);
+	
+	// creating the text nodes for the identification 
+	Text text1 = new Text("Original Circle");
+	Text text2 = new Text("Scaled with factor 1.5 in XY");
+	
+	//setting the properties for the text nodes
+	text1.setX(150);
+	text1.setY(400);
+	text2.setX(400);
+	text2.setY(400);
+	text1.setFont(Font.font("calibri",FontWeight.BLACK,FontPosture.ITALIC,20));
+	text2.setFont(Font.font("calibri",FontWeight.BLACK,FontPosture.ITALIC,20));
+	
+	//creating a 2D scale 
+	Scale scale = new Scale();
+	
+	// setting the X-y factors for the scale 
+	scale.setX(1.5);
+	scale.setY(1.5);
+	
+	//setting the pivot points along which the scaling is done
+	scale.setPivotX(550);
+	scale.setPivotY(200);
+
+	//applying transformations on the 2nd circle 
+	cir2.getTransforms().add(scale);
+	Group root = new Group();
+	root.getChildren().addAll(cir1,cir2,text1,text2);
+	Scene scene = new Scene(root,800,450);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Scale Example");
+	primaryStage.show();
+	
+}
+public static void main(String[] args) {
+	launch(args);
+}
+}

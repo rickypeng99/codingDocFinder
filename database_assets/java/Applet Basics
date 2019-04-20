@@ -1,0 +1,176 @@
+Java Applet
+Applet is a special type of program that is embedded in the webpage to generate the dynamic content. It runs inside the browser and works at client side.
+Advantage of Applet
+There are many advantages of applet. They are as follows:
+
+
+It works at client side so less response time.
+
+
+Secured
+
+
+It can be executed by browsers running under many plateforms, including Linux, Windows, Mac Os etc.
+
+
+Drawback of Applet
+
+
+Plugin is required at client browser to execute applet.
+
+
+
+
+Do You Know
+
+
+
+
+
+
+Who is responsible to manage the life cycle of an applet ?
+
+
+How to perform animation in applet ?
+
+
+How to paint like paint brush in applet ?
+
+
+How to display digital clock in applet ?
+
+
+How to display analog clock in applet ?
+
+
+How to communicate two applets ?
+
+
+
+
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Hierarchy of Applet
+
+
+As displayed in the above diagram, Applet class extends Panel. Panel class extends Container which is the subclass of Component.
+
+
+
+Lifecycle of Java Applet
+
+
+Applet is initialized.
+
+
+Applet is started.
+
+
+Applet is painted.
+
+
+Applet is stopped.
+
+
+Applet is destroyed.
+
+
+Lifecycle methods for Applet:
+The java.applet.Applet class 4 life cycle methods and java.awt.Component class provides 1 life cycle methods for an applet.
+
+java.applet.Applet class
+For creating any applet java.applet.Applet class must be inherited. It provides 4 life cycle methods of applet.
+
+
+public void init():
+ is used to initialized the Applet. It is invoked only once.
+
+
+public void start():
+ is invoked after the init() method or browser is maximized. It is used to start the Applet.
+
+
+public void stop():
+ is used to stop the Applet. It is invoked when Applet is stop or browser is minimized.
+
+
+public void destroy():
+ is used to destroy the Applet. It is invoked only once.
+
+
+java.awt.Component class
+The Component class provides 1 life cycle method of applet.
+
+
+public void paint(Graphics g):
+ is used to paint the Applet. It provides Graphics class object that can be used for drawing oval, rectangle, arc etc. 
+
+
+Who is responsible to manage the life cycle of an applet?
+Java Plug-in software.
+How to run an Applet?
+There are two ways to run an applet
+
+
+By html file.
+
+
+By appletViewer tool (for testing purpose).
+
+
+Simple example of Applet by html file:
+To execute the applet by html file, create an applet and compile it. After that create an html file and place the applet code in html file. Now click the html file.
+
+//First.java
+import java.applet.Applet;
+import java.awt.Graphics;
+public class First extends Applet{
+
+public void paint(Graphics g){
+g.drawString("welcome",150,150);
+}
+
+}
+
+
+Note: class must be public because its object is created by Java Plugin software that resides on the browser.
+myapplet.html
+
+
+<html>
+<body>
+<applet code="First.class" width="300" height="300">
+</applet>
+</body>
+</html>
+
+
+Simple example of Applet by appletviewer tool:
+To execute the applet by appletviewer tool, create an applet that contains applet tag in comment and compile it. After that run it by: appletviewer First.java. Now Html file is not required but it is for testing purpose only.
+
+//First.java
+import java.applet.Applet;
+import java.awt.Graphics;
+public class First extends Applet{
+
+public void paint(Graphics g){
+g.drawString("welcome to applet",150,150);
+}
+
+}
+/*
+<applet code="First.class" width="300" height="300">
+</applet>
+*/
+
+To execute the applet by appletviewer tool, write in command prompt:
+
+
+c:\>
+javac First.java
+
+c:\>
+appletviewer First.java

@@ -1,0 +1,111 @@
+StringTokenizer in Java
+
+
+
+
+StringTokenizer
+
+
+Methods of StringTokenizer
+
+
+Example of StringTokenizer
+
+
+
+
+The 
+java.util.StringTokenizer
+ class allows you to break a string into tokens. It is simple way to break string.
+It doesn't provide the facility to differentiate numbers, quoted strings, identifiers etc. like StreamTokenizer class. We will discuss about the StreamTokenizer class in I/O chapter.
+Constructors of StringTokenizer class
+There are 3 constructors defined in the StringTokenizer class.
+
+
+Constructor
+Description
+
+
+StringTokenizer(String str)
+creates StringTokenizer with specified string.
+
+
+StringTokenizer(String str, String delim)
+creates StringTokenizer with specified string and delimeter.
+
+
+StringTokenizer(String str, String delim, boolean returnValue)
+creates StringTokenizer with specified string, delimeter and returnValue. If return value is true, delimiter characters are considered to be tokens. If it is false, delimiter characters serve to separate tokens.
+
+
+Methods of StringTokenizer class
+The 6 useful methods of StringTokenizer class are as follows:
+
+
+Public method
+Description
+
+
+boolean hasMoreTokens()
+checks if there is more tokens available.
+
+
+String nextToken()
+returns the next token from the StringTokenizer object.
+
+
+String nextToken(String delim)
+returns the next token based on the delimeter.
+
+
+boolean hasMoreElements()
+ same as hasMoreTokens() method.
+
+
+Object nextElement()
+ same as nextToken() but its return type is Object.
+
+
+int countTokens()
+returns the total number of tokens.
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Simple example of StringTokenizer class
+Let's see the simple example of StringTokenizer class that tokenizes a string "my name is khan" on the basis of whitespace.
+
+import java.util.StringTokenizer;
+public class Simple{
+ public static void main(String args[]){
+   StringTokenizer st = new StringTokenizer("my name is khan"," ");
+     while (st.hasMoreTokens()) {
+         System.out.println(st.nextToken());
+     }
+   }
+}
+
+
+Output:my
+       name
+       is
+       khan
+
+Example of nextToken(String delim) method of StringTokenizer class
+
+import java.util.*;
+
+public class Test {
+   public static void main(String[] args) {
+       StringTokenizer st = new StringTokenizer("my,name,is,khan");
+      
+      // printing next token
+      System.out.println("Next token is : " + st.nextToken(","));
+   }    
+}
+
+
+Output:Next token is : my
+
+StringTokenizer class is deprecated now. It is recommended to use split() method of String class or regex (Regular Expression).

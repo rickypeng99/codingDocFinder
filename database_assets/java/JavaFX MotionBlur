@@ -1,0 +1,110 @@
+JavaFX MotionBlur Effect
+MotionBlur is similar to the gaussian blur effect. The motion blur effect is also used to blur the nodes. The only difference between the Gaussian Blur effect and MotionBlur effect is that the motionblur effect uses the specified angle with which the nodes is to be blurred.
+As its name suggests, by applying this effect, the node is seen to be in the motion. The class 
+javafx.scene.effect.MotionBlur
+ represents the motionblur effect. This class needs to be instantiated in order to generate the appropriate effect. 
+Properties
+The properties of the class along with the setter methods are described below in the table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods 
+
+
+
+
+
+	
+angle
+
+	
+It represents the angle of the motion effect. It is a double type property.  
+
+	
+setAngle(Double value)
+
+
+
+
+
+	
+input
+
+	
+It represents the input for the effect. It is an Effect object type property. 
+
+	
+setInput(Effect value)
+
+
+
+
+
+	
+radius
+
+	
+It represents the radius of the blur kernel. It is a double type property. 
+
+	
+setRadius(Double radius)
+
+
+
+
+Constructors 
+It contains two constructors described below. 
+
+
+public MotionBlur() :
+ instantiates the motionblur class with the default parameters. 
+
+
+public MotionBlur(double angle, double radius) :
+ instantiates MotionBlur class with the specified angle and radius.
+ 
+
+Example:
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.MotionBlur;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+public class MotionBlurExample extends Application{
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		Text text = new Text("Welcome to javaTpoint");
+		text.setX(30);
+		text.setY(100);
+		text.setFont(Font.font("calibri",FontWeight.BOLD,FontPosture.ITALIC,40));
+		MotionBlur motion = new MotionBlur();
+		motion.setAngle(20);
+		motion.setRadius(10);
+		text.setEffect(motion);
+		Group root = new Group();
+		root.getChildren().addAll(text);
+		Scene scene = new Scene(root,600,200);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("MotionBlur Example");
+		primaryStage.show();
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}

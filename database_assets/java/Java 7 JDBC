@@ -1,0 +1,275 @@
+Java 7 JDBC Improvements
+JDBC (Java Database Connectivity) provides universal data access from the Java programming language. You can access any data from database, spreadsheets or flat files by using JDBC.
+In Java 7, Java has introduced the following features:
+1) It provides the ability to use a try-with-resources statement to automatically close resources of type Connection, ResultSet, and Statement.
+2) RowSet 1.1: The introduction of the RowSetFactory interface and the RowSetProvider class, which enable you to create all types of row sets supported by your JDBC driver.
+RowSetFactory Interface
+It defines the implementation of a factory that is used to obtain different types of RowSet.
+RowSetFactory Interface Methods
+
+    
+
+        
+Methods
+
+        
+Description
+
+    
+
+    
+
+        
+CachedRowSet createCachedRowSet()
+throws SQLException
+
+
+        
+It creates a new instance of a FilteredRowSet.
+It throws SQLException, if a CachedRowSet cannot be created.
+
+
+    
+
+    
+
+        
+FilteredRowSet createFilteredRowSet()
+throws SQLException
+
+
+        
+It creates a new instance of a FilteredRowSet.
+It throws SQLException, if a FilteredRowSet cannot be created.
+
+
+    
+
+    
+
+        
+JdbcRowSet createJdbcRowSet()
+throws SQLException
+
+
+        
+It creates a new instance of a JdbcRowSet.
+It throws SQLException, if a JdbcRowSet cannot be created.
+
+
+    
+
+    
+
+        
+JoinRowSet createJoinRowSet()
+throws SQLException
+
+
+        
+It creates a new instance of a JoinRowSet. 
+It throws SQLException, if a JoinRowSet cannot be created.
+
+
+    
+
+    
+
+        
+WebRowSet createWebRowSet()
+throws SQLException
+
+
+        
+It creates a new instance of a WebRowSet.
+It throws SQLException, if a WebRowSet cannot be created.
+
+
+    
+
+
+Java RowSetProvider Class
+It is a factory API that helps to applications to get a RowSetFactory implementation that can be used to create different types of RowSet. 
+
+    
+
+        
+Methods
+
+        
+Description
+
+    
+
+    
+
+        
+public static RowSetFactory newFactory()
+throws SQLException
+
+
+        
+It creates a new instance of a RowSetFactory implementation. 
+It throws SQLException, if the default factory class cannot be loaded or instantiated.
+
+
+    
+
+    
+
+        
+public static RowSetFactory newFactory(String factoryClassName,
+ClassLoader cl)
+throws SQLException
+
+
+        
+It creates a new instance of a RowSetFactory from the specified factory class name. This function is useful when there are multiple providers in the classpath. It gives more control to the application as it can specify which provider should be loaded.
+It throws SQLException, if factoryClassName is null, or the factory class cannot be loaded.
+
+
+
+
+
+JDBC Example: Mysql Connection by using Try-With-Resources
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;  
+class JdbcExample{  
+	public static void main(String args[]){
+		try(// --------------try-with-resources begin-------------//
+			// Creating connection
+			Connection con = DriverManager.getConnection( "jdbc:mysql://localhost:3306/student","root","mysql");
+			// Creating statement
+			Statement stmt=con.createStatement();
+			// Executing Sql query
+			ResultSet rs=stmt.executeQuery("select * from user");
+		   )// --------------try-with-resources end--------------//
+		{ // ----------------try block begin---------------------//
+			// Iterating ResultSet elements
+			while(rs.next()){  
+				System.out.println(rs.getInt(1)+""+rs.getString(2)+""+rs.getString(3));  
+			}
+		} // ----------------try block end----------------------//
+		catch(Exception e){ // Exception handler 
+			System.out.println(e.getMessage());
+		}  
+	}
+}
+
+In the above example, we have used try-with-resources. It is used to close resources after completing try block. Now, you don't need to close database connection explicitly.
+Make sure you are using JDBC version 4.0 or higher and Java version 1.6 or higher.
+RowSet 1.1
+In earlier versions of Java, you have created instances of JdbcRowSet, CachedRowSet, FilteredRowSet etc by using JdbcRowSetImpl class.
+Now, Java 7 has added a new RowSet 1.1. So, you can create instance of JdbcRowSet by using RowSetFactory interface.
+Java CachedRowSet
+Itstores (caches) data into memory so that is can perform operations on its own data rather than data stored in the database. It can operate without being connected to its data source, that why, it is also known as disconnectedRowSet.
+Java JDBC Example: CachedRowSet
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.sql.rowset.CachedRowSet;
+import javax.sql.rowset.RowSetProvider;  
+class JdbcExample{  
+	public static void main(String args[]) throws Exception{
+		try(// --------------try-with-resources begin-------------//
+			// Creating connection
+			Connection con = DriverManager.getConnection( "jdbc:mysql://localhost:3306/student","root","mysql");
+			// Creating statement
+			Statement stmt=con.createStatement();
+			// Executing query
+			ResultSet rs=stmt.executeQuery("select * from user");
+		   )// --------------try-with-resources end--------------//
+		{ // ----------------try block begin---------------------//
+			// Creating CachedRowSet
+			CachedRowSet cRS = RowSetProvider.newFactory().createCachedRowSet();
+			// Populating ResultSet data into CachedRowSet
+			cRS.populate(rs);
+			while(cRS.next()){  
+				System.out.println(cRS.getInt(1)+""+cRS.getString(2)+""+cRS.getString(3));  
+			}
+		} // ----------------try block end----------------------//
+		catch(Exception e){ // Exception handler 
+			System.out.println(e);
+		}  
+	}
+}
+
+Java JdbcRowSet
+It is an improvedResultSet object which is used to maintain connection to a data source. It is similar to ResultSet, but the big difference is that it provides set of properties and listener like a JavaBeans.The main purpose of JdbcRowSet is to make a ResultSet scrollable and updatable.
+In the following example, we are creating instance of JdbcRowSet by using new approach.
+Java JdbcRowSet Example 1
+
+import javax.sql.rowset.JdbcRowSet;
+import javax.sql.rowset.RowSetProvider;  
+class JdbcExample{  
+	public static void main(String args[]) throws Exception{
+		try(// --------------try-with-resources begin-------------//
+			// Creating connection
+			JdbcRowSet jRS = RowSetProvider.newFactory().createJdbcRowSet();
+		   )// --------------try-with-resources end--------------//
+		{ // ----------------try block begin---------------------//
+			// Set database connection
+			jRS.setUrl("jdbc:mysql://localhost:3306/student");
+			// Set database username
+			jRS.setUsername("root");
+			// Set database password
+			jRS.setPassword("mysql");
+			// Set sql query to execute 
+			jRS.setCommand("select * from user");
+			// Execute query
+			jRS.execute();
+			while(jRS.next()){  
+				System.out.println(jRS.getInt(1)+""+jRS.getString(2)+""+jRS.getString(3));  
+			}
+		} // ----------------try block end----------------------//
+		catch(Exception e){ // Exception handler 
+			System.out.println(e);
+		}  
+	}
+}
+
+Java JdbcRowSet Example: Updating Row
+
+import javax.sql.rowset.JdbcRowSet;
+import javax.sql.rowset.RowSetProvider;  
+class JdbcExample{  
+	public staticvoid main(String args[]) throws Exception{
+		try(// --------------try-with-resources begin-------------//
+			// Creating connection
+			JdbcRowSet jRS = RowSetProvider.newFactory().createJdbcRowSet();
+		   )// --------------try-with-resources end--------------//
+		{ // ----------------try block begin---------------------//
+			// Set database connection
+			jRS.setUrl("jdbc:mysql://localhost:3306/student");
+			// Set database username
+			jRS.setUsername("root");
+			// Set database password
+			jRS.setPassword("mysql");
+			// Set sql query to execute 
+			jRS.setCommand("select * from user");
+			// Execute query
+			jRS.execute();
+			// Getting 3rd row because it is scrollable by default
+			jRS.absolute(3);  
+			System.out.println(jRS.getInt(1)+""+jRS.getString(2)+""+jRS.getString(3));  
+			// Updating 3rd row
+			jRS.updateString("name", "Neraj Kumar Singh");
+			jRS.updateRow();
+			// Fetching 3rd row again
+			System.out.println(jRS.getInt(1)+""+jRS.getString(2)+""+jRS.getString(3));
+		} // ----------------try block end----------------------//
+		catch(Exception e){ // Exception handler 
+			System.out.println(e);
+		}  
+	}
+}
+
+Output:
+
+3  Neraj kumar  8562697858
+3  Neraj Kumar Singh  8562697858

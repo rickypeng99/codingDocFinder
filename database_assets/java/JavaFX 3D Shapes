@@ -1,0 +1,114 @@
+JavaFX 3D Shape
+JavaFX enables us to create the three dimensional shapes. There are the classes defined in 
+javafx.scene.shape
+ package which provides all the methods to deal with the 3D shapes. Such classes are Box, Cylinder and sphere. The class 
+Shape3D
+ of the package 
+javafx.scene.shape
+ is the base class of the all the 3D shape classes in javafx. 
+What is 3D shape?
+A three dimensional Shape can be defined as a solid geometrical object that is to be drawn on XYZ coordinate system. 3D shapes are different from the 2D shapes in the sense that the 3D shapes always need to have an extra coordinate value 
+Z
+ in order to be drawn on a coordinate system.
+Examples of 3D shapes are cylinders, spheres, boxes, cubes, pyramids, etc. However, JavaFX provides classes to create spheres, cylinders and boxes.
+Types of 3D shapes in JavaFX
+In JavaFX, 3D shapes can be categorized in two different types, 
+1. Predefined 3D shapes
+There are some predefined 3D shape classes provided by JavaFX that are Cylinder, Sphere and Box. We just need to instantiate these classes in order to create these shapes on screen. The classes contains various properties and methods which are required to be used in order to create the appropriate shapes. 
+2. User Defined 3D shapes
+JavaFX provides the class 
+javafx.scene.shape.TriangleMesh
+ which extends the abstract class 
+javafx.scene.shape.Mesh
+. This class facilitates the user to define their own points, texture coordinates and faces as the properties of the class. 
+Steps to create 3D shapes in JavaFX
+As we have mentioned earlier that there are the different classes for the different 3D shapes in JavaFX. We just need to instantiate those classes in order to create the appropriate 3D shapes. Use the following steps for the creation of 3D shapes in JavaFX. 
+1. Instantiate the Respective 3D shape class which we want to create, for example, 
+
+Box box = new Box();
+
+2. Set the properties for the class. For example; 
+
+box.setHeight(100.0);
+box.setDepth(50.0);
+box.setWidth(70.0); 
+
+3. Set the Camera for the scene. Although, it is not necessary to set the camera for creating the 3D effect but it provides a certain position for the camera view. This can be done as follows. 
+
+PerspectiveCamera camera = new PerspectiveCamera(); 
+camera.setTranslateX(100.0);
+camera.setTranslateY(50.0);
+camera.setTranslateZ(-90);
+scene.setCamera(camera)
+
+4. Add the box to the Scene graph and set the appropriate properties for the Scene and stage. 
+
+Group root = new Group(); 
+root.getChildren().add(box); 
+Scene scene = new Scene(root,500,400);
+primaryStage.setScene(scene);
+primaryStage.setTitle("Box Example");
+primaryStage.show();
+
+The 3D shape classes provided by the package 
+javafx.scene.shape
+ are described in the following table.  
+
+
+
+	
+SN
+
+	
+Shape
+
+	
+Description
+
+
+
+
+
+	
+1
+
+	
+Box
+
+	
+In general, a box can be defined as a three dimensional shape having all the faces in the rectangular shape. The three dimensions of Box are height, width and depth. In JavaFX, the 
+classjavafx.scene.shape.Boxrepresents
+ Box.  
+
+
+
+
+
+	
+2
+
+	
+Cylinder
+
+	
+A Cylinder can be defined as a three dimensional solid having two parallel circular basisconnected by a curved surface. It has the two main properties as radius and height. In JavaFX, the class 
+javafx.scene.shape.Cylinder
+ represents cylinder.
+
+
+
+
+
+	
+3
+
+	
+Sphere
+
+	
+A sphere can be defined as a perfectly round solid 3D object. In JavaFX, the Sphere is represented by the class 
+javafx.scene.shape.Sphere
+.
+
+
+

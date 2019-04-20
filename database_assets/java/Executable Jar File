@@ -1,0 +1,95 @@
+How to make an executable jar file in Java
+The 
+jar (Java Archive)
+ tool of JDK provides the facility to create the executable jar file. An executable jar file calls the main method of the class if you double click it.
+To create the executable jar file, you need to create 
+.mf file
+, also known as manifest file.
+
+
+Download this example
+
+
+Creating manifest file
+To create manifest file, you need to write Main-Class, then colon, then space, then classname then enter. For example:
+myfile.mf
+
+Main-Class: First
+
+
+As you can see, the mf file starts with Main-Class colon space class name. Here, class name is First.
+In mf file, new line is must after the class name.
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Creating executable jar file using jar tool
+The jar tool provides many switches, some of them are as follows:
+
+
+-c
+ creates new archive file
+
+
+-v
+ generates verbose output. It displays the included or extracted resource on the standard output.
+
+
+-m
+ includes manifest information from the given mf file.
+
+
+-f
+ specifies the archive file name
+
+
+-x
+ extracts files from the archive file
+
+
+Now, let's write the code to generated the executable jar using mf file.
+You need to write 
+jar
+ then 
+swiches
+ then 
+mf_file
+ then 
+jar_file
+ then 
+.classfile
+ as given below:
+
+jar -cvmf myfile.mf myjar.jar First.class
+
+It is shown in the image given below:
+Now it will create the executable jar file. If you double click on it, it will call the main method of the First class.
+We are assuming that you have created any window based application using AWT or SWING. If you don't, you can use the code given below:
+First.java
+
+import javax.swing.*;  
+public class First{  
+First(){  
+JFrame f=new JFrame();  
+                  
+JButton b=new JButton("click");  
+b.setBounds(130,100,100, 40);  
+      
+f.add(b);  
+          
+f.setSize(300,400);  
+f.setLayout(null);  
+f.setVisible(true);  
+          
+f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+}  
+public static void main(String[] args) {  
+    new First();  
+}  
+}  
+
+
+
+Download this example
+
+
+Let's see how executable jar file looks by the image given below:

@@ -1,0 +1,61 @@
+Example to retrieve file from Oracle database:
+
+The getClob() method of PreparedStatement is used to get file information from the database.
+
+Syntax of getClob method
+
+
+public Clob getClob(int columnIndex){}
+
+
+
+Let's see the table structure of this example to retrieve the file.
+
+
+CREATE TABLE  "FILETABLE" 
+   (	"ID" NUMBER, 
+	"NAME" CLOB
+   )
+/
+
+
+The example to retrieve the file from the Oracle database is given below.
+
+
+import java.io.*;
+import java.sql.*;
+
+public class RetrieveFile {
+public static void main(String[] args) {
+try{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Connection con=DriverManager.getConnection(
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			
+PreparedStatement ps=con.prepareStatement("select * from filetable");
+ResultSet rs=ps.executeQuery();
+rs.next();//now on 1st row
+			
+Clob c=rs.getClob(2);
+Reader r=c.getCharacterStream();			
+			
+FileWriter fw=new FileWriter("d:\\retrivefile.txt");
+			
+int i;
+while((i=r.read())!=-1)
+fw.write((char)i);
+		    
+fw.close();
+con.close();
+			
+System.out.println("success");
+}catch (Exception e) {e.printStackTrace();	}
+}
+}
+
+
+
+
+
+download this example
+

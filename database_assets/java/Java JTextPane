@@ -1,0 +1,200 @@
+Java JTextPane
+JTextPane is a subclass of JEditorPane class. JTextPane is used for styled document with embedded images and components. It is text component that can be marked up with attributes that are represented graphically. JTextPane uses a DefaultStyledDocument as its default model.
+Constructors
+
+    
+
+        
+Constructor
+
+        
+Description
+
+    
+
+    
+
+        
+JTextPane()
+
+        
+It creates a new JTextPane.
+
+    
+
+    
+
+        
+JtextPane(StyledDocument doc)
+
+        
+It creates a new JTextPane, with a specified document model.
+
+    
+
+
+ Useful Methods
+
+    
+
+        
+Modifier and Type
+
+        
+Method 
+
+        
+Description
+
+    
+
+    
+
+        
+Style
+
+        
+addStyle(String nm, Style parent)
+
+        
+It adds a new style into the logical style hierarchy.
+
+    
+
+    
+
+        
+AttributeSet
+
+        
+getCharacterAttributes()
+
+        
+It fetches the character attributes in effect at the current location of the caret, or null.
+
+    
+
+    
+
+        
+StyledDocument
+
+        
+getStyledDocument()
+
+        
+It fetches the model associated with the editor.
+
+    
+
+    
+
+        
+void
+
+        
+setDocument(Document doc)
+
+        
+It associates the editor with a text document.
+
+    
+
+    
+
+        
+void
+
+        
+setCharacterAttributes(AttributeSet attr, boolean replace)
+
+        
+It applies the given attributes to character content.
+
+    
+
+    
+
+        
+void
+
+        
+removeStyle(String nm)
+
+        
+It removes a named non-null style previously added to the document.
+
+    
+
+    
+
+        
+void
+
+        
+setEditorKit(EditorKit kit)
+
+        
+It sets the currently installed kit for handling content.
+
+    
+
+    
+
+        
+void
+
+        
+setStyledDocument(StyledDocument doc)
+
+        
+It associates the editor with a text document.
+
+    
+
+
+JTextPane Example
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+public class JTextPaneExample {
+	public static void main(String args[]) throws BadLocationException {
+	    JFrame frame = new JFrame("JTextPane Example");
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    Container cp = frame.getContentPane();
+	    JTextPane pane = new JTextPane();
+	    SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+	    StyleConstants.setBold(attributeSet, true);
+
+	    // Set the attributes before adding text
+	    pane.setCharacterAttributes(attributeSet, true);
+	    pane.setText("Welcome");
+
+	    attributeSet = new SimpleAttributeSet();
+	    StyleConstants.setItalic(attributeSet, true);
+	    StyleConstants.setForeground(attributeSet, Color.red);
+	    StyleConstants.setBackground(attributeSet, Color.blue);
+
+	    Document doc = pane.getStyledDocument();
+	    doc.insertString(doc.getLength(), "To Java ", attributeSet);
+
+	    attributeSet = new SimpleAttributeSet();
+	    doc.insertString(doc.getLength(), "World", attributeSet);
+
+	    JScrollPane scrollPane = new JScrollPane(pane);
+	    cp.add(scrollPane, BorderLayout.CENTER);
+
+	    frame.setSize(400, 300);
+	    frame.setVisible(true);
+	  }
+}
+
+Output

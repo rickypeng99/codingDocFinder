@@ -1,0 +1,92 @@
+Java Convert int to String
+We can convert 
+int to String in java
+ using 
+String.valueOf()
+ and 
+Integer.toString()
+ methods. Alternatively, we can use 
+String.format()
+ method, string concatenation operator etc.
+Scenario
+It is generally used if we have to display number in textfield because everything is displayed as a string in form.
+1) String.valueOf()
+The String.valueOf() method converts int to String. The valueOf() is the static method of String class. The 
+signature
+ of valueOf() method is given below:
+
+public static String valueOf(int i)
+
+Java int to String Example using String.valueOf()
+Let's see the simple code to convert int to String in java.
+
+int i=10;
+String s=String.valueOf(i);//Now it will return "10"
+
+Let's see the simple example of converting String to int in java.
+
+public class IntToStringExample1{
+public static void main(String args[]){
+int i=200;
+String s=String.valueOf(i);
+System.out.println(i+100);//300 because + is binary plus operator
+System.out.println(s+100);//200100 because + is string concatenation operator
+}}
+
+Test it Now
+Output:
+
+300
+200100
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+2) Integer.toString()
+The Integer.toString() method converts int to String. The toString() is the static method of Integer class. The 
+signature
+ of toString() method is given below:
+
+public static String toString(int i)
+
+Java int to String Example using Integer.toString()
+Let's see the simple code to convert int to String in java using Integer.toString() method.
+
+int i=10;
+String s=Integer.toString(i);//Now it will return "10"
+
+Let's see the simple example of converting String to int in java.
+
+public class IntToStringExample2{
+public static void main(String args[]){
+int i=200;
+String s=Integer.toString(i);
+System.out.println(i+100);//300 because + is binary plus operator
+System.out.println(s+100);//200100 because + is string concatenation operator
+}}
+
+Test it Now
+Output:
+
+300
+200100
+
+3) String.format()
+The String.format() method is used to format given arguments into String. It is introduced since Jdk 1.5.
+
+public static String format(String format, Object... args)
+
+Java int to String Example using String.format()
+Let's see the simple code to convert int to String in java using String.format() method.
+
+public class IntToStringExample3{
+public static void main(String args[]){
+int i=200;
+String s=String.format("%d",i);
+System.out.println(s);
+}}
+
+Test it Now
+Output:
+
+200

@@ -1,0 +1,164 @@
+JavaFX Box
+In general, a box can be defined as the three dimensional shape having all the faces in the rectangular shape. Boxes are generally the cuboid having three dimensions height, depth and width. In JavaFX, box is represented by the class 
+javafx.scene.shape.Box
+. We just need to instantiate this class in order to create the box. 
+The height, width and depth of a cube (box) is shown in the following image.
+Properties
+The class contains various properties that are described in the following table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+depth
+
+	
+It is a double type property. It represents the z-dimension of the Box. 
+
+	
+setDepth(double value)
+
+
+
+
+
+	
+height
+
+	
+It is a double type property. It represents the Y-dimension of the Box. 
+
+	
+setHeight(double value)
+
+
+
+
+
+	
+width
+
+	
+It is a double type property. It represents the X-dimension of the Box. 
+
+	
+setWidth(double value)
+
+
+
+
+Constructors
+The class contains two constructors described below. 
+
+
+public Box():
+ creates the instance of Box class with the default parameters.
+ 
+
+public Box(double width, double height, double depth) :
+ creates the instance of Box class with the specified dimensions
+
+
+
+Example
+
+
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Box;
+import javafx.stage.Stage;
+public class BoxExample extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	//Creating Boxes 
+	Box box1 = new Box();
+	Box box2 = new Box();
+	
+	//Setting properties for second box 
+	box2.setTranslateX(450);
+	box2.setTranslateY(300);
+	box2.setTranslateZ(100);
+	box2.setHeight(150);
+	box2.setWidth(50);
+	box2.setDepth(400);
+	
+	//Setting properties for first box
+	box1.setHeight(100);
+	box1.setWidth(100);
+	box1.setDepth(400);
+	box1.setTranslateX(200);
+	box1.setTranslateY(200);
+	box1.setTranslateZ(200);
+	
+	//Setting the perspective camera
+	PerspectiveCamera camera = new PerspectiveCamera();
+	camera.setTranslateX(100);
+	camera.setTranslateY(100);
+	camera.setTranslateZ(50);
+	
+	//Configuring Group, Scene and Stage
+	Group root = new Group();
+	root.getChildren().addAll(box1,box2);
+	Scene scene = new Scene(root,450,350,Color.LIMEGREEN);
+	scene.setCamera(camera);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Box Example");
+	primaryStage.show();
+}
+public static void main(String[] args) {
+	launch(args);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+Next Topic
+JavaFX Cylinder
+
+
+
+
+
+
+
+
+
+
+
+← prev
+
+
+next →
+
+
+
+
+
+

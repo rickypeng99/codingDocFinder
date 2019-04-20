@@ -1,0 +1,166 @@
+Java JScrollPane
+A JscrollPane is used to make scrollable view of a component. When screen size is limited, we  use a scroll pane to display a large component or a component whose size can change dynamically.
+Constructors
+
+    
+
+        
+Constructor
+
+        
+Purpose
+
+    
+
+    
+
+        
+JScrollPane()
+
+        
+It creates a scroll pane. The Component parameter, when present, sets the scroll pane's client. The two int parameters, when present, set the vertical and horizontal scroll bar policies (respectively).
+
+    
+
+    
+
+        
+JScrollPane(Component)
+
+    
+
+    
+
+        
+JScrollPane(int, int)
+
+    
+
+        
+JScrollPane(Component, int, int)
+
+    
+
+
+Useful Methods
+
+    
+
+        
+Modifier
+
+        
+Method
+
+        
+Description
+
+    
+
+    
+
+        
+void
+
+        
+setColumnHeaderView(Component)
+
+        
+It sets  the column header for the scroll pane.
+
+    
+
+    
+
+        
+void
+
+        
+setRowHeaderView(Component)
+
+        
+It sets  the row header for the scroll pane.
+
+    
+
+    
+
+        
+void
+
+        
+setCorner(String, Component)
+
+        
+It sets  or gets the specified corner. The int parameter specifies which corner and must be one of the following constants defined in ScrollPaneConstants: UPPER_LEFT_CORNER, UPPER_RIGHT_CORNER, LOWER_LEFT_CORNER, LOWER_RIGHT_CORNER, LOWER_LEADING_CORNER, LOWER_TRAILING_CORNER, UPPER_LEADING_CORNER, UPPER_TRAILING_CORNER.
+
+    
+
+    
+
+        
+Component 
+
+        
+getCorner(String)
+
+    
+
+    
+
+        
+void
+
+        
+setViewportView(Component)
+
+        
+Set the scroll pane's client.
+
+    
+
+
+JScrollPane Example
+
+import java.awt.FlowLayout;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JtextArea;
+
+public class JScrollPaneExample {
+	private static final long serialVersionUID = 1L;
+
+	private static void createAndShowGUI() {
+
+		// Create and set up the window.
+		final JFrame frame = new JFrame("Scroll Pane Example");
+
+		// Display the window.
+		frame.setSize(500, 500);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// set flow layout for the frame
+		frame.getContentPane().setLayout(new FlowLayout());
+
+		JTextArea textArea = new JTextArea(20, 20);
+		JScrollPane scrollableTextArea = new JScrollPane(textArea);
+
+		scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+		frame.getContentPane().add(scrollableTextArea);
+	}
+	public static void main(String[] args) {
+
+
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+
+			public void run() {
+				createAndShowGUI();
+			}
+		});
+	}
+}
+
+Output:

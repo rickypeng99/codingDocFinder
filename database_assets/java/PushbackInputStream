@@ -1,0 +1,87 @@
+Java PushbackInputStream Class
+Java PushbackInputStream 
+class
+ overrides InputStream and provides extra functionality to another input stream. It can unread a byte which is already read and push back one byte.
+Class declaration
+Let's see the declaration for java.io.PushbackInputStream class:
+
+public class PushbackInputStream extends FilterInputStream
+
+Class Methods
+
+
+Method
+Description
+
+
+int available()
+It is used to return the number of bytes that can be read from the input stream.
+
+
+int read()
+It is used to read the next byte of data from the input stream.
+
+
+boolean markSupported()
+It is used to test if the input stream support mark and reset method.
+
+
+void mark(int readlimit)
+It is used to mark the current position in the input stream.
+
+
+long skip(long x)
+It is used to skip over and discard x bytes of data.
+
+
+void unread(int b)
+It is used to pushes back the byte by copying it to the pushback buffer.
+
+
+void unread(byte[] b)
+It is used to pushes back the 
+array
+ of byte by copying it to the pushback buffer.
+
+
+void reset()
+It is used to reset the input stream.
+
+
+void close()
+It is used to close the input stream.
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Example of PushbackInputStream class
+
+import java.io.*;
+public class InputStreamExample {
+public static void main(String[] args)throws Exception{
+          String srg = "1##2#34###12";
+          byte ary[] = srg.getBytes();
+          ByteArrayInputStream array = new ByteArrayInputStream(ary);
+          PushbackInputStream push = new PushbackInputStream(array);
+          int i;      
+              while( (i = push.read())!= -1) {
+                  if(i == '#') {
+              	      int j;
+                      if( (j = push.read()) == '#'){
+                           System.out.print("**");
+                      }else {
+                       	  push.unread(j);
+                          System.out.print((char)i);
+                      }
+	              }else {
+	                          System.out.print((char)i);
+	              }
+             }      
+  } 
+}
+
+
+Output:
+
+1**2#34**#12

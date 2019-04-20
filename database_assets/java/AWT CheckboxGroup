@@ -1,0 +1,77 @@
+Java AWT CheckboxGroup
+The object of CheckboxGroup class is used to group together a set of 
+Checkbox
+. At a time only one check box button is allowed to be in "on" state and remaining check box button in "off" state. It inherits the 
+object class
+.
+Note: CheckboxGroup enables you to create radio buttons in AWT. There is no special control for creating radio buttons in AWT.
+AWT CheckboxGroup Class Declaration
+
+public class CheckboxGroup extends Object implements Serializable
+
+Java AWT CheckboxGroup Example
+
+import java.awt.*;  
+public class CheckboxGroupExample  
+{  
+       CheckboxGroupExample(){  
+       Frame f= new Frame("CheckboxGroup Example");  
+        CheckboxGroup cbg = new CheckboxGroup();
+        Checkbox checkBox1 = new Checkbox("C++", cbg, false);  
+        checkBox1.setBounds(100,100, 50,50);  
+        Checkbox checkBox2 = new Checkbox("Java", cbg, true);  
+        checkBox2.setBounds(100,150, 50,50);  
+        f.add(checkBox1);  
+        f.add(checkBox2);  
+        f.setSize(400,400);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+     }  
+public static void main(String args[])  
+{  
+    new CheckboxGroupExample();  
+}  
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java AWT CheckboxGroup Example with ItemListener
+
+import java.awt.*;  
+import java.awt.event.*;
+public class CheckboxGroupExample  
+{  
+     CheckboxGroupExample(){  
+       Frame f= new Frame("CheckboxGroup Example");  
+       final Label label = new Label();        
+       label.setAlignment(Label.CENTER);
+       label.setSize(400,100);
+        CheckboxGroup cbg = new CheckboxGroup();
+        Checkbox checkBox1 = new Checkbox("C++", cbg, false);  
+        checkBox1.setBounds(100,100, 50,50);  
+        Checkbox checkBox2 = new Checkbox("Java", cbg, false);  
+        checkBox2.setBounds(100,150, 50,50);  
+        f.add(checkBox1); f.add(checkBox2); f.add(label);  
+        f.setSize(400,400);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+        checkBox1.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {             
+               label.setText("C++ checkbox: Checked");
+            }
+         });
+        checkBox2.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {             
+               label.setText("Java checkbox: Checked");
+            }
+         });
+     }  
+public static void main(String args[])  
+{  
+    new CheckboxGroupExample();  
+}  
+}
+
+Output:

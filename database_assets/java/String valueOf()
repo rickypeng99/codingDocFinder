@@ -1,0 +1,148 @@
+Java String valueOf()
+The 
+java string valueOf()
+ method converts different types of values into string. By the help of string valueOf() method, you can convert int to string, long to string, boolean to string, character to string, float to string, double to string, object to string and char array to string.
+Internal implementation
+
+ public static String valueOf(Object obj) {
+        return (obj == null) ? "null" : obj.toString();
+    }
+
+Signature
+The signature or syntax of string valueOf() method is given below:
+
+public static String valueOf(boolean b)
+public static String valueOf(char c)
+public static String valueOf(char[] c)
+public static String valueOf(int i)
+public static String valueOf(long l)
+public static String valueOf(float f)
+public static String valueOf(double d)
+public static String valueOf(Object o)
+
+Returns
+string representation of given value
+Java String valueOf() method example
+
+public class StringValueOfExample{
+public static void main(String args[]){
+int value=30;
+String s1=String.valueOf(value);
+System.out.println(s1+10);//concatenating string with 10
+}}
+
+Test it Now
+Output:
+
+3010
+
+Java String valueOf(boolean bol) Method Example
+This is a boolean version of overloaded valueOf() method. It takes boolean value and returns a string. Let's see an example.
+
+public class StringValueOfExample2 {
+	public static void main(String[] args) {		
+		// Boolean to String
+		boolean bol = true;  
+		boolean bol2 = false;  
+		String s1 = String.valueOf(bol);  
+		String s2 = String.valueOf(bol2);
+		System.out.println(s1);
+		System.out.println(s2);
+	}
+}
+
+Test it Now
+Output:
+
+true
+false
+
+Java String valueOf(char ch) Method Example
+This is a char version of overloaded valueOf() method. It takes char value and returns a string. Let's see an example.
+
+public class StringValueOfExample3 {
+	public static void main(String[] args) {
+		// char to String		
+		char ch1 = 'A';  
+		char ch2 = 'B';
+		String s1 = String.valueOf(ch1);  
+		String s2 = String.valueOf(ch2);
+		System.out.println(s1);
+		System.out.println(s2);
+	}
+}
+
+Test it Now
+Output:
+
+A
+B
+
+Java String valueOf(float f) and valueOf(double d)
+This is a float version of overloaded valueOf() method. It takes float value and returns a string. Let's see an example.
+
+public class StringValueOfExample4 {
+	public static void main(String[] args) {
+		// Float and Double to String
+		float f  = 10.05f;  
+		double d = 10.02;
+		String s1 = String.valueOf(f);  
+		String s2 = String.valueOf(d);
+		System.out.println(s1);
+		System.out.println(s2);
+	}
+}
+
+Test it Now
+Output:
+
+10.05
+10.02
+
+Java String valueOf() Complete Examples
+Let's see an example where we are converting all primitives and objects into strings.
+
+public class StringValueOfExample5 {
+	public static void main(String[] args) {
+		boolean b1=true;
+		byte b2=11;  
+		short sh = 12;
+		int i = 13;
+		long l = 14L;
+		float f = 15.5f;
+		double d = 16.5d;
+		char chr[]={'j','a','v','a'};
+		StringValueOfExample5 obj=new StringValueOfExample5();
+		String s1 = String.valueOf(b1);  
+		String s2 = String.valueOf(b2);  
+		String s3 = String.valueOf(sh);  
+		String s4 = String.valueOf(i);  
+		String s5 = String.valueOf(l);  
+		String s6 = String.valueOf(f);  
+		String s7 = String.valueOf(d);  
+		String s8 = String.valueOf(chr);  
+		String s9 = String.valueOf(obj);  
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(s3);
+		System.out.println(s4);
+		System.out.println(s5);
+		System.out.println(s6);
+		System.out.println(s7);
+		System.out.println(s8);
+		System.out.println(s9);
+	}
+}
+
+Test it Now
+Output:
+
+true
+11
+12
+13
+14
+15.5
+16.5
+java
+StringValueOfExample5@2a139a55

@@ -1,0 +1,91 @@
+Java String concat
+The 
+java string concat()
+ method 
+combines specified string at the end of this string
+. It returns combined string. It is like appending another string.
+Internal implementation
+
+	public String concat(String str) {
+        int otherLen = str.length();
+        if (otherLen == 0) {
+            return this;
+        }
+        int len = value.length;
+        char buf[] = Arrays.copyOf(value, len + otherLen);
+        str.getChars(buf, len);
+        return new String(buf, true);
+    }
+
+Signature
+The signature of string concat() method is given below:
+
+public String concat(String anotherString)
+
+Parameter
+anotherString
+ : another string i.e. to be combined at the end of this string.
+Returns
+combined string
+Java String concat() method example
+
+public class ConcatExample{
+public static void main(String args[]){
+String s1="java string";
+s1.concat("is immutable");
+System.out.println(s1);
+s1=s1.concat(" is immutable so assign it explicitly");
+System.out.println(s1);
+}}
+
+Test it Now
+
+java string
+java string is immutable so assign it explicitly
+
+Java String concat() Method Example 2
+Let's see an example where we are concatenating multiple string objects.
+
+public class ConcatExample2 {
+	public static void main(String[] args) {	
+		String str1 = "Hello";
+		String str2 = "Javatpoint";
+		String str3 = "Reader";
+		// Concatenating one string 
+		String str4 = str1.concat(str2);		
+		System.out.println(str4);
+		// Concatenating multiple strings
+		String str5 = str1.concat(str2).concat(str3);
+		System.out.println(str5);
+	}
+}
+
+Output:
+
+HelloJavatpoint
+HelloJavatpointReader
+
+Java String concat() Method Example 3
+Let's see an example where we are concatenating spaces and special chars to the string object.
+
+public class ConcatExample3 {
+	public static void main(String[] args) {
+		String str1 = "Hello";
+		String str2 = "Javatpoint";
+		String str3 = "Reader";
+		// Concatenating Space among strings
+		String str4 = str1.concat(" ").concat(str2).concat(" ").concat(str3);
+		System.out.println(str4);		
+		// Concatenating Special Chars		
+		String str5 = str1.concat("!!!");
+		System.out.println(str5);		
+		String str6 = str1.concat("@").concat(str2);
+		System.out.println(str6);
+	}
+}
+
+Output:
+
+Hello Javatpoint Reader
+Hello!!!
+Hello@Javatpoint

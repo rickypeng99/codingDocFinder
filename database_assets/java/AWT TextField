@@ -1,0 +1,76 @@
+Java AWT TextField
+The 
+object
+ of a TextField class is a text component that allows the editing of a single line text. It inherits TextComponent class.
+AWT TextField Class Declaration
+
+public class TextField extends TextComponent
+
+Java AWT TextField Example
+
+import java.awt.*;
+class TextFieldExample{
+public static void main(String args[]){
+    Frame f= new Frame("TextField Example");
+    TextField t1,t2;
+    t1=new TextField("Welcome to Javatpoint.");
+    t1.setBounds(50,100, 200,30);
+    t2=new TextField("AWT Tutorial");
+    t2.setBounds(50,150, 200,30);
+    f.add(t1); f.add(t2);
+    f.setSize(400,400);
+    f.setLayout(null);
+    f.setVisible(true);
+}
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java AWT TextField Example with ActionListener
+
+import java.awt.*;
+import java.awt.event.*;
+public class TextFieldExample extends Frame implements ActionListener{
+	TextField tf1,tf2,tf3;
+	Button b1,b2;
+	TextFieldExample(){
+		tf1=new TextField();
+		tf1.setBounds(50,50,150,20);
+		tf2=new TextField();
+		tf2.setBounds(50,100,150,20);
+		tf3=new TextField();
+		tf3.setBounds(50,150,150,20);
+		tf3.setEditable(false);	
+		b1=new Button("+");
+		b1.setBounds(50,200,50,50);
+		b2=new Button("-");
+		b2.setBounds(120,200,50,50);
+		b1.addActionListener(this);
+		b2.addActionListener(this);
+		add(tf1);add(tf2);add(tf3);add(b1);add(b2);
+		setSize(300,300);
+		setLayout(null);
+		setVisible(true);
+	}		
+	public void actionPerformed(ActionEvent e) {
+		String s1=tf1.getText();
+		String s2=tf2.getText();
+		int a=Integer.parseInt(s1);
+		int b=Integer.parseInt(s2);
+		int c=0;
+		if(e.getSource()==b1){
+			c=a+b;
+		}else if(e.getSource()==b2){
+			c=a-b;
+		}
+		String result=String.valueOf(c);
+		tf3.setText(result);
+	}
+public static void main(String[] args) {
+	new TextFieldExample();
+}
+}
+
+Output:

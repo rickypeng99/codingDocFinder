@@ -1,0 +1,167 @@
+JavaFX Path Transition
+It allows the node to animate through a specified path over the specified duration. In JavaFX, the path is defined by instantiating the class 
+javafx.scene.shape.Path.
+The translation along this path is done by updating the x and y coordinate of the node at the regular intervals. The rotation can only be done in the case when the orientation is set to be 
+OrientationType.ORTHOGONAL_TO_TANGENT.
+In JavaFX, the class 
+javafx.animation.PathTransition
+ represents the path transition. We need to instantiate this class in order to create an appropriate path transition.
+Properties
+The properties of the class along with the setter methods are described in the following table.
+
+
+
+    
+Property
+
+    
+Description
+
+	
+Setter Methods
+
+
+
+
+
+    
+duration
+
+    
+This property is an object type of the class Duration. This represents the lifespan of the transition.
+
+	
+setDuraton(Duration duration)
+
+
+
+
+
+    
+node
+
+    
+This is an object of the class Node. This represents the node onto which the transition will be applied.
+
+	
+setNode(Node node)
+
+
+
+
+
+    
+orientation
+
+    
+This is a object type property referenced by 
+PathTransition.OrientationType.
+ It represents the upright orientation of the node along the path. 
+
+	
+SetOrientation(PathTransition.OrientationType orientation-type)
+
+
+
+
+
+    
+path
+
+    
+This is an object type property of the class Shape. It specified the shape through which the outline of the animated path undergoes.
+
+	
+setPath(Shape shape)
+
+
+
+
+Constructors
+There are three constructors in the class.
+
+
+public PathTransition() :
+ Creates the instance of the Path Transition with the default parameters
+
+
+public PathTransition(Duration duration, Shape path) :
+ Creates the instance of path transition with the specified duration and path
+
+
+public PathTransition(Duration duration, Shape path, Node node) :
+ Creates the instance of the PathTransition with the specified duration, path and the node.
+
+
+Example
+In the following example, we have created a polygon and applied the path transition on it which is  simulating the path of a pendulum.
+
+package application;
+import javafx.animation.PathTransition;
+import javafx.animation.PathTransition.OrientationType;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.CubicCurveTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.scene.shape.Polygon;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+public class Path_Transition extends Application{
+@Override
+public void start(Stage primaryStage) throws Exception {
+	// TODO Auto-generated method stub
+	//Creating Polygon 
+	Polygon poly = new Polygon(); 
+	poly.getPoints().addAll(new Double[] {320.0,270.0,270.0,220.0,270.0,270.0,320.0,120.0,370.0,270.0,370.0,220.0});
+	
+	//Setting Colour and Stroke properties for the polygon  
+	poly.setFill(Color.LIMEGREEN);
+	poly.setStroke(Color.BLACK);
+
+    //Setting up the path 
+	Path path = new Path();
+    path.getElements().add (new MoveTo (150f, 70f));
+    path.getElements().add (new CubicCurveTo (240f, 230f, 500f, 340f, 600, 50f));
+    
+    //Instantiating PathTransition class 
+    PathTransition pathTransition = new PathTransition();
+   
+    //Setting duration for the PathTransition
+    pathTransition.setDuration(Duration.millis(1000));
+    
+    //Setting Node on which the path transition will be applied 
+    pathTransition.setNode(poly);
+    
+    //setting path for the path transition 
+    pathTransition.setPath(path);
+    
+    //setting orientation for the path transition 
+    pathTransition.setOrientation(OrientationType.ORTHOGONAL_TO_TANGENT);
+    
+    //setting up the cycle count 
+    pathTransition.setCycleCount(10);
+    
+    //setting auto reverse to be true 
+    pathTransition.setAutoReverse(true);
+
+    //Playing path transition 
+    pathTransition.play();
+    
+    //Configuring group and scene 
+    Group root = new Group();
+	root.getChildren().addAll(poly);
+	Scene scene = new Scene(root,700,350,Color.WHEAT);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("Path Transition Example");
+	primaryStage.show();
+}
+public static void main(String[] args) {
+	launch(args);
+}
+
+}
+
+Output:

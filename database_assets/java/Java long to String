@@ -1,0 +1,66 @@
+Java long to String
+We can convert 
+long to String in java
+ using 
+String.valueOf()
+ and 
+Long.toString()
+ methods.
+Scenario
+It is generally used if we have to display long number in textfield in GUI application because everything is displayed as a string in form.
+1) String.valueOf()
+The String.valueOf() is an overloaded method. It can be used to convert long to String. The valueOf() is the static method of String class. The 
+signature
+ of valueOf() method is given below:
+
+public static String valueOf(long i)
+
+Java long to String Example using String.valueOf()
+Let's see the simple code to convert long to String in java.
+
+long i=9993939399L;//L is the suffix for long
+String s=String.valueOf(i);//Now it will return "9993939399"
+
+Let's see the simple example of converting long to String in java.
+
+public class LongToStringExample1{
+public static void main(String args[]){
+long i=9993939399L;
+String s=String.valueOf(i);
+System.out.println(s);
+}}
+
+Test it Now
+Output:
+
+9993939399
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+2) Long.toString()
+The Long.toString() method converts long to String. The toString() is the static method of Long class. The 
+signature
+ of toString() method is given below:
+
+public static String toString(long i)
+
+Java long to String Example using Long.toString()
+Let's see the simple code to convert long to String in java using Long.toString() method.
+
+long i=9993939399L;
+String s=Long.toString(i);//Now it will return "9993939399"
+
+Let's see the simple example of converting long to String in java.
+
+public class LongToStringExample2{
+public static void main(String args[]){
+long i=9993939399L;
+String s=Long.toString(i);
+System.out.println(s);
+}}
+
+Test it Now
+Output:
+
+9993939399

@@ -1,0 +1,98 @@
+Java JSlider
+The Java JSlider class is used to create the slider. By using JSlider, a user can select a value from a specific range.
+Commonly used Constructors of JSlider class
+
+
+Constructor
+Description
+
+
+JSlider()
+ creates a slider with the initial value of 50 and range of 0 to 100.
+
+
+JSlider(int orientation)
+ creates a slider with the specified orientation set by either JSlider.HORIZONTAL or JSlider.VERTICAL with the range 0 to 100 and initial value 50.
+
+
+JSlider(int min, int max)
+ creates a horizontal slider using the given min and max.
+
+
+JSlider(int min, int max, int value)
+ creates a horizontal slider using the given min, max and value.
+
+
+JSlider(int orientation, int min, int max, int value)
+ creates a slider using the given orientation, min, max and value.
+
+
+Commonly used Methods of JSlider class
+
+
+Method
+Description
+
+
+public void setMinorTickSpacing(int n)
+ is used to set the minor tick spacing to the slider.
+
+
+public void setMajorTickSpacing(int n)
+ is used to set the major tick spacing to the slider.
+
+
+public void setPaintTicks(boolean b)
+ is used to determine whether tick marks are painted.
+
+
+public void setPaintLabels(boolean b)
+ is used to determine whether labels are painted.
+
+
+public void setPaintTracks(boolean b)
+ is used to determine whether track is painted.
+
+
+Java JSlider Example
+
+import javax.swing.*;
+public class SliderExample1 extends JFrame{
+public SliderExample1() {
+JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 50, 25);
+JPanel panel=new JPanel();
+panel.add(slider);
+add(panel);
+}
+
+public static void main(String s[]) {
+SliderExample1 frame=new SliderExample1();
+frame.pack();
+frame.setVisible(true);
+}
+}
+
+Output:
+Java JSlider Example: painting ticks
+
+import javax.swing.*;
+public class SliderExample extends JFrame{
+public SliderExample() {
+JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 50, 25);
+slider.setMinorTickSpacing(2);
+slider.setMajorTickSpacing(10);
+slider.setPaintTicks(true);
+slider.setPaintLabels(true);
+
+JPanel panel=new JPanel();
+panel.add(slider);
+add(panel);
+}
+public static void main(String s[]) {
+SliderExample frame=new SliderExample();
+frame.pack();
+frame.setVisible(true);
+}
+}
+
+Output:

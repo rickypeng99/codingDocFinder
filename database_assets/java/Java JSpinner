@@ -1,0 +1,126 @@
+Java JSpinner
+The object of JSpinner class is a single line input field that allows the user to select a number or an object value from an ordered sequence.
+JSpinner class declaration
+Let's see the declaration for javax.swing.JSpinner class.
+
+public class JSpinner extends JComponent implements Accessible
+
+Commonly used Contructors:
+
+       
+
+	      
+Constructor
+
+		  
+Description
+
+	   
+
+	   
+
+          
+JSpinner()
+
+          
+It is used to construct a spinner with an Integer SpinnerNumberModel with initial value 0 and no minimum or maximum limits.
+
+       
+
+	   
+
+          
+JSpinner(SpinnerModel model)
+
+          
+It is used to construct a spinner for a given model.
+
+       
+
+
+Commonly used Methods:
+
+       
+
+	      
+Method
+
+		  
+Description
+
+	   
+
+	   
+
+          
+void addChangeListener(ChangeListener listener)
+
+          
+It is used to add a listener to the list that is notified each time a change to the model occurs.
+
+       
+
+	   
+
+          
+Object getValue()
+
+          
+It is used to return the current value of the model.
+
+       
+
+
+Java JSpinner Example
+
+import javax.swing.*;  
+public class SpinnerExample {
+	public static void main(String[] args) {  
+	JFrame f=new JFrame("Spinner Example");  
+	SpinnerModel value =
+	         new SpinnerNumberModel(5, //initial value
+	            0, //minimum value
+	            10, //maximum value
+	            1); //step
+	JSpinner spinner = new JSpinner(value); 
+            spinner.setBounds(100,100,50,30);  
+            f.add(spinner);  
+            f.setSize(300,300);  
+            f.setLayout(null);  
+            f.setVisible(true);   
+}
+}
+
+Output:
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java JSpinner Example with ChangeListener
+ort javax.swing.*;  
+import javax.swing.event.*;
+public class SpinnerExample {
+	public static void main(String[] args) {  
+	JFrame f=new JFrame("Spinner Example");  
+	final JLabel label = new JLabel();          
+             label.setHorizontalAlignment(JLabel.CENTER);  
+             label.setSize(250,100);  
+	SpinnerModel value =
+	         new SpinnerNumberModel(5, //initial value
+	            0, //minimum value
+	            10, //maximum value
+	            1); //step
+	JSpinner spinner = new JSpinner(value); 
+            spinner.setBounds(100,100,50,30);  
+            f.add(spinner);  f.add(label);
+           f.setSize(300,300);  
+           f.setLayout(null);  
+           f.setVisible(true);   
+           spinner.addChangeListener(new ChangeListener() {
+        public void stateChanged(ChangeEvent e) {
+         label.setText("Value : " + ((JSpinner)e.getSource()).getValue());
+        }
+     });
+}
+}
+
+Output:

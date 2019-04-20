@@ -1,0 +1,96 @@
+Java SimpleDateFormat
+The java.text.SimpleDateFormat class provides methods to format and parse date and time in java. The SimpleDateFormat is a concrete class for formatting and parsing date which inherits java.text.DateFormat class. 
+Notice that 
+formatting means converting date to string
+ and 
+parsing means converting string to date
+.
+Java SimpleDateFormat Example: Date to String
+Let's see the simple example to 
+format date in java
+ using java.text.SimpleDateFormat class.
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class SimpleDateFormatExample {
+public static void main(String[] args) {
+	Date date = new Date();
+	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	String strDate= formatter.format(date);
+	System.out.println(strDate);
+}
+}
+
+Test it Now
+Output:
+
+13/04/2015
+
+Note: M (capital M) represents month and m (small m) represents minute in java.
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Let's see the full example to 
+format date and time in java
+ using java.text.SimpleDateFormat class.
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+public class SimpleDateFormatExample2 {
+public static void main(String[] args) {
+	Date date = new Date();
+	SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+	String strDate = formatter.format(date);
+	System.out.println("Date Format with MM/dd/yyyy : "+strDate);
+
+	formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+	strDate = formatter.format(date);
+	System.out.println("Date Format with dd-M-yyyy hh:mm:ss : "+strDate);
+
+	formatter = new SimpleDateFormat("dd MMMM yyyy");
+	strDate = formatter.format(date);
+	System.out.println("Date Format with dd MMMM yyyy : "+strDate);
+
+	formatter = new SimpleDateFormat("dd MMMM yyyy zzzz");
+	strDate = formatter.format(date);
+	System.out.println("Date Format with dd MMMM yyyy zzzz : "+strDate);
+
+	formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss z");
+	strDate = formatter.format(date);
+	System.out.println("Date Format with E, dd MMM yyyy HH:mm:ss z : "+strDate);
+}
+}
+
+Test it Now
+Output:
+
+Date Format with MM/dd/yyyy : 04/13/2015
+Date Format with dd-M-yyyy hh:mm:ss : 13-4-2015 10:59:26
+Date Format with dd MMMM yyyy : 13 April 2015
+Date Format with dd MMMM yyyy zzzz : 13 April 2015 India Standard Time
+Date Format with E, dd MMM yyyy HH:mm:ss z : Mon, 13 Apr 2015 22:59:26 IST
+
+Java SimpleDateFormat Example: String to Date
+Let's see the simple example to 
+convert string into date
+ using java.text.SimpleDateFormat class.
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class SimpleDateFormatExample3 {
+public static void main(String[] args) {
+	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	try {
+		Date date = formatter.parse("31/03/2015");
+		System.out.println("Date is: "+date);
+	} catch (ParseException e) {e.printStackTrace();}
+}
+}
+
+Test it Now
+Output:
+
+Date is: Tue Mar 31 00:00:00 IST 2015

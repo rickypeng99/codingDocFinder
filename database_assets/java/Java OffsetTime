@@ -1,0 +1,184 @@
+Java OffsetTime class
+Java OffsetTime class is an immutable date-time object that represents a time, often viewed as hour-minute-second offset. It inherits Object class and implements the Comparable interface.
+Java OffsetTime class declaration
+Let's see the declaration of java.time.OffsetTime class.
+
+public final class OffsetTime extends Object 
+implements Temporal, TemporalAdjuster, Comparable<OffsetTime>, Serializable
+
+Methods of Java OffsetTime
+
+     
+
+         
+Method
+
+		 
+Description
+
+     
+
+     
+
+         
+String format(DateTimeFormatter formatter)
+
+         
+It is used to format this time using the specified formatter.
+
+     
+
+     
+
+         
+int get(TemporalField field)
+
+         
+It is used to get the value of the specified field from this time as an int.
+
+     
+
+     
+
+         
+int getHour()
+
+         
+It is used to get the hour-of-day field.
+
+     
+
+	 
+
+         
+int getMinute()
+
+         
+It is used to get the minute-of-hour field.
+
+     
+
+	 
+
+         
+int getSecond()
+
+         
+It is used to get the second-of-minute field.
+
+     
+
+	 
+
+         
+static OffsetTime now()
+
+         
+It is used to obtain the current time from the system clock in the default time-zone.
+
+     
+
+	 
+
+         
+static OffsetTime of(LocalTime time, ZoneOffset offset)
+
+         
+It is used to obtain an instance of OffsetTime from a local time and an offset.
+
+     
+
+	 
+
+         
+ValueRange range(TemporalField field)
+
+         
+It is used to get the range of valid values for the specified field.
+
+     
+
+	 
+
+         
+VLocalTime toLocalTime()
+
+         
+It is used to get the LocalTime part of this date-time.
+
+     
+
+
+
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+Java OffsetTime class Example
+
+import java.time.OffsetTime;
+import java.time.temporal.ChronoField;
+public class OffsetTimeExample1 {
+  public static void main(String[] args) {
+    OffsetTime offset = OffsetTime.now();
+    int h = offset.get(ChronoField.HOUR_OF_DAY);
+    System.out.println(h);
+    int m = offset.get(ChronoField.MINUTE_OF_DAY);
+    System.out.println(m);
+    int s = offset.get(ChronoField.SECOND_OF_DAY);
+    System.out.println(s);
+  }
+}
+
+Test it Now
+Output:
+
+16
+970
+58224
+
+Java OffsetTime class Example: getHour()
+
+import java.time.OffsetTime;
+public class OffsetTimeExample2 {
+  public static void main(String[] args) {
+    OffsetTime offset = OffsetTime.now();
+    int h = offset.getHour();
+    System.out.println(h+ " hour");
+  }
+}
+
+Test it Now
+Output:
+
+15 hour
+
+Java OffsetTime class Example: getMinute()
+
+import java.time.OffsetTime;
+public class OffsetTimeExample3 {
+  public static void main(String[] args) {
+    OffsetTime offset = OffsetTime.now();
+    int m = offset.getMinute();
+    System.out.println(m+ " minute");
+  }
+}
+
+Test it Now
+Output:
+
+24 minute
+
+Java OffsetTime class Example: getSecond()
+
+import java.time.OffsetTime;
+public class OffsetTimeExample4 {
+  public static void main(String[] args) {
+    OffsetTime offset = OffsetTime.now();
+    int s = offset.getSecond();
+    System.out.println(s+ " second");
+  }
+}
+
+Test it Now
+Output:
+
+8 second

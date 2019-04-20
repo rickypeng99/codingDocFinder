@@ -1,0 +1,68 @@
+How to call private method from another class in java
+
+You can call the private method from outside the class by changing the runtime behaviour of the class.
+
+By the help of 
+java.lang.Class
+ class and 
+java.lang.reflect.Method
+ class, we can call private method from any other class.
+Required methods of  Method class
+1) public void setAccessible(boolean status) throws SecurityException
+ sets the accessibility of the method.
+
+2) public Object invoke(Object method, Object... args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
+ is used to invoke the method.
+
+Required method of Class class
+1) public Method getDeclaredMethod(String name,Class[] parameterTypes)throws NoSuchMethodException,SecurityException:
+ returns a Method object that reflects the specified declared method of the class or interface represented by this Class object.
+
+Example of calling private method from another class
+Let's see the simple example to call private method from another class.
+File: A.java
+
+public class A {
+  private void message(){System.out.println("hello java"); }
+}
+
+File: MethodCall.java
+
+import java.lang.reflect.Method;
+public class MethodCall{
+public static void main(String[] args)throws Exception{
+
+	Class c = Class.forName("A");
+	Object o= c.newInstance();
+	Method m =c.getDeclaredMethod("message", null);
+	m.setAccessible(true);
+	m.invoke(o, null);
+}
+}
+
+
+Output:hello java
+
+Another example to call  parameterized private method from another class
+Let's see the example to call parameterized private method from another class 
+File: A.java
+
+class A{
+private void cube(int n){System.out.println(n*n*n);}
+}
+
+File: M.java
+
+import java.lang.reflect.*;
+class M{
+public static void main(String args[])throws Exception{
+Class c=A.class;
+Object obj=c.newInstance();
+
+Method m=c.getDeclaredMethod("cube",new Class[]{int.class});
+m.setAccessible(true);
+m.invoke(obj,4);
+}}
+
+
+Output:64

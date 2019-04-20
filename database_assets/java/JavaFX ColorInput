@@ -1,0 +1,134 @@
+JavaFX ColorInput
+ColorInput produces the output similar to a coloured Rectangle. It doesn't display the node but the rectangular box. It is mainly passed into the other effects as an input. The class 
+javafx.scene.effect.ColorInput
+ represents the ColorInput effect. The object of this class is passed as an input for the other effects. 
+Properties
+Properties of the class 
+javafx.scene.effect.ColorInput
+ along with their setter methods are described below in the table. 
+
+
+
+	
+Property
+
+	
+Description
+
+	
+Setter Methods
+
+
+
+
+
+	
+height
+
+	
+It is of double type. It represents the height of the region that is to be filled. 
+
+	
+setHeight(double value)
+
+
+
+
+
+	
+paint
+
+	
+It represents the paint with which the region is to be filled. 
+
+	
+setPaint(Paint value)
+
+
+
+
+
+	
+width
+
+	
+It is of double type. It represents the width of the region that is to be filled. 
+
+	
+setWidth(double value)
+
+
+
+
+
+	
+x
+
+	
+It represents the X coordinate of the top left corner of region. 
+
+	
+setX(double value)
+
+
+
+
+
+	
+y
+
+	
+It represents the Y coordinate of the top left corner of the region. 
+
+	
+setY(double value)
+
+
+
+
+Constructors
+The class contains two constructors. 
+
+
+public ColorInput() :
+ Creates a new instance of  ColorInput with the default parameters. 
+ 
+
+public ColorInput(double x, double y, double width, double height, Paint paint) :
+ Creates a new instance of ColorInput with the specified parameters. 
+
+
+Example:
+The following example illustrates the working of ColorInput effect. 
+
+package application;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.effect.ColorInput;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+public class ColorInputExample extends Application {
+public static void main(String[] args) {
+	launch(args);
+}
+@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+	ColorInput color = new ColorInput();
+	color.setPaint(Color.RED);		
+	color.setHeight(100);
+	color.setWidth(100);
+	color.setX(140);
+	color.setY(90);
+	Rectangle rect = new Rectangle();
+	rect.setEffect(color);
+	Group root = new Group();
+	Scene scene = new Scene(root,400,300);
+	root.getChildren().add(rect);
+	primaryStage.setScene(scene);
+	primaryStage.setTitle("ColorInput Example");
+	primaryStage.show();
+	}
+}

@@ -1,0 +1,249 @@
+Java Custom Annotation
+Java Custom annotations
+ or Java User-defined annotations are easy to create and use. The 
+@interface
+ element is used to declare an annotation. For example:
+
+@interface MyAnnotation{}
+
+Here, MyAnnotation is the custom annotation name.
+Points to remember for java custom annotation signature
+There are few points that should be remembered by the programmer.
+
+
+Method should not have any throws clauses
+
+
+Method should return one of the following: primitive data types, String, Class, enum or array of these data types.
+
+
+Method should not have any parameter.
+
+
+We should attach @ just before interface keyword to define annotation.
+
+
+It may assign a default value to the method.
+
+
+Types of Annotation
+There are three types of annotations.
+
+
+Marker Annotation
+
+
+Single-Value Annotation
+
+
+Multi-Value Annotation
+
+
+1) Marker Annotation
+An annotation that has no method, is called marker annotation. For example:
+
+@interface MyAnnotation{}
+
+The @Override and @Deprecated are marker annotations.
+2) Single-Value Annotation
+An annotation that has one method, is called single-value annotation. For example:
+
+@interface MyAnnotation{
+int value();
+}
+
+ We can provide the default value also. For example:
+
+@interface MyAnnotation{
+int value() default 0;
+}
+
+How to apply Single-Value Annotation
+Let's see the code to apply the single value annotation.
+
+@MyAnnotation(value=10)
+
+The value can be anything.
+3) Multi-Value Annotation
+An annotation that has more than one method, is called Multi-Value annotation. For example:
+
+@interface MyAnnotation{
+int value1();
+String value2();
+String value3();
+}
+}
+
+ We can provide the default value also. For example:
+
+@interface MyAnnotation{
+int value1() default 1;
+String value2() default "";
+String value3() default "xyz";
+}
+
+How to apply Multi-Value Annotation
+Let's see the code to apply the multi-value annotation.
+
+@MyAnnotation(value1=10,value2="Arun Kumar",value3="Ghaziabad")
+
+Built-in Annotations used in custom annotations in java
+
+
+@Target
+
+
+@Retention
+
+
+@Inherited
+
+
+@Documented
+
+
+@Target
+@Target
+ tag is used to specify at which type, the annotation is used.
+The java.lang.annotation.
+ElementType
+ enum declares many constants to specify the type of element where annotation is to be applied such as TYPE, METHOD, FIELD etc. Let's see the constants of ElementType enum:
+
+
+Element Types 
+ Where the annotation can be applied
+
+
+TYPE
+ class, interface or enumeration
+
+
+FIELD 
+ fields
+
+
+METHOD
+ methods
+
+
+CONSTRUCTOR 
+ constructors
+
+
+LOCAL_VARIABLE
+ local variables
+
+
+ANNOTATION_TYPE
+ annotation type
+
+
+PARAMETER
+ parameter
+
+
+Example to specify annoation for a class
+
+@Target(ElementType.TYPE)
+@interface MyAnnotation{
+int value1();
+String value2();
+}
+
+Example to specify annotation for a class, methods or fields
+
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
+@interface MyAnnotation{
+int value1();
+String value2();
+}
+
+@Retention
+@Retention
+ annotation is used to specify to what level annotation will be available.
+
+
+RetentionPolicy 
+ Availability
+
+
+RetentionPolicy.SOURCE
+ refers to the source code, discarded during compilation. It will not be available in the compiled class. 
+
+
+
+RetentionPolicy.CLASS 
+ refers to the .class file, available to java compiler but not to JVM
+. It is included in the class file.
+
+
+RetentionPolicy.RUNTIME
+ refers to the runtime, available to java compiler and JVM
+.
+
+
+Example to specify the RetentionPolicy
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@interface MyAnnotation{
+int value1();
+String value2();
+}
+
+Example of custom annotation: creating, applying and accessing annotation
+Let's see the simple example of creating, applying and accessing annotation.
+File: Test.java
+
+//Creating annotation
+import java.lang.annotation.*;
+import java.lang.reflect.*;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+@interface MyAnnotation{
+int value();
+}
+
+//Applying annotation
+class Hello{
+@MyAnnotation(value=10)
+public void sayHello(){System.out.println("hello annotation");}
+}
+
+//Accessing annotation
+class TestCustomAnnotation1{
+public static void main(String args[])throws Exception{
+
+Hello h=new Hello();
+Method m=h.getClass().getMethod("sayHello");
+
+MyAnnotation manno=m.getAnnotation(MyAnnotation.class);
+System.out.println("value is: "+manno.value());
+}}
+
+Test it Now
+
+Output:value is: 10
+
+
+
+download this example
+
+
+How built-in annotaions are used in real scenario?
+In real scenario, java programmer only need to apply annotation. He/She doesn't need to create and access annotation. Creating and Accessing annotation is performed by the implementation provider. On behalf of the annotation, java compiler or JVM performs some additional operations.
+@Inherited
+By default, annotations are not inherited to subclasses. The @Inherited annotation marks the annotation to be inherited to subclasses.
+
+
+@Inherited
+@interface ForEveryone { }//Now it will be available to subclass also
+
+@interface ForEveryone { }
+class Superclass{}
+
+class Subclass extends Superclass{}
+
+@Documented
+The @Documented Marks the annotation for inclusion in the documentation.
