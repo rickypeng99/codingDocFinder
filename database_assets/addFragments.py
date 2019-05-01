@@ -22,10 +22,6 @@ def main(argv):
      # HTTP Headers
      headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
 
-     
-
-
-
      #uploading python tutorials 
      language = sys.argv[1]
      dirname = sys.argv[1] + "/"

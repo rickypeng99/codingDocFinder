@@ -1,0 +1,1010 @@
+[
+    {
+      "Title": "#, ##",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/preprocessor/sharp.html",
+      "Description": "manipulate strings",
+      "Syntax": "",
+      "Text": "cppreference.com > C/C++ Pre-processor Commands > #, ##\n\n\n    #, ##\n  \nThe # and ## operators are used with the #define macro. Using # causes the first argument\n  after the # to be returned as a string in quotes. Using ##\n  concatenates what's before the ## with what's after it.\n\n    Example code:\n  \n\nFor example, the command\n   #define to_string( s ) # s           \n\nwill make the compiler turn this command\n   cout << to_string( Hello World! ) << endl;               \n\ninto\n   cout << \"Hello World!\" << endl;                \n\nHere is an example of the ## command:\n   #define concatenate( x, y ) x ## y\n   ...\n   int xy = 10;\n   ...          \n\nThis code will make the compiler turn\n   cout << concatenate( x, y ) << endl;             \n\ninto\n   cout << xy << endl;              \n\nwhich will, of course, display '10' to standard\n    output.\n\n\n    Related topics:\n  \n\n#define"
+    },
+    {
+      "Title": "#define",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/preprocessor/define.html",
+      "Description": "define variables",
+      "Syntax": "#define macro-name replacement-string",
+      "Text": "cppreference.com > C/C++ Pre-processor Commands > #define\n\n\n    #define\n  \n\n    Syntax:\n  \n  #define macro-name replacement-string\n\nThe #define command is used to make substitutions throughout the\n  file in which it is located. In other words, #define causes the\n  compiler to go through the file, replacing every occurrence of\n  macro-name with replacement-string. The replacement\n  string stops at the end of the line.\n\n    Example code:\n  \n\nHere's a typical use for a #define (at least in C):\n   #define TRUE 1\n   #define FALSE 0\n   ...\n   int done = 0;\n   while( done != TRUE ) {\n      ...\n   }            \n\nAnother feature of the #define command is that it can take\n    arguments, making it rather useful as a pseudo-function creator.\n    Consider the following code:\n   #define absolute_value( x ) ( ((x) < 0) ? -(x) : (x) )\n   ...\n   int x = -1;\n   while( absolute_value( x ) ) {\n      ...\n   }            \n\nIt's generally a good idea to use extra parentheses when\n    using complex macros. Notice that in the above example, the\n    variable \"x\" is always within it's own set of\n    parentheses. This way, it will be evaluated in whole, before being\n    compared to 0 or multiplied by -1. Also, the entire macro is\n    surrounded by parentheses, to prevent it from being contaminated by\n    other code. If you're not careful, you run the risk of having\n    the compiler misinterpret your code.\nHere is an example of how to use the #define command to create a\n    general purpose incrementing for loop that prints out the integers\n    1 through 20:\n #define count_up( v, low, high ) \\\n   for( (v) = (low); (v) <= (high); (v)++ )          \n\n ...            \n\n int i;\n count_up( i, 1, 20 ) {\n   printf( \"i is %d\\n\", i );\n }              \n\n\n\n    Related topics:\n  \n\n#, ##\n#if, #ifdef, #ifndef, #else, #elif,\n    #endif\n#undef"
+    },
+    {
+      "Title": "#error",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/preprocessor/error.html",
+      "Description": "display an error message",
+      "Syntax": "#error message",
+      "Text": "cppreference.com > C/C++ Pre-processor Commands > #error\n\n\n    #error\n  \n\n    Syntax:\n  \n  #error message\n\nThe #error command simply causes the compiler to stop when it is\n  encountered. When an #error is encountered, the compiler spits out\n  the line number and whatever message is. This command is\n  mostly used for debugging."
+    },
+    {
+      "Title": "#if, #ifdef, #ifndef, #else, #elif, #endif",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/preprocessor/preprocessor_if.html",
+      "Description": "conditional operators",
+      "Syntax": "",
+      "Text": "cppreference.com > C/C++ Pre-processor Commands > #if, #ifdef, #ifndef, #else, #elif,\n    #endif\n\n\n    #if, #ifdef, #ifndef, #else, #elif, #endif\n  \nThese commands give simple logic control to the compiler. As a\n  file is being compiled, you can use these commands to cause certain\n  lines of code to be included or not included.\n   #if expression               \n\nIf the value of expression is true, then the code that immediately\n  follows the command will be compiled.\n   #ifdef macro         \n\nIf the macro has been defined by a #define statement, then the code immediately\n  following the command will be compiled.\n   #ifndef macro                \n\nIf the macro has not been defined by a #define statement, then the code immediately\n  following the command will be compiled.\nA few side notes: The command #elif is simply a horribly truncated\n  way to say \"elseif\" and works like you think it would. You\n  can also throw in a \"defined\" or \"!defined\" after\n  an #if to get added functionality.\n\n    Example code:\n  \n\nHere's an example of all these:\n   #ifdef DEBUG\n     cout << \"This is the test version, i=\" << i << endl;\n   #else\n     cout << \"This is the production version!\" << endl;\n   #endif               \n\nYou might notice how that second example could make debugging a\n    lot easier than inserting and removing a million \"cout\"s\n    in your code.\n\n\n    Related topics:\n  \n\n#define"
+    },
+    {
+      "Title": "#include",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/preprocessor/include.html",
+      "Description": "insert the contents of another file",
+      "Syntax": "#include <filename>\n  #include \"filename",
+      "Text": "cppreference.com > C/C++ Pre-processor Commands > #include\n\n\n    #include\n  \n\n    Syntax:\n  \n  #include <filename>\n  #include \"filename\"\n\nThis command slurps in a file and inserts it at the current\n  location. The main difference between the syntax of the two items is\n  that if filename is enclosed in angled brackets, then the\n  compiler searches for it somehow. If it is enclosed in quotes, then\n  the compiler doesn't search very hard for the file.\nWhile the behavior of these two searches is up to the compiler,\n  usually the angled brackets means to search through the standard\n  library directories, while the quotes indicate a search in the\n  current directory. The spiffy new C++ #include commands don't\n  need to map directly to filenames, at least not for the standard\n  libraries. That's why you can get away with\n   #include <iostream>            \n\nand not have the compiler choke on you."
+    },
+    {
+      "Title": "#line",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/preprocessor/line.html",
+      "Description": "set line and file information",
+      "Syntax": "#line line_number \"filename",
+      "Text": "cppreference.com > C/C++ Pre-processor Commands > #line\n\n\n    #line\n  \n\n    Syntax:\n  \n  #line line_number \"filename\"\n\nThe #line command is simply used to change the value of the\n  __LINE__ and __FILE__ variables. The filename is optional. The\n  __LINE__ and __FILE__ variables represent the current file and which\n  line is being read. The command\n   #line 10 \"main.cpp\"                \n\nchanges the current line number to 10, and the current file to\n  \"main.cpp\"."
+    },
+    {
+      "Title": "#pragma",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/preprocessor/pragma.html",
+      "Description": "implementation specific command",
+      "Syntax": "",
+      "Text": "cppreference.com > C/C++ Pre-processor Commands > #pragma\n\n\n    #pragma\n  \nThe #pragma command gives the programmer the ability to tell the\n  compiler to do certain things. Since the #pragma command is\n  implementation specific, uses vary from compiler to compiler. One\n  option might be to trace program execution."
+    },
+    {
+      "Title": "#undef",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/preprocessor/undef.html",
+      "Description": "used to undefine variables",
+      "Syntax": "",
+      "Text": "cppreference.com > C/C++ Pre-processor Commands > #undef\n\n\n    #undef\n  \nThe #undef command undefines a previously defined macro variable,\n  such as a variable defined by a #define.\n\n    Related topics:\n  \n\n#define"
+    },
+    {
+      "Title": "Predefined preprocessor variables",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/preprocessor/preprocessor_vars.html",
+      "Description": "miscellaneous preprocessor variables",
+      "Syntax": "__LINE__\n  __FILE__\n  __DATE__\n  __TIME__\n  __cplusplus\n  __STDC__",
+      "Text": "cppreference.com > C/C++ Pre-processor Commands > Predefined preprocessor variables\n\n\n    Predefined preprocessor variables\n  \n\n    Syntax:\n  \n  __LINE__\n  __FILE__\n  __DATE__\n  __TIME__\n  __cplusplus\n  __STDC__\n\nThe following variables can vary by compiler, but generally\n  work:\n\nThe __LINE__ and __FILE__ variables represent the current line\n    and current file being processed.\nThe __DATE__ variable contains the current date, in the form\n    month/day/year.  This is the date that the file was compiled, not\n    necessarily the current date.\nThe __TIME__ variable represents the current time, in the form\n    hour:minute:second.  This is the time that the file was compiled,\n    not necessarily the current time.\nThe __cplusplus variable is only defined when compiling a C++\n    program.  In some older compilers, this is also called\n    c_plusplus.\nThe __STDC__ variable is defined when compiling a C program,\n    and may also be defined when compiling C++."
+    },
+    {
+      "Title": "abort",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/abort.html",
+      "Description": "stops the program",
+      "Syntax": "#include <stdlib.h>\n  void abort( void );",
+      "Text": "cppreference.com > Other Standard C Functions > abort\n\n\n    abort\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  void abort( void );\n\nThe function abort() terminates the current program. Depending on\n  the implementation, the return value can indicate failure.\n\n    Related topics:\n  \n\nassert\natexit\nexit"
+    },
+    {
+      "Title": "abs",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/abs.html",
+      "Description": "absolute value",
+      "Syntax": "#include <stdlib.h>\n  int abs( int num );",
+      "Text": "cppreference.com > Standard C Math > abs\n\n\n    abs\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  int abs( int num );\n\nThe abs() function returns the absolute value of num. For\n  example:\n   int magic_number = 10;\n   cout << \"Enter a guess: \";\n   cin >> x;\n   cout << \"Your guess was \" << abs( magic_number - x ) << \" away from the magic number.\" << endl;          \n\n\n    Related topics:\n  \n\nfabs\nlabs"
+    },
+    {
+      "Title": "acos",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/acos.html",
+      "Description": "arc cosine",
+      "Syntax": "#include <math.h>\n  double acos( double arg );",
+      "Text": "cppreference.com > Standard C Math > acos\n\n\n    acos\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double acos( double arg );\n\nThe acos() function returns the arc cosine of arg, which\n  will be in the range [0, pi].  arg should be between -1 and\n  1.  If arg is outside this range, acos() returns NAN and\n  raises a floating-point exception.\n\n    Related topics:\n  \n\nasin\natan\natan2\ncos\ncosh\nsin\nsinh\ntan\ntanh"
+    },
+    {
+      "Title": "asctime",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stddate/asctime.html",
+      "Description": "a textual version of the time",
+      "Syntax": "#include <time.h>\n  char *asctime( const struct tm *ptr );",
+      "Text": "cppreference.com > Standard C Date & Time > asctime\n\n\n    asctime\n  \n\n    Syntax:\n  \n  #include <time.h>\n  char *asctime( const struct tm *ptr );\n\nThe function asctime() converts the time in the struct\n  'ptr' to a character string of the following format:\n   day month date hours:minutes:seconds year            \n\nAn example:\n   Mon Jun 26 12:03:53 2000             \n\n\n    Related topics:\n  \n\nclock\nctime\ndifftime\ngmtime\nlocaltime\nmktime\ntime"
+    },
+    {
+      "Title": "asin",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/asin.html",
+      "Description": "arc sine",
+      "Syntax": "#include <math.h>\n  double asin( double arg );",
+      "Text": "cppreference.com > Standard C Math > asin\n\n\n    asin\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double asin( double arg );\n\nThe asin() function returns the arc sine of arg, which\n  will be in the range [-pi/2, +pi/2].  arg should be between\n  -1 and 1.  If arg is outside this range, asin() returns NAN\n  and raises a floating-point exception.\n\n    Related topics:\n  \n\nacos\natan\natan2\ncos\ncosh\nsin\nsinh\ntan\ntanh"
+    },
+    {
+      "Title": "assert",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/assert.html",
+      "Description": "stops the program if an expression isn't true",
+      "Syntax": "#include <assert.h>\n  void assert( int exp );",
+      "Text": "cppreference.com > Other Standard C Functions > assert\n\n\n    assert\n  \n\n    Syntax:\n  \n  #include <assert.h>\n  void assert( int exp );\n\nThe assert() macro is used to test for errors. If exp\n  evaluates to zero, assert() writes information to\n  STDERR and exits the program. If the macro NDEBUG is\n  defined, the assert() macros will be ignored.\n\n    Related topics:\n  \n\nabort"
+    },
+    {
+      "Title": "atan",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/atan.html",
+      "Description": "arc tangent",
+      "Syntax": "#include <math.h>\n  double atan( double arg );",
+      "Text": "cppreference.com > Standard C Math > atan\n\n\n    atan\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double atan( double arg );\n\nThe function atan() returns the arc tangent of arg,\n  which will be in the range [-pi/2, +pi/2].\n\n    Related topics:\n  \n\nacos\nasin\natan2\ncos\ncosh\nsin\nsinh\ntan\ntanh"
+    },
+    {
+      "Title": "atan2",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/atan2.html",
+      "Description": "arc tangent, using signs to determine quadrants",
+      "Syntax": "#include <math.h>\n  double atan2( double y, double x );",
+      "Text": "cppreference.com > Standard C Math > atan2\n\n\n    atan2\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double atan2( double y, double x );\n\nThe atan2() function computes the arc tangent of\n  y/x, using the signs of the arguments to compute\n  the quadrant of the return value.\nNote the order of the arguments passed to this function.\n\n    Related topics:\n  \n\nacos\nasin\natan\ncos\ncosh\nsin\nsinh\ntan\ntanh"
+    },
+    {
+      "Title": "atexit",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/atexit.html",
+      "Description": "sets a function to be called when the program exits",
+      "Syntax": "#include <stdlib.h>\n  int atexit( void (*func)(void) );",
+      "Text": "cppreference.com > Other Standard C Functions > atexit\n\n\n    atexit\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  int atexit( void (*func)(void) );\n\nThe function atexit() causes the function pointed to by\n  func to be called when the program terminates. You can make\n  multiple calls to atexit() (at least 32, depending on your compiler)\n  and those functions will be called in reverse order of their\n  establishment. The return value of atexit() is zero upon success, and\n  non-zero on failure.\n\n    Related topics:\n  \n\nabort\nexit"
+    },
+    {
+      "Title": "atof",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/atof.html",
+      "Description": "converts a string to a double",
+      "Syntax": "#include <stdlib.h>\n  double atof( const char *str );",
+      "Text": "cppreference.com > Standard C String and Character > atof\n\n\n    atof\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  double atof( const char *str );\n\nThe function atof() converts str into a double, then\n  returns that value. str must start with a valid number, but\n  can be terminated with any non-numerical character, other than\n  \"E\" or \"e\". For example,\n   x = atof( \"42.0is_the_answer\" );           \n\nresults in x being set to 42.0.\n\n    Related topics:\n  \n\natoi\natol\n    (Standard C I/O) sprintf\nstrtod"
+    },
+    {
+      "Title": "atoi",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/atoi.html",
+      "Description": "converts a string to an integer",
+      "Syntax": "#include <stdlib.h>\n  int atoi( const char *str );",
+      "Text": "cppreference.com > Standard C String and Character > atoi\n\n\n    atoi\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  int atoi( const char *str );\n\nThe atoi() function converts str into an integer, and\n  returns that integer. str should start with some sort of\n  number, and atoi() will stop reading from str as soon as a\n  non-numerical character has been read. For example,\n   i = atoi( \"512.035\" );             \n\nwould result in i being set to 512.\nYou can use (Standard C I/O) sprintf() to convert a number into a\n  string.\n\n    Related topics:\n  \n\natof\natol\n    (Standard C I/O) sprintf"
+    },
+    {
+      "Title": "atol",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/atol.html",
+      "Description": "converts a string to a long",
+      "Syntax": "#include <stdlib.h>\n  long atol( const char *str );",
+      "Text": "cppreference.com > Standard C String and Character > atol\n\n\n    atol\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  long atol( const char *str );\n\nThe function atol() converts str into a long, then\n  returns that value. atol() will read from str until it finds\n  any character that should not be in a long. The resulting truncated\n  value is then converted and returned. For example,\n   x = atol( \"1024.0001\" );           \n\nresults in x being set to 1024L.\n\n    Related topics:\n  \n\natof\natoi\n    (Standard C I/O) sprintf\nstrtol"
+    },
+    {
+      "Title": "bsearch",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/bsearch.html",
+      "Description": "perform a binary search",
+      "Syntax": "#include <stdlib.h>\n  void *bsearch( const void *key, const void *buf, size_t num, size_t size, int (*compare)(const void *, const void *) );",
+      "Text": "cppreference.com > Other Standard C Functions > bsearch\n\n\n    bsearch\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  void *bsearch( const void *key, const void *buf, size_t num, size_t size, int (*compare)(const void *, const void *) );\n\nThe bsearch() function searches buf[0] to\n  buf[num-1] for an item that matches key, using a\n  binary search. The function compare should return negative\n  if its first argument is less than its second, zero if equal, and\n  positive if greater. The items in the array buf should be in\n  ascending order. The return value of bsearch() is a pointer to the\n  matching item, or NULL if none is found.\n\n    Related topics:\n  \n\nqsort"
+    },
+    {
+      "Title": "calloc",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmem/calloc.html",
+      "Description": "allocates and clears a two-dimensional chunk of memory",
+      "Syntax": "#include <stdlib.h>\n  void* calloc( size_t num, size_t size );",
+      "Text": "cppreference.com > Standard C Memory > calloc\n\n\n    calloc\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  void* calloc( size_t num, size_t size );\n\nThe calloc() function returns a pointer to space for an array of\n  num objects, each of size size. The newly allocated\n  memory is initialized to zero.\ncalloc() returns NULL if there is an error.\n\n    Related topics:\n  \n\nfree\nmalloc\nrealloc"
+    },
+    {
+      "Title": "ceil",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/ceil.html",
+      "Description": "the smallest integer not less than a certain value",
+      "Syntax": "#include <math.h>\n  double ceil( double num );",
+      "Text": "cppreference.com > Standard C Math > ceil\n\n\n    ceil\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double ceil( double num );\n\nThe ceil() function returns the smallest integer no less than\n  num. For example,\n   y = 6.04;\n   x = ceil( y );               \n\nwould set x to 7.0.\n\n    Related topics:\n  \n\nfloor\nfmod"
+    },
+    {
+      "Title": "clearerr",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/clearerr.html",
+      "Description": "clears errors",
+      "Syntax": "#include <stdio.h>\n  void clearerr( FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > clearerr\n\n\n    clearerr\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  void clearerr( FILE *stream );\n\nThe clearerr function resets the error flags and\n  EOF indicator for the given stream. When an\n  error occurs, you can use perror() to\n  figure out which error actually occurred.\n\n    Related topics:\n  \n\nfeof\nferror\nperror"
+    },
+    {
+      "Title": "clock",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stddate/clock.html",
+      "Description": "returns the amount of time that the program has been running",
+      "Syntax": "#include <time.h>\n  clock_t clock( void );",
+      "Text": "cppreference.com > Standard C Date & Time > clock\n\n\n    clock\n  \n\n    Syntax:\n  \n  #include <time.h>\n  clock_t clock( void );\n\nThe clock() function returns the processor time since the program\n  started, or -1 if that information is unavailable. To convert the\n  return value to seconds, divide it by CLOCKS_PER_SEC. (Note: if your\n  compiler is POSIX compliant, then CLOCKS_PER_SEC is always defined as\n  1000000.)\n\n    Related topics:\n  \n\nasctime\nctime\ntime"
+    },
+    {
+      "Title": "cos",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/cos.html",
+      "Description": "cosine",
+      "Syntax": "#include <math.h>\n  double cos( double arg );",
+      "Text": "cppreference.com > Standard C Math > cos\n\n\n    cos\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double cos( double arg );\n\nThe cos() function returns the cosine of arg, where\n  arg is expressed in radians.  The return value of cos() is\n  in the range [-1,1].  If arg is infinite, cos() will return\n  NAN and raise a floating-point exception.\n\n    Related topics:\n  \n\nacos\nasin\natan\natan2\ncosh\nsin\nsinh\ntan\ntanh"
+    },
+    {
+      "Title": "cosh",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/cosh.html",
+      "Description": "hyperbolic cosine",
+      "Syntax": "#include <math.h>\n  double cosh( double arg );",
+      "Text": "cppreference.com > Standard C Math > cosh\n\n\n    cosh\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double cosh( double arg );\n\nThe function cosh() returns the hyperbolic cosine of\n  arg.\n\n    Related topics:\n  \n\nacos\nasin\natan\natan2\ncos\nsin\nsinh\ntan\ntanh"
+    },
+    {
+      "Title": "ctime",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stddate/ctime.html",
+      "Description": "returns a specifically formatted version of the time",
+      "Syntax": "#include <time.h>\n  char *ctime( const time_t *time );",
+      "Text": "cppreference.com > Standard C Date & Time > ctime\n\n\n    ctime\n  \n\n    Syntax:\n  \n  #include <time.h>\n  char *ctime( const time_t *time );\n\nThe ctime() function converts the calendar time time to local time\n  of the format:\n   day month date hours:minutes:seconds year            \n\nusing ctime() is equivalent to\n   asctime( localtime( tp ) );          \n\n\n    Related topics:\n  \n\nasctime\nclock\ngmtime\nlocaltime\nmktime\ntime"
+    },
+    {
+      "Title": "difftime",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stddate/difftime.html",
+      "Description": "the difference between two times",
+      "Syntax": "#include <time.h>\n  double difftime( time_t time2, time_t time1 );",
+      "Text": "cppreference.com > Standard C Date & Time > difftime\n\n\n    difftime\n  \n\n    Syntax:\n  \n  #include <time.h>\n  double difftime( time_t time2, time_t time1 );\n\nThe function difftime() returns time2 - time1,\n  in seconds.\n\n    Related topics:\n  \n\nasctime\ngmtime\nlocaltime\ntime"
+    },
+    {
+      "Title": "div",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/div.html",
+      "Description": "returns the quotient and remainder of a division",
+      "Syntax": "#include <stdlib.h>\n   div_t  div( int numerator, int denominator );",
+      "Text": "cppreference.com > Standard C Math > div\n\n\n    div\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  div_t div( int numerator, int denominator );\n\nThe function div() returns the quotient and remainder of the\n  operation numerator / denominator. The\n  div_t structure is defined in stdlib.h, and has at\n  least:\n   int quot;   // The quotient\n   int rem;    // The remainder         \n\nFor example, the following code displays the quotient and\n  remainder of x/y:\n   div_t temp;\n   temp = div( x, y );\n   printf( \"%d divided by %d yields %d with a remainder of %d\\n\",\n           x, y, temp.quot, temp.rem );         \n\n\n    Related topics:\n  \n\nldiv"
+    },
+    {
+      "Title": "exit",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/exit.html",
+      "Description": "stop the program",
+      "Syntax": "#include <stdlib.h>\n  void exit( int exit_code );",
+      "Text": "cppreference.com > Other Standard C Functions > exit\n\n\n    exit\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  void exit( int exit_code );\n\nThe exit() function stops the program. exit_code is\n  passed on to be the return value of the program, where usually zero\n  indicates success and non-zero indicates an error.\n\n    Related topics:\n  \n\nabort\natexit\nsystem"
+    },
+    {
+      "Title": "exp",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/exp.html",
+      "Description": "returns \"e\" raised to a given power",
+      "Syntax": "#include <math.h>\n  double exp( double arg );",
+      "Text": "cppreference.com > Standard C Math > exp\n\n\n    exp\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double exp( double arg );\n\nThe exp() function returns e (2.7182818) raised to the\n  argth power.\n\n    Related topics:\n  \n\nlog\npow\nsqrt"
+    },
+    {
+      "Title": "fabs",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/fabs.html",
+      "Description": "absolute value for floating-point numbers",
+      "Syntax": "#include <math.h>\n  double fabs( double arg );",
+      "Text": "cppreference.com > Standard C Math > fabs\n\n\n    fabs\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double fabs( double arg );\n\nThe function fabs() returns the absolute value of\n  arg.\n\n    Related topics:\n  \n\nabs\nfmod\nlabs"
+    },
+    {
+      "Title": "fclose",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fclose.html",
+      "Description": "close a file",
+      "Syntax": "#include <stdio.h>\n  int fclose( FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > fclose\n\n\n    fclose\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fclose( FILE *stream );  \n\nThe function fclose() closes the given file stream, deallocating\n  any buffers associated with that stream. fclose() returns 0 upon\n  success, and EOF otherwise.\n\n    Related topics:\n  \n\nfflush\nfopen\nfreopen\nsetbuf"
+    },
+    {
+      "Title": "feof",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/feof.html",
+      "Description": "true if at the end-of-file",
+      "Syntax": "#include <stdio.h>\n  int feof( FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > feof\n\n\n    feof\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int feof( FILE *stream );  \n\nThe function feof() returns a nonzero value if the end of the\n  given file stream has been reached.\n\n    Related topics:\n  \n\nclearerr\nferror\ngetc\nperror\nputc"
+    },
+    {
+      "Title": "ferror",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/ferror.html",
+      "Description": "checks for a file error",
+      "Syntax": "#include <stdio.h>\n  int ferror( FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > ferror\n\n\n    ferror\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int ferror( FILE *stream );\n\nThe ferror() function looks for errors with stream,\n  returning zero if no errors have occured, and non-zero if there is an\n  error. In case of an error, use perror() to\n  determine which error has occured.\n\n    Related topics:\n  \n\nclearerr\nfeof\nperror"
+    },
+    {
+      "Title": "fflush",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fflush.html",
+      "Description": "writes the contents of the output buffer",
+      "Syntax": "#include <stdio.h>\n  int fflush( FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > fflush\n\n\n    fflush\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fflush( FILE *stream );\n\nIf the given file stream is an output stream, then\n  fflush() causes the output buffer to be written to the file. If the\n  given stream is of the input type, then fflush() causes the\n  input buffer to be cleared. fflush() is useful when debugging, if a\n  program segfaults before it has a chance to write output to the\n  screen. Calling fflush( STDOUT ) directly after\n  debugging output will ensure that your output is displayed at the\n  correct time.\n   printf( \"Before first call\\n\" );\n   fflush( STDOUT );\n   shady_function();\n   printf( \"Before second call\\n\" );\n   fflush( STDOUT );\n   dangerous_dereference();             \n\n\n    Related topics:\n  \n\nfclose\nfopen\nfread\nfwrite\ngetc\nputc"
+    },
+    {
+      "Title": "fgetc",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fgetc.html",
+      "Description": "get a character from a stream",
+      "Syntax": "#include <stdio.h>\n  int fgetc( FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > fgetc\n\n\n    fgetc\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fgetc( FILE *stream );\n\nThe fgetc() function returns the next character from\n  stream, or EOF if the end of file is\n  reached or if there is an error.\n\n    Related topics:\n  \n\nfopen\nfputc\nfread\nfwrite\ngetc\ngetchar\ngets\nputc"
+    },
+    {
+      "Title": "fgetpos",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fgetpos.html",
+      "Description": "get the file position indicator",
+      "Syntax": "#include <stdio.h>\n  int fgetpos( FILE *stream, fpos_t *position );",
+      "Text": "cppreference.com > Standard C I/O > fgetpos\n\n\n    fgetpos\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fgetpos( FILE *stream, fpos_t *position );\n\nThe fgetpos() function stores the file position indicator of the\n  given file stream in the given position variable.\n  The position variable is of type fpos_t (which is defined in stdio.h)\n  and is an object that can hold every possible position in a FILE.\n  fgetpos() returns zero upon success, and a non-zero value upon\n  failure.\n\n    Related topics:\n  \n\nfseek\nfsetpos\nftell"
+    },
+    {
+      "Title": "fgets",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fgets.html",
+      "Description": "get a string of characters from a stream",
+      "Syntax": "#include <stdio.h>\n  char *fgets( char *str, int num, FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > fgets\n\n\n    fgets\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  char *fgets( char *str, int num, FILE *stream );\n\nThe function fgets() reads up to num - 1 characters from\n  the given file stream and dumps them into str.\n  The string that fgets() produces is always\n  NULL-terminated.  fgets() will stop when it reaches\n  the end of a line, in which case str will contain that\n  newline character. Otherwise, fgets() will stop when it reaches\n  num - 1 characters or encounters the EOF\n  character.  fgets() returns str on success, and\n  NULL on an error.\n\n    Related topics:\n  \n\nfputs\nfscanf\ngets\nscanf"
+    },
+    {
+      "Title": "floor",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/floor.html",
+      "Description": "returns the largest integer not greater than a given value",
+      "Syntax": "#include <math.h>\n  double floor( double arg );",
+      "Text": "cppreference.com > Standard C Math > floor\n\n\n    floor\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double floor( double arg );\n\nThe function floor() returns the largest integer not greater than\n  arg. For example,\n   y = 6.04;\n   x = floor( y );              \n\nwould result in x being set to 6.0.\n\n    Related topics:\n  \n\nceil\nfmod"
+    },
+    {
+      "Title": "fmod",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/fmod.html",
+      "Description": "returns the remainder of a division",
+      "Syntax": "#include <math.h>\n  double fmod( double x, double y );",
+      "Text": "cppreference.com > Standard C Math > fmod\n\n\n    fmod\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double fmod( double x, double y );\n\nThe fmod() function returns the remainder of\n  x/y.\n\n    Related topics:\n  \n\nceil\nfabs\nfloor"
+    },
+    {
+      "Title": "fopen",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fopen.html",
+      "Description": "open a file",
+      "Syntax": "#include <stdio.h>\n  FILE *fopen( const char *fname, const char *mode );",
+      "Text": "cppreference.com > Standard C I/O > fopen\n\n\n    fopen\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  FILE *fopen( const char *fname, const char *mode );\n\nThe fopen() function opens a file indicated by fname and\n  returns a stream associated with that file. If there is an error,\n  fopen() returns NULL. mode is used to\n  determine how the file will be treated (i.e. for input, output,\n  etc)\n\n\nMode\nMeaning\n\n\n\"r\"\nOpen a text file for reading\n\n\n\"w\"\nCreate a text file for writing\n\n\n\"a\"\nAppend to a text file\n\n\n\"rb\"\nOpen a binary file for reading\n\n\n\"wb\"\nCreate a binary file for writing\n\n\n\"ab\"\nAppend to a binary file\n\n\n\"r+\"\nOpen a text file for read/write\n\n\n\"w+\"\nCreate a text file for read/write\n\n\n\"a+\"\nOpen a text file for read/write\n\n\n\"rb+\"\nOpen a binary file for read/write\n\n\n\"wb+\"\nCreate a binary file for\n      read/write\n\n\n\"ab+\"\nOpen a binary file for read/write\n\n\nAn example:\n   int ch;\n   FILE *input = fopen( \"stuff\", \"r\" );\n   ch = getc( input );          \n\n\n    Related topics:\n  \n\nfclose\nfflush\nfgetc\nfputc\nfread\nfreopen\nfseek\nfwrite\ngetc\ngetchar\nsetbuf"
+    },
+    {
+      "Title": "fprintf",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fprintf.html",
+      "Description": "print formatted output to a file",
+      "Syntax": "#include <stdio.h>\n  int fprintf( FILE *stream, const char *format, ... );",
+      "Text": "cppreference.com > Standard C I/O > fprintf\n\n\n    fprintf\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fprintf( FILE *stream, const char *format, ... );\n\nThe fprintf() function sends information (the arguments) according\n  to the specified format to the file indicated by\n  stream. fprintf() works just like printf() as far as the format goes. The return\n  value of fprintf() is the number of characters outputted, or a\n  negative number if an error occurs. An example:\n   char name[20] = \"Mary\";\n   FILE *out;\n   out = fopen( \"output.txt\", \"w\" );\n   if( out != NULL )\n     fprintf( out, \"Hello %s\\n\", name );              \n\n\n    Related topics:\n  \n\nfputc\nfputs\nfscanf\nprintf\nsprintf"
+    },
+    {
+      "Title": "fputc",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fputc.html",
+      "Description": "write a character to a file",
+      "Syntax": "#include <stdio.h>\n  int fputc( int ch, FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > fputc\n\n\n    fputc\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fputc( int ch, FILE *stream );\n\nThe function fputc() writes the given character ch to the\n  given output stream. The return value is the character,\n  unless there is an error, in which case the return value is\n  EOF.\n\n    Related topics:\n  \n\nfgetc\nfopen\nfprintf\nfread\nfwrite\ngetc\ngetchar\nputc"
+    },
+    {
+      "Title": "fputs",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fputs.html",
+      "Description": "write a string to a file",
+      "Syntax": "#include <stdio.h>\n  int fputs( const char *str, FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > fputs\n\n\n    fputs\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fputs( const char *str, FILE *stream );\n\nThe fputs() function writes an array of characters pointed to by\n  str to the given output stream. The return value is\n  non-negative on success, and EOF on failure.\n\n    Related topics:\n  \n\nfgets\nfprintf\nfscanf\ngets\nputs"
+    },
+    {
+      "Title": "fread",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fread.html",
+      "Description": "read from a file",
+      "Syntax": "#include <stdio.h>\n  int fread( void *buffer, size_t size, size_t num, FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > fread\n\n\n    fread\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fread( void *buffer, size_t size, size_t num, FILE *stream );\n\nThe function fread() reads num number of objects (where\n  each object is size bytes) and places them into the array\n  pointed to by buffer. The data comes from the given input\n  stream. The return value of the function is the number of\n  things read. You can use feof() or ferror() to figure out if an error occurs.\n\n    Related topics:\n  \n\nfflush\nfgetc\nfopen\nfputc\nfscanf\nfwrite\ngetc"
+    },
+    {
+      "Title": "free",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmem/free.html",
+      "Description": "returns previously allocated memory to the operating system",
+      "Syntax": "#include <stdlib.h>\n  void free( void* ptr );",
+      "Text": "cppreference.com > Standard C Memory > free\n\n\n    free\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  void free( void* ptr );\n\nThe free() function deallocates the space pointed to by\n  ptr, freeing it up for future use. ptr must have\n  been used in a previous call to malloc(),\n  calloc(), or realloc(). An example:\n   typedef struct data_type {\n     int age;\n     char name[20];\n   } data;              \n\n   data *willy;\n   willy = (data*) malloc( sizeof(*willy) );\n   ...\n   free( willy );               \n\n\n    Related topics:\n  \n\ncalloc\n    (C/C++ Keywords) delete\nmalloc\n    (C/C++ Keywords) new\nrealloc"
+    },
+    {
+      "Title": "freopen",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/freopen.html",
+      "Description": "open an existing stream with a different name",
+      "Syntax": "#include <stdio.h>\n  FILE *freopen( const char *fname, const char *mode, FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > freopen\n\n\n    freopen\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  FILE *freopen( const char *fname, const char *mode, FILE *stream );\n\nThe freopen() function is used to reassign an existing\n  stream to a different file and mode. After a call to this\n  function, the given file stream will refer to fname\n  with access given by mode. The return value of freopen() is\n  the new stream, or NULL if there is an error.\n\n    Related topics:\n  \n\nfclose\nfopen"
+    },
+    {
+      "Title": "frexp",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/frexp.html",
+      "Description": "decomposes a number into scientific notation",
+      "Syntax": "#include <math.h>\n  double frexp( double num, int* exp );",
+      "Text": "cppreference.com > Standard C Math > frexp\n\n\n    frexp\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double frexp( double num, int* exp );\n\nThe function frexp() is used to decompose num into two\n  parts: a mantissa between 0.5 and 1 (returned by the function) and an\n  exponent returned as exp. Scientific notation works like\n  this:\n   num = mantissa * (2 ^ exp)           \n\n\n    Related topics:\n  \n\nldexp\nmodf"
+    },
+    {
+      "Title": "fscanf",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fscanf.html",
+      "Description": "read formatted input from a file",
+      "Syntax": "#include <stdio.h>\n  int fscanf( FILE *stream, const char *format, ... );",
+      "Text": "cppreference.com > Standard C I/O > fscanf\n\n\n    fscanf\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fscanf( FILE *stream, const char *format, ... );\n\nThe function fscanf() reads data from the given file\n  stream in a manner exactly like scanf(). The return value of\n  fscanf() is the number of variables that are actually assigned\n  values, or EOF if no assignments could be made.\n\n    Related topics:\n  \n\nfgets\nfprintf\nfputs\nfread\nfwrite\nscanf\nsscanf"
+    },
+    {
+      "Title": "fseek",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fseek.html",
+      "Description": "move to a specific location in a file",
+      "Syntax": "#include <stdio.h>\n  int fseek( FILE *stream, long offset, int origin );",
+      "Text": "cppreference.com > Standard C I/O > fseek\n\n\n    fseek\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fseek( FILE *stream, long offset, int origin );\n\nThe function fseek() sets the file position data for the given\n  stream. The origin value should have one of the following\n  values (defined in stdio.h):\n\n\nName\nExplanation\n\n\nSEEK_SET\nSeek from the start of the file\n\n\nSEEK_CUR\nSeek from the current location\n\n\nSEEK_END\nSeek from the end of the file\n\n\nfseek() returns zero upon success, non-zero on failure. You can\n  use fseek() to move beyond a file, but not before the beginning.\n  Using fseek() clears the EOF flag associated with\n  that stream.\n\n    Related topics:\n  \n\nfgetpos\nfopen\nfsetpos\nftell\nrewind"
+    },
+    {
+      "Title": "fsetpos",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fsetpos.html",
+      "Description": "move to a specific location in a file",
+      "Syntax": "#include <stdio.h>\n  int fsetpos( FILE *stream, const fpos_t *position );",
+      "Text": "cppreference.com > Standard C I/O > fsetpos\n\n\n    fsetpos\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fsetpos( FILE *stream, const fpos_t *position );\n\nThe fsetpos() function moves the file position indicator for the\n  given stream to a location specified by the\n  position object. fpos_t is defined in stdio.h. The return\n  value for fsetpos() is zero upon success, non-zero on failure.\n\n    Related topics:\n  \n\nfgetpos\nfseek\nftell"
+    },
+    {
+      "Title": "ftell",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/ftell.html",
+      "Description": "returns the current file position indicator",
+      "Syntax": "#include <stdio.h>\n  long ftell( FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > ftell\n\n\n    ftell\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  long ftell( FILE *stream );\n\nThe ftell() function returns the current file position for\n  stream, or -1 if an error occurs.\n\n    Related topics:\n  \n\nfgetpos\nfseek\nfsetpos"
+    },
+    {
+      "Title": "fwrite",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/fwrite.html",
+      "Description": "write to a file",
+      "Syntax": "#include <stdio.h>\n  int fwrite( const void *buffer, size_t size, size_t count, FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > fwrite\n\n\n    fwrite\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int fwrite( const void *buffer, size_t size, size_t count, FILE *stream );\n\nThe fwrite() function writes, from the array buffer,\n  count objects of size size to stream. The\n  return value is the number of objects written.\n\n    Related topics:\n  \n\nfflush\nfgetc\nfopen\nfputc\nfread\nfscanf\ngetc"
+    },
+    {
+      "Title": "getc",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/getc.html",
+      "Description": "read a character from a file",
+      "Syntax": "#include <stdio.h>\n  int getc( FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > getc\n\n\n    getc\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int getc( FILE *stream );\n\nThe getc() function returns the next character from\n  stream, or EOF if the end of file is\n  reached. getc() is identical to fgetc(). For\n  example:\n   int ch;\n   FILE *input = fopen( \"stuff\", \"r\" );             \n\n   ch = getc( input );\n   while( ch != EOF ) {\n     printf( \"%c\", ch );\n     ch = getc( input );\n   }            \n\n\n    Related topics:\n  \n\nfeof\nfflush\nfgetc\nfopen\nfputc\nfread\nfwrite\nputc\nungetc"
+    },
+    {
+      "Title": "getchar",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/getchar.html",
+      "Description": "read a character from  STDIN",
+      "Syntax": "#include <stdio.h>\n  int getchar( void );",
+      "Text": "cppreference.com > Standard C I/O > getchar\n\n\n    getchar\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int getchar( void );\n\nThe getchar() function returns the next character from\n  STDIN, or EOF if the end of file is\n  reached.\n\n    Related topics:\n  \n\nfgetc\nfopen\nfputc\nputc"
+    },
+    {
+      "Title": "getenv",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/getenv.html",
+      "Description": "get enviornment information about a variable",
+      "Syntax": "#include <stdlib.h>\n  char *getenv( const char *name );",
+      "Text": "cppreference.com > Other Standard C Functions > getenv\n\n\n    getenv\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  char *getenv( const char *name );\n\nThe function getenv() returns environmental information associated\n  with name, and is very implementation dependent.\n  NULL is returned if no information about\n  name is available.\n\n    Related topics:\n  \n\nsystem"
+    },
+    {
+      "Title": "gets",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/gets.html",
+      "Description": "read a string from  STDIN",
+      "Syntax": "#include <stdio.h>\n  char *gets( char *str );",
+      "Text": "cppreference.com > Standard C I/O > gets\n\n\n    gets\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  char *gets( char *str );\n\nThe gets() function reads characters from STDIN\n  and loads them into str, until a newline or\n  EOF is reached. The newline character is translated\n  into a null termination. The return value of gets() is the read-in\n  string, or NULL if there is an error.\nNote that gets() does not perform bounds checking, and thus risks\n  overrunning str.  For a similar (and safer) function that\n  includes bounds checking, see fgets().\n\n    Related topics:\n  \n\nfgetc\nfgets\nfputs\nputs"
+    },
+    {
+      "Title": "gmtime",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stddate/gmtime.html",
+      "Description": "returns a pointer to the current Greenwich Mean Time",
+      "Syntax": "#include <time.h>\n  struct tm *gmtime( const time_t *time );",
+      "Text": "cppreference.com > Standard C Date & Time > gmtime\n\n\n    gmtime\n  \n\n    Syntax:\n  \n  #include <time.h>\n  struct tm *gmtime( const time_t *time );\n\nThe gmtime() function returns the given time in\n  Coordinated Universal Time (usually Greenwich mean time), unless\n  it's not supported by the system, in which case\n  NULL is returned. Watch out for static return.\n\n    Related topics:\n  \n\nasctime\nctime\ndifftime\nlocaltime\nmktime\nstrftime\ntime"
+    },
+    {
+      "Title": "isalnum",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/isalnum.html",
+      "Description": "true if a character is alphanumeric",
+      "Syntax": "#include <ctype.h>\n  int isalnum( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > isalnum\n\n\n    isalnum\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int isalnum( int ch );\n\nThe function isalnum() returns non-zero if its argument is a\n  numeric digit or a letter of the alphabet. Otherwise, zero is\n  returned.\n   char c;\n   scanf( \"%c\", &c );\n   if( isalnum(c) )\n     printf( \"You entered the alphanumeric character %c\\n\", c );              \n\n\n    Related topics:\n  \n\nisalpha\niscntrl\nisdigit\nisgraph\nisprint\nispunct\nisspace\nisxdigit"
+    },
+    {
+      "Title": "isalpha",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/isalpha.html",
+      "Description": "true if a character is alphabetic",
+      "Syntax": "#include <ctype.h>\n  int isalpha( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > isalpha\n\n\n    isalpha\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int isalpha( int ch );\n\nThe function isalpha() returns non-zero if its argument is a\n  letter of the alphabet. Otherwise, zero is returned.\n   char c;\n   scanf( \"%c\", &c );\n   if( isalpha(c) )\n     printf( \"You entered a letter of the alphabet\\n\" );              \n\n\n    Related topics:\n  \n\nisalnum\niscntrl\nisdigit\nisgraph\nisprint\nispunct\nisspace\nisxdigit"
+    },
+    {
+      "Title": "iscntrl",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/iscntrl.html",
+      "Description": "true if a character is a control character",
+      "Syntax": "#include <ctype.h>\n  int iscntrl( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > iscntrl\n\n\n    iscntrl\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int iscntrl( int ch );\n\nThe iscntrl() function returns non-zero if its argument is a\n  control character (between 0 and 0x1F or equal to 0x7F). Otherwise,\n  zero is returned.\n\n    Related topics:\n  \n\nisalnum\nisalpha\nisdigit\nisgraph\nisprint\nispunct\nisspace\nisxdigit"
+    },
+    {
+      "Title": "isdigit",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/isdigit.html",
+      "Description": "true if a character is a digit",
+      "Syntax": "#include <ctype.h>\n  int isdigit( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > isdigit\n\n\n    isdigit\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int isdigit( int ch );\n\nThe function isdigit() returns non-zero if its argument is a digit\n  between 0 and 9. Otherwise, zero is returned.\n   char c;\n   scanf( \"%c\", &c );\n   if( isdigit(c) )\n     printf( \"You entered the digit %c\\n\", c );               \n\n\n    Related topics:\n  \n\nisalnum\nisalpha\niscntrl\nisgraph\nisprint\nispunct\nisspace\nisxdigit"
+    },
+    {
+      "Title": "isgraph",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/isgraph.html",
+      "Description": "true if a character is a graphical character",
+      "Syntax": "#include <ctype.h>\n  int isgraph( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > isgraph\n\n\n    isgraph\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int isgraph( int ch );\n\nThe function isgraph() returns non-zero if its argument is any\n  printable character other than a space (if you can see the character,\n  then isgraph() will return a non-zero value). Otherwise, zero is\n  returned.\n\n    Related topics:\n  \n\nisalnum\nisalpha\niscntrl\nisdigit\nisprint\nispunct\nisspace\nisxdigit"
+    },
+    {
+      "Title": "islower",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/islower.html",
+      "Description": "true if a character is lowercase",
+      "Syntax": "#include <ctype.h>\n  int islower( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > islower\n\n\n    islower\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int islower( int ch );\n\nThe islower() function returns non-zero if its argument is a\n  lowercase letter. Otherwise, zero is returned.\n\n    Related topics:\n  \n\nisupper"
+    },
+    {
+      "Title": "isprint",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/isprint.html",
+      "Description": "true if a character is a printing character",
+      "Syntax": "#include <ctype.h>\n  int isprint( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > isprint\n\n\n    isprint\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int isprint( int ch );\n\nThe function isprint() returns non-zero if its argument is a\n  printable character (including a space). Otherwise, zero is\n  returned.\n\n    Related topics:\n  \n\nisalnum\nisalpha\niscntrl\nisdigit\nisgraph\nispunct\nisspace"
+    },
+    {
+      "Title": "ispunct",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/ispunct.html",
+      "Description": "true if a character is punctuation",
+      "Syntax": "#include <ctype.h>\n  int ispunct( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > ispunct\n\n\n    ispunct\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int ispunct( int ch );\n\nThe ispunct() function returns non-zero if its argument is a\n  printing character but neither alphanumeric nor a space. Otherwise,\n  zero is returned.\n\n    Related topics:\n  \n\nisalnum\nisalpha\niscntrl\nisdigit\nisgraph\nisprint\nisspace\nisxdigit"
+    },
+    {
+      "Title": "isspace",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/isspace.html",
+      "Description": "true if a character is a space character",
+      "Syntax": "#include <ctype.h>\n  int isspace( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > isspace\n\n\n    isspace\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int isspace( int ch );\n\nThe isspace() function returns non-zero if its argument is some\n  sort of space (i.e. single space, tab, vertical tab, form feed,\n  carriage return, or newline). Otherwise, zero is returned.\n\n    Related topics:\n  \n\nisalnum\nisalpha\niscntrl\nisdigit\nisgraph\nisprint\nispunct\nisxdigit"
+    },
+    {
+      "Title": "isupper",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/isupper.html",
+      "Description": "true if a character is an uppercase character",
+      "Syntax": "#include <ctype.h>\n  int isupper( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > isupper\n\n\n    isupper\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int isupper( int ch );\n\nThe isupper() function returns non-zero if its argument is an\n  uppercase letter. Otherwise, zero is returned.\n\n    Related topics:\n  \n\nislower\ntolower"
+    },
+    {
+      "Title": "isxdigit",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/isxdigit.html",
+      "Description": "true if a character is a hexidecimal character",
+      "Syntax": "#include <ctype.h>\n  int isxdigit( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > isxdigit\n\n\n    isxdigit\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int isxdigit( int ch );\n\nThe function isxdigit() returns non-zero if its argument is a\n  hexidecimal digit (i.e. A-F, a-f, or 0-9). Otherwise, zero is\n  returned.\n\n    Related topics:\n  \n\nisalnum\nisalpha\niscntrl\nisdigit\nisgraph\nispunct\nisspace"
+    },
+    {
+      "Title": "labs",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/labs.html",
+      "Description": "absolute value for long integers",
+      "Syntax": "#include <stdlib.h>\n  long labs( long num );",
+      "Text": "cppreference.com > Standard C Math > labs\n\n\n    labs\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  long labs( long num );\n\nThe function labs() returns the absolute value of\n  num.\n\n    Related topics:\n  \n\nabs\nfabs"
+    },
+    {
+      "Title": "ldexp",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/ldexp.html",
+      "Description": "computes a number in scientific notation",
+      "Syntax": "#include <math.h>\n  double ldexp( double num, int exp );",
+      "Text": "cppreference.com > Standard C Math > ldexp\n\n\n    ldexp\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double ldexp( double num, int exp );\n\nThe ldexp() function returns num * (2 ^ exp).\n  And get this: if an overflow occurs, HUGE_VAL is\n  returned.\n\n    Related topics:\n  \n\nfrexp\nmodf"
+    },
+    {
+      "Title": "ldiv",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/ldiv.html",
+      "Description": "returns the quotient and remainder of a division, in long integer form",
+      "Syntax": "#include <stdlib.h>\n   l div_t ldiv( long numerator, long denominator );",
+      "Text": "cppreference.com > Standard C Math > ldiv\n\n\n    ldiv\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  ldiv_t ldiv( long numerator, long denominator );\n\nTesting: adiv_t, div_t,\n  ldiv_t.\nThe ldiv() function returns the quotient and remainder of the\n  operation numerator / denominator. The\n  ldiv_t structure is defined in stdlib.h and has at\n  least:\n   long quot;  // the quotient\n   long rem;   // the remainder         \n\n\n    Related topics:\n  \n\ndiv"
+    },
+    {
+      "Title": "localtime",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stddate/localtime.html",
+      "Description": "returns a pointer to the current time",
+      "Syntax": "#include <time.h>\n  struct tm *localtime( const time_t *time );",
+      "Text": "cppreference.com > Standard C Date & Time > localtime\n\n\n    localtime\n  \n\n    Syntax:\n  \n  #include <time.h>\n  struct tm *localtime( const time_t *time );\n\nThe function localtime() converts calendar time time into local\n  time. Watch out for the static\n  return.\n\n    Related topics:\n  \n\nasctime\nctime\ndifftime\ngmtime\nstrftime\ntime"
+    },
+    {
+      "Title": "log",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/log.html",
+      "Description": "natural logarithm",
+      "Syntax": "#include <math.h>\n  double log( double num );",
+      "Text": "cppreference.com > Standard C Math > log\n\n\n    log\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double log( double num );\n\nThe function log() returns the natural (base e) logarithm of\n  num.  There's a domain error if num is\n  negative, a range error if num is zero.\nIn order to calculate the logarithm of x to an arbitrary\n  base b, you can use:\n  double answer = log(x) / log(b);\n\n\n    Related topics:\n  \n\nexp\nlog10\npow\nsqrt"
+    },
+    {
+      "Title": "log10",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/log10.html",
+      "Description": "natural logarithm, in base 10",
+      "Syntax": "#include <math.h>\n  double log10( double num );",
+      "Text": "cppreference.com > Standard C Math > log10\n\n\n    log10\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double log10( double num );\n\nThe log10() function returns the base 10 (or common) logarithm for\n  num. There's a domain error if num is negative,\n  a range error if num is zero.\n\n    Related topics:\n  \n\nlog"
+    },
+    {
+      "Title": "longjmp",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/longjmp.html",
+      "Description": "start execution at a certain point in the program",
+      "Syntax": "#include <setjmp.h>\n  void longjmp( jmp_buf envbuf, int status );",
+      "Text": "cppreference.com > Other Standard C Functions > longjmp\n\n\n    longjmp\n  \n\n    Syntax:\n  \n  #include <setjmp.h>\n  void longjmp( jmp_buf envbuf, int status );\n\nThe function longjmp() causes the program to start executing code\n  at the point of the last call to setjmp().\n  envbuf is usually set through a call to setjmp(). status becomes the return value\n  of setjmp() and can be used to figure out\n  where longjmp() came from. status should not be set to\n  zero.\n\n    Related topics:\n  \n\nsetjmp"
+    },
+    {
+      "Title": "malloc",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmem/malloc.html",
+      "Description": "allocates memory",
+      "Syntax": "#include <stdlib.h>\n  void *malloc( size_t size );",
+      "Text": "cppreference.com > Standard C Memory > malloc\n\n\n    malloc\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  void *malloc( size_t size );\n\nThe function malloc() returns a pointer to a chunk of memory of\n  size size, or NULL if there is an error.\n  The memory pointed to will be on the heap, not the stack, so make\n  sure to free it when you are done with it. An example:\n   typedef struct data_type {\n     int age;\n     char name[20];\n   } data;              \n\n   data *bob;\n   bob = (data*) malloc( sizeof(data) );\n   if( bob != NULL ) {\n     bob->age = 22;\n     strcpy( bob->name, \"Robert\" );\n     printf( \"%s is %d years old\\n\", bob->name, bob->age );\n   }\n   free( bob );         \n\n\n    Related topics:\n  \n\ncalloc\n    (C/C++ Keywords) delete\nfree\n    (C/C++ Keywords) new\nrealloc"
+    },
+    {
+      "Title": "memchr",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/memchr.html",
+      "Description": "searches an array for the first occurance of a character",
+      "Syntax": "#include <string.h>\n  void *memchr( const void *buffer, int ch, size_t count );",
+      "Text": "cppreference.com > Standard C String and Character > memchr\n\n\n    memchr\n  \n\n    Syntax:\n  \n  #include <string.h>\n  void *memchr( const void *buffer, int ch, size_t count );\n\nThe memchr() function looks for the first occurrence of\n  ch within count characters in the array pointed to\n  by buffer. The return value points to the location of the\n  first occurrence of ch, or NULL if\n  ch isn't found. For example:\n   char names[] = \"Alan Bob Chris X Dave\";\n   if( memchr(names,'X',strlen(names)) == NULL )\n     printf( \"Didn't find an X\\n\" );\n   else\n     printf( \"Found an X\\n\" );                \n\n\n    Related topics:\n  \n\nmemcmp\nmemcpy\nstrstr"
+    },
+    {
+      "Title": "memcmp",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/memcmp.html",
+      "Description": "compares two buffers",
+      "Syntax": "#include <string.h>\n  int memcmp( const void *buffer1, const void *buffer2, size_t count );",
+      "Text": "cppreference.com > Standard C String and Character > memcmp\n\n\n    memcmp\n  \n\n    Syntax:\n  \n  #include <string.h>\n  int memcmp( const void *buffer1, const void *buffer2, size_t count );\n\nThe function memcmp() compares the first count characters\n  of buffer1 and buffer2. The return values are as\n  follows:\n\n\nValue\nExplanation\n\n\nless than 0\nbuffer1 is less than buffer2\n\n\nequal to 0\nbuffer1 is equal to buffer2\n\n\ngreater than 0\nbuffer1 is greater than buffer2\n\n\n\n    Related topics:\n  \n\nmemchr\nmemcpy\nmemset\nstrcmp"
+    },
+    {
+      "Title": "memcpy",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/memcpy.html",
+      "Description": "copies one buffer to another",
+      "Syntax": "#include <string.h>\n  void *memcpy( void *to, const void *from, size_t count );",
+      "Text": "cppreference.com > Standard C String and Character > memcpy\n\n\n    memcpy\n  \n\n    Syntax:\n  \n  #include <string.h>\n  void *memcpy( void *to, const void *from, size_t count );\n\nThe function memcpy() copies count characters from the\n  array from to the array to. The return value of\n  memcpy() is to. The behavior of memcpy() is undefined if\n  to and from overlap.\n\n    Related topics:\n  \n\nmemchr\nmemcmp\nmemmove\nmemset\nstrcpy\nstrlen\nstrncpy"
+    },
+    {
+      "Title": "memmove",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/memmove.html",
+      "Description": "moves one buffer to another",
+      "Syntax": "#include <string.h>\n  void *memmove( void *to, const void *from, size_t count );",
+      "Text": "cppreference.com > Standard C String and Character > memmove\n\n\n    memmove\n  \n\n    Syntax:\n  \n  #include <string.h>\n  void *memmove( void *to, const void *from, size_t count );\n\nThe memmove() function is identical to memcpy(), except that it works even if to\n  and from overlap.\n\n    Related topics:\n  \n\nmemcpy\nmemset"
+    },
+    {
+      "Title": "memset",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/memset.html",
+      "Description": "fills a buffer with a character",
+      "Syntax": "#include <string.h>\n  void* memset( void* buffer, int ch, size_t count );",
+      "Text": "cppreference.com > Standard C String and Character > memset\n\n\n    memset\n  \n\n    Syntax:\n  \n  #include <string.h>\n  void* memset( void* buffer, int ch, size_t count );\n\nThe function memset() copies ch into the first\n  count characters of buffer, and returns\n  buffer. memset() is useful for intializing a section of\n  memory to some value. For example, this command:\n   memset( the_array, '\\0', sizeof(the_array) );                \n\n...is a very efficient way to set all values of the_array to\n  zero.\nThe table below compares two different methods for initializing\n  an array of characters: a for-loop versus memset().  As the size of the\n  data being initialized increases, memset() clearly gets the job done\n  much more quickly:\n\n\nInput size\nInitialized with a for-loop\nInitialized with memset()\n\n\n1000\n0.016\n0.017\n\n\n10000\n0.055\n0.013\n\n\n100000\n0.443\n0.029\n\n\n1000000\n4.337\n0.291\n\n\n\n    Related topics:\n  \n\nmemcmp\nmemcpy\nmemmove"
+    },
+    {
+      "Title": "mktime",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stddate/mktime.html",
+      "Description": "returns the calendar version of a given time",
+      "Syntax": "#include <time.h>\n  time_t mktime( struct tm *time );",
+      "Text": "cppreference.com > Standard C Date & Time > mktime\n\n\n    mktime\n  \n\n    Syntax:\n  \n  #include <time.h>\n  time_t mktime( struct tm *time );\n\nThe mktime() function converts the local time in time to\n  calendar time, and returns it. If there is an error, -1 is\n  returned.\n\n    Related topics:\n  \n\nasctime\nctime\ngmtime\ntime"
+    },
+    {
+      "Title": "modf",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/modf.html",
+      "Description": "decomposes a number into integer and fractional parts",
+      "Syntax": "#include <math.h>\n  double modf( double num, double *i );",
+      "Text": "cppreference.com > Standard C Math > modf\n\n\n    modf\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double modf( double num, double *i );\n\nThe function modf() splits num into its integer and\n  fraction parts. It returns the fractional part and loads the integer\n  part into i.\n\n    Related topics:\n  \n\nfrexp\nldexp"
+    },
+    {
+      "Title": "perror",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/perror.html",
+      "Description": "displays a string version of the current error to  STDERR",
+      "Syntax": "#include <stdio.h>\n  void perror( const char *str );",
+      "Text": "cppreference.com > Standard C I/O > perror\n\n\n    perror\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  void perror( const char *str );\n\nThe perror() function prints str and an\n  implementation-defined error message corresponding to the global\n  variable errno.\n\n    Related topics:\n  \n\nclearerr\nfeof\nferror"
+    },
+    {
+      "Title": "pow",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/pow.html",
+      "Description": "returns a given number raised to another number",
+      "Syntax": "#include <math.h>\n  double pow( double base, double exp );",
+      "Text": "cppreference.com > Standard C Math > pow\n\n\n    pow\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double pow( double base, double exp );\n\nThe pow() function returns base raised to the\n  expth power. There's a domain error if base is\n  zero and exp is less than or equal to zero. There's also\n  a domain error if base is negative and exp is not\n  an integer. There's a range error if an overflow occurs.\n\n    Related topics:\n  \n\nexp\nlog\nsqrt"
+    },
+    {
+      "Title": "printf",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/printf.html",
+      "Description": "write formatted output to  STDOUT",
+      "Syntax": "#include <stdio.h>\n  int printf( const char *format, ... );",
+      "Text": "cppreference.com > Standard C I/O > printf\n\n\n    printf\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int printf( const char *format, ... );\n\nThe printf() function prints output to STDOUT,\n  according to format and other arguments passed to printf().\n  The string format consists of two types of items -\n  characters that will be printed to the screen, and format commands\n  that define how the other arguments to printf() are displayed.\n  Basically, you specify a format string that has text in it, as well\n  as \"special\" characters that map to the other arguments of\n  printf(). For example, this code\n   char name[20] = \"Bob\";\n   int age = 21;\n   printf( \"Hello %s, you are %d years old\\n\", name, age );           \n\ndisplays the following output:\n   Hello Bob, you are 21 years old              \n\nThe %s means, \"insert the first argument, a string, right\n  here.\" The %d indicates that the second argument (an integer)\n  should be placed there. There are different %-codes for different\n  variable types, as well as options to limit the length of the\n  variables and whatnot.\n\n\nCode\nFormat\n\n\n%c\ncharacter\n\n\n%d\nsigned integers\n\n\n%i\nsigned integers\n\n\n%e\nscientific notation, with a lowercase\n      \"e\"\n\n\n%E\nscientific notation, with a uppercase\n      \"E\"\n\n\n%f\nfloating point\n\n\n%g\nuse %e or %f, whichever is shorter\n\n\n%G\nuse %E or %f, whichever is shorter\n\n\n%o\noctal\n\n\n%s\na string of characters\n\n\n%u\nunsigned integer\n\n\n%x\nunsigned hexadecimal, with lowercase\n      letters\n\n\n%X\nunsigned hexadecimal, with uppercase\n      letters\n\n\n%p\na pointer\n\n\n%n\nthe argument shall be a pointer to an\n      integer into which is placed the number of characters written so\n      far\n\n\n%%\na '%' sign\n\n\nAn integer placed between a % sign and the format command acts as\n  a minimum field width specifier, and pads the output with spaces or\n  zeros to make it long enough. If you want to pad with zeros, place a\n  zero before the minimum field width specifier:\n   %012d                \n\nYou can also include a precision modifier, in the form of a .N\n  where N is some number, before the format command:\n   %012.4d              \n\nThe precision modifier has different meanings depending on the\n  format command being used:\n\nWith %e, %E, and %f, the precision modifier lets you specify\n    the number of decimal places desired. For example, %12.6f will\n    display a floating number at least 12 digits wide, with six decimal\n    places.\nWith %g and %G, the precision modifier determines the maximum\n    number of significant digits displayed.\nWith %s, the precision modifer simply acts as a maximumfield\n    length, to complement the minimum field length that precedes the\n    period.\n\nAll of printf()'s output is right-justified, unless you place\n  a minus sign right after the % sign. For example,\n   %-12.4f              \n\nwill display a floating point number with a minimum of 12\n  characters, 4 decimal places, and left justified. You may modify the\n  %d, %i, %o, %u, and %x type specifiers with the letter l and the\n  letter h to specify long and short data\n  types (e.g. %hd means a short integer). The %e, %f, and %g type\n  specifiers can have the letter l before them to indicate that a\n  double follows. The %g, %f, and %e type specifiers can be preceded\n  with the character '#' to ensure that the decimal point will\n  be present, even if there are no decimal digits. The use of the\n  '#' character with the %x type specifier indicates that the\n  hexidecimal number should be printed with the '0x' prefix.\n  The use of the '#' character with the %o type specifier\n  indicates that the octal value should be displayed with a 0\n  prefix.\nYou can also include constant\n  escape sequences in the output string.\nThe return value of printf() is the number of characters printed,\n  or a negative number if an error occurred.\n\n    Related topics:\n  \n\nfprintf\nputs\nscanf\nsprintf"
+    },
+    {
+      "Title": "putc",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/putc.html",
+      "Description": "write a character to a stream",
+      "Syntax": "#include <stdio.h>\n  int putc( int ch, FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > putc\n\n\n    putc\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int putc( int ch, FILE *stream );\n\nThe putc() function writes the character ch to\n  stream. The return value is the character written, or\n  EOF if there is an error. For example:\n   int ch;\n   FILE *input, *output;\n   input = fopen( \"tmp.c\", \"r\" );\n   output = fopen( \"tmpCopy.c\", \"w\" );\n   ch = getc( input );\n   while( ch != EOF ) {\n     putc( ch, output );\n     ch = getc( input );\n   }\n   fclose( input );\n   fclose( output );            \n\ngenerates a copy of the file tmp.c called tmpCopy.c.\n\n    Related topics:\n  \n\nfeof\nfflush\nfgetc\nfputc\ngetc\ngetchar\nputchar\nputs"
+    },
+    {
+      "Title": "putchar",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/putchar.html",
+      "Description": "write a character to  STDOUT",
+      "Syntax": "#include <stdio.h>\n  int putchar( int ch );",
+      "Text": "cppreference.com > Standard C I/O > putchar\n\n\n    putchar\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int putchar( int ch );\n\nThe putchar() function writes ch to\n  STDOUT. The code\n   putchar( ch );               \n\nis the same as\n   putc( ch, STDOUT );         \n\nThe return value of putchar() is the written character, or\n  EOF if there is an error.\n\n    Related topics:\n  \n\nputc"
+    },
+    {
+      "Title": "puts",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/puts.html",
+      "Description": "write a string to  STDOUT",
+      "Syntax": "#include <stdio.h>\n  int puts( char *str );",
+      "Text": "cppreference.com > Standard C I/O > puts\n\n\n    puts\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int puts( char *str );\n\nThe function puts() writes str to\n  STDOUT. puts() returns non-negative on success, or\n  EOF on failure.\n\n    Related topics:\n  \n\nfputs\ngets\nprintf\nputc"
+    },
+    {
+      "Title": "qsort",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/qsort.html",
+      "Description": "perform a quicksort",
+      "Syntax": "#include <stdlib.h>\n  void qsort( void *buf, size_t num, size_t size, int (*compare)(const void *, const void *) );",
+      "Text": "cppreference.com > Other Standard C Functions > qsort\n\n\n    qsort\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  void qsort( void *buf, size_t num, size_t size, int (*compare)(const void *, const void *) );\n\nThe qsort() function sorts buf (which contains\n  num items, each of size size) using Quicksort. The\n  compare function is used to compare the items in\n  buf. compare should return negative if the first\n  argument is less than the second, zero if they are equal, and\n  positive if the first argument is greater than the second. qsort()\n  sorts buf in ascending order.\n\n    Example code:\n  \n\nFor example, the following bit of code uses qsort() to sort an\n    array of integers:\n int compare_ints( const void* a, const void* b ) {\n   int* arg1 = (int*) a;\n   int* arg2 = (int*) b;\n   if( *arg1 < *arg2 ) return -1;\n   else if( *arg1 == *arg2 ) return 0;\n   else return 1;\n }              \n\n int array[] = { -2, 99, 0, -743, 2, 3, 4 };\n int array_size = 7;            \n\n ...            \n\n printf( \"Before sorting: \" );\n for( int i = 0; i < array_size; i++ ) {\n   printf( \"%d \", array[i] );\n }\n printf( \"\\n\" );              \n\n qsort( array, array_size, sizeof(int), compare_ints );         \n\n printf( \"After sorting: \" );\n for( int i = 0; i < array_size; i++ ) {\n   printf( \"%d \", array[i] );\n }\n printf( \"\\n\" );              \n\nWhen run, this code displays the following output:\n Before sorting: -2 99 0 -743 2 3 4\n After sorting: -743 -2 0 2 3 4 99              \n\n\n\n    Related topics:\n  \n\nbsearch\n    (C++ Algorithms) sort"
+    },
+    {
+      "Title": "raise",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/raise.html",
+      "Description": "send a signal to the program",
+      "Syntax": "#include <signal.h>\n  int raise( int signal );",
+      "Text": "cppreference.com > Other Standard C Functions > raise\n\n\n    raise\n  \n\n    Syntax:\n  \n  #include <signal.h>\n  int raise( int signal );\n\nThe raise() function sends the specified signal to the\n  program. Some signals:\n\n\nSignal\nMeaning\n\n\nSIGABRT\nTermination error\n\n\nSIGFPE\nFloating pointer error\n\n\nSIGILL\nBad instruction\n\n\nSIGINT\nUser presed CTRL-C\n\n\nSIGSEGV\nIllegal memory access\n\n\nSIGTERM\nTerminate program\n\n\nThe return value is zero upon success, nonzero on failure.\n\n    Related topics:\n  \n\nsignal"
+    },
+    {
+      "Title": "rand",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/rand.html",
+      "Description": "returns a pseudorandom number",
+      "Syntax": "#include <stdlib.h>\n  int rand( void );",
+      "Text": "cppreference.com > Other Standard C Functions > rand\n\n\n    rand\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  int rand( void );\n\nThe function rand() returns a pseudorandom integer between zero\n  and RAND_MAX. An example:\n   srand( time(NULL) );\n   for( i = 0; i < 10; i++ )\n     printf( \"Random number #%d: %d\\n\", i, rand() );          \n\n\n    Related topics:\n  \n\nsrand"
+    },
+    {
+      "Title": "realloc",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmem/realloc.html",
+      "Description": "changes the size of previously allocated memory",
+      "Syntax": "#include <stdlib.h>\n  void *realloc( void *ptr, size_t size );",
+      "Text": "cppreference.com > Standard C Memory > realloc\n\n\n    realloc\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  void *realloc( void *ptr, size_t size );\n\nThe realloc() function changes the size of the object pointed to\n  by ptr to the given size. size can be any size, larger or smaller\n  than the original. The return value is a pointer to the new space, or\n  NULL if there is an error.\n\n    Related topics:\n  \n\ncalloc\nfree\nmalloc"
+    },
+    {
+      "Title": "remove",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/remove.html",
+      "Description": "erase a file",
+      "Syntax": "#include <stdio.h>\n  int remove( const char *fname );",
+      "Text": "cppreference.com > Standard C I/O > remove\n\n\n    remove\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int remove( const char *fname );\n\nThe remove() function erases the file specified by fname.\n  The return value of remove() is zero upon success, and non-zero if\n  there is an error.\n\n    Related topics:\n  \n\nrename"
+    },
+    {
+      "Title": "rename",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/rename.html",
+      "Description": "rename a file",
+      "Syntax": "#include <stdio.h>\n  int rename( const char *oldfname, const char *newfname );",
+      "Text": "cppreference.com > Standard C I/O > rename\n\n\n    rename\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int rename( const char *oldfname, const char *newfname );\n\nThe function rename() changes the name of the file\n  oldfname to newfname. The return value of rename()\n  is zero upon success, non-zero on error.\n\n    Related topics:\n  \n\nremove"
+    },
+    {
+      "Title": "rewind",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/rewind.html",
+      "Description": "move the file position indicator to the beginning of a file",
+      "Syntax": "#include <stdio.h>\n  void rewind( FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > rewind\n\n\n    rewind\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  void rewind( FILE *stream );\n\nThe function rewind() moves the file position indicator to the\n  beginning of the specified stream, also clearing the error\n  and EOF flags associated with that stream.\n\n    Related topics:\n  \n\nfseek"
+    },
+    {
+      "Title": "scanf",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/scanf.html",
+      "Description": "read formatted input from  STDIN",
+      "Syntax": "#include <stdio.h>\n  int scanf( const char *format, ... );",
+      "Text": "cppreference.com > Standard C I/O > scanf\n\n\n    scanf\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int scanf( const char *format, ... );\n\nThe scanf() function reads input from STDIN,\n  according to the given format, and stores the data in the\n  other arguments. It works a lot like printf(). The format string consists of\n  control characters, whitespace characters, and non-whitespace\n  characters. The control characters are preceded by a % sign, and are\n  as follows:\n\n\nControl Character\nExplanation\n\n\n%c\na single character\n\n\n%d\na decimal integer\n\n\n%i\nan integer\n\n\n%e, %f, %g\na floating-point number\n\n\n%o\nan octal number\n\n\n%s\na string\n\n\n%x\na hexadecimal number\n\n\n%p\na pointer\n\n\n%n\nan integer equal to the number of\n      characters read so far\n\n\n%u\nan unsigned integer\n\n\n%[]\na set of characters\n\n\n%% a percent sign\n\n\nscanf() reads the input, matching the characters from format. When\n  a control character is read, it puts the value in the next variable.\n  Whitespace (tabs, spaces, etc) are skipped. Non-whitespace characters\n  are matched to the input, then discarded. If a number comes between\n  the % sign and the control character, then only that many characters\n  will be converted into the variable. If scanf() encounters a set of\n  characters, denoted by the %[] control character, then any characters\n  found within the brackets are read into the variable. The return\n  value of scanf() is the number of variables that were successfully\n  assigned values, or EOF if there is an error.\n\n    Example code:\n  \n\nThis code snippet repeatedly uses scanf() to read integers and\n    floats from the user. Note that the variable arguments to scanf()\n    are passed in by reference, as denoted by the ampersand (&)\n    preceding each variable:\n int i;\n float f;               \n\n while( 1 ) {\n   printf( \"Enter an integer: \" );\n   scanf( \"%d\", &i );             \n\n   printf( \"Enter a float: \" );\n   scanf( \"%f\", &f );             \n\n   printf( \"You entered %d and then %f\\n\", i, f );\n }              \n\n\n\n    Related topics:\n  \n\nfgets\nfscanf\nprintf\nsscanf"
+    },
+    {
+      "Title": "setbuf",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/setbuf.html",
+      "Description": "set the buffer for a specific stream",
+      "Syntax": "#include <stdio.h>\n  void setbuf( FILE *stream, char *buffer );",
+      "Text": "cppreference.com > Standard C I/O > setbuf\n\n\n    setbuf\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  void setbuf( FILE *stream, char *buffer );\n\nThe setbuf() function sets stream to use buffer,\n  or, if buffer is null, turns off buffering. If a\n  non-standard buffer size is used, it should be BUFSIZ characters\n  long.\n\n    Related topics:\n  \n\nfclose\nfopen\nsetvbuf"
+    },
+    {
+      "Title": "setjmp",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/setjmp.html",
+      "Description": "set execution to start at a certain point",
+      "Syntax": "#include <setjmp.h>\n  int setjmp( jmp_buf envbuf );",
+      "Text": "cppreference.com > Other Standard C Functions > setjmp\n\n\n    setjmp\n  \n\n    Syntax:\n  \n  #include <setjmp.h>\n  int setjmp( jmp_buf envbuf );\n\nThe setjmp() function saves the system stack in envbuf\n  for use by a later call to longjmp(). When\n  you first call setjmp(), its return value is zero. Later, when you\n  call longjmp(), the second argument of\n  longjmp() is what the return value of\n  setjmp() will be. Confused? Read about longjmp().\n\n    Related topics:\n  \n\nlongjmp"
+    },
+    {
+      "Title": "setlocale",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stddate/setlocale.html",
+      "Description": "sets the current locale",
+      "Syntax": "#include <locale.h>\n  char *setlocale( int category, const char * locale );",
+      "Text": "cppreference.com > Standard C Date & Time > setlocale\n\n\n    setlocale\n  \n\n    Syntax:\n  \n  #include <locale.h>\n  char *setlocale( int category, const char * locale );\n\nThe setlocale() function is used to set and retrieve the current\n  locale. If locale is NULL, the current\n  locale is returned. Otherwise, locale is used to set the\n  locale for the given category.\ncategory can have the following values:\n\n\nValue\nDescription\n\n\nLC_ALL\nAll of the locale\n\n\nLC_TIME\nDate and time formatting\n\n\nLC_NUMERIC\nNumber formatting\n\n\nLC_COLLATE\nString collation and regular expression\n      matching\n\n\nLC_CTYPE\nRegular expression matching,\n      conversion, case-sensitive comparison, wide character functions,\n      and character classification.\n\n\nLC_MONETARY\nFor monetary formatting\n\n\nLC_MESSAGES\nFor natural language messages\n\n\n\n    Related topics:\n  \n\n    (Standard C String and Character) strcoll"
+    },
+    {
+      "Title": "setvbuf",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/setvbuf.html",
+      "Description": "set the buffer and size for a specific stream",
+      "Syntax": "#include <stdio.h>\n  int setvbuf( FILE *stream, char *buffer, int mode, size_t size );",
+      "Text": "cppreference.com > Standard C I/O > setvbuf\n\n\n    setvbuf\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int setvbuf( FILE *stream, char *buffer, int mode, size_t size );\n\nThe function setvbuf() sets the buffer for stream to be\n  buffer, with a size of size. mode can\n  be:\n\n_IOFBF, which indicates full buffering\n_IOLBF, which means line buffering\n_IONBF, which means no buffering\n\n\n    Related topics:\n  \n\nsetbuf"
+    },
+    {
+      "Title": "signal",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/signal.html",
+      "Description": "register a function as a signal handler",
+      "Syntax": "#include <signal.h>\n  void ( *signal( int signal, void (* func) (int)) ) (int);",
+      "Text": "cppreference.com > Other Standard C Functions > signal\n\n\n    signal\n  \n\n    Syntax:\n  \n  #include <signal.h>\n  void ( *signal( int signal, void (* func) (int)) ) (int);\n\nThe signal() function sets func to be called when\n  signal is recieved by your program. func can be a\n  custom signal handler, or one of these macros (defined in\n  signal.h):\n\n\nMacro\nExplanation\n\n\nSIG_DFL\ndefault signal handling\n\n\nSIG_IGN\nignore the signal\n\n\nSome basic signals that you can attach a signal handler to\n  are:\n\n\nSignal\nDescription\n\n\nSIGTERM\nGeneric stop signal that can be\n      caught.\n\n\nSIGINT\nInterrupt program, normally\n      ctrl-c.\n\n\nSIGQUIT\nInterrupt program, similar to\n      SIGINT.\n\n\nSIGKILL\nStops the program. Cannot be\n      caught.\n\n\nSIGHUP\nReports a disconnected terminal.\n\n\nThe return value of signal() is the address of the previously\n  defined function for this signal, or SIG_ERR is there is an\n  error.\n\n    Example code:\n  \n\nThe following example uses the signal() function to call an\n    arbitrary number of functions when the user aborts the program. The\n    functions are stored in a vector, and a single \"clean-up\"\n    function calls each function in that vector of functions when the\n    program is aborted:\nvoid f1() {\n  cout << \"calling f1()...\" << endl;\n}               \n\nvoid f2() {\n  cout << \"calling f2()...\" << endl;\n}               \n\ntypedef void(*endFunc)(void);\nvector<endFunc> endFuncs;         \n\nvoid cleanUp( int dummy ) {\n  for( unsigned int i = 0; i < endFuncs.size(); i++ ) {\n    endFunc f = endFuncs.at(i);\n    (*f)();\n  }\n  exit(-1);\n}               \n\nint main() {            \n\n  // connect various signals to our clean-up function\n  signal( SIGTERM, cleanUp );\n  signal( SIGINT, cleanUp );\n  signal( SIGQUIT, cleanUp );\n  signal( SIGHUP, cleanUp );            \n\n  // add two specific clean-up functions to a list of functions\n  endFuncs.push_back( f1 );\n  endFuncs.push_back( f2 );             \n\n  // loop until the user breaks\n  while( 1 );           \n\n  return 0;\n}               \n\n\n\n    Related topics:\n  \n\nraise"
+    },
+    {
+      "Title": "sin",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/sin.html",
+      "Description": "sine",
+      "Syntax": "#include <math.h>\n  double sin( double arg );",
+      "Text": "cppreference.com > Standard C Math > sin\n\n\n    sin\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double sin( double arg );\n\nThe function sin() returns the sine of arg, where\n  arg is given in radians.  The return value of sin() will be\n  in the range [-1,1].  If arg is infinite, sin() will return\n  NAN and raise a floating-point exception.\n\n    Related topics:\n  \n\nacos\nasin\natan\natan2\ncos\ncosh\nsinh\ntan\ntanh"
+    },
+    {
+      "Title": "sinh",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/sinh.html",
+      "Description": "hyperbolic sine",
+      "Syntax": "#include <math.h>\n  double sinh( double arg );",
+      "Text": "cppreference.com > Standard C Math > sinh\n\n\n    sinh\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double sinh( double arg );\n\nThe function sinh() returns the hyperbolic sine of\n  arg.\n\n    Related topics:\n  \n\nacos\nasin\natan\natan2\ncos\ncosh\nsin\ntan\ntanh"
+    },
+    {
+      "Title": "sprintf",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/sprintf.html",
+      "Description": "write formatted output to a buffer",
+      "Syntax": "#include <stdio.h>\n  int sprintf( char *buffer, const char *format, ... );",
+      "Text": "cppreference.com > Standard C I/O > sprintf\n\n\n    sprintf\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int sprintf( char *buffer, const char *format, ... );\n\nThe sprintf() function is just like printf(), except that the output is sent to\n  buffer. The return value is the number of characters\n  written. For example:\n   char string[50];\n   int file_number = 0;         \n\n   sprintf( string, \"file.%d\", file_number );\n   file_number++;\n   output_file = fopen( string, \"w\" );                \n\nNote that sprintf() does the opposite of a function like (Standard\n  C String and Character) atoi()\n  -- where (Standard C String and Character) atoi() converts a string into a number,\n  sprintf() can be used to convert a number into a string.\nFor example, the following code uses sprintf() to convert an\n  integer into a string of characters:\n   char result[100];\n   int num=24;\n   sprintf( result, \"%d\", num );              \n\n\n    Related topics:\n  \n\n    (Standard C String and Character) atof\n    (Standard C String and Character) atoi\n    (Standard C String and Character) atol\nfprintf\nprintf"
+    },
+    {
+      "Title": "sqrt",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/sqrt.html",
+      "Description": "square root",
+      "Syntax": "#include <math.h>\n  double sqrt( double num );",
+      "Text": "cppreference.com > Standard C Math > sqrt\n\n\n    sqrt\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double sqrt( double num );\n\nThe sqrt() function returns the square root of num. If\n  num is negative, a domain error occurs.\n\n    Related topics:\n  \n\nexp\nlog\npow"
+    },
+    {
+      "Title": "srand",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/srand.html",
+      "Description": "initialize the random number generator",
+      "Syntax": "#include <stdlib.h>\n  void srand( unsigned seed );",
+      "Text": "cppreference.com > Other Standard C Functions > srand\n\n\n    srand\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  void srand( unsigned seed );\n\nThe function srand() is used to seed the random sequence generated\n  by rand(). For any given seed,\n  rand() will generate a specific \"random\" sequence over and\n  over again.\n   srand( time(NULL) );\n   for( i = 0; i < 10; i++ )\n     printf( \"Random number #%d: %d\\n\", i, rand() );          \n\n\n    Related topics:\n  \n\nrand\n    (Standard C Date & Time) time"
+    },
+    {
+      "Title": "sscanf",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/sscanf.html",
+      "Description": "read formatted input from a buffer",
+      "Syntax": "#include <stdio.h>\n  int sscanf( const char *buffer, const char *format, ... );",
+      "Text": "cppreference.com > Standard C I/O > sscanf\n\n\n    sscanf\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int sscanf( const char *buffer, const char *format, ... );\n\nThe function sscanf() is just like scanf(), except that the input is read from\n  buffer.\n\n    Related topics:\n  \n\nfscanf\nscanf"
+    },
+    {
+      "Title": "strcat",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strcat.html",
+      "Description": "concatenates two strings",
+      "Syntax": "#include <string.h>\n  char *strcat( char *str1, const char *str2 );",
+      "Text": "cppreference.com > Standard C String and Character > strcat\n\n\n    strcat\n  \n\n    Syntax:\n  \n  #include <string.h>\n  char *strcat( char *str1, const char *str2 );\n\nThe strcat() function concatenates str2 onto the end of\n  str1, and returns str1. For example:\n   printf( \"Enter your name: \" );\n   scanf( \"%s\", name );\n   title = strcat( name, \" the Great\" );\n   printf( \"Hello, %s\\n\", title );            \n\nNote that strcat() does not perform bounds checking, and thus\n  risks overrunning str1 or str2.  For a similar (and\n  safer) function that includes bounds checking, see strncat().\n\n    Related topics:\n  \n\nstrchr\nstrcmp\nstrcpy\nstrncat\n\nAnother set of related (but non-standard) functions are strlcpy and\n  strlcat."
+    },
+    {
+      "Title": "strchr",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strchr.html",
+      "Description": "finds the first occurance of a character in a string",
+      "Syntax": "#include <string.h>\n  char *strchr( const char *str, int ch );",
+      "Text": "cppreference.com > Standard C String and Character > strchr\n\n\n    strchr\n  \n\n    Syntax:\n  \n  #include <string.h>\n  char *strchr( const char *str, int ch );\n\nThe function strchr() returns a pointer to the first occurence of\n  ch in str, or NULL if ch\n  is not found.\n\n    Related topics:\n  \n\nstrcat\nstrcmp\nstrcpy\nstrlen\nstrncat\nstrncmp\nstrncpy\nstrpbrk\nstrspn\nstrstr\nstrtok"
+    },
+    {
+      "Title": "strcmp",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strcmp.html",
+      "Description": "compares two strings",
+      "Syntax": "#include <string.h>\n  int strcmp( const char *str1, const char *str2 );",
+      "Text": "cppreference.com > Standard C String and Character > strcmp\n\n\n    strcmp\n  \n\n    Syntax:\n  \n  #include <string.h>\n  int strcmp( const char *str1, const char *str2 );\n\nThe function strcmp() compares str1 and str2,\n  then returns:\n\n\nReturn value\nExplanation\n\n\nless than 0\n''str1'' is less than\n      ''str2''\n\n\nequal to 0\n''str1'' is equal to\n      ''str2''\n\n\ngreater than 0\n''str1'' is greater\n      than ''str2''\n\n\nFor example:\n   printf( \"Enter your name: \" );\n   scanf( \"%s\", name );\n   if( strcmp( name, \"Mary\" ) == 0 )\n     printf( \"Hello, Dr. Mary!\\n\" );          \n\nNote that strcmp() does not perform bounds checking, and thus\n  risks overrunning str1 or str2.  For a similar (and\n  safer) function that includes bounds checking, see strncmp().\n\n    Related topics:\n  \n\nmemcmp\nstrcat\nstrchr\nstrcoll\nstrcpy\nstrlen\nstrncmp\nstrxfrm"
+    },
+    {
+      "Title": "strcoll",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strcoll.html",
+      "Description": "compares two strings in accordance to the current locale",
+      "Syntax": "#include <string.h>\n  int strcoll( const char *str1, const char *str2 );",
+      "Text": "cppreference.com > Standard C String and Character > strcoll\n\n\n    strcoll\n  \n\n    Syntax:\n  \n  #include <string.h>\n  int strcoll( const char *str1, const char *str2 );\n\nThe strcoll() function compares str1 and str2,\n  much like strcmp(). However, strcoll()\n  performs the comparison using the locale specified by the (Standard C\n  Date & Time) setlocale()\n  function.\n\n    Related topics:\n  \n\n    (Standard C Date & Time) setlocale\nstrcmp\nstrxfrm"
+    },
+    {
+      "Title": "strcpy",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strcpy.html",
+      "Description": "copies one string to another",
+      "Syntax": "#include <string.h>\n  char *strcpy( char *to, const char *from );",
+      "Text": "cppreference.com > Standard C String and Character > strcpy\n\n\n    strcpy\n  \n\n    Syntax:\n  \n  #include <string.h>\n  char *strcpy( char *to, const char *from );\n\nThe strcpy() function copies characters in the string\n  from to the string to, including the null\n  termination. The return value is to.\nNote that strcpy() does not perform bounds checking, and thus\n  risks overrunning from or to.  For a similar (and\n  safer) function that includes bounds checking, see strncpy().\n\n    Related topics:\n  \n\nmemcpy\nstrcat\nstrchr\nstrcmp\nstrncmp\nstrncpy\n\nAnother set of related (but non-standard) functions are strlcpy and\n  strlcat."
+    },
+    {
+      "Title": "strcspn",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strcspn.html",
+      "Description": "searches one string for any characters in another",
+      "Syntax": "#include <string.h>\n  size_t strcspn( const char *str1, const char *str2 );",
+      "Text": "cppreference.com > Standard C String and Character > strcspn\n\n\n    strcspn\n  \n\n    Syntax:\n  \n  #include <string.h>\n  size_t strcspn( const char *str1, const char *str2 );\n\nThe function strcspn() returns the index of the first character in\n  str1 that matches any of the characters in\n  str2.\n\n    Related topics:\n  \n\nstrpbrk\nstrrchr\nstrstr\nstrtok"
+    },
+    {
+      "Title": "strerror",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strerror.html",
+      "Description": "returns a text version of a given error code",
+      "Syntax": "#include <string.h>\n  char *strerror( int num );",
+      "Text": "cppreference.com > Standard C String and Character > strerror\n\n\n    strerror\n  \n\n    Syntax:\n  \n  #include <string.h>\n  char *strerror( int num );\n\nThe function strerror() returns an implementation defined string\n  corresponding to num."
+    },
+    {
+      "Title": "strftime",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stddate/strftime.html",
+      "Description": "returns individual elements of the date and time",
+      "Syntax": "#include <time.h>\n  size_t strftime( char *str, size_t maxsize, const char *fmt, struct tm *time );",
+      "Text": "cppreference.com > Standard C Date & Time > strftime\n\n\n    strftime\n  \n\n    Syntax:\n  \n  #include <time.h>\n  size_t strftime( char *str, size_t maxsize, const char *fmt, struct tm *time );\n\nThe function strftime() formats date and time information from\n  time to a format specified by fmt, then stores the\n  result in str (up to maxsize characters). Certain\n  codes may be used in fmt to specify different types of\n  time:\n\n\nCode\nMeaning\n\n\n%a\nabbreviated weekday name (e.g.\n      Fri)\n\n\n%A\nfull weekday name (e.g. Friday)\n\n\n%b\nabbreviated month name (e.g. Oct)\n\n\n%B\nfull month name (e.g. October)\n\n\n%c\nthe standard date and time string\n\n\n%d\nday of the month, as a number\n      (1-31)\n\n\n%H\nhour, 24 hour format (0-23)\n\n\n%I\nhour, 12 hour format (1-12)\n\n\n%j\nday of the year, as a number\n      (1-366)\n\n\n%m\nmonth as a number (1-12). Note: some\n      versions of Microsoft Visual C++ may use values that range from\n      0-11.\n\n\n%M\nminute as a number (0-59)\n\n\n%p\nlocale's equivalent of AM or\n      PM\n\n\n%S\nsecond as a number (0-59)\n\n\n%U\nweek of the year, (0-53), where week 1\n      has the first Sunday\n\n\n%w\nweekday as a decimal (0-6), where\n      Sunday is 0\n\n\n%W\nweek of the year, (0-53), where week 1\n      has the first Monday\n\n\n%x\nstandard date string\n\n\n%X\nstandard time string\n\n\n%y\nyear in decimal, without the century\n      (0-99)\n\n\n%Y\nyear in decimal, with the century\n\n\n%Z\ntime zone name\n\n\n%%\na percent sign\n\n\nThe strftime() function returns the number of characters put into\n  str, or zero if an error occurs.\n\n    Related topics:\n  \n\ngmtime\nlocaltime\ntime"
+    },
+    {
+      "Title": "strlen",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strlen.html",
+      "Description": "returns the length of a given string",
+      "Syntax": "#include <string.h>\n  size_t strlen( char *str );",
+      "Text": "cppreference.com > Standard C String and Character > strlen\n\n\n    strlen\n  \n\n    Syntax:\n  \n  #include <string.h>\n  size_t strlen( char *str );\n\nThe strlen() function returns the length of str\n  (determined by the number of characters before null termination).\n\n    Related topics:\n  \n\nmemcpy\nstrchr\nstrcmp\nstrncmp"
+    },
+    {
+      "Title": "strncat",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strncat.html",
+      "Description": "concatenates a certain amount of characters of two strings",
+      "Syntax": "#include <string.h>\n  char *strncat( char *str1, const char *str2, size_t count );",
+      "Text": "cppreference.com > Standard C String and Character > strncat\n\n\n    strncat\n  \n\n    Syntax:\n  \n  #include <string.h>\n  char *strncat( char *str1, const char *str2, size_t count );\n\nThe function strncat() concatenates at most count\n  characters of str2 onto str1, adding a null\n  termination. The resulting string is returned.\n\n    Related topics:\n  \n\nstrcat\nstrchr\nstrncmp\nstrncpy\n\nAnother set of related (but non-standard) functions are strlcpy and\n  strlcat."
+    },
+    {
+      "Title": "strncmp",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strncmp.html",
+      "Description": "compares a certain amount of characters of two strings",
+      "Syntax": "#include <string.h>\n  int strncmp( const char *str1, const char *str2, size_t count );",
+      "Text": "cppreference.com > Standard C String and Character > strncmp\n\n\n    strncmp\n  \n\n    Syntax:\n  \n  #include <string.h>\n  int strncmp( const char *str1, const char *str2, size_t count );\n\nThe strncmp() function compares at most count characters\n  of str1 and str2. The return value is as\n  follows:\n\n\nReturn value\nExplanation\n\n\nless than 0\n''str1'' is less than\n      ''str2''\n\n\nequal to 0\n''str1'' is equal to\n      ''str2''\n\n\ngreater than 0\n''str1'' is greater\n      than str2''\n\n\nIf there are less than count characters in either string,\n  then the comparison will stop after the first null termination is\n  encountered.\n\n    Related topics:\n  \n\nstrchr\nstrcmp\nstrcpy\nstrlen\nstrncat\nstrncpy"
+    },
+    {
+      "Title": "strncpy",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strncpy.html",
+      "Description": "copies a certain amount of characters from one string to another",
+      "Syntax": "#include <string.h>\n  char *strncpy( char *to, const char *from, size_t count );",
+      "Text": "cppreference.com > Standard C String and Character > strncpy\n\n\n    strncpy\n  \n\n    Syntax:\n  \n  #include <string.h>\n  char *strncpy( char *to, const char *from, size_t count );\n\nThe strncpy() function copies at most count characters of\n  from to the string to. If from has less than\n  count characters, the remainder is padded with '\\0'\n  characters. The return value is the resulting string.\n\n    Related topics:\n  \n\nmemcpy\nstrchr\nstrcpy\nstrncat\nstrncmp\n\nAnother set of related (but non-standard) functions are strlcpy and\n  strlcat."
+    },
+    {
+      "Title": "strpbrk",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strpbrk.html",
+      "Description": "finds the first location of any character in one string, in another string",
+      "Syntax": "#include <string.h>\n  char* strpbrk( const char* str1, const char* str2 );",
+      "Text": "cppreference.com > Standard C String and Character > strpbrk\n\n\n    strpbrk\n  \n\n    Syntax:\n  \n  #include <string.h>\n  char* strpbrk( const char* str1, const char* str2 );\n\nThe function strpbrk() returns a pointer to the first ocurrence in\n  str1 of any character in str2, or\n  NULL if no such characters are present.\n\n    Related topics:\n  \n\n    (C++ Algorithms) find_first_of\nstrchr\nstrcspn\nstrrchr\nstrspn\nstrstr\nstrtok"
+    },
+    {
+      "Title": "strrchr",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strrchr.html",
+      "Description": "finds the last occurance of a character in a string",
+      "Syntax": "#include <string.h>\n  char *strrchr( const char *str, int ch );",
+      "Text": "cppreference.com > Standard C String and Character > strrchr\n\n\n    strrchr\n  \n\n    Syntax:\n  \n  #include <string.h>\n  char *strrchr( const char *str, int ch );\n\nThe function strrchr() returns a pointer to the last occurrence of\n  ch in str, or NULL if no match is\n  found.\n\n    Related topics:\n  \n\nstrcspn\nstrpbrk\nstrspn\nstrstr\nstrtok"
+    },
+    {
+      "Title": "strspn",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strspn.html",
+      "Description": "returns the length of a substring of characters of a string",
+      "Syntax": "#include <string.h>\n  size_t strspn( const char *str1, const char *str2 );",
+      "Text": "cppreference.com > Standard C String and Character > strspn\n\n\n    strspn\n  \n\n    Syntax:\n  \n  #include <string.h>\n  size_t strspn( const char *str1, const char *str2 );\n\nThe strspn() function returns the index of the first character in\n  str1 that doesn't match any character in\n  str2.\n\n    Related topics:\n  \n\nstrchr\nstrpbrk\nstrrchr\nstrstr\nstrtok"
+    },
+    {
+      "Title": "strstr",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strstr.html",
+      "Description": "finds the first occurance of a substring of characters",
+      "Syntax": "#include <string.h>\n  char *strstr( const char *str1, const char *str2 );",
+      "Text": "cppreference.com > Standard C String and Character > strstr\n\n\n    strstr\n  \n\n    Syntax:\n  \n  #include <string.h>\n  char *strstr( const char *str1, const char *str2 );\n\nThe function strstr() returns a pointer to the first occurrence\n  of str2 in str1, or NULL if no\n  match is found.  If the length of str2 is zero, then\n  strstr() will simply return str1.\n  \nFor example, the following code checks for the existence of one\n  string within another string:\n  char* str1 = \"this is a string of characters\";\n  char* str2 = \"a string\";\n  char* result = strstr( str1, str2 );\n  if( result == NULL ) printf( \"Could not find '%s' in '%s'\\n\", str2, str1 );\n  else printf( \"Found a substring: '%s'\\n\", result );\n\nWhen run, the above code displays this output:\n  Found a substring: 'a string of characters'\n\n\n    Related topics:\n  \n\nmemchr\nstrchr\nstrcspn\nstrpbrk\nstrrchr\nstrspn\nstrtok"
+    },
+    {
+      "Title": "strtod",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strtod.html",
+      "Description": "converts a string to a double",
+      "Syntax": "#include <stdlib.h>\n  double strtod( const char *start, char **end );",
+      "Text": "cppreference.com > Standard C String and Character > strtod\n\n\n    strtod\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  double strtod( const char *start, char **end );\n\nThe function strtod() returns whatever it encounters first in\n  start as a double. end is set to point at whatever\n  is left in start after that double. If overflow occurs,\n  strtod() returns either HUGE_VAL or\n  -HUGE_VAL.\n\n    Related topics:\n  \n\natof"
+    },
+    {
+      "Title": "strtok",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strtok.html",
+      "Description": "finds the next token in a string",
+      "Syntax": "#include <string.h>\n  char *strtok( char *str1, const char *str2 );",
+      "Text": "cppreference.com > Standard C String and Character > strtok\n\n\n    strtok\n  \n\n    Syntax:\n  \n  #include <string.h>\n  char *strtok( char *str1, const char *str2 );\n\nThe strtok() function returns a pointer to the next\n  \"token\" in str1, where str2 contains the\n  delimiters that determine the token. strtok() returns\n  NULL if no token is found. In order to convert a\n  string to tokens, the first call to strtok() should have\n  str1 point to the string to be tokenized. All calls after\n  this should have str1 be NULL.\nFor example:\n   char str[] = \"now # is the time for all # good men to come to the # aid of their country\";\n   char delims[] = \"#\";\n   char *result = NULL;\n   result = strtok( str, delims );\n   while( result != NULL ) {\n       printf( \"result is \\\"%s\\\"\\n\", result );\n       result = strtok( NULL, delims );\n   }            \n\nThe above code will display the following output:\n   result is \"now \"\n   result is \" is the time for all \"\n   result is \" good men to come to the \"\n   result is \" aid of their country\"          \n\n\n    Related topics:\n  \n\nstrchr\nstrcspn\nstrpbrk\nstrrchr\nstrspn\nstrstr"
+    },
+    {
+      "Title": "strtol",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strtol.html",
+      "Description": "converts a string to a long",
+      "Syntax": "#include <stdlib.h>\n  long strtol( const char *start, char **end, int base );",
+      "Text": "cppreference.com > Standard C String and Character > strtol\n\n\n    strtol\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  long strtol( const char *start, char **end, int base );\n\nThe strtol() function returns whatever it encounters first in\n  start as a long, doing the conversion to base if\n  necessary. end is set to point to whatever is left in\n  start after the long. If the result can not be represented\n  by a long, then strtol() returns either LONG_MAX or\n  LONG_MIN. Zero is returned upon error.\n\n    Related topics:\n  \n\natol\nstrtoul"
+    },
+    {
+      "Title": "strtoul",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strtoul.html",
+      "Description": "converts a string to an unsigned long",
+      "Syntax": "#include <stdlib.h>\n  unsigned long strtoul( const char *start, char **end, int base );",
+      "Text": "cppreference.com > Standard C String and Character > strtoul\n\n\n    strtoul\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  unsigned long strtoul( const char *start, char **end, int base );\n\nThe function strtoul() behaves exactly like strtol(), except that it returns an unsigned long\n  rather than a mere long.\n\n    Related topics:\n  \n\nstrtol"
+    },
+    {
+      "Title": "strxfrm",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/strxfrm.html",
+      "Description": "converts a substring so that it can be used by string comparison functions",
+      "Syntax": "#include <string.h>\n  size_t strxfrm( char *str1, const char *str2, size_t num );",
+      "Text": "cppreference.com > Standard C String and Character > strxfrm\n\n\n    strxfrm\n  \n\n    Syntax:\n  \n  #include <string.h>\n  size_t strxfrm( char *str1, const char *str2, size_t num );\n\nThe strxfrm() function manipulates the first num\n  characters of str2 and stores them in str1. The\n  result is such that if a strcoll() is\n  performed on str1 and the old str2, you will get\n  the same result as with a strcmp().\n\n    Related topics:\n  \n\nstrcmp\nstrcoll"
+    },
+    {
+      "Title": "system",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/system.html",
+      "Description": "perform a system call",
+      "Syntax": "#include <stdlib.h>\n  int system( const char *command );",
+      "Text": "cppreference.com > Other Standard C Functions > system\n\n\n    system\n  \n\n    Syntax:\n  \n  #include <stdlib.h>\n  int system( const char *command );\n\nThe system() function runs the given command as a system\n  call. The return value is usually zero if the command executed\n  without errors. If command is NULL,\n  system() will test to see if there is a command interpreter\n  available. Non-zero will be returned if there is a command\n  interpreter available, zero if not.\n\n    Related topics:\n  \n\nexit\ngetenv"
+    },
+    {
+      "Title": "tan",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/tan.html",
+      "Description": "tangent",
+      "Syntax": "#include <math.h>\n  double tan( double arg );",
+      "Text": "cppreference.com > Standard C Math > tan\n\n\n    tan\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double tan( double arg );\n\nThe tan() function returns the tangent of arg, where\n  arg is given in radians.  If arg is infinite,\n  tan() will return NAN and raise a floating-point exception.\n\n    Related topics:\n  \n\nacos\nasin\natan\natan2\ncos\ncosh\nsin\nsinh\ntanh"
+    },
+    {
+      "Title": "tanh",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdmath/tanh.html",
+      "Description": "hyperbolic tangent",
+      "Syntax": "#include <math.h>\n  double tanh( double arg );",
+      "Text": "cppreference.com > Standard C Math > tanh\n\n\n    tanh\n  \n\n    Syntax:\n  \n  #include <math.h>\n  double tanh( double arg );\n\nThe function tanh() returns the hyperbolic tangent of\n  arg.\n\n    Related topics:\n  \n\nacos\nasin\natan\natan2\ncos\ncosh\nsin\nsinh\ntan"
+    },
+    {
+      "Title": "time",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stddate/time.html",
+      "Description": "returns the current calendar time of the system",
+      "Syntax": "#include <time.h>\n  time_t time( time_t *time );",
+      "Text": "cppreference.com > Standard C Date & Time > time\n\n\n    time\n  \n\n    Syntax:\n  \n  #include <time.h>\n  time_t time( time_t *time );\n\nThe function time() returns the current time, or -1 if there is an\n  error. If the argument 'time' is given, then the current time\n  is stored in 'time'.\n\n    Related topics:\n  \n\nasctime\nclock\nctime\ndifftime\ngmtime\nlocaltime\nmktime\n    (Other Standard C Functions) srand\nstrftime"
+    },
+    {
+      "Title": "tmpfile",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/tmpfile.html",
+      "Description": "return a pointer to a temporary file",
+      "Syntax": "#include <stdio.h>\n  FILE *tmpfile( void );",
+      "Text": "cppreference.com > Standard C I/O > tmpfile\n\n\n    tmpfile\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  FILE *tmpfile( void );\n\nThe function tempfile() opens a temporary file with an unique\n  filename and returns a pointer to that file. If there is an error,\n  null is returned.\n\n    Related topics:\n  \n\ntmpnam"
+    },
+    {
+      "Title": "tmpnam",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/tmpnam.html",
+      "Description": "return a unique filename",
+      "Syntax": "#include <stdio.h>\n  char *tmpnam( char *name );",
+      "Text": "cppreference.com > Standard C I/O > tmpnam\n\n\n    tmpnam\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  char *tmpnam( char *name );\n\nThe tmpnam() function creates an unique filename and stores it in\n  name. tmpnam() can be called up to TMP_MAX\n  times.\n\n    Related topics:\n  \n\ntmpfile"
+    },
+    {
+      "Title": "tolower",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/tolower.html",
+      "Description": "converts a character to lowercase",
+      "Syntax": "#include <ctype.h>\n  int tolower( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > tolower\n\n\n    tolower\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int tolower( int ch );\n\nThe function tolower() returns the lowercase version of the\n  character ch.\n\n    Related topics:\n  \n\nisupper\ntoupper"
+    },
+    {
+      "Title": "toupper",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdstring/toupper.html",
+      "Description": "converts a character to uppercase",
+      "Syntax": "#include <ctype.h>\n  int toupper( int ch );",
+      "Text": "cppreference.com > Standard C String and Character > toupper\n\n\n    toupper\n  \n\n    Syntax:\n  \n  #include <ctype.h>\n  int toupper( int ch );\n\nThe toupper() function returns the uppercase version of the\n  character ch.\n\n    Related topics:\n  \n\ntolower"
+    },
+    {
+      "Title": "ungetc",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/ungetc.html",
+      "Description": "puts a character back into a stream",
+      "Syntax": "#include <stdio.h>\n  int ungetc( int ch, FILE *stream );",
+      "Text": "cppreference.com > Standard C I/O > ungetc\n\n\n    ungetc\n  \n\n    Syntax:\n  \n  #include <stdio.h>\n  int ungetc( int ch, FILE *stream );\n\nThe function ungetc() puts the character ch back in\n  stream.\n\n    Related topics:\n  \n\ngetc\n    (C++ I/O) putback"
+    },
+    {
+      "Title": "va_arg",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdother/va_arg.html",
+      "Description": "use variable length parameter lists",
+      "Syntax": "#include <stdarg.h>\n  type va_arg(  va_list  argptr, type );\n  void va_end(  va_list  argptr );\n  void va_start(  va_list  argptr, last_parm );",
+      "Text": "cppreference.com > Other Standard C Functions > va_arg\n\n\n    va_arg\n  \n\n    Syntax:\n  \n  #include <stdarg.h>\n  type va_arg( va_list argptr, type );\n  void va_end( va_list argptr );\n  void va_start( va_list argptr, last_parm );\n\nThe va_arg() macros are used to pass a variable number of\n  arguments to a function.\n\nFirst, you must have a call to va_start() passing a valid\n    va_list and the mandatory first argument of the\n    function. This first argument can be anything; one way to use it is\n    to have it be an integer describing the number of parameters being\n    passed.\nNext, you call va_arg() passing the va_list\n    and the type of the argument to be returned. The return value of\n    va_arg() is the current parameter.\nRepeat calls to va_arg() for however many arguments you\n    have.\nFinally, a call to va_end() passing the\n    va_list is necessary for proper cleanup.\n\nFor example:\n  int sum( int num, ... ) {\n    int answer = 0;\n    va_list argptr;            \n\n    va_start( argptr, num );            \n\n    for( ; num > 0; num-- ) {\n      answer += va_arg( argptr, int );\n    }           \n\n    va_end( argptr );           \n\n    return( answer );\n  }             \n                \n\n  int main( void ) {            \n\n    int answer = sum( 4, 4, 3, 2, 1 );\n    printf( \"The answer is %d\\n\", answer );           \n\n    return( 0 );\n  }             \n\nThis code displays 10, which is 4+3+2+1.\nHere is another example of variable argument function, which is a\n  simple printing function:\n void my_printf( char *format, ... ) {\n   va_list argptr;             \n\n   va_start( argptr, format );          \n\n   while( *format != '\\0' ) {\n     // string\n     if( *format == 's' ) {\n       char* s = va_arg( argptr, char * );\n       printf( \"Printing a string: %s\\n\", s );\n     }\n     // character\n     else if( *format == 'c' ) {\n       char c = (char) va_arg( argptr, int );\n       printf( \"Printing a character: %c\\n\", c );\n       break;\n     }\n     // integer\n     else if( *format == 'd' ) {\n       int d = va_arg( argptr, int );\n       printf( \"Printing an integer: %d\\n\", d );\n     }          \n\n     *format++;\n   }            \n\n   va_end( argptr );\n }              \n                \n\n int main( void ) {             \n\n   my_printf( \"sdc\", \"This is a string\", 29, 'X' );         \n\n   return( 0 );\n }              \n\nThis code displays the following output when run:\n Printing a string: This is a string\n Printing an integer: 29\n Printing a character: X"
+    },
+    {
+      "Title": "vprintf, vfprintf, and vsprintf",
+      "url": "https://doc.bccnsoft.com/docs/cppreference_en/stdio/vprintf_vfprintf_vsprintf.html",
+      "Description": "write formatted output with variable argument lists",
+      "Syntax": "#include <stdarg.h>\n  #include <stdio.h>\n  int vprintf( char *format,  va_list  arg_ptr );\n  int vfprintf( FILE *stream, const char *format,  va_list  arg_ptr );\n  int vsprintf( char *buffer, char *format,  va_list  arg_ptr );",
+      "Text": "cppreference.com > Standard C I/O > vprintf, vfprintf, and\n    vsprintf\n\n\n    vprintf, vfprintf, and vsprintf\n  \n\n    Syntax:\n  \n  #include <stdarg.h>\n  #include <stdio.h>\n  int vprintf( char *format, va_list arg_ptr );\n  int vfprintf( FILE *stream, const char *format, va_list arg_ptr );\n  int vsprintf( char *buffer, char *format, va_list arg_ptr );\n\nThese functions are very much like printf(), fprintf(), and\n  sprintf(). The difference is that the\n  argument list is a pointer to a list of arguments.\n  va_list is defined in stdarg.h, and is also used by\n  (Other Standard C Functions) va_arg(). For example:\n   void error( char *fmt, ... ) {\n     va_list args;\n     va_start( args, fmt );\n     fprintf( stderr, \"Error: \" );\n     vfprintf( stderr, fmt, args );\n     fprintf( stderr, \"\\n\" );\n     va_end( args );\n     exit( 1 );\n   }"
+    }
+  ]

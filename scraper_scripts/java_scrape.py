@@ -53,7 +53,7 @@ class javaSpider(scrapy.Spider):
         javaSpider.number += 1
         yield scrapy.Request(javaSpider.urls[javaSpider.number - 1], callback = self.parse_details)
 
-    
+
 
     
 
