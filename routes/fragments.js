@@ -78,8 +78,6 @@ module.exports = function (router) {
                     //     }
                     // }
 
-
-
                     // Load wink-bm25-text-search
                     var bm25 = require( 'wink-bm25-text-search' );
                     // Create search engine's instance
@@ -98,21 +96,17 @@ module.exports = function (router) {
                     ];
                     // Contains search query.
                     // Step I: Define config
-                    // Only field weights are required in this example.
                     engine.defineConfig( { fldWeights: { title: 1.5, text: 1 } } );
                     // Step II: Define PrepTasks pipe.
-                    // Set up 'default' preparatory tasks i.e. for everything else
                     engine.definePrepTasks( pipe );
 
                     // Step III: Add Docs
-                    // Add documents now...
+                    
                     docs.forEach( function ( doc, i ) {
-                    // Note, 'i' becomes the unique id for 'doc'
-                    engine.addDoc( doc, i );
+                        engine.addDoc( doc, i );
                     } );
 
                     // Step IV: Consolidate
-                    // Consolidate before searching
                     engine.consolidate();
                     var resultIndex = engine.search( query, 40 );
                     // console.log( '%d entries found.', resultIndex.length );
