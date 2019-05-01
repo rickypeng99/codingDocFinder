@@ -91,11 +91,10 @@ module.exports = function (router) {
 
                     // Define preparatory task pipe!
                     var pipe = [
-                    nlp.string.lowerCase,
-                    nlp.string.tokenize0,
-                    //nlp.tokens.removeWords,
-                    nlp.tokens.stem,
-                    nlp.tokens.propagateNegations
+                        nlp.string.lowerCase,
+                        nlp.string.tokenize0,
+                        nlp.tokens.stem,
+                        nlp.tokens.propagateNegations
                     ];
                     // Contains search query.
                     // Step I: Define config
@@ -115,7 +114,7 @@ module.exports = function (router) {
                     // Step IV: Consolidate
                     // Consolidate before searching
                     engine.consolidate();
-                    var resultIndex = engine.search( query );
+                    var resultIndex = engine.search( query, 40 );
                     // console.log( '%d entries found.', resultIndex.length );
                     // console.log( docs[ resultIndex[ 0 ][ 0 ] ].text );
 
