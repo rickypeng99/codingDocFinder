@@ -4,6 +4,8 @@ import urllib
 import json
 import os
 import re
+import json
+
 
 
 
@@ -27,51 +29,81 @@ def main(argv):
      dirname = sys.argv[1] + "/"
      files = []
      wait = []
-     #preventing 10.1 to be sorted before 2.1
-     for root, dirs, filenames, in os.walk(dirname):
-          for filename in sorted(filenames):
-               if(filename[1] == "."):
-                    files.append(filename)
+
+
+     if language == "c":
+          #prompt the user for a file to import
+          data = json.load(open("c_lib/c_lib.json"))
+          
+
+          for doc in data:
+                # POST
+               text = doc["Text"]
+               codeFragment = doc["Syntax"]
+               title = doc["Title"] +" - " +doc["Description"]
+               params = urllib.parse.urlencode({'title': title, 'text': text, 'language': language, 'codeFragment': codeFragment})
+               conn.request("POST", "/api/fragments", params, headers)
+               response = conn.getresponse()
+               data = response.read()
+               d = json.loads(data)
+               if(d['data'] != "error"):
+                    print("Successfully uploaded " + title)
                else:
-                    wait.append(filename)
-          
-     for filename in wait:
-          files.append(filename)
+                    #Some files from the java folder are empty, but that is fine.
+                    print("FAILED uploading " + title + d['message'])
 
-     #open all files
-     for filename in files:
-          title = filename
+               # Exit gracefully
+          conn.close()
+          print("Successfully uploaded all the fragments!")
 
-          if(language == "python"):
-               f = open(dirname + filename, 'r', encoding='gbk')
-               text = f.read()
-          else:
-               f = open(dirname + filename, 'r', encoding='utf-8')
-               text = f.read()
-          #filtering out all chinese characters
-          text = re.sub(u'[\u4e00-\u9fff]+','', text)
-          
-          #no code fragments for python tutorials
-          codeFragment = "unidentified"    
-          
-          #print(title)
-          #adding params
-          params = urllib.parse.urlencode({'title': title, 'text': text, 'language': language, 'codeFragment': codeFragment})
+       
 
-          # POST
-          conn.request("POST", "/api/fragments", params, headers)
-          response = conn.getresponse()
-          data = response.read()
-          d = json.loads(data)
-          if(d['data'] != "error"):
-               print("Successfully uploaded " + title)
-          else:
-               #Some files from the java folder are empty, but that is fine.
-               print("FAILED uploading " + title + d['message'])
+     else:
+          #preventing 10.1 to be sorted before 2.1
+          for root, dirs, filenames, in os.walk(dirname):
+               for filename in sorted(filenames):
+                    if(filename[1] == "."):
+                         files.append(filename)
+                    else:
+                         wait.append(filename)
+               
+          for filename in wait:
+               files.append(filename)
 
-     # Exit gracefully
-     conn.close()
-     print("Successfully uploaded all the fragments!")
+          #open all files
+          for filename in files:
+               title = filename
+
+               if(language == "python"):
+                    f = open(dirname + filename, 'r', encoding='gbk')
+                    text = f.read()
+               else:
+                    f = open(dirname + filename, 'r', encoding='utf-8')
+                    text = f.read()
+               #filtering out all chinese characters
+               text = re.sub(u'[\u4e00-\u9fff]+','', text)
+               
+               #no code fragments for python tutorials
+               codeFragment = "unidentified"    
+               
+               #print(title)
+               #adding params
+               params = urllib.parse.urlencode({'title': title, 'text': text, 'language': language, 'codeFragment': codeFragment})
+
+               # POST
+               conn.request("POST", "/api/fragments", params, headers)
+               response = conn.getresponse()
+               data = response.read()
+               d = json.loads(data)
+               if(d['data'] != "error"):
+                    print("Successfully uploaded " + title)
+               else:
+                    #Some files from the java folder are empty, but that is fine.
+                    print("FAILED uploading " + title + d['message'])
+
+          # Exit gracefully
+          conn.close()
+          print("Successfully uploaded all the fragments!")
 
 
 if __name__ == "__main__":
