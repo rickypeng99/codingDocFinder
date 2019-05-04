@@ -15,6 +15,27 @@ var checkInvalid = ((query) => {
 
 module.exports = function (router) {
 
+
+    var findIdByNameRoute = router.route('/search/:name');
+
+    findIdByNameRoute.get((req, res) => {
+        Fragment.find({
+            "title" : req.params.name
+        })
+        .exec()
+        .then((fragment) => {
+            res.status(200).send({data: fragment, message: "Successfully returned " + req.params.name + " fragment"})
+        })
+        .catch(error => {
+            res.status(500).send({data: "error", message: "Error: getting id " + error})
+
+        })
+    })
+
+
+
+
+
     var fragmentsRoute = router.route('/fragments');
 
     //GET request

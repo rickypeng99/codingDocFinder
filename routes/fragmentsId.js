@@ -1,6 +1,14 @@
 var secrets = require('../config/secrets');
 var Fragment = require('../model/fragment')
 
+var replaced = ((original, change) => {
+    if(change == undefined){
+        return original;
+    } else{
+        return change;
+    }
+})
+
 module.exports = function (router) {
 
     var fragmentsIdRoute = router.route('/fragments/:id');
@@ -39,5 +47,26 @@ module.exports = function (router) {
 
         })
     });
+
+    //PUT request, only for adding the similar contexts
+    fragmentsIdRoute.put((req, res) => {
+        Fragment.findById(req.params.id)
+        .exec()
+        .then((fragment) => {
+            fragment.similar = replaced(fragment.similar, req.body.similar);
+            fragment.save()
+            .then((response) => {
+                res.status(200).send({data: response, message: "Fragments added similarity"})
+            })
+            .catch((error) => {
+                res.status(404).send({data: "error", message: "Couldn't find fragment with specific id, thus can't be updated " + error})
+            })
+        })
+        .catch(error => {
+            res.status(500).send({data: "error", message: "Error: update findById: " + error})
+
+        })
+
+    })
     return router;
 }

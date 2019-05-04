@@ -13,6 +13,8 @@ def getFragments(conn, lanaguage):
     data = response.read()
     d = json.loads(data)
 
+    print(data)
+
     fragments = []
     for i in range(0, len(d['data'])):
         fragments.append(str(d['data'][i]['_id']))
