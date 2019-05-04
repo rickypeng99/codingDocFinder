@@ -29,7 +29,8 @@ var fragmentSchema = new mongoose.Schema({
         required: true
     },
     similar: {
-        type: [String]
+        type: Array,
+        default: []
     }
 })
 

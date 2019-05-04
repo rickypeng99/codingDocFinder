@@ -73,6 +73,16 @@ def get_ctext():
 
 
 def get_id(conn, filenames, similar_array, index):
+
+    #get id for current doc
+    currentName = filenames[index].replace(" ", "%20")
+    conn.request("GET","/api/search/" + currentName)
+    response = conn.getresponse()
+    data = response.read()
+    d = json.loads(data)
+    currentId = str(d['data'][0]['_id'])
+
+    #get ids for similars
     ids = []
     for i in range(0, len(similar_array[index])):
 
@@ -85,7 +95,7 @@ def get_id(conn, filenames, similar_array, index):
         d = json.loads(data)
         ids.append(str(d['data'][0]['_id']))
 
-    return ids
+    return currentId, ids
 
 
 def main(argv):
@@ -116,14 +126,30 @@ def main(argv):
         similar_list.append(find_similar(tfidf, i))
     count = len(similar_list)
     print("Successfully match for "+ str(count) + " docs")
-    print("original" + filenames[1])
-    ids = []
-    ids = get_id(conn, filenames, similar_list, 1)
-    for i in range(0, len(similar_list[1])):
-        print("similar: " + filenames[similar_list[1][i]])
+    
 
-
-        print("similar id: " + ids[i])
+    
+    
+    for i in range(0, len(similar_list)):
+        currentId, ids = get_id(conn, filenames, similar_list, i)
+        # print("original" + filenames[1])
+        # print("original id: " + currentId)
+        similar = []
+        for j in range(0, len(similar_list[i])):
+            similarObject = {
+                "name": filenames[similar_list[i][j]],
+                "id": ids[j]
+            }
+            similarObject = json.loads(json.dumps(similarObject))
+            similar.append(similarObject['id'])
+            #print(json.loads(json.dumps(similar)))
+            # print("similar: " + similarObject['name'])
+            # print("similar id: " + similarObject['id'])
+        params = urllib.parse.urlencode({'similar': similar}, True)
+        conn.request("PUT", "/api/fragments/"+currentId, params, headers)
+        response = conn.getresponse()
+        data = response.read()
+        d = json.loads(data)
     # Exit gracefully
     conn.close()
 if __name__ == "__main__":
